@@ -26,6 +26,28 @@
         source "/etc/profile.d/system-manager-path.sh"
       fi
     '';
+    shellAliases = {
+      # git
+      gs = "git status -sb";
+      gl = "git --no-pager log --oneline -n 20";
+      glog = "git log --oneline";
+      gif = "git --no-pager diff";
+      gifs = "git --no-pager diff --staged";
+      gb = "git --no-pager branch";
+      gbd = "git branch -D";
+      grv = "git remote -v";
+      gfp = "git fetch --prune";
+      add = "git add";
+      adda = "git add --all";
+      cmt = "git commit -m";
+      pull = "git pull";
+      push = "git push";
+      amend = "git commit --amend";
+      checkout = "git switch";
+      discard = "git restore";
+      # lazygit
+      lg = "lazygit";
+    };
   };
   programs.ssh = {
     enable = true;
