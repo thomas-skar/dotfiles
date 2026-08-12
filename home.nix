@@ -18,7 +18,9 @@
       init.defaultBranch = "main";
     };
   };
+
   programs.lazygit.enable = true;
+
   programs.bash = {
     enable = true;
     bashrcExtra = ''
@@ -49,6 +51,7 @@
       lg = "lazygit";
     };
   };
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -63,6 +66,12 @@
       };
     };
   };
+
   programs.ghostty.enable = true;
+
   programs.zed-editor.enable = true;
+
+  wayland.windowManager.labwc = {
+    enable = true;
+  };
 }
