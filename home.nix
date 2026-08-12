@@ -8,6 +8,7 @@
     nil
     nixd
     mise
+    just
   ];
 
   programs.git = {
@@ -29,6 +30,9 @@
       fi
     '';
     shellAliases = {
+      # ls
+      ls = "ls -l";
+      lsa = "ls -la";
       # git
       gs = "git status -sb";
       gl = "git --no-pager log --oneline -n 20";
@@ -49,6 +53,8 @@
       discard = "git restore";
       # lazygit
       lg = "lazygit";
+      # just
+      j = "just";
     };
   };
 
@@ -73,5 +79,37 @@
 
   wayland.windowManager.labwc = {
     enable = true;
+    package = pkgs.labwc;
+    rc = {
+      keyboard = {
+        default = true;
+        keybind = [
+          {
+            "@key" = "W-Return";
+            action = {
+              "@name" = "Execute";
+              "@command" = "ghostty";
+            };
+          }
+        ];
+      };
+    };
+    menu = [
+      {
+        menuId = "";
+        items = [
+          {
+            label = "Terminal";
+            action = {
+              name = "Execute";
+              command = "ghostty";
+            };
+          }
+        ];
+      }
+    ];
+    autostart = [ ];
+    environment = [ ];
+    systemd.enable = true;
   };
 }
