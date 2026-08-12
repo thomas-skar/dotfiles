@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-nix run 'github:numtide/system-manager' --extra-experimental-features "nix-command flakes" -- switch --sudo --flake .
