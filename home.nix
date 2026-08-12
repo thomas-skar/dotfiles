@@ -15,9 +15,10 @@
     settings = {
       user.name = "Thomas Skar";
       user.email = "thomas.skar@intility.no";
+      init.defaultBranch = "main";
     };
-    init.defaultBranch = "main";
   };
+  programs.lazygit.enable = true;
   programs.bash = {
     enable = true;
     bashrcExtra = ''
