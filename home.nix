@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
+
   home.stateVersion = "26.11";
 
   home.packages = with pkgs; [
@@ -77,6 +81,10 @@
 
   programs.zed-editor.enable = true;
 
+  programs.noctalia = {
+    enable = true;
+  };
+
   wayland.windowManager.labwc = {
     enable = true;
     package = pkgs.labwc;
@@ -88,7 +96,14 @@
             "@key" = "W-Return";
             action = {
               "@name" = "Execute";
-              "@command" = "ghostty";
+              "@command" = "ghostty +new-window";
+            };
+          }
+          {
+            "@key" = "W-Space";
+            action = {
+              "@name" = "Execute";
+              "@command" = "noctalia msg panel-toggle launcher";
             };
           }
         ];
@@ -108,7 +123,7 @@
         ];
       }
     ];
-    autostart = [ ];
+    autostart = [ "noctalia" ];
     environment = [ ];
     systemd.enable = true;
   };
