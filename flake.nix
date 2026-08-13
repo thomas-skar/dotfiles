@@ -2,8 +2,8 @@
   description = "Standalone System Manager configuration";
 
   nixConfig = {
-    extra-substituters = [ "https://cache.numtide.com" "https://noctalia.cachix.org" ];
-    extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
+    extra-substituters = [ "https://cache.numtide.com" ];
+    extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
   };
 
   inputs = {
@@ -18,7 +18,7 @@
     nix-system-graphics.url = "github:soupglasses/nix-system-graphics";
     nix-system-graphics.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia.url = "github:noctalia-dev/noctalia";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
   };
 
   outputs =
@@ -50,9 +50,11 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "bak";
+              backupFileExtension = "bkp";
               startAsUserService = false;
-              users.thomas = import ./home.nix;
+              users.thomas.imports = [
+                ./home.nix
+              ];
               extraSpecialArgs = specialArgs;
             };
           }
