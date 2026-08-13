@@ -21,6 +21,7 @@ build:
 
 alias b := build
 
-# find files in /nix/store with broken permissions
+# find files and directories in /nix/store with broken permissions
 find:
-    sudo find /nix/store -perm 440
+    sudo find /nix/store -type f -perm 440 # should be 444
+    sudo find /nix/store -type d -perm 440 # should be 555
