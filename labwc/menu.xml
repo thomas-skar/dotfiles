@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+  <menu id="">
+    <item label="Terminal">
+      <action name="Execute" command="ghostty +new-window" />
+    </item>
+  </menu>
+</openbox_menu>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<labwc_config>
+  <core>
+    <decoration>client</decoration>
+    <gap>10</gap>
+  </core>
+  <theme>
+    <dropShadows>yes</dropShadows>
+  </theme>
+  <windowSwitcher outlines="yes" preview="yes">
+    <osd style="classic" />
+  </windowSwitcher>
+  <keyboard>
+    <default />
+    <!-- Noctalia -->
+    <keybind key="W-Space">
+      <action name="Execute" command="noctalia msg panel-toggle launcher" />
+    </keybind>
+    <!-- Hardware -->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute" command="noctalia msg volume-up" />
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute" command="noctalia msg volume-down" />
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute" command="noctalia msg volume-mute" />
+    </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute" command="noctalia msg brightness-up" />
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute" command="noctalia msg brightness-down" />
+    </keybind>
+    <!-- Ghostty -->
+    <keybind key="W-g">
+      <action name="ForEach">
+        <query identifier="com.mitchellh.ghostty" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="ghostty +new window" />
+        </none>
+      </action>
+    </keybind>
+    <!-- Microsoft Edge -->
+    <keybind key="M-e">
+      <action name="ForEach">
+        <query identifier="microsoft-edge" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="microsoft-edge --new-window" />
+        </none>
+      </action>
+    </keybind>
+    <!-- Zed -->
+    <keybind key="W-z">
+      <action name="ForEach">
+        <query identifier="dev.zed.Zed" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="zeditor" />
+        </none>
+      </action>
+    </keybind>
+  </keyboard>
+  <libinput>
+    <device>
+      <accelProfile>adaptive</accelProfile>
+      <naturalScroll>yes</naturalScroll>
+      <scrollMethod>twofinger</scrollMethod>
+      <tap>yes</tap>
+      <tapAndDrag>no</tapAndDrag>
+    </device>
+  </libinput>
+</labwc_config>

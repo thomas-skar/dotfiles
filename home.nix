@@ -6,6 +6,7 @@ let
     nixd
     mise
     just
+    wlrctl
   ];
 
   aliases = {
@@ -42,8 +43,31 @@ in
   ];
 
   home.stateVersion = "26.11";
-
   home.packages = packages;
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+  home.file.".local/bin/run-or-raise" = {
+    enable = true;
+    executable = true;
+    text = ''
+      #!/bin/sh
+
+      if test -z "$1"; then
+          echo "Usage: run-or-raise app_id [executable]"
+          exit 1
+      fi
+
+      app_id=$1
+      executable=$2
+      test -z "$executable" && executable=$app_id
+
+      if ! wlrctl window focus "$app_id"; then
+          $executable &
+          disown
+      fi
+    '';
+  };
 
   programs.home-manager.enable = true;
 
@@ -103,43 +127,14 @@ in
   wayland.windowManager.labwc = {
     enable = true;
     package = pkgs.labwc;
-    rc = {
-      keyboard = {
-        default = true;
-        keybind = [
-          {
-            "@key" = "W-Return";
-            action = {
-              "@name" = "Execute";
-              "@command" = "ghostty +new-window";
-            };
-          }
-          {
-            "@key" = "W-Space";
-            action = {
-              "@name" = "Execute";
-              "@command" = "noctalia msg panel-toggle launcher";
-            };
-          }
-        ];
-      };
-    };
-    menu = [
-      {
-        menuId = "";
-        items = [
-          {
-            label = "Terminal";
-            action = {
-              name = "Execute";
-              command = "ghostty";
-            };
-          }
-        ];
-      }
-    ];
     autostart = [ "noctalia" ];
-    environment = [ ];
+    environment = [
+      "XKB_DEFAULT_LAYOUT=no"
+      "XDG_CURRENT_DESKTOP=labwc:wlroots"
+    ];
     systemd.enable = true;
   };
+
+  home.file.".config/labwc/menu.xml".source = ./labwc/menu.xml;
+  home.file.".config/labwc/rc.xml".source = ./labwc/rc.xml;
 }
