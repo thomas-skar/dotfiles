@@ -1,2 +1,3 @@
-- [ ] replace keyd with xremap?
 - [ ] change default shell to fish
+- [ ] labwc (openbox) theme
+- [ ] gnome/ gtk/ dconf dark mode
