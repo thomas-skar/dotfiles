@@ -1,8 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <openbox_menu>
-  <menu id="">
-    <item label="Terminal">
-      <action name="Execute" command="ghostty +new-window" />
+  <menu id="root-menu">
+    <item label="Ghostty">
+      <action name="Execute" command="ghostty" />
+    </item>
+    <separator />
+    <item label="Reconfigure">
+      <action name="Reconfigure" />
+    </item>
+    <item label="Exit">
+      <action name="Exit" />
+    </item>
+  </menu>
+  <menu id="client-menu">
+    <item label="Menu">
+      <action name="ShowMenu" menu="root-menu" atCursor="no" />
+    </item>
+    <separator />
+    <item label="Minimize">
+      <action name="Iconify" />
+    </item>
+    <item label="Maximize">
+      <action name="Maximize" direction="both" />
+    </item>
+    <item label="Omnipresent">
+      <action name="ToggleOmnipresent" />
+    </item>
+    <item label="Close">
+      <action name="Close" />
     </item>
   </menu>
 </openbox_menu>
