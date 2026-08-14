@@ -25,3 +25,7 @@ alias b := build
 find:
     sudo find /nix/store -type f -perm 440 # should be 444
     sudo find /nix/store -type d -perm 440 # should be 555
+
+# start vpn
+vpn:
+    nmcli --ask connection up "Intility VPN"
