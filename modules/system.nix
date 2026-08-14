@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./modules/keyd.nix
+    ./keyd.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
