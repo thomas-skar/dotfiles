@@ -7,3 +7,6 @@
 - [ ] ghostty settings
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
+- [ ] gtk/ gnome icon theme (and cursor theme?)
+- [ ] docker/podman
+- [ ] fix desktop apps that won't open (sandboxing errors)
