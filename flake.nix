@@ -23,12 +23,9 @@
 
   outputs =
     {
-      self,
-      nixpkgs,
       system-manager,
       home-manager,
       nix-system-graphics,
-      noctalia,
       ...
     }@inputs:
     let
