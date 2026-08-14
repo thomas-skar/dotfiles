@@ -3,7 +3,7 @@
   wayland.windowManager.labwc = {
     enable = true;
     package = pkgs.labwc;
-    autostart = [ "noctalia -d" ];
+    autostart = [ "noctalia -d" ]; # TODO: if noctalia is enabled
     environment = [
       "XKB_DEFAULT_LAYOUT=no"
       "XDG_CURRENT_DESKTOP=labwc:wlroots"

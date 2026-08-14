@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 let
   packages = with pkgs; [
-    btop
     nil
     nixd
     mise
@@ -10,9 +9,13 @@ let
   ];
 
   aliases = {
-    # ls
-    ls = "ls -l";
-    lsa = "ls -la";
+    # cd -> zoxide
+    cd = "z";
+    # ls -> eza
+    ls = "eza -l";
+    lsa = "eza -la";
+    # cat -> bat
+    cat = "bat --paging=never";
     # git
     gs = "git status -sb";
     gl = "git --no-pager log --oneline -n 20";
@@ -35,11 +38,15 @@ let
     lg = "lazygit";
     # just
     j = "just";
+    # fastfetch
+    ff = "fastfetch";
   };
 in
 {
   imports = [
     inputs.noctalia.homeModules.default
+    ./ghostty.nix
+    ./starship.nix
   ];
 
   home.stateVersion = "26.11";
@@ -80,6 +87,31 @@ in
     functions = { };
   };
 
+  programs.atuin.enable = true;
+
+  programs.bat.enable = true;
+
+  programs.btop.enable = true;
+
+  programs.eza.enable = true;
+
+  programs.fastfetch.enable = true;
+
+  programs.fd.enable = true;
+
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
+  };
+
+  programs.ripgrep.enable = true;
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -95,11 +127,9 @@ in
     };
   };
 
-  programs.ghostty.enable = true;
-
+  # TODO: config
   programs.zed-editor.enable = true;
 
-  programs.noctalia = {
-    enable = true;
-  };
+  # TODO: config
+  programs.noctalia.enable = true;
 }
