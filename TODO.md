@@ -8,5 +8,8 @@
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
 - [ ] gtk/ gnome icon theme (and cursor theme?)
-- [ ] docker/podman
+- [x] docker/podman
+  - [ ] fix `podman ps -a` errors
 - [ ] fix desktop apps that won't open (sandboxing errors)
+- [ ] add _something_ to kill gnome-shell (at startup? :)
+- [ ] find a way to start labwc through GDM?
