@@ -17,6 +17,7 @@ let
     pkgs.wlrctl
     pkgs.kubectl
     pkgs.kustomize
+    pkgs.openshift
     pkgs.bruno # TODO: doesn't open
     pkgs.slack # TODO: doesn't open
     pkgs.spotify
