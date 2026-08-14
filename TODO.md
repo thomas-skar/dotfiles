@@ -1,0 +1,2 @@
+- [ ] replace keyd with xremap?
+- [ ] change default shell to fish
