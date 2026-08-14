@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <labwc_config>
   <core>
     <decoration>client</decoration>
@@ -11,6 +11,7 @@
     <osd style="classic" />
   </windowSwitcher>
   <keyboard>
+    <!-- Default labwc keybinds  -->
     <default />
     <!-- Noctalia -->
     <keybind key="W-Space">
@@ -33,41 +34,45 @@
       <action name="Execute" command="noctalia msg brightness-down" />
     </keybind>
     <!-- Ghostty -->
-    <keybind key="W-g">
+    <keybind key="S-C-A-W-g">
       <action name="ForEach">
         <query identifier="com.mitchellh.ghostty" />
         <then>
           <action name="Raise" />
           <action name="Focus" />
         </then>
-        <none>
-          <action name="Execute" command="ghostty +new window" />
-        </none>
       </action>
     </keybind>
     <!-- Microsoft Edge -->
-    <keybind key="M-e">
+    <keybind key="S-C-A-W-e">
       <action name="ForEach">
         <query identifier="microsoft-edge" />
         <then>
           <action name="Raise" />
           <action name="Focus" />
         </then>
-        <none>
-          <action name="Execute" command="microsoft-edge --new-window" />
-        </none>
       </action>
     </keybind>
     <!-- Zed -->
-    <keybind key="W-z">
+    <keybind key="S-C-A-W-z">
       <action name="ForEach">
         <query identifier="dev.zed.Zed" />
         <then>
           <action name="Raise" />
           <action name="Focus" />
         </then>
+      </action>
+    </keybind>
+    <!-- Files (nautilus) -->
+    <keybind key="S-C-A-W-f">
+      <action name="ForEach">
+        <query identifier="org.gnome.Nautilus" />
+        <then>
+            <action name="Raise" />
+            <action name="Focus" />
+        </then>
         <none>
-          <action name="Execute" command="zeditor" />
+            <action name="Execute" command="nautilus" />
         </none>
       </action>
     </keybind>
