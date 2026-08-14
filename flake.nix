@@ -50,7 +50,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "bkp";
+              backupFileExtension = "bak";
               startAsUserService = false;
               users.thomas.imports = [
                 ./home.nix
