@@ -1,3 +1,9 @@
 - [ ] change default shell to fish
 - [ ] labwc (openbox) theme
 - [ ] gnome/ gtk/ dconf dark mode
+- [ ] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
+- [ ] re-add the run-or-raise script?
+- [ ] noctalia settings
+- [ ] ghostty settings
+- [ ] zed settings
+- [ ] install fonts (jetbrains mono)
