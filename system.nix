@@ -1,19 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   config = {
-    # system-manager.allowAnyDistro = false;
-    # system-manager.linkCurrentSystem = true;
-
     nixpkgs.hostPlatform = "x86_64-linux";
     nixpkgs.config.allowUnfree = true;
 
+    # /etc/nix/nix.conf settings
     nix.enable = true;
-
-    # /etc/nix/nix.conf
     nix.settings = {
       experimental-features = "nix-command flakes";
       trusted-users = [ "thomas" ];
-      auto-optimise-store = false;
+      auto-optimise-store = true;
       trusted-substituters = [
         "https://cache.nixos.org/"
         "https://cache.numtide.com"
@@ -29,7 +25,16 @@
 
     environment.systemPackages = with pkgs; [
       curl
+      keyd
     ];
+
+    environment.etc."keyd/default.conf".text = ''
+      [ids]
+      *
+      [main]
+      leftshift+leftmeta+f23 = layer(hyper) # copilot key
+      [hyper:C-M-S-A]
+    '';
 
     services.userborn.enable = true;
 
@@ -44,6 +49,58 @@
       homeMode = "700";
     };
     users.groups.thomas.gid = 1000;
+
+    # https://github.com/NixOS/nixpkgs/blob/nixos-26.05/nixos/modules/services/hardware/keyd.nix
+    systemd.services.keyd = {
+      description = "Keyd remapping daemon";
+      documentation = [ "man:keyd(1)" ];
+      wantedBy = [ "multi-user.target" ];
+      restartTriggers = [];
+      serviceConfig = {
+        ExecStart = lib.getExe pkgs.keyd;
+        Restart = "always";
+        SupplementaryGroups = [
+          "input"
+        ];
+        RuntimeDirectory = "keyd";
+        # Hardening
+        CapabilityBoundingSet = [
+          "CAP_SYS_NICE"
+          "CAP_IPC_LOCK"
+        ];
+        DeviceAllow = [
+          "char-input rw"
+          "/dev/uinput rw"
+        ];
+        ProtectClock = true;
+        PrivateNetwork = true;
+        ProtectHome = true;
+        ProtectHostname = true;
+        PrivateUsers = false;
+        PrivateMounts = true;
+        PrivateTmp = true;
+        RestrictNamespaces = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+        ProtectControlGroups = true;
+        MemoryDenyWriteExecute = true;
+        LockPersonality = true;
+        ProtectProc = "invisible";
+        SystemCallFilter = [
+          "nice"
+          "@system-service"
+          "~@privileged"
+        ];
+        RestrictAddressFamilies = [ "AF_UNIX" ];
+        RestrictSUIDSGID = true;
+        IPAddressDeny = [ "any" ];
+        NoNewPrivileges = true;
+        ProtectSystem = "strict";
+        ProcSubset = "pid";
+        UMask = "0077";
+      };
+    };
 
     # "services.displayManager" isn't available w/ system-manager
     systemd.tmpfiles.rules = [
