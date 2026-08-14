@@ -1,5 +1,13 @@
 { pkgs, inputs, ... }:
 let
+  imports = [
+    inputs.noctalia.homeModules.default
+    ./atuin.nix
+    ./ghostty.nix
+    ./starship.nix
+
+  ];
+
   packages = [
     pkgs.nil
     pkgs.nixd
@@ -55,11 +63,7 @@ let
   };
 in
 {
-  imports = [
-    inputs.noctalia.homeModules.default
-    ./ghostty.nix
-    ./starship.nix
-  ];
+  imports = imports;
 
   home.stateVersion = "26.11";
   home.packages = packages;
@@ -98,8 +102,6 @@ in
     shellAbbrs = aliases;
     functions = { };
   };
-
-  programs.atuin.enable = true;
 
   programs.bat.enable = true;
 
@@ -159,4 +161,6 @@ in
   };
 
   programs.obsidian.enable = true; # TODO: doesn't open
+
+  services.podman.enable = true;
 }

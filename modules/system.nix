@@ -1,8 +1,15 @@
 { pkgs, ... }:
-{
+let
   imports = [
     ./keyd.nix
   ];
+
+  packages = [
+    pkgs.curl
+  ];
+in
+{
+  imports = imports;
 
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
@@ -26,9 +33,7 @@
     sync-before-registering = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    curl
-  ];
+  environment.systemPackages = packages;
 
   services.userborn.enable = true;
 
