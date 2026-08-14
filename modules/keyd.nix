@@ -6,14 +6,16 @@
   # config file
   # TODO: rebind magic keyboard rcmd -> hyper
   environment.etc."keyd/default.conf".text = ''
-  [ids]
-  *
+    [ids]
+    *
 
-  [main]
-  capslock = noop
-  leftshift+leftmeta+f23 = layer(hyper)
+    [main]
+    leftshift+leftmeta+f23 = layer(hyper)
+    capslock = layer(hyper2)
 
-  [hyper:C-M-S-A]
+    [hyper:C-M-S-A]
+
+    [hyper2:C-M-S-A-G]
   '';
 
   # systemd service: https://github.com/NixOS/nixpkgs/blob/nixos-26.05/nixos/modules/services/hardware/keyd.nix
@@ -21,7 +23,7 @@
     description = "Keyd remapping daemon";
     documentation = [ "man:keyd(1)" ];
     wantedBy = [ "multi-user.target" ];
-    restartTriggers = [];
+    restartTriggers = [ ];
     serviceConfig = {
       ExecStart = lib.getExe pkgs.keyd;
       Restart = "always";
