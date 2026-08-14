@@ -23,6 +23,7 @@
 
   outputs =
     {
+      self,
       system-manager,
       home-manager,
       nix-system-graphics,
@@ -57,5 +58,7 @@
           }
         ];
       };
+
+      systemConfigs.x86_64-linux.systemConfigs.default = self.systemConfigs.default;
     };
 }
