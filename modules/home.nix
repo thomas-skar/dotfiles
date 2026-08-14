@@ -1,11 +1,20 @@
 { pkgs, inputs, ... }:
 let
-  packages = with pkgs; [
-    nil
-    nixd
-    mise
-    just
-    wlrctl
+  packages = [
+    pkgs.nil
+    pkgs.nixd
+    pkgs.nixfmt
+    pkgs.mise
+    pkgs.just
+    pkgs.wlrctl
+    pkgs.kubectl
+    pkgs.kustomize
+    pkgs.bruno
+    pkgs.slack
+    pkgs.spotify
+    pkgs.jetbrains.goland
+    pkgs.jetbrains.pycharm
+    pkgs.jetbrains.datagrip
   ];
 
   aliases = {
@@ -40,6 +49,8 @@ let
     j = "just";
     # fastfetch
     ff = "fastfetch";
+    # zed
+    zed = "zeditor";
   };
 in
 {
@@ -126,6 +137,14 @@ in
       };
     };
   };
+
+  programs.k9s.enable = true;
+
+  programs.vim.enable = true;
+
+  programs.foot.enable = true;
+
+  programs.alacritty.enable = true;
 
   # TODO: config
   programs.zed-editor.enable = true;
