@@ -9,9 +9,10 @@ let
     pkgs.wlrctl
     pkgs.kubectl
     pkgs.kustomize
-    pkgs.bruno
-    pkgs.slack
+    pkgs.bruno # TODO: doesn't open
+    pkgs.slack # TODO: doesn't open
     pkgs.spotify
+    pkgs._1password-gui # TODO: doesn't open
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
     pkgs.jetbrains.datagrip
@@ -151,4 +152,11 @@ in
 
   # TODO: config
   programs.noctalia.enable = true;
+
+  programs.chromium = {
+    enable = true; # TODO: doesn't open
+    package = pkgs.chromium; # TODO: ungoogled-chromium ?
+  };
+
+  programs.obsidian.enable = true; # TODO: doesn't open
 }
