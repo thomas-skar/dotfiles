@@ -165,4 +165,16 @@ in
   programs.obsidian.enable = true;
 
   services.podman.enable = true;
+
+  # theming
+  gtk = {
+    enable = true;
+
+    theme.name = "Adwaita";
+    iconTheme.name = "MacTahoe";
+    cursorTheme.name = "Adwaita";
+
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
 }
