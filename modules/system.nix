@@ -72,4 +72,16 @@ in
     };
     script = builtins.readFile ./scripts/nix-store-permissions.sh;
   };
+
+  systemd.services."icon-permissions" = {
+    enable = true;
+    description = "fix icon directory permissions";
+    wantedBy = [ "system-manager.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = builtins.readFile ./scripts/icon-permissions.sh;
+    scriptArgs = "thomas";
+  };
 }
