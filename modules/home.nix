@@ -2,10 +2,10 @@
 let
   imports = [
     inputs.noctalia.homeModules.default
-    ./atuin.nix
-    ./ghostty.nix
-    ./starship.nix
-
+    ./labwc
+    ./atuin.home.nix
+    ./ghostty.home.nix
+    ./starship.home.nix
   ];
 
   packages = [
@@ -18,10 +18,10 @@ let
     pkgs.kubectl
     pkgs.kustomize
     pkgs.openshift
-    pkgs.bruno # TODO: doesn't open
-    pkgs.slack # TODO: doesn't open
+    pkgs.bruno
+    pkgs.slack
     pkgs.spotify
-    pkgs._1password-gui # TODO: doesn't open
+    pkgs._1password-gui
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
     pkgs.jetbrains.datagrip
@@ -157,11 +157,11 @@ in
   programs.noctalia.enable = true;
 
   programs.chromium = {
-    enable = true; # TODO: doesn't open
+    enable = true;
     package = pkgs.chromium; # TODO: ungoogled-chromium ?
   };
 
-  programs.obsidian.enable = true; # TODO: doesn't open
+  programs.obsidian.enable = true;
 
   services.podman.enable = true;
 }
