@@ -103,6 +103,15 @@ in
     preferAbbrs = true;
     shellAbbrs = aliases;
     functions = { };
+    interactiveShellInit = ''
+      # Disable welcome message
+      set -g fish_greeting
+    '';
+    loginShellInit = ''
+      if test -L /etc/profile.d/system-manager-path.sh; and test -e /etc/profile.d/system-manager-path.sh
+        source /etc/profile.d/system-manager-path.sh
+      end
+    '';
   };
 
   programs.bat.enable = true;
