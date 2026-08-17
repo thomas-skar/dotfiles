@@ -89,6 +89,9 @@
           <action name="Raise" />
           <action name="Focus" />
         </then>
+        <none>
+            <action name="Execute" command="microsoft-edge" />
+        </none>
       </action>
     </keybind>
     <!-- Labwc: focus zed (Copilot+Z) -->
@@ -99,6 +102,9 @@
           <action name="Raise" />
           <action name="Focus" />
         </then>
+        <none>
+            <action name="Execute" command="zeditor" />
+        </none>
       </action>
     </keybind>
     <!-- Labwc: focus/ open files app (Copilot+F) -->
@@ -139,7 +145,7 @@
     <device>
       <accelProfile>adaptive</accelProfile>
       <naturalScroll>yes</naturalScroll>
-      <pointerSpeed>1</pointerSpeed>
+      <pointerSpeed>1.0</pointerSpeed>
       <scrollMethod>twofinger</scrollMethod>
       <tap>yes</tap>
       <tapAndDrag>no</tapAndDrag>

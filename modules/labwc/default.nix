@@ -3,7 +3,10 @@
   wayland.windowManager.labwc = {
     enable = true;
     package = pkgs.labwc;
-    autostart = [ "noctalia -d" ]; # TODO: if noctalia is enabled
+    autostart = [
+      "noctalia -d &" # TODO: if noctalia is enabled
+      "/opt/intility/idn/Intility.DesktopNotifications.Client.Linux"
+    ];
     environment = [
       "XKB_DEFAULT_LAYOUT=no"
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
