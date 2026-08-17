@@ -25,6 +25,7 @@ let
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
     pkgs.jetbrains.datagrip
+    pkgs.whitesur-icon-theme
   ];
 
   aliases = {
