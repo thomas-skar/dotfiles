@@ -73,14 +73,23 @@
     <keybind key="S-C-A-W-M-Down">
       <action name="SnapToEdge" direction="down" combine="yes" />
     </keybind>
-    <!-- Labwc: focus ghostty (Copilot+G) -->
+    <!-- Labwc: focus ghostty/ goland (Copilot+G) -->
     <keybind key="S-C-A-W-g">
       <action name="ForEach">
-        <query identifier="com.mitchellh.ghostty" />
+        <query identifier="com.mitchellh.ghostty" focused="no" />
         <then>
           <action name="Raise" />
           <action name="Focus" />
         </then>
+        <none>
+          <action name="ForEach">
+            <query identifier="jetbrains-goland" focused="no" />
+            <then>
+              <action name="Raise" />
+              <action name="Focus" />
+            </then>
+          </action>
+        </none>
       </action>
     </keybind>
     <!-- Labwc: focus edge (Copilot+E) -->
