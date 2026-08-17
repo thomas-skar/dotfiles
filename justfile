@@ -33,3 +33,8 @@ vpn:
 # list wlroots(?) windows
 windows:
     wlrctl toplevel list
+
+# change login shell to fish
+shell:
+    #!/bin/bash
+    sudo usermod -s $(which fish) $(whoami)
