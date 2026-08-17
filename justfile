@@ -29,3 +29,7 @@ find:
 # start vpn
 vpn:
     nmcli --ask connection up "Intility VPN"
+
+# list wlroots(?) windows
+windows:
+    wlrctl toplevel list
