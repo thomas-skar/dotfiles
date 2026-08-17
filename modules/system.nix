@@ -1,7 +1,8 @@
 { pkgs, ... }:
 let
   imports = [
-    ./keyd.nix
+    ./keyd.system.nix
+    ./apparmor.system.nix
   ];
 
   packages = [
@@ -54,4 +55,21 @@ in
     "L+ /usr/share/wayland-sessions/labwc.desktop - - - - ${pkgs.labwc}/share/wayland-sessions/labwc.desktop"
     "L+ /etc/systemd/user/labwc-session.service - - - - ${pkgs.labwc}/share/systemd/user/labwc-session.service"
   ];
+
+  # https://system-manager.net/main/reference/all-options/#securitywrappers
+  security.wrappers = { };
+
+  # TODO: https://system-manager.net/main/reference/all-options/#systemautoupgradeenable
+  system.autoUpgrade.enable = false;
+
+  systemd.services."nix-store-permissions" = {
+    enable = true;
+    description = "fix /nix/store permissions";
+    wantedBy = [ "system-manager.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = builtins.readFile ./scripts/nix-store-permissions.sh;
+  };
 }
