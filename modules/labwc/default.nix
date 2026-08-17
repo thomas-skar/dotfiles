@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = [
+    pkgs.labwc-tweaks
+  ];
+
   wayland.windowManager.labwc = {
     enable = true;
     package = pkgs.labwc;
@@ -10,6 +14,7 @@
     environment = [
       "XKB_DEFAULT_LAYOUT=no"
       "XDG_CURRENT_DESKTOP=labwc:wlroots"
+      "XCURSOR_THEME=Adwaita"
     ];
     systemd.enable = true;
   };

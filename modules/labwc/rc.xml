@@ -20,6 +20,8 @@
       </overlay>
   </snapping>
   <theme>
+    <name>Adwaita</name>
+    <icon>WhiteSur</icon>
     <dropShadows>yes</dropShadows>
   </theme>
   <keyboard>
@@ -79,6 +81,9 @@
           <action name="Raise" />
           <action name="Focus" />
         </then>
+        <none>
+            <action name="Execute" command="ghostty" />
+        </none>
       </action>
     </keybind>
     <!-- Labwc: focus edge (Copilot+E) -->
