@@ -1,15 +1,15 @@
 - [ ] change default shell to fish
 - [ ] labwc (openbox) theme
-- [ ] gnome/ gtk/ dconf dark mode
-- [ ] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
+- [x] gnome/ gtk/ dconf dark mode
+- [x] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
 - [ ] re-add the run-or-raise script?
 - [ ] noctalia settings
 - [ ] ghostty settings
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
-- [ ] gtk/ gnome icon theme (and cursor theme?)
+- [x] gtk/ gnome icon theme (and cursor theme?)
 - [x] docker/podman
-  - [ ] fix `podman ps -a` errors
-- [ ] fix desktop apps that won't open (sandboxing errors)
+  - [ ] fix `podman ps -a` errors (missing root permissions?)
+- [x] fix desktop apps that won't open (sandboxing errors)
 - [ ] add _something_ to kill gnome-shell (at startup? :)
 - [ ] find a way to start labwc through GDM?
