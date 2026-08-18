@@ -73,6 +73,24 @@
     <keybind key="S-C-A-W-M-Down">
       <action name="SnapToEdge" direction="down" combine="yes" />
     </keybind>
+    <!-- Labwc: move window to next output (CapsLock+N) -->
+    <keybind key="S-C-A-W-M-n">
+      <action name="MoveToOutput" direction="right" wrap="yes" />
+    </keybind>
+    <!-- Labwc: grow window  (CapsLock+Plus) -->
+    <keybind key="S-C-A-W-M-+">
+      <action name="ResizeRelative" left="20" right="20" top="20" bottom="20" />
+    </keybind>
+    <!-- Labwc: shrink window  (CapsLock+Plus) -->
+    <keybind key="S-C-A-W-M--">
+      <action
+        name="ResizeRelative"
+        left="-20"
+        right="-20"
+        top="-20"
+        bottom="-20"
+      />
+    </keybind>
     <!-- Labwc: focus ghostty/ goland (Copilot+G) -->
     <keybind key="S-C-A-W-g">
       <action name="ForEach">
@@ -93,15 +111,21 @@
       </action>
     </keybind>
     <!-- Labwc: focus edge (Copilot+E) -->
+    <!-- TODO: focus switch only works w/ 2 windows :( -->
     <keybind key="S-C-A-W-e">
       <action name="ForEach">
-        <query identifier="microsoft-edge" />
+        <query identifier="microsoft-edge" focused="no" />
         <then>
           <action name="Raise" />
           <action name="Focus" />
         </then>
         <none>
-            <action name="Execute" command="microsoft-edge" />
+          <action name="ForEach">
+            <query identifier="microsoft-edge" />
+            <none>
+                <action name="Execute" command="microsoft-edge" />
+            </none>
+          </action>
         </none>
       </action>
     </keybind>
