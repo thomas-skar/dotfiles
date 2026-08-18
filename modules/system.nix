@@ -7,6 +7,7 @@ let
 
   packages = [
     pkgs.curl
+    pkgs.swaylock
   ];
 in
 {
@@ -35,6 +36,16 @@ in
   };
 
   environment.systemPackages = packages;
+
+  # TODO: doesn't work
+  environment.etc."pam.d/swaylock" = {
+    enable = true;
+    user = "root";
+    group = "root";
+    text = ''
+      auth required pam_unix.so
+    '';
+  };
 
   services.userborn.enable = true;
 
