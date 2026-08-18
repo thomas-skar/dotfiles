@@ -176,7 +176,7 @@
       mise = {
         disabled = false;
         symbol = "mise ";
-        style = "bold purple";
+        style = "bright-red";
       };
 
       nix_shell = {
