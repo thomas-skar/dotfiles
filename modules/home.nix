@@ -15,6 +15,7 @@ let
     pkgs.mise
     pkgs.just
     pkgs.wlrctl
+    pkgs.wdisplays
     pkgs.kubectl
     pkgs.kustomize
     pkgs.openshift
@@ -26,6 +27,7 @@ let
     pkgs.jetbrains.pycharm
     pkgs.jetbrains.datagrip
     pkgs.whitesur-icon-theme
+    pkgs.gnome-themes-extra
   ];
 
   aliases = {
@@ -143,6 +145,7 @@ in
     settings = {
       "*" = {
         UserKnownHostsFile = "~/.ssh/known_hosts";
+        IdentityAgent = "~/.1password/agent.sock";
       };
       "Host github.com" = {
         HostName = "github.com";
