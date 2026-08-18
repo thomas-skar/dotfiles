@@ -7,7 +7,6 @@ let
 
   packages = [
     pkgs.curl
-    pkgs.swaylock
   ];
 in
 {
@@ -37,8 +36,8 @@ in
 
   environment.systemPackages = packages;
 
-  # TODO: doesn't work
-  environment.etc."pam.d/swaylock" = {
+  # TODO: fix
+  environment.etc."pam.d/noctalia" = {
     enable = true;
     user = "root";
     group = "root";
@@ -60,15 +59,6 @@ in
     homeMode = "700";
   };
   users.groups.thomas.gid = 1000;
-
-  # "services.displayManager" isn't available w/ system-manager
-  systemd.tmpfiles.rules = [
-    "L+ /usr/share/wayland-sessions/labwc.desktop - - - - ${pkgs.labwc}/share/wayland-sessions/labwc.desktop"
-    "L+ /etc/systemd/user/labwc-session.service - - - - ${pkgs.labwc}/share/systemd/user/labwc-session.service"
-  ];
-
-  # https://system-manager.net/main/reference/all-options/#securitywrappers
-  security.wrappers = { };
 
   # TODO: https://system-manager.net/main/reference/all-options/#systemautoupgradeenable
   system.autoUpgrade.enable = false;
