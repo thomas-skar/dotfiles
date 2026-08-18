@@ -168,10 +168,13 @@
         </none>
       </action>
     </keybind>
-
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
+    </keybind>
+    <!-- Noctalia: lock session (CapsLock+L) -->
+    <keybind key="S-C-A-W-M-l">
+      <action name="Execute" command="noctalia msg session lock" />
     </keybind>
     <!-- Noctalia: hardware controls -->
     <keybind key="XF86AudioRaiseVolume">
