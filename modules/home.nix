@@ -34,8 +34,8 @@ let
     # cd -> zoxide
     cd = "z";
     # ls -> eza
-    ls = "eza -l";
-    lsa = "eza -la";
+    ls = "eza -lo --no-permissions --total-size --smart-group";
+    lsa = "eza -loa --no-permissions --total-size --smart-group";
     # cat -> bat
     cat = "bat --paging=never";
     # git
