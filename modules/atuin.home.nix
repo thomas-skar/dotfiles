@@ -1,6 +1,7 @@
 {
   programs.atuin = {
     enable = true;
+    enableBashIntegration = true;
     enableFishIntegration = true;
     settings = {
       auto_sync = false;
