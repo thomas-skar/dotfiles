@@ -5,6 +5,7 @@
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
 - [ ] add _something_ to kill gnome-shell (at startup? :)
+  - [ ] or every process owned by gdm >:)
 - [ ] find a way to start labwc through GDM?
 - [ ] noctalia uses the wrong icon theme when run @ labwc startup?
 - [ ] noctalia lock screen: PAM
