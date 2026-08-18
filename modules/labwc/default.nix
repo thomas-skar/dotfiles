@@ -8,7 +8,6 @@
     enable = true;
     package = pkgs.labwc;
     autostart = [
-      "noctalia -d &" # TODO: if noctalia is enabled
       "/opt/intility/idn/Intility.DesktopNotifications.Client.Linux"
     ];
     environment = [
