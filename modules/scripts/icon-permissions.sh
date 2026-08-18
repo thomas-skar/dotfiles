@@ -1,26 +1,12 @@
 # script to fix icon directory permissions
 
-if [[ "$1" != "" ]]; then
-    username="$1"
-else
-    echo "usage: icon-permissions.sh <username> [uid] [gid]"
+if [[ "$1" == "" ]]; then
+    echo "usage: icon-permissions.sh <username>"
     exit 1
 fi
 
-user_id="1000"
-if [[ "$2" != "" ]]; then
-    user_id="$2"
-fi
+chmod -R 755 "/etc/profiles/per-user/$1/share/icons"
+chmod -R 755 "/home/$1/.local/share/icons"
 
-group_id="1000"
-if [[ "$3" != "" ]]; then
-    group_id="$3"
-fi
-
-chown -R $user_id:$group_id "/etc/profiles/per-user/$username/share/icons/hicolor"
-
-# TODO: path to folder in /nix/store ?
-# chown -R $user_id:$group_id "/home/$username/.nix-profile/share/icons/hicolor"
-
-# TODO
+# TODO ?
 # gtk-update-icon-cache
