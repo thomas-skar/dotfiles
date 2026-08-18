@@ -14,6 +14,7 @@ let
     pkgs.nixd
     pkgs.nixfmt
     pkgs.mise
+    pkgs.usage
     pkgs.just
     pkgs.wlrctl
     pkgs.kubectl
