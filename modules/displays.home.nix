@@ -4,14 +4,16 @@
 
   services.kanshi = {
     enable = true;
-    profiles = {
-      "undocked" = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "undocked";
+        profile.outputs = [
           { criteria = "eDP-1"; }
         ];
-      };
-      "docked" = {
-        outputs = [
+      }
+      {
+        profile.name = "docked";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             position = "1280,1440";
@@ -25,8 +27,8 @@
             position = "0,0";
           }
         ];
-      };
-    };
+      }
+    ];
   };
 
 }
