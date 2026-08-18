@@ -21,3 +21,6 @@ chown -R $user_id:$group_id "/etc/profiles/per-user/$username/share/icons/hicolo
 
 # TODO: path to folder in /nix/store ?
 # chown -R $user_id:$group_id "/home/$username/.nix-profile/share/icons/hicolor"
+
+# TODO
+# gtk-update-icon-cache
