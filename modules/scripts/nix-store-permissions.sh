@@ -10,8 +10,8 @@ if [ "${#bad_files[@]}" -gt 0 ]; then
   done
 fi
 
-# folders: 440 > 555
-bad_folders=$(find /nix/store -maxdepth 1 -type d -perm 440)
+# folders: 540 > 555
+bad_folders=$(find /nix/store -maxdepth 1 -type d -perm 540)
 if [ "${#bad_folders[@]}" -gt 0 ]; then
     for bad_folder in "${bad_folders[@]}"; do
         if [ "$bad_folder" != "" ]; then
