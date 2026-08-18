@@ -6,7 +6,9 @@
 - [ ] install fonts (jetbrains mono)
 - [ ] add _something_ to kill gnome-shell (at startup? :)
 - [ ] find a way to start labwc through GDM?
-- [ ] noctalia uses the wrong icon theme when run @ labwc startup
+- [ ] noctalia uses the wrong icon theme when run @ labwc startup?
+- [ ] noctalia lock screen: PAM
+- [ ] find a way to change the default/ login shell permanently
 - [x] docker/podman
   - [ ] fix `podman ps -a` errors (missing root permissions?)
 - [x] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
