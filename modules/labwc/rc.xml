@@ -5,19 +5,19 @@
     <gap>10</gap>
   </core>
   <placement>
-      <policy>cascade</policy>
+    <policy>cascade</policy>
   </placement>
   <windowSwitcher outlines="yes" preview="yes" unshade="yes">
-      <osd style="classic" output="all" />
+    <osd style="classic" output="all" />
   </windowSwitcher>
   <focus>
-      <followMouse>no</followMouse>
-      <raiseOnFocus>no</raiseOnFocus>
+    <followMouse>no</followMouse>
+    <raiseOnFocus>no</raiseOnFocus>
   </focus>
   <snapping>
-      <overlay>
-          <enabled>yes</enabled>
-      </overlay>
+    <overlay>
+      <enabled>yes</enabled>
+    </overlay>
   </snapping>
   <theme>
     <name>Adwaita</name>
@@ -51,7 +51,8 @@
     </keybind>
     <!-- Labwc: maximize window (CapsLock+Return) -->
     <keybind key="S-C-A-W-M-Return">
-      <action name="ToggleMaximize" direction="both" />
+      <!-- <action name="ToggleMaximize" direction="both" /> -->
+      <action name="SnapToEdge" direction="center" />
     </keybind>
     <!-- Labwc: center window (CapsLock+C) -->
     <keybind key="S-C-A-W-M-c">
@@ -73,24 +74,46 @@
     <keybind key="S-C-A-W-M-Down">
       <action name="SnapToEdge" direction="down" combine="yes" />
     </keybind>
-    <!-- Labwc: move window to next output (CapsLock+N) -->
+    <!-- Labwc: move window to next output (CapsLock+N): eDP-1 >>> DVI-I-2 >>> DVI-I-1 >>> eDP-1 -->
     <keybind key="S-C-A-W-M-n">
-      <action name="MoveToOutput" direction="right" wrap="yes" />
+      <action name="If">
+        <query monitor="eDP-1" />
+        <then>
+          <action name="MoveToOutput" output="DVI-I-2" />
+        </then>
+        <else>
+          <action name="If">
+            <query monitor="DVI-I-2" />
+            <then>
+              <action name="MoveToOutput" output="DVI-I-1" />
+            </then>
+            <else>
+              <action name="MoveToOutput" output="eDP-1" />
+            </else>
+          </action>
+        </else>
+      </action>
     </keybind>
-    <!-- Labwc: grow window  (CapsLock+Plus) -->
+    <!-- Labwc: grow window (CapsLock+Plus) -->
     <keybind key="S-C-A-W-M-+">
-      <action name="ResizeRelative" left="20" right="20" top="20" bottom="20" />
+      <action name="ResizeRelative" left="25" right="25" top="25" bottom="25" />
     </keybind>
     <!-- Labwc: shrink window  (CapsLock+Plus) -->
     <keybind key="S-C-A-W-M--">
       <action
         name="ResizeRelative"
-        left="-20"
-        right="-20"
-        top="-20"
-        bottom="-20"
+        left="-25"
+        right="-25"
+        top="-25"
+        bottom="-25"
       />
     </keybind>
+    <!-- Labwc: set preset window size and center window (CapsLock+V) -->
+    <keybind key="S-C-A-W-M-v">
+      <action name="ResizeTo" width="1920" height="1080" />
+      <action name="AutoPlace" policy="center" />
+    </keybind>
+
     <!-- Labwc: focus ghostty/ goland (Copilot+G) -->
     <keybind key="S-C-A-W-g">
       <action name="ForEach">
@@ -111,19 +134,26 @@
       </action>
     </keybind>
     <!-- Labwc: focus edge (Copilot+E) -->
-    <!-- TODO: focus switch only works w/ 2 windows :( -->
     <keybind key="S-C-A-W-e">
       <action name="ForEach">
-        <query identifier="microsoft-edge" focused="no" />
+        <query identifier="microsoft-edge" focused="yes" />
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action
+            name="NextWindowImmediate"
+            workspace="current"
+            output="all"
+            identifier="microsoft-edge"
+          />
         </then>
         <none>
           <action name="ForEach">
             <query identifier="microsoft-edge" />
+            <then>
+              <action name="Raise" />
+              <action name="Focus" />
+            </then>
             <none>
-                <action name="Execute" command="microsoft-edge" />
+              <action name="Execute" command="microsoft-edge" />
             </none>
           </action>
         </none>
@@ -138,7 +168,7 @@
           <action name="Focus" />
         </then>
         <none>
-            <action name="Execute" command="zeditor" />
+          <action name="Execute" command="zeditor" />
         </none>
       </action>
     </keybind>
@@ -147,11 +177,11 @@
       <action name="ForEach">
         <query identifier="org.gnome.Nautilus" />
         <then>
-            <action name="Raise" />
-            <action name="Focus" />
+          <action name="Raise" />
+          <action name="Focus" />
         </then>
         <none>
-            <action name="Execute" command="nautilus" />
+          <action name="Execute" command="nautilus" />
         </none>
       </action>
     </keybind>
@@ -160,22 +190,23 @@
       <action name="ForEach">
         <query identifier="slack" />
         <then>
-            <action name="Raise" />
-            <action name="Focus" />
+          <action name="Raise" />
+          <action name="Focus" />
         </then>
         <none>
-            <action name="Execute" command="slack" />
+          <action name="Execute" command="slack" />
         </none>
       </action>
     </keybind>
+
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
     </keybind>
     <!-- Noctalia: lock session (CapsLock+L) -->
-    <keybind key="S-C-A-W-M-l">
+    <!-- <keybind key="S-C-A-W-M-l">
       <action name="Execute" command="noctalia msg session lock" />
-    </keybind>
+    </keybind> -->
     <!-- Noctalia: hardware controls -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute" command="noctalia msg volume-up" />
