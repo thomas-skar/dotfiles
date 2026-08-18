@@ -1,5 +1,3 @@
-
-
 https://github.com/NixOS/nix-installer
 
 """shell
@@ -14,3 +12,7 @@ nix run 'github:numtide/system-manager' --extra-experimental-features "nix-comma
 home-manager-pakker legger seg i /etc/profiles/per-user/<brukernavn>/bin: sørg for at permissions er riktig.
 
 blir lagt til i path av /etc/profile.d/system-manager-path.sh
+
+## Merknader
+
+- displaylink driver'n må installeres på den "vanlige måten" (via apt)
