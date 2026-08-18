@@ -9,6 +9,7 @@
       }
     '';
 
+    # TODO: this one doesn't register
     "apparmor.d/nix-bruno".text = ''
       abi <abi/4.0>,
       include <tunables/global>
