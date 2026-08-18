@@ -38,3 +38,7 @@ windows:
 shell:
     #!/bin/bash
     sudo usermod -s $(which fish) $(whoami)
+
+# nix garbage collection
+clean:
+    nix-collect-garbage -d
