@@ -29,6 +29,9 @@ let
     pkgs.jetbrains.datagrip
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
+    # pkgs.waylock
+    # pkgs.swaylock
+    # pkgs.swayidle
   ];
 
   aliases = {
@@ -168,7 +171,10 @@ in
   programs.zed-editor.enable = true;
 
   # TODO: config
-  programs.noctalia.enable = true;
+  programs.noctalia = {
+    enable = true;
+    systemd.enable = true;
+  };
 
   programs.chromium = {
     enable = true;
