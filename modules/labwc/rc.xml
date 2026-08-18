@@ -155,6 +155,20 @@
         </none>
       </action>
     </keybind>
+    <!-- Labwc: focus slack (Copilot+S) -->
+    <keybind key="S-C-A-W-s">
+      <action name="ForEach">
+        <query identifier="slack" />
+        <then>
+            <action name="Raise" />
+            <action name="Focus" />
+        </then>
+        <none>
+            <action name="Execute" command="slack" />
+        </none>
+      </action>
+    </keybind>
+
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
