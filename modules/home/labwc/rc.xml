@@ -217,6 +217,20 @@
         </then>
       </action>
     </keybind>
+    <!-- Labwc: focus teams (Copilot+T) -->
+    <keybind key="S-C-A-W-t">
+      <action name="ForEach">
+        <query identifier="teams-for-linux" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="teams-for-linux" />
+        </none>
+      </action>
+    </keybind>
+
 
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
