@@ -173,7 +173,7 @@ in
   # TODO: config
   programs.noctalia = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
   };
 
   programs.chromium = {
