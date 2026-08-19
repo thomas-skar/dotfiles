@@ -215,9 +215,9 @@
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
     </keybind>
     <!-- Noctalia: lock session (CapsLock+L) -->
-    <!-- <keybind key="S-C-A-W-M-l">
+    <keybind key="S-C-A-W-M-l">
       <action name="Execute" command="noctalia msg session lock" />
-    </keybind> -->
+    </keybind>
     <!-- Noctalia: hardware controls -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute" command="noctalia msg volume-up" />
