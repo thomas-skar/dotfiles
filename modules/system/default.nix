@@ -1,8 +1,8 @@
 { pkgs, ... }:
 let
   imports = [
-    ./keyd.system.nix
-    ./apparmor.system.nix
+    ./apparmor.nix
+    ./keyd.nix
   ];
 
   packages = [
@@ -36,6 +36,24 @@ in
 
   environment.systemPackages = packages;
 
+  environment.etc."locale.conf" = {
+    enable = true;
+    user = "root";
+    group = "root";
+    mode = "0644";
+    replaceExisting = true;
+    text = ''
+      LANG=nb_NO.UTF-8
+    '';
+  };
+  environment.etc."pam.d/noctalia" = {
+    enable = true;
+    user = "root";
+    group = "root";
+    mode = "0644";
+    source = ./noctalia.pam.txt;
+  };
+
   services.userborn.enable = true;
 
   users.users.thomas = {
@@ -61,7 +79,7 @@ in
       Type = "oneshot";
       RemainAfterExit = true;
     };
-    script = builtins.readFile ./scripts/nix-store-permissions.sh;
+    script = builtins.readFile ../../scripts/nix-store-permissions.sh;
   };
 
   systemd.services."icon-permissions" = {
@@ -72,7 +90,7 @@ in
       Type = "oneshot";
       RemainAfterExit = true;
     };
-    script = builtins.readFile ./scripts/icon-permissions.sh;
+    script = builtins.readFile ../../scripts/icon-permissions.sh;
     scriptArgs = "thomas";
   };
 }

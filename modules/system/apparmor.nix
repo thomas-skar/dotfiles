@@ -55,6 +55,6 @@
       Type = "oneshot";
       RemainAfterExit = true;
     };
-    script = builtins.readFile ./scripts/apparmor.sh;
+    script = builtins.readFile ../../scripts/apparmor.sh;
   };
 }

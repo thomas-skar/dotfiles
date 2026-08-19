@@ -3,10 +3,10 @@ let
   imports = [
     inputs.noctalia.homeModules.default
     ./labwc
-    ./atuin.home.nix
-    ./displays.home.nix
-    ./ghostty.home.nix
-    ./starship.home.nix
+    ./atuin.nix
+    ./displays.nix
+    ./ghostty.nix
+    ./starship.nix
   ];
 
   packages = [
@@ -119,8 +119,8 @@ in
       end
     '';
   };
-  home.file.".config/fish/functions/prms.fish".source = ./scripts/prms.fish;
-  home.file.".config/fish/functions/whoami.fish".source = ./scripts/whoami.fish;
+  home.file.".config/fish/functions/prms.fish".source = ../../scripts/prms.fish;
+  home.file.".config/fish/functions/whoami.fish".source = ../../scripts/whoami.fish;
 
   programs.bat.enable = true;
 
