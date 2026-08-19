@@ -8,7 +8,6 @@
   - [ ] if not, add _something_ to kill gnome-shell (at startup? :)
     - [ ] or every process owned by gdm >:)
 - [ ] noctalia uses the wrong icon theme when run @ labwc startup?
-- [ ] find a way to change the default/ login shell permanently
 - [x] docker/podman
   - [ ] fix `podman ps -a` errors (missing root permissions?)
 - [x] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
@@ -17,3 +16,4 @@
 - [x] gtk/ gnome icon theme (and cursor theme?)
 - [x] change default shell to fish
 - [x] noctalia lock screen: PAM
+- [x] find a way to change the default/ login shell permanently
