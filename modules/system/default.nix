@@ -12,7 +12,7 @@ let
   ];
 in
 {
-  imports = imports;
+  imports = imports; # <--
 
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
@@ -36,7 +36,7 @@ in
     sync-before-registering = true;
   };
 
-  environment.systemPackages = packages;
+  environment.systemPackages = packages; # <--
 
   # TODO: https://system-manager.net/main/reference/all-options/#systemautoupgradeenable
   system.autoUpgrade.enable = false;

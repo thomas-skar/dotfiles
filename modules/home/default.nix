@@ -10,6 +10,7 @@ let
     ./shells.nix
     ./ssh.nix
     ./starship.nix
+    ./teams.nix
   ];
 
   packages = [
@@ -31,29 +32,17 @@ let
     pkgs.jetbrains.pycharm
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
-    pkgs.teams-for-linux
   ];
 
 in
 {
-  imports = imports;
+  imports = imports; # <--
 
   home.stateVersion = "26.11";
-  home.packages = packages;
+  home.packages = packages; # <--
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
-
-  home.file.".config/teams-for-linux/config.json".text = ''
-    {
-      "auth": {
-        "intune": {
-          "enabled": true,
-          "user": "thomas.skar@intility.no"
-        }
-      }
-    }
-  '';
 
   programs.home-manager.enable = true;
 
