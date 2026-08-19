@@ -10,6 +10,7 @@ let
   ];
 
   packages = [
+    pkgs.gh
     pkgs.nil
     pkgs.nixd
     pkgs.nixfmt
@@ -25,7 +26,6 @@ let
     pkgs._1password-gui
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
-    pkgs.jetbrains.datagrip
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
     # pkgs.waylock
@@ -102,6 +102,7 @@ in
     shellAliases = aliases;
   };
 
+  # TODO: move to a separate submodule
   programs.fish = {
     enable = true;
     generateCompletions = true;
@@ -118,6 +119,7 @@ in
       end
     '';
   };
+  home.file.".config/fish/functions/prms.fish".source = ./scripts/prms.fish;
 
   programs.bat.enable = true;
 
