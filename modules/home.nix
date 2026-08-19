@@ -29,7 +29,6 @@ let
     pkgs.jetbrains.datagrip
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
-    pkgs.lite-xl
     # pkgs.waylock
     # pkgs.swaylock
     # pkgs.swayidle
