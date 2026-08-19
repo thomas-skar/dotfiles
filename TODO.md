@@ -4,11 +4,10 @@
 - [ ] ghostty settings
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
-- [ ] add _something_ to kill gnome-shell (at startup? :)
-  - [ ] or every process owned by gdm >:)
 - [ ] find a way to start labwc through GDM?
+  - [ ] if not, add _something_ to kill gnome-shell (at startup? :)
+    - [ ] or every process owned by gdm >:)
 - [ ] noctalia uses the wrong icon theme when run @ labwc startup?
-- [ ] noctalia lock screen: PAM
 - [ ] find a way to change the default/ login shell permanently
 - [x] docker/podman
   - [ ] fix `podman ps -a` errors (missing root permissions?)
@@ -17,3 +16,4 @@
 - [x] gnome/ gtk/ dconf dark mode
 - [x] gtk/ gnome icon theme (and cursor theme?)
 - [x] change default shell to fish
+- [x] noctalia lock screen: PAM
