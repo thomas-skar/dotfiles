@@ -1,11 +1,14 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   imports = [
-    inputs.noctalia.homeModules.default
     ./labwc
     ./atuin.nix
     ./displays.nix
     ./ghostty.nix
+    ./git.nix
+    ./noctalia.nix
+    ./shells.nix
+    ./ssh.nix
     ./starship.nix
   ];
 
@@ -33,41 +36,6 @@ let
     # pkgs.swayidle
   ];
 
-  aliases = {
-    # cd -> zoxide
-    cd = "z";
-    # ls -> eza
-    ls = "eza -lo --no-permissions --total-size --smart-group";
-    lsa = "eza -loa --no-permissions --total-size --smart-group";
-    # cat -> bat
-    cat = "bat --paging=never";
-    # git
-    gs = "git status -sb";
-    gl = "git --no-pager log --oneline -n 20";
-    glog = "git log --oneline";
-    gif = "git --no-pager diff";
-    gifs = "git --no-pager diff --staged";
-    gb = "git --no-pager branch";
-    gbd = "git branch -D";
-    grv = "git remote -v";
-    gfp = "git fetch --prune";
-    add = "git add";
-    adda = "git add --all";
-    cmt = "git commit -m";
-    pull = "git pull";
-    push = "git push";
-    amend = "git commit --amend";
-    checkout = "git switch";
-    discard = "git restore";
-    # lazygit
-    lg = "lazygit";
-    # just
-    j = "just";
-    # fastfetch
-    ff = "fastfetch";
-    # zed
-    zed = "zeditor";
-  };
 in
 {
   imports = imports;
@@ -79,48 +47,6 @@ in
   ];
 
   programs.home-manager.enable = true;
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user.name = "Thomas Skar";
-      user.email = "thomas.skar@intility.no";
-      init.defaultBranch = "main";
-    };
-  };
-
-  programs.lazygit.enable = true;
-
-  programs.bash = {
-    enable = true;
-    package = pkgs.bashInteractive;
-    bashrcExtra = ''
-      if [ -f "/etc/profile.d/system-manager-path.sh" ]; then
-        source "/etc/profile.d/system-manager-path.sh"
-      fi
-    '';
-    shellAliases = aliases;
-  };
-
-  # TODO: move to a separate submodule
-  programs.fish = {
-    enable = true;
-    generateCompletions = true;
-    preferAbbrs = true;
-    shellAbbrs = aliases;
-    functions = { };
-    interactiveShellInit = ''
-      # Disable welcome message
-      set -g fish_greeting
-    '';
-    loginShellInit = ''
-      if test -L /etc/profile.d/system-manager-path.sh; and test -e /etc/profile.d/system-manager-path.sh
-        source /etc/profile.d/system-manager-path.sh
-      end
-    '';
-  };
-  home.file.".config/fish/functions/prms.fish".source = ../../scripts/prms.fish;
-  home.file.".config/fish/functions/whoami.fish".source = ../../scripts/whoami.fish;
 
   programs.bat.enable = true;
 
@@ -145,25 +71,11 @@ in
     enableFishIntegration = true;
   };
 
-  programs.ssh = {
-    enable = true;
-    enableDefaultConfig = false;
-    settings = {
-      "*" = {
-        UserKnownHostsFile = "~/.ssh/known_hosts";
-        IdentityAgent = "~/.1password/agent.sock";
-      };
-      "Host github.com" = {
-        HostName = "github.com";
-        IdentityFile = "~/.ssh/github";
-        IdentitiesOnly = true;
-      };
-    };
-  };
-
   programs.k9s.enable = true;
 
   programs.vim.enable = true;
+
+  programs.neovim.enable = true;
 
   programs.yazi.enable = true;
 
@@ -182,14 +94,7 @@ in
 
   programs.alacritty.enable = true;
 
-  # TODO: config
-  programs.zed-editor.enable = true;
-
-  # TODO: config
-  programs.noctalia = {
-    enable = true;
-    systemd.enable = false;
-  };
+  programs.zed-editor.enable = true; # TODO
 
   programs.chromium = {
     enable = true;
@@ -198,7 +103,7 @@ in
 
   programs.obsidian.enable = true;
 
-  programs.fresh-editor.enable = true;
+  programs.fresh-editor.enable = false;
 
   services.podman.enable = true;
 
