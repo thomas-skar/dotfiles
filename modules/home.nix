@@ -29,6 +29,7 @@ let
     pkgs.jetbrains.datagrip
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
+    pkgs.lite-xl
     # pkgs.waylock
     # pkgs.swaylock
     # pkgs.swayidle
@@ -163,6 +164,8 @@ in
 
   programs.vim.enable = true;
 
+  programs.yazi.enable = true;
+
   programs.foot.enable = true;
 
   programs.alacritty.enable = true;
@@ -182,6 +185,8 @@ in
   };
 
   programs.obsidian.enable = true;
+
+  programs.fresh-editor.enable = true;
 
   services.podman.enable = true;
 
