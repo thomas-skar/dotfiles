@@ -13,7 +13,6 @@ let
     pkgs.nil
     pkgs.nixd
     pkgs.nixfmt
-    pkgs.mise
     pkgs.usage
     pkgs.just
     pkgs.wlrctl
@@ -164,6 +163,17 @@ in
   programs.vim.enable = true;
 
   programs.yazi.enable = true;
+
+  programs.mise = {
+    enable = true;
+    enableFishIntegration = true;
+    globalConfig = { };
+  };
+
+  programs.direnv = {
+    enable = false;
+    mise.enable = true;
+  };
 
   programs.foot.enable = true;
 
