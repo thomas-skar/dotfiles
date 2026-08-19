@@ -3,6 +3,7 @@ let
   imports = [
     ./labwc
     ./atuin.nix
+    ./cli.nix
     ./displays.nix
     ./ghostty.nix
     ./git.nix
@@ -46,48 +47,6 @@ in
 
   programs.home-manager.enable = true;
 
-  programs.bat.enable = true;
-
-  programs.btop.enable = true;
-
-  programs.eza.enable = true;
-
-  programs.fastfetch.enable = true;
-
-  programs.fd.enable = true;
-
-  programs.fzf = {
-    enable = true;
-    enableBashIntegration = false;
-    enableFishIntegration = false;
-  };
-
-  programs.ripgrep.enable = true;
-
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-
-  programs.k9s.enable = true;
-
-  programs.vim.enable = true;
-
-  programs.neovim.enable = true;
-
-  programs.yazi.enable = true;
-
-  programs.mise = {
-    enable = true;
-    enableFishIntegration = true;
-    globalConfig = { };
-  };
-
-  programs.direnv = {
-    enable = false;
-    mise.enable = true;
-  };
-
   programs.foot.enable = true;
 
   programs.alacritty.enable = true;
@@ -97,13 +56,11 @@ in
   programs.chromium = {
     enable = true;
     package = pkgs.chromium; # TODO: ungoogled-chromium ?
-  };
 
+  };
   programs.obsidian.enable = true;
 
-  programs.fresh-editor.enable = false;
-
-  services.podman.enable = true;
+  services.podman.enable = true; # TODO
 
   # theming
   gtk = {
