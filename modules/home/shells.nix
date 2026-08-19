@@ -57,8 +57,24 @@ in
       set -g fish_greeting
     '';
     loginShellInit = ''
-      if test -L /etc/profile.d/system-manager-path.sh; and test -e /etc/profile.d/system-manager-path.sh
-        source /etc/profile.d/system-manager-path.sh
+      if test -d /run/system-manager/sw/bin
+        fish_add_path /run/system-manager/sw/bin
+      end
+
+      if test -d /etc/profiles/per-user/$USER/bin
+        fish_add_path /etc/profiles/per-user/$USER/bin
+      end
+
+      if test -d /run/system-manager/sw/share
+        set -gx XDG_DATA_DIRS /run/system-manager/sw/share
+      end
+
+      if test -d /etc/profiles/per-user/$USER/share
+        set -gx XDG_DATA_DIRS /etc/profiles/per-user/$USER/share
+      end
+
+      if test -d /run/wrappers/bin
+        fish_add_path /run/wrappers/bin
       end
     '';
   };
