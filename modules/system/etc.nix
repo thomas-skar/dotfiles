@@ -7,7 +7,7 @@
     mode = "0644";
     replaceExisting = true;
     text = ''
-      LANG=nb_NO.UTF-8
+      LANG=en_US.UTF-8
     '';
   };
 
