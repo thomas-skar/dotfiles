@@ -12,6 +12,7 @@
     ./ssh.nix
     ./starship.nix
     ./teams.nix
+    ./zed.nix
   ];
 
   home.packages = [
@@ -44,8 +45,6 @@
   programs.foot.enable = true;
 
   programs.alacritty.enable = true;
-
-  programs.zed-editor.enable = true; # TODO
 
   programs.chromium = {
     enable = true;
