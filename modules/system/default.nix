@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let
+{
   imports = [
     ./etc.nix
     ./keyd.nix
@@ -7,12 +7,7 @@ let
     ./users.nix
   ];
 
-  packages = [
-    pkgs.curl
-  ];
-in
-{
-  imports = imports; # <--
+  environment.systemPackages = [ pkgs.curl ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
@@ -35,8 +30,6 @@ in
     ];
     sync-before-registering = true;
   };
-
-  environment.systemPackages = packages; # <--
 
   # TODO: https://system-manager.net/main/reference/all-options/#systemautoupgradeenable
   system.autoUpgrade.enable = false;
