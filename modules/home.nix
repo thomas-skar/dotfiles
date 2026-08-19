@@ -120,6 +120,7 @@ in
     '';
   };
   home.file.".config/fish/functions/prms.fish".source = ./scripts/prms.fish;
+  home.file.".config/fish/functions/whoami.fish".source = ./scripts/whoami.fish;
 
   programs.bat.enable = true;
 
