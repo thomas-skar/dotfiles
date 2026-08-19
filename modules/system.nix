@@ -36,31 +36,6 @@ in
 
   environment.systemPackages = packages;
 
-  # environment.etc."shells" = {
-  #   enable = true;
-  #   user = "root";
-  #   group = "root";
-  #   mode = "0644";
-  #   replaceExisting = true;
-  #   text = ''
-  #     /bin/sh
-  #     /usr/bin/sh
-  #     /bin/bash
-  #     /usr/bin/bash
-  #     ${pkgs.fish}/bin/fish
-  #   '';
-  # };
-
-  # TODO: fix
-  environment.etc."pam.d/noctalia" = {
-    enable = true;
-    user = "root";
-    group = "root";
-    text = ''
-      auth required pam_unix.so
-    '';
-  };
-
   services.userborn.enable = true;
 
   users.users.thomas = {
