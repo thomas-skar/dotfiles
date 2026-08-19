@@ -44,6 +44,17 @@ in
     "$HOME/.local/bin"
   ];
 
+  home.file.".config/teams-for-linux/config.json".text = ''
+    {
+      "auth": {
+        "intune": {
+          "enabled": true,
+          "user": "thomas.skar@intility.no"
+        }
+      }
+    }
+  '';
+
   programs.home-manager.enable = true;
 
   programs.bat.enable = true;
