@@ -186,6 +186,7 @@
       </action>
     </keybind>
     <!-- Labwc: focus slack (Copilot+S) -->
+    <!-- TODO: spotify -->
     <keybind key="S-C-A-W-s">
       <action name="ForEach">
         <query identifier="slack" />
@@ -196,6 +197,16 @@
         <none>
           <action name="Execute" command="slack" />
         </none>
+      </action>
+    </keybind>
+    <!-- Labwc: focus pycharm (Copilot+P) -->
+    <keybind key="S-C-A-W-p">
+      <action name="ForEach">
+        <query identifier="jetbrains-pycharm" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
       </action>
     </keybind>
 
