@@ -233,7 +233,7 @@
       };
 
       shlvl = {
-        disabled = false;
+        disabled = true;
         symbol = "lvl ";
         style = "bold yellow";
         threshold = 3;
