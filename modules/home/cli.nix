@@ -43,4 +43,10 @@
 
   programs.fresh-editor.enable = false;
 
+  programs.television.enable = true;
+
+  programs.zellij.enable = false;
+
+  programs.delta.enable = true;
+
 }

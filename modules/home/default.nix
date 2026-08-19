@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let
+{
   imports = [
     ./labwc
     ./atuin.nix
@@ -14,17 +14,19 @@ let
     ./teams.nix
   ];
 
-  packages = [
+  home.packages = [
     pkgs.gh
     pkgs.nil
     pkgs.nixd
     pkgs.nixfmt
-    pkgs.usage
+    pkgs.dust
     pkgs.just
-    pkgs.wlrctl
+    pkgs.usage
+    pkgs.tokei
     pkgs.kubectl
     pkgs.kustomize
     pkgs.openshift
+    pkgs.wlrctl
     pkgs.bruno
     pkgs.slack
     pkgs.spotify
@@ -34,16 +36,8 @@ let
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
   ];
-
-in
-{
-  imports = imports; # <--
-
   home.stateVersion = "26.11";
-  home.packages = packages; # <--
-  home.sessionPath = [
-    "$HOME/.local/bin"
-  ];
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   programs.home-manager.enable = true;
 
