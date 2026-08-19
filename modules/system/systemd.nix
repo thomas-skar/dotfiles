@@ -1,4 +1,6 @@
 {
+  # TODO: restart services @ every switch !
+
   systemd.services."apparmor-profiles" = {
     enable = true;
     description = "register custom apparmor nix-* profiles";
