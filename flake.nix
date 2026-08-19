@@ -36,7 +36,7 @@
     {
       systemConfigs.default = system-manager.lib.makeSystemConfig {
         modules = [
-          ./modules/system.nix
+          ./modules/system
 
           nix-system-graphics.systemModules.default
           {
@@ -51,7 +51,7 @@
               backupFileExtension = "bak";
               startAsUserService = false;
               users.thomas.imports = [
-                ./modules/home.nix
+                ./modules/home
               ];
               extraSpecialArgs = specialArgs;
             };
