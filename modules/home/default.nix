@@ -31,9 +31,7 @@ let
     pkgs.jetbrains.pycharm
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
-    # pkgs.waylock
-    # pkgs.swaylock
-    # pkgs.swayidle
+    pkgs.teams-for-linux
   ];
 
 in
