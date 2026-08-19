@@ -230,8 +230,6 @@
         </none>
       </action>
     </keybind>
-
-
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
@@ -268,4 +266,12 @@
       <threeFingerDrag>no</threeFingerDrag>
     </device>
   </libinput>
+  <windowRules>
+    <windowRule identifier="teams-for-linux" serverDecoration="no" />
+    <windowRule identifier="slack" serverDecoration="no" />
+    <windowRule identifier="1password" serverDecoration="no" />
+    <windowRule identifier="spotify" serverDecoration="no" />
+    <windowRule identifier="foot" serverDecoration="no" />
+    <windowRule identifier="Alacritty" serverDecoration="no" />
+  </windowRules>
 </labwc_config>
