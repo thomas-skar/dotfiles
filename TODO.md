@@ -1,7 +1,6 @@
 - [ ] labwc (openbox) theme
 - [ ] re-add the run-or-raise script?
 - [ ] noctalia settings
-- [ ] ghostty settings
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
 - [ ] find a way to start labwc through GDM?
@@ -17,3 +16,4 @@
 - [x] change default shell to fish
 - [x] noctalia lock screen: PAM
 - [x] find a way to change the default/ login shell permanently
+- [x] ghostty settings
