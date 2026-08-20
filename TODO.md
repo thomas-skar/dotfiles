@@ -1,8 +1,6 @@
 - [ ] noctalia settings
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
-- [ ] add _something_ to kill gnome-shell (at startup? :)
-  - [ ] or every process owned by gdm >:)
 - [ ] podman: fix `podman ps -a` errors (missing root permissions?)
 - [ ] global justfile?
 - [ ] export environment variable to flake.nix (absolute path)
@@ -26,3 +24,5 @@
 - [x] find a way to change the default/ login shell permanently
 - [x] ghostty settings
 - [x] noctalia uses the wrong icon theme when run @ labwc startup?
+- [x] add _something_ to kill gnome-shell (at startup? :)
+  - [x] or every process owned by gdm >:)
