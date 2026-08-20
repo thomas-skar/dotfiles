@@ -251,6 +251,22 @@
         </none>
       </action>
     </keybind>
+    <!-- Run or raise (cursed) outlook pwa (Copilot+O) -->
+    <keybind key="S-C-A-W-o">
+      <action name="ForEach">
+        <query identifier="msedge-_eoficlgicibekocmfdomjbfnjmehnhcd-Default" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action
+            name="Execute"
+            command="gio launch /home/thomas/.local/share/applications/msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default.desktop"
+          />
+        </none>
+      </action>
+    </keybind>
 
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
