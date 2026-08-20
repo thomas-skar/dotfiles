@@ -1,4 +1,3 @@
-- [ ] re-add the run-or-raise script?
 - [ ] noctalia settings
 - [ ] zed settings
 - [ ] install fonts (jetbrains mono)
@@ -8,6 +7,7 @@
 - [ ] global justfile?
 - [ ] export environment variable to flake.nix (absolute path)
 - [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
+- [ ] 1password >>> microsoft-edge
 - [ ] labwc
   - [ ] theme (openbox)
   - [ ] turn off the "left click on desktop" bind
