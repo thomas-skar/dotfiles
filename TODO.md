@@ -8,6 +8,7 @@
 - [ ] export environment variable to flake.nix (absolute path)
 - [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
 - [ ] 1password >>> microsoft-edge
+- [ ] flake.nix: replace nur input with just firefox addons
 - [ ] labwc
   - [ ] theme (openbox)
   - [ ] turn off the "left click on desktop" bind
