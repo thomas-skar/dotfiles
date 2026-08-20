@@ -3,12 +3,13 @@
   imports = [
     ./labwc
     ./atuin.nix
+    ./bash.nix
     ./cli.nix
     ./displays.nix
+    ./fish.nix
     ./ghostty.nix
     ./git.nix
     ./noctalia.nix
-    ./shells.nix
     ./ssh.nix
     ./starship.nix
     ./teams.nix
@@ -34,6 +35,7 @@
     pkgs._1password-gui
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
+    pkgs.pcmanfm
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
   ];
