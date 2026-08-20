@@ -1,19 +1,18 @@
+- [ ] re-add the run-or-raise script?
+- [ ] noctalia settings
+- [ ] zed settings
+- [ ] install fonts (jetbrains mono)
+- [ ] add _something_ to kill gnome-shell (at startup? :)
+  - [ ] or every process owned by gdm >:)
+- [ ] podman: fix `podman ps -a` errors (missing root permissions?)
+- [ ] global justfile?
+- [ ] export environment variable to flake.nix (absolute path)
 - [ ] labwc
   - [ ] theme (openbox)
   - [ ] turn off the "left click on desktop" bind
   - [x] CapsLock+P keybind (power)
   - [x] keybind(s) to cycle through windows (jk)
   - [x] screenshot keybind (noctalia?)
-- [ ] re-add the run-or-raise script?
-- [ ] noctalia settings
-- [ ] zed settings
-- [ ] install fonts (jetbrains mono)
-- [ ] find a way to start labwc through GDM?
-  - [ ] if not, add _something_ to kill gnome-shell (at startup? :)
-    - [ ] or every process owned by gdm >:)
-- [ ] podman: fix `podman ps -a` errors (missing root permissions?)
-- [ ] global justfile?
-- [ ] export environment variable to flake.nix (absolute path)
 
 - [x] docker/podman
 - [x] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
