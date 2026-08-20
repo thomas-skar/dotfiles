@@ -7,6 +7,7 @@
 - [ ] podman: fix `podman ps -a` errors (missing root permissions?)
 - [ ] global justfile?
 - [ ] export environment variable to flake.nix (absolute path)
+- [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
 - [ ] labwc
   - [ ] theme (openbox)
   - [ ] turn off the "left click on desktop" bind
