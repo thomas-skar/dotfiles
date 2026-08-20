@@ -30,6 +30,11 @@
       url = "github:nix-community/nur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    doom-emacs = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
