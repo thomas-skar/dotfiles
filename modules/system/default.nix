@@ -7,7 +7,7 @@
     ./users.nix
   ];
 
-  environment.systemPackages = [ pkgs.curl ];
+  environment.systemPackages = [ pkgs.coreutils ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   nixpkgs.config.allowUnfree = true;
