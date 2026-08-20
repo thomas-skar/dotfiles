@@ -19,9 +19,6 @@
     </item>
   </menu>
   <menu id="client-menu">
-    <item label="Menu">
-      <action name="ShowMenu" menu="root-menu" atCursor="no" />
-    </item>
     <separator />
     <item label="Minimize">
       <action name="Iconify" />
@@ -31,6 +28,9 @@
     </item>
     <item label="Omnipresent">
       <action name="ToggleOmnipresent" />
+    </item>
+    <item label="Decorations">
+      <action name="ToggleDecorations" />
     </item>
     <item label="Close">
       <action name="Close" />
