@@ -75,4 +75,14 @@
     }
   '';
 
+  environment.etc."1password/custom_allowed_browsers" = {
+    user = "root";
+    group = "root";
+    mode = "755";
+    text = ''
+      microsoft-edge
+      microsoft-edge-stable
+    '';
+  };
+
 }
