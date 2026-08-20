@@ -43,6 +43,7 @@
     pkgs.su
     pkgs.shadow
     pkgs.sqlite
+    pkgs.localsend
   ];
   home.stateVersion = "26.11";
   home.sessionPath = [ "$HOME/.local/bin" ];
