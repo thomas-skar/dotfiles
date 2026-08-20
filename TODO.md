@@ -1,4 +1,9 @@
-- [ ] labwc (openbox) theme
+- [ ] labwc
+  - [ ] theme (openbox)
+  - [ ] turn off the "left click on desktop" bind
+  - [x] CapsLock+P keybind (power)
+  - [x] keybind(s) to cycle through windows (jk)
+  - [x] screenshot keybind (noctalia?)
 - [ ] re-add the run-or-raise script?
 - [ ] noctalia settings
 - [ ] zed settings
@@ -6,9 +11,11 @@
 - [ ] find a way to start labwc through GDM?
   - [ ] if not, add _something_ to kill gnome-shell (at startup? :)
     - [ ] or every process owned by gdm >:)
-- [ ] noctalia uses the wrong icon theme when run @ labwc startup?
+- [ ] podman: fix `podman ps -a` errors (missing root permissions?)
+- [ ] global justfile?
+- [ ] export environment variable to flake.nix (absolute path)
+
 - [x] docker/podman
-  - [ ] fix `podman ps -a` errors (missing root permissions?)
 - [x] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
 - [x] fix desktop apps that won't open (sandboxing errors)
 - [x] gnome/ gtk/ dconf dark mode
@@ -17,3 +24,4 @@
 - [x] noctalia lock screen: PAM
 - [x] find a way to change the default/ login shell permanently
 - [x] ghostty settings
+- [x] noctalia uses the wrong icon theme when run @ labwc startup?
