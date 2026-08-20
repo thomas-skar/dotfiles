@@ -1,18 +1,27 @@
-https://github.com/NixOS/nix-installer
+https://github.com/NixOS/nix-installer:
 
-"""shell
+```shell
 mkdir -p $HOME/tmp
 TMPDIR="$HOME/tmp" curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
-"""
+```
 
-"""shell
+```shell
 nix run 'github:numtide/system-manager' --extra-experimental-features "nix-command flakes" -- switch --sudo --flake .
-"""
+```
 
-home-manager-pakker legger seg i /etc/profiles/per-user/<brukernavn>/bin: sørg for at permissions er riktig.
+```shell
+wlrctl toplevel list
+```
 
-blir lagt til i path av /etc/profile.d/system-manager-path.sh
+```shell
+nmcli --ask connection up "Intility VPN"
+```
 
-## Merknader
+```shell
+find /nix/store -maxdepth 1 -type f -perm 440
+find /nix/store -maxdepth 1 -type d -perm 540
+```
 
-- displaylink driver'n må installeres på den "vanlige måten" (via apt)
+---
+
+- [displaylink](https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu)
