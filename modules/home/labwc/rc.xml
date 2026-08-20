@@ -9,6 +9,12 @@
   </placement>
   <windowSwitcher outlines="yes" preview="yes" unshade="yes">
     <osd style="classic" output="all" />
+    <fields>
+      <field content="icon" width="5%" />
+      <field content="desktop_entry_name" width="25%" />
+      <field content="title" width="60%" />
+      <field content="output" width="10%" />
+    </fields>
   </windowSwitcher>
   <focus>
     <followMouse>no</followMouse>
@@ -20,61 +26,58 @@
     </overlay>
   </snapping>
   <theme>
+    <!-- TODO -->
     <name>Adwaita</name>
     <icon>MacTahoe</icon>
     <dropShadows>yes</dropShadows>
+    <keepBorder>yes</keepBorder>
   </theme>
   <keyboard>
-    <!-- Labwc: next window (Alt+Tab) -->
+    <!-- Next window (Alt+Tab) -->
     <keybind key="A-Tab">
-      <action name="NextWindow" />
+      <action name="NextWindow" workspace="all" output="all" identifier="all" />
     </keybind>
-    <!-- Labwc: previous window (Alt+Shift+Tab) -->
-    <keybind key="A-S-Tab">
-      <action name="NextWindow" />
-    </keybind>
-    <!-- Labwc: close window (Super+Q) -->
+    <!-- Close window (Super+Q) -->
     <keybind key="W-q">
       <action name="Close" />
     </keybind>
-    <!-- Labwc: show client menu (Alt+Space) -->
+    <!-- Show labwc client menu (Alt+Space) -->
     <keybind key="A-Space">
       <action name="ShowMenu" menu="client-menu" atCursor="no" />
     </keybind>
-    <!-- Labwc: show desktop (CapsLock+D) -->
+    <!-- Show desktop (CapsLock+D) -->
     <keybind key="S-C-A-W-M-d">
       <action name="ToggleShowDesktop" />
     </keybind>
-    <!-- Labwc: reload config (CapsLock+R) -->
+    <!-- Reload labwc config (CapsLock+R) -->
     <keybind key="S-C-A-W-M-r">
       <action name="Reconfigure" />
     </keybind>
-    <!-- Labwc: maximize window (CapsLock+Return) -->
+    <!-- Maximize window (CapsLock+Return) -->
     <keybind key="S-C-A-W-M-Return">
-      <!-- <action name="ToggleMaximize" direction="both" /> -->
       <action name="SnapToEdge" direction="center" />
     </keybind>
-    <!-- Labwc: center window (CapsLock+C) -->
+    <!-- Center window (CapsLock+C) -->
     <keybind key="S-C-A-W-M-c">
       <action name="AutoPlace" policy="center" />
     </keybind>
-    <!-- Labwc: resize window left (CapsLock+Left) -->
+    <!-- Resize window left (CapsLock+Left) -->
     <keybind key="S-C-A-W-M-Left">
       <action name="SnapToEdge" direction="left" combine="yes" />
     </keybind>
-    <!-- Labwc: resize window right (CapsLock+Right) -->
+    <!-- Resize window right (CapsLock+Right) -->
     <keybind key="S-C-A-W-M-Right">
       <action name="SnapToEdge" direction="right" combine="yes" />
     </keybind>
-    <!-- Labwc: resize window up (CapsLock+Up) -->
+    <!-- Resize window up (CapsLock+Up) -->
     <keybind key="S-C-A-W-M-Up">
       <action name="SnapToEdge" direction="up" combine="yes" />
     </keybind>
-    <!-- Labwc: resize window down (CapsLock+Down) -->
+    <!-- Resize window down (CapsLock+Down) -->
     <keybind key="S-C-A-W-M-Down">
       <action name="SnapToEdge" direction="down" combine="yes" />
     </keybind>
-    <!-- Labwc: move window to next output (CapsLock+N): eDP-1 >>> DVI-I-2 >>> DVI-I-1 >>> eDP-1 -->
+    <!-- Move window to next output (CapsLock+N): eDP-1 >>> DVI-I-2 >>> DVI-I-1 >>> eDP-1 -->
     <keybind key="S-C-A-W-M-n">
       <action name="If">
         <query monitor="eDP-1" />
@@ -94,11 +97,11 @@
         </else>
       </action>
     </keybind>
-    <!-- Labwc: grow window (CapsLock+Plus) -->
+    <!-- Grow window (CapsLock+Plus) -->
     <keybind key="S-C-A-W-M-+">
       <action name="ResizeRelative" left="25" right="25" top="25" bottom="25" />
     </keybind>
-    <!-- Labwc: shrink window  (CapsLock+Plus) -->
+    <!-- Shrink window (CapsLock+Minus) -->
     <keybind key="S-C-A-W-M--">
       <action
         name="ResizeRelative"
@@ -108,13 +111,31 @@
         bottom="-25"
       />
     </keybind>
-    <!-- Labwc: set preset window size and center window (CapsLock+V) -->
+    <!-- Set preset window size and center window (CapsLock+V) -->
     <keybind key="S-C-A-W-M-v">
       <action name="ResizeTo" width="1920" height="1080" />
       <action name="AutoPlace" policy="center" />
     </keybind>
+    <!-- Next window of same type (CapsLock+K) -->
+    <keybind key="S-C-A-W-M-k">
+      <action
+        name="NextWindow"
+        workspace="all"
+        output="all"
+        identifier="current"
+      />
+    </keybind>
+    <!-- Previous window of same type (CapsLock+L) -->
+    <keybind key="S-C-A-W-M-j">
+      <action
+        name="PreviousWindow"
+        workspace="all"
+        output="all"
+        identifier="current"
+      />
+    </keybind>
 
-    <!-- Labwc: focus ghostty/ goland (Copilot+G) -->
+    <!-- Run or raise ghostty/ goland (Copilot+G) -->
     <keybind key="S-C-A-W-g">
       <action name="ForEach">
         <query identifier="com.mitchellh.ghostty" />
@@ -141,33 +162,20 @@
         </none>
       </action>
     </keybind>
-    <!-- Labwc: focus edge (Copilot+E) -->
+    <!-- Run or raise microsoft edge (Copilot+E) -->
     <keybind key="S-C-A-W-e">
       <action name="ForEach">
-        <query identifier="microsoft-edge" focused="yes" />
+        <query identifier="microsoft-edge" />
         <then>
-          <action
-            name="NextWindowImmediate"
-            workspace="current"
-            output="all"
-            identifier="microsoft-edge"
-          />
+          <action name="Raise" />
+          <action name="Focus" />
         </then>
         <none>
-          <action name="ForEach">
-            <query identifier="microsoft-edge" />
-            <then>
-              <action name="Raise" />
-              <action name="Focus" />
-            </then>
-            <none>
-              <action name="Execute" command="microsoft-edge" />
-            </none>
-          </action>
+          <action name="Execute" command="microsoft-edge" />
         </none>
       </action>
     </keybind>
-    <!-- Labwc: focus zed (Copilot+Z) -->
+    <!-- Run or raise zed (Copilot+Z) -->
     <keybind key="S-C-A-W-z">
       <action name="ForEach">
         <query identifier="dev.zed.Zed" />
@@ -180,7 +188,7 @@
         </none>
       </action>
     </keybind>
-    <!-- Labwc: focus/ open files app (Copilot+F) -->
+    <!-- Run or raise files app (Copilot+F) -->
     <keybind key="S-C-A-W-f">
       <action name="ForEach">
         <query identifier="org.gnome.Nautilus" />
@@ -193,21 +201,34 @@
         </none>
       </action>
     </keybind>
-    <!-- Labwc: focus slack (Copilot+S) -->
-    <!-- TODO: spotify -->
+    <!-- Run or raise slack/ spotify (Copilot+S) -->
     <keybind key="S-C-A-W-s">
       <action name="ForEach">
         <query identifier="slack" />
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="ForEach">
+            <query identifier="slack" focused="no" />
+            <then>
+              <action name="Raise" />
+              <action name="Focus" />
+            </then>
+            <none>
+              <action name="ForEach">
+                <query identifier="spotify" focused="no" />
+                <then>
+                  <action name="Raise" />
+                  <action name="Focus" />
+                </then>
+              </action>
+            </none>
+          </action>
         </then>
         <none>
           <action name="Execute" command="slack" />
         </none>
       </action>
     </keybind>
-    <!-- Labwc: focus pycharm (Copilot+P) -->
+    <!-- Run or raise pycharm (Copilot+P) -->
     <keybind key="S-C-A-W-p">
       <action name="ForEach">
         <query identifier="jetbrains-pycharm" />
@@ -217,7 +238,7 @@
         </then>
       </action>
     </keybind>
-    <!-- Labwc: focus teams (Copilot+T) -->
+    <!-- Run or raise teams (Copilot+T) -->
     <keybind key="S-C-A-W-t">
       <action name="ForEach">
         <query identifier="teams-for-linux" />
@@ -230,6 +251,7 @@
         </none>
       </action>
     </keybind>
+
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
@@ -238,6 +260,22 @@
     <keybind key="S-C-A-W-M-l">
       <action name="Execute" command="noctalia msg session lock" />
     </keybind>
+    <!-- Noctalia: show session menu (CapsLock+P) -->
+    <keybind key="S-C-A-W-M-p">
+      <action name="Execute" command="noctalia msg panel-toggle session" />
+    </keybind>
+    <!-- Noctalia: screenshot display (CapsLock+F9) -->
+    <keybind key="S-C-A-W-M-f9">
+      <action
+        name="Execute"
+        command="noctalia msg screenshot-fullscreen pick"
+      />
+    </keybind>
+    <!-- Noctalia: screenshot region (CapsLock+F10) -->
+    <keybind key="S-C-A-W-M-f10">
+      <action name="Execute" command="noctalia msg screenshot-region" />
+    </keybind>
+
     <!-- Noctalia: hardware controls -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute" command="noctalia msg volume-up" />
@@ -255,6 +293,10 @@
       <action name="Execute" command="noctalia msg brightness-down" />
     </keybind>
   </keyboard>
+  <mouse>
+    <!-- TODO: replace -->
+    <default />
+  </mouse>
   <libinput>
     <device>
       <accelProfile>adaptive</accelProfile>
