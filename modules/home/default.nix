@@ -19,6 +19,8 @@
   ];
 
   home.packages = [
+    # command line tools, etc
+    pkgs.su
     pkgs.gh
     pkgs.nil
     pkgs.nixd
@@ -27,23 +29,25 @@
     pkgs.just
     pkgs.usage
     pkgs.tokei
+    pkgs.wlrctl
+    pkgs.shadow
+    pkgs.sqlite
     pkgs.kubectl
     pkgs.kustomize
     pkgs.openshift
-    pkgs.wlrctl
+    # gui applications
     pkgs.bruno
     pkgs.slack
     pkgs.spotify
+    pkgs.pcmanfm
+    pkgs.localsend
     pkgs._1password-gui
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
-    pkgs.pcmanfm
-    pkgs.whitesur-icon-theme
+    # miscellaneous
     pkgs.gnome-themes-extra
-    pkgs.su
-    pkgs.shadow
-    pkgs.sqlite
-    pkgs.localsend
+    pkgs.whitesur-icon-theme
+
   ];
   home.stateVersion = "26.11";
   home.sessionPath = [ "$HOME/.local/bin" ];
