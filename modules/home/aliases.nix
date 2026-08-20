@@ -40,4 +40,7 @@
 
   # zed
   zed = "zeditor";
+
+  # emacs
+  emacs = "emacs -nw";
 }
