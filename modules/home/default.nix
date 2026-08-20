@@ -45,6 +45,7 @@
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
     # miscellaneous
+    pkgs.jetbrains-mono
     pkgs.gnome-themes-extra
     pkgs.whitesur-icon-theme
 
