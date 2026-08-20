@@ -41,6 +41,8 @@
     pkgs.gnome-themes-extra
     pkgs.su
     pkgs.shadow
+    pkgs.xdg-utils
+    pkgs.glibc
   ];
   home.stateVersion = "26.11";
   home.sessionPath = [ "$HOME/.local/bin" ];
