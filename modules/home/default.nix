@@ -9,6 +9,7 @@
     ./fish.nix
     ./ghostty.nix
     ./git.nix
+    ./librewolf.nix
     ./noctalia.nix
     ./ssh.nix
     ./starship.nix
@@ -38,6 +39,8 @@
     pkgs.pcmanfm
     pkgs.whitesur-icon-theme
     pkgs.gnome-themes-extra
+    pkgs.su
+    pkgs.shadow
   ];
   home.stateVersion = "26.11";
   home.sessionPath = [ "$HOME/.local/bin" ];
