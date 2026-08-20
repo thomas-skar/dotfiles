@@ -28,8 +28,6 @@
 
   programs.neovim.enable = true;
 
-  programs.emacs.enable = true;
-
   programs.yazi.enable = true;
 
   programs.mise = {

@@ -6,6 +6,7 @@
     ./bash.nix
     ./cli.nix
     ./displays.nix
+    ./emacs.nix
     ./fish.nix
     ./ghostty.nix
     ./git.nix
