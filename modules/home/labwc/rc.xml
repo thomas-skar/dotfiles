@@ -27,7 +27,7 @@
   </snapping>
   <theme>
     <!-- TODO -->
-    <name>Adwaita</name>
+    <name>labTeallach</name>
     <icon>MacTahoe</icon>
     <dropShadows>yes</dropShadows>
     <keepBorder>yes</keepBorder>

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <openbox_menu>
   <menu id="root-menu">
-    <item label="Ghostty">
+    <item label="Ghostty (Copilot+G)">
       <action name="Execute" command="ghostty" />
-    </item>
-    <item label="Alacritty">
-      <action name="Execute" command="alacritty" />
     </item>
     <item label="Foot">
       <action name="Execute" command="foot" />
     </item>
     <separator />
-    <item label="Reconfigure">
+    <item label="Reconfigure (CapsLock+R)">
       <action name="Reconfigure" />
     </item>
     <item label="Exit">
@@ -19,20 +16,21 @@
     </item>
   </menu>
   <menu id="client-menu">
-    <separator />
     <item label="Minimize">
       <action name="Iconify" />
     </item>
-    <item label="Maximize">
+    <item label="Maximize (CapsLock+Enter)">
       <action name="Maximize" direction="both" />
     </item>
+    <separator />
     <item label="Omnipresent">
       <action name="ToggleOmnipresent" />
     </item>
     <item label="Decorations">
       <action name="ToggleDecorations" />
     </item>
-    <item label="Close">
+    <separator />
+    <item label="Close (Meta+Q)">
       <action name="Close" />
     </item>
   </menu>

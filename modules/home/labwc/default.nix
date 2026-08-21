@@ -2,7 +2,14 @@
 {
   home.packages = [
     pkgs.labwc-tweaks
+    pkgs.labwc-menu-generator
+
+    # https://github.com/labwc/labwc-themes
+    pkgs.meson
+    pkgs.ninja
   ];
+
+  # TODO: repliace parts of https://labwc.github.io/obligatory-screenshot2.html
 
   wayland.windowManager.labwc = {
     enable = true;

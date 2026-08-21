@@ -7,12 +7,12 @@
 - [ ] flake.nix: replace nur input with just firefox addons?
 - [ ] fish: !! (history expansion)?
 - [ ] labwc
-  - [ ] theme (openbox) !!!
   - [ ] turn off the "left click on desktop" bind !!!
   - [ ] noctalia clipboard manager keybind
   - [x] CapsLock+P keybind (power)
   - [x] keybind(s) to cycle through windows (jk)
   - [x] screenshot keybind (noctalia?)
+  - [x] theme (openbox) !!!
 
 ---
 
