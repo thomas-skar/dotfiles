@@ -1,18 +1,20 @@
-- [ ] noctalia settings
-- [ ] zed settings
-- [ ] podman: fix `podman ps -a` errors (missing root permissions?)
-- [ ] global justfile?
 - [ ] export environment variable to flake.nix (absolute path)
-- [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
+- [ ] podman: fix `podman ps -a` errors (missing root permissions?)
 - [ ] 1password >>> microsoft-edge
+
+- [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
+  - [ ] justfile: git add all files before switching
 - [ ] flake.nix: replace nur input with just firefox addons?
 - [ ] fish: !! (history expansion)?
 - [ ] labwc
-  - [ ] theme (openbox)
-  - [ ] turn off the "left click on desktop" bind
+  - [ ] theme (openbox) !!!
+  - [ ] turn off the "left click on desktop" bind !!!
+  - [ ] noctalia clipboard manager keybind
   - [x] CapsLock+P keybind (power)
   - [x] keybind(s) to cycle through windows (jk)
   - [x] screenshot keybind (noctalia?)
+
+---
 
 - [x] docker/podman
 - [x] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
@@ -27,3 +29,6 @@
 - [x] add _something_ to kill gnome-shell (at startup? :)
   - [x] or every process owned by gdm >:)
 - [x] install fonts (jetbrains mono)
+- [x] zed settings
+- [x] global justfile?
+- [x] noctalia settings
