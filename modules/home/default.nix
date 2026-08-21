@@ -2,6 +2,7 @@
 {
   imports = [
     ./labwc
+    ./noctalia
     ./atuin.nix
     ./bash.nix
     ./chromium.nix
@@ -10,8 +11,8 @@
     ./fish.nix
     ./fonts.nix
     ./git.nix
+    ./just.nix
     ./librewolf.nix
-    ./noctalia.nix
     ./obsidian.nix
     ./ssh.nix
     ./starship.nix
@@ -29,8 +30,6 @@
     pkgs.nixd
     pkgs.nixfmt
     pkgs.dust
-    pkgs.just
-    pkgs.just-lsp
     pkgs.usage
     pkgs.tokei
     pkgs.wlrctl
@@ -46,6 +45,10 @@
     pkgs.pcmanfm
     pkgs.localsend
     pkgs._1password-gui
+    pkgs.signal-desktop
+    pkgs.element-desktop
+    pkgs.tutanota-desktop
+    pkgs.protonmail-desktop
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
     # miscellaneous

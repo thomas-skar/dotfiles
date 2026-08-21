@@ -34,6 +34,8 @@
 
   # just
   j = "just";
+  jg = "just --global-justfile";
+  sms = "just --global-justfile switch";
 
   # fastfetch
   ff = "fastfetch";
