@@ -280,15 +280,8 @@
     <keybind key="S-C-A-W-M-p">
       <action name="Execute" command="noctalia msg panel-toggle session" />
     </keybind>
-    <!-- Noctalia: screenshot display (CapsLock+F9) -->
-    <keybind key="S-C-A-W-M-f9">
-      <action
-        name="Execute"
-        command="noctalia msg screenshot-fullscreen pick"
-      />
-    </keybind>
-    <!-- Noctalia: screenshot region (CapsLock+F10) -->
-    <keybind key="S-C-A-W-M-f10">
+    <!-- Noctalia: screenshot (PrtSc) -->
+    <keybind key="Print">
       <action name="Execute" command="noctalia msg screenshot-region" />
     </keybind>
 
