@@ -1,12 +1,12 @@
 - [ ] noctalia settings
 - [ ] zed settings
-- [ ] install fonts (jetbrains mono)
 - [ ] podman: fix `podman ps -a` errors (missing root permissions?)
 - [ ] global justfile?
 - [ ] export environment variable to flake.nix (absolute path)
 - [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
 - [ ] 1password >>> microsoft-edge
-- [ ] flake.nix: replace nur input with just firefox addons
+- [ ] flake.nix: replace nur input with just firefox addons?
+- [ ] fish: !! (history expansion)?
 - [ ] labwc
   - [ ] theme (openbox)
   - [ ] turn off the "left click on desktop" bind
@@ -26,3 +26,4 @@
 - [x] noctalia uses the wrong icon theme when run @ labwc startup?
 - [x] add _something_ to kill gnome-shell (at startup? :)
   - [x] or every process owned by gdm >:)
+- [x] install fonts (jetbrains mono)

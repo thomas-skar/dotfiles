@@ -8,6 +8,7 @@
     ./displays.nix
     ./emacs.nix
     ./fish.nix
+    ./fonts.nix
     ./git.nix
     ./librewolf.nix
     ./noctalia.nix
@@ -29,6 +30,7 @@
     pkgs.nixfmt
     pkgs.dust
     pkgs.just
+    pkgs.just-lsp
     pkgs.usage
     pkgs.tokei
     pkgs.wlrctl
@@ -47,7 +49,6 @@
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
     # miscellaneous
-    pkgs.jetbrains-mono
     pkgs.gnome-themes-extra
     pkgs.whitesur-icon-theme
 
