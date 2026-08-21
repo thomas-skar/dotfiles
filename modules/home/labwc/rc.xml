@@ -280,6 +280,10 @@
     <keybind key="S-C-A-W-M-p">
       <action name="Execute" command="noctalia msg panel-toggle session" />
     </keybind>
+    <!-- Noctalia: show clipboard manager (CapsLock+M) -->
+    <keybind key="S-C-A-W-M-m">
+      <action name="Execute" command="noctalia msg panel-toggle clipboard" />
+    </keybind>
     <!-- Noctalia: screenshot (PrtSc) -->
     <keybind key="Print">
       <action name="Execute" command="noctalia msg screenshot-region" />
