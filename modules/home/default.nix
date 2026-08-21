@@ -38,6 +38,8 @@
     pkgs.kubectl
     pkgs.kustomize
     pkgs.openshift
+    pkgs.systemctl-tui
+    pkgs.systemd-manager-tui
     # gui applications
     pkgs.bruno
     pkgs.slack
