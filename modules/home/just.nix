@@ -12,6 +12,6 @@
       @just --list --global-justfile
 
     switch:
-      echo "todo"
+      nix run 'github:numtide/system-manager' --extra-experimental-features "nix-command flakes" --accept-flake-config -- switch --sudo --flake /home/thomas/code/dotfiles/flake.nix#systemConfigs.default
   '';
 }

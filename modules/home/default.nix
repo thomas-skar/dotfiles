@@ -58,6 +58,7 @@
   ];
   home.stateVersion = "26.11";
   home.sessionPath = [ "$HOME/.local/bin" ];
+  home.sessionVariables = { };
 
   # command line tools, etc
   programs.home-manager.enable = true;
