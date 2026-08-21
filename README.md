@@ -34,6 +34,12 @@ find /nix/store -maxdepth 1 -type f -perm 440
 find /nix/store -maxdepth 1 -type d -perm 540
 ```
 
+Reload kanshi (monitor placement tool):
+
+```shell
+kanshictl reload
+```
+
 ???
 
 ```shell

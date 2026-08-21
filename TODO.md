@@ -9,12 +9,11 @@
 - [ ] labwc
   - [ ] turn off the "left click on desktop" bind !!!
   - [ ] noctalia clipboard manager keybind
+  - [ ] custom themerc?
   - [x] CapsLock+P keybind (power)
   - [x] keybind(s) to cycle through windows (jk)
   - [x] screenshot keybind (noctalia?)
   - [x] theme (openbox) !!!
-- [ ] custom labwc themerc?
-- [ ] fix kanshi service not working @ startup
 
 ---
 
