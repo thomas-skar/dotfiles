@@ -14,6 +14,7 @@
   - [x] screenshot keybind (noctalia?)
   - [x] theme (openbox) !!!
 - [ ] custom labwc themerc?
+- [ ] fix kanshi service not working @ startup
 
 ---
 
