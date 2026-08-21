@@ -13,6 +13,7 @@
   - [x] keybind(s) to cycle through windows (jk)
   - [x] screenshot keybind (noctalia?)
   - [x] theme (openbox) !!!
+- [ ] custom labwc themerc?
 
 ---
 
