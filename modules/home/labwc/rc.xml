@@ -322,18 +322,10 @@
     </device>
   </libinput>
   <windowRules>
-    <!-- TODO: check if duplicate window rules work -->
-
-    <!-- Teams: turn off server decorations -->
-    <windowRule identifier="teams-for-linux" serverDecoration="no" />
-    <!-- Slack: turn off server decorations -->
-    <windowRule identifier="slack" serverDecoration="no" />
-    <!-- 1Password: turn off server decorations -->
-    <windowRule identifier="1password" serverDecoration="no" />
-    <!-- Spotify: turn off server decorations -->
-    <windowRule identifier="spotify" serverDecoration="no" />
-    <!-- Foot: turn off server decorations -->
-    <windowRule identifier="foot" serverDecoration="no" />
+    <!-- Global: turn off server decorations (but keep borders) -->
+    <windowRule identifier="*">
+      <action name="SetDecorations" decorations="border" />
+    </windowRule>
 
     <!-- Teams: move to eDP-1 -->
     <windowRule identifier="teams-for-linux">
