@@ -1,3 +1,5 @@
+Ubuntu w/ nix system-manager & home-manager.
+
 [Install nix](https://github.com/NixOS/nix-installer):
 
 ```shell
@@ -30,6 +32,13 @@ Find broken files and directories in /nix/store:
 ```shell
 find /nix/store -maxdepth 1 -type f -perm 440
 find /nix/store -maxdepth 1 -type d -perm 540
+```
+
+???
+
+```shell
+git add --intent-to-add extra/flake.nix
+git update-index --skip-worktree --assume-unchanged extra/flake.nix
 ```
 
 ---
