@@ -1,4 +1,3 @@
-- [ ] export environment variable to flake.nix (absolute path)
 - [ ] podman: fix `podman ps -a` errors (missing root permissions?)
 - [ ] 1password >>> microsoft-edge
 
@@ -6,6 +5,9 @@
   - [ ] justfile: git add all files before switching
 - [ ] flake.nix: replace nur input with just firefox addons?
 - [ ] fish: !! (history expansion)?
+- [ ] export environment variable to flake.nix (absolute path)
+- [ ] fix element-desktop keyring error
+- [ ] fix tutanota-desktop error
 - [ ] labwc
   - [ ] turn off the "left click on desktop" bind !!!
   - [ ] custom themerc?

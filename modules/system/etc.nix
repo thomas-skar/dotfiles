@@ -20,16 +20,6 @@
     }
   '';
 
-  # TODO: this one doesn't register for some reason...
-  environment.etc."apparmor.d/nix-bruno".text = ''
-    abi <abi/4.0>,
-    include <tunables/global>
-
-    profile nix-bruno /nix/store/**/bin/bruno flags=(unconfined) {
-      userns,
-    }
-  '';
-
   environment.etc."apparmor.d/nix-chromium".text = ''
     abi <abi/4.0>,
     include <tunables/global>
@@ -66,11 +56,47 @@
     }
   '';
 
-  environment.etc."apparmor.d/nix-teams-electron".text = ''
+  environment.etc."apparmor.d/nix-chrome-sandbox".text = ''
     abi <abi/4.0>,
     include <tunables/global>
 
-    profile nix-teams-electron /nix/store/**/libexec/electron/chrome-sandbox flags=(unconfined) {
+    profile nix-chrome-sandbox /nix/store/**/libexec/electron/chrome-sandbox flags=(unconfined) {
+      userns,
+    }
+  '';
+
+  environment.etc."apparmor.d/nix-signal-desktop".text = ''
+    abi <abi/4.0>,
+    include <tunables/global>
+
+    profile nix-signal-desktop /nix/store/**/bin/signal-desktop flags=(unconfined) {
+      userns,
+    }
+  '';
+
+  environment.etc."apparmor.d/nix-element-desktop".text = ''
+    abi <abi/4.0>,
+    include <tunables/global>
+
+    profile nix-element-desktop /nix/store/**/bin/element-desktop flags=(unconfined) {
+      userns,
+    }
+  '';
+
+  environment.etc."apparmor.d/nix-proton-mail".text = ''
+    abi <abi/4.0>,
+    include <tunables/global>
+
+    profile nix-proton-mail /nix/store/**/bin/proton-mail flags=(unconfined) {
+      userns,
+    }
+  '';
+
+  environment.etc."apparmor.d/nix-bruno".text = ''
+    abi <abi/4.0>,
+    include <tunables/global>
+
+    profile nix-bruno /nix/store/**/bin/bruno flags=(unconfined) {
       userns,
     }
   '';
