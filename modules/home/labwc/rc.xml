@@ -325,11 +325,53 @@
     </device>
   </libinput>
   <windowRules>
+    <!-- TODO: check if duplicate window rules work -->
+
+    <!-- Teams: turn off server decorations -->
     <windowRule identifier="teams-for-linux" serverDecoration="no" />
+    <!-- Slack: turn off server decorations -->
     <windowRule identifier="slack" serverDecoration="no" />
+    <!-- 1Password: turn off server decorations -->
     <windowRule identifier="1password" serverDecoration="no" />
+    <!-- Spotify: turn off server decorations -->
     <windowRule identifier="spotify" serverDecoration="no" />
+    <!-- Foot: turn off server decorations -->
     <windowRule identifier="foot" serverDecoration="no" />
-    <windowRule identifier="Alacritty" serverDecoration="no" />
+
+    <!-- Teams: move to eDP-1 -->
+    <windowRule identifier="teams-for-linux">
+      <action name="MoveToOutput" output="eDP-1" />
+    </windowRule>
+    <!-- Slack: move to eDP-1 -->
+    <windowRule identifier="slack">
+      <action name="MoveToOutput" output="eDP-1" />
+    </windowRule>
+    <!-- Spotify: move to eDP-1 -->
+    <windowRule identifier="spotify">
+      <action name="MoveToOutput" output="eDP-1" />
+    </windowRule>
+    <!-- Outlook PWA: move to eDP-1 -->
+    <windowRule identifier="msedge-_eoficlgicibekocmfdomjbfnjmehnhcd-Default">
+      <action name="MoveToOutput" output="eDP-1" />
+    </windowRule>
+
+    <!-- Ghostty: move to DVI-I-1 -->
+    <windowRule identifier="com.mitchellh.ghostty">
+      <action name="MoveToOutput" output="DVI-I-1" />
+    </windowRule>
+    <!-- Zed: move to DVI-I-1 -->
+    <windowRule identifier="dev.zed.Zed">
+      <action name="MoveToOutput" output="DVI-I-1" />
+    </windowRule>
+
+    <!-- Gnome keychain prompt: float window  -->
+    <windowRule identifier="gcr-prompter">
+      <action name="ToggleAlwaysOnTop" />
+    </windowRule>
+    <!-- Microsoft login prompt: float window -->
+    <windowRule identifier="microsoft-identity-broker">
+      <action name="ToggleAlwaysOnTop" />
+    </windowRule>
+
   </windowRules>
 </labwc_config>
