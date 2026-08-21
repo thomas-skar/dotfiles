@@ -66,9 +66,7 @@
               useUserPackages = true;
               backupFileExtension = "bak";
               startAsUserService = false;
-              users.thomas.imports = [
-                ./modules/home
-              ];
+              users.thomas = import ./modules/home;
               extraSpecialArgs = specialArgs;
             };
           }
