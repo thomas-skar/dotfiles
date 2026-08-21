@@ -9,4 +9,6 @@
   };
 
   programs.lazygit.enable = true;
+
+  programs.jujutsu.enable = false;
 }

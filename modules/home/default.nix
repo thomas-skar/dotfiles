@@ -4,17 +4,19 @@
     ./labwc
     ./atuin.nix
     ./bash.nix
-    ./cli.nix
+    ./chromium.nix
     ./displays.nix
     ./emacs.nix
     ./fish.nix
-    ./ghostty.nix
     ./git.nix
     ./librewolf.nix
     ./noctalia.nix
+    ./obsidian.nix
     ./ssh.nix
     ./starship.nix
     ./teams.nix
+    ./terminals.nix
+    ./xdg.nix
     ./zed.nix
   ];
 
@@ -53,19 +55,43 @@
   home.stateVersion = "26.11";
   home.sessionPath = [ "$HOME/.local/bin" ];
 
+  # command line tools, etc
   programs.home-manager.enable = true;
-
-  programs.foot.enable = true;
-
-  programs.alacritty.enable = true;
-
-  programs.chromium = {
+  programs.bat.enable = true;
+  programs.btop.enable = true;
+  programs.eza.enable = true;
+  programs.fastfetch.enable = true;
+  programs.fd.enable = true;
+  programs.fzf = {
     enable = true;
-    package = pkgs.chromium; # TODO: ungoogled-chromium ?
+    enableBashIntegration = false;
+    enableFishIntegration = false;
   };
+  programs.ripgrep.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+  programs.k9s.enable = true;
+  programs.vim.enable = true;
+  programs.neovim.enable = true;
+  programs.yazi.enable = true;
+  programs.mise = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+  programs.direnv = {
+    enable = true;
+    mise.enable = true;
+  };
+  programs.television.enable = true;
+  programs.zellij.enable = false;
+  programs.delta.enable = true;
+  programs.jq.enable = true;
+  programs.parallel.enable = true;
+  programs.ranger.enable = true;
 
-  programs.obsidian.enable = true;
-
+  # services
   services.podman.enable = true; # TODO
 
   # theming
@@ -78,58 +104,5 @@
 
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
-  };
-
-  # default apps
-  xdg = {
-    enable = true;
-
-    localBinInPath = true;
-
-    mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "text/html" = "microsoft-edge.desktop";
-        "x-scheme-handler/http" = "microsoft-edge.desktop";
-        "x-scheme-handler/https" = "microsoft-edge.desktop";
-        "x-scheme-handler/about" = "microsoft-edge.desktop";
-        "x-scheme-handler/unknown" = "microsoft-edge.desktop";
-        "x-scheme-handler/mailto" = "microsoft-edge.desktop";
-        "x-scheme-handler/slack" = "slack.desktop";
-      };
-    };
-
-    desktopEntries = {
-      "microsoft-edge" = {
-        name = "Microsoft Edge";
-        genericName = "Web Browser";
-        type = "Application";
-        icon = "microsoft-edge";
-        exec = "/usr/bin/microsoft-edge-stable %U";
-        categories = [
-          "Network"
-          "WebBrowser"
-        ];
-        mimeType = [
-          "application/pdf"
-          "application/rdf+xml"
-          "application/rss+xml"
-          "application/xhtml+xml"
-          "application/xhtml_xml"
-          "application/xml"
-          "image/gif"
-          "image/jpeg"
-          "image/png"
-          "image/webp"
-          "text/html"
-          "text/xml"
-          "x-scheme-handler/http"
-          "x-scheme-handler/https"
-          "x-scheme-handler/microsoft-edge"
-        ];
-        startupNotify = true;
-        terminal = false;
-      };
-    };
   };
 }

@@ -58,4 +58,8 @@
       auto-update = "off";
     };
   };
+
+  programs.foot.enable = true;
+
+  programs.alacritty.enable = false;
 }
