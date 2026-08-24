@@ -144,8 +144,8 @@
       kubernetes = {
         disabled = false;
         symbol = "k8s ";
-        format = "[\\[$symbol$context\\]]($style) ";
-        style = "blue dimmed";
+        format = "[\\[$context\\]]($style) "; # $symbol
+        style = "red";
         contexts = [ ];
         context_aliases = { };
         user_aliases = { };
