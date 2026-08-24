@@ -50,6 +50,7 @@
     pkgs.protonmail-desktop
     pkgs.jetbrains.goland
     pkgs.jetbrains.pycharm
+    pkgs.qalculate-gtk
     # miscellaneous
     pkgs.gnome-themes-extra
     pkgs.whitesur-icon-theme
