@@ -61,8 +61,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "bak";
               startAsUserService = false;
+              backupFileExtension = "bak";
+              overwriteBackup = true;
               users."${username}" = import ./modules/home;
               extraSpecialArgs = specialArgs;
             };
