@@ -47,6 +47,7 @@
     in
     {
       systemConfigs.default = system-manager.lib.makeSystemConfig {
+        specialArgs = specialArgs;
         modules = [
           ./modules/system
 
@@ -62,7 +63,7 @@
               useUserPackages = true;
               backupFileExtension = "bak";
               startAsUserService = false;
-              users.thomas = import ./modules/home;
+              users."${username}" = import ./modules/home;
               extraSpecialArgs = specialArgs;
             };
           }
