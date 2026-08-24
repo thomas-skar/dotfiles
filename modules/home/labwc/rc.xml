@@ -26,7 +26,6 @@
     </overlay>
   </snapping>
   <theme>
-    <!-- TODO -->
     <name>labTeallach</name>
     <icon>MacTahoe</icon>
     <dropShadows>yes</dropShadows>
@@ -280,7 +279,19 @@
         </none>
       </action>
     </keybind>
-
+    <!-- Run or raise 1password (Copilot+1) -->
+    <keybind key="S-C-A-W-1">
+      <action name="ForEach">
+        <query identifier="1password" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="1password" />
+        </none>
+      </action>
+    </keybind>
 
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
