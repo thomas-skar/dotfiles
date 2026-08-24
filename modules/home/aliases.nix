@@ -3,9 +3,9 @@
   cd = "z";
 
   # ls -> eza
-  ls = "eza -lo --no-permissions --total-size --smart-group";
-  lsa = "eza -loa --no-permissions --total-size --smart-group";
-  lsf = "eza -l";
+  ls = "eza -l";
+  lsa = "eza -la";
+  lsd = "eza -loa --no-permissions --total-size --smart-group";
 
   # cat -> bat
   cat = "bat --paging=never";
