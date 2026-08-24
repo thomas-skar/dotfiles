@@ -37,6 +37,7 @@
     pkgs.sqlite
     pkgs.systemctl-tui
     pkgs.systemd-manager-tui
+    pkgs.thinkfan
     # gui applications
     pkgs.bruno
     pkgs.slack
