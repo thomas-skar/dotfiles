@@ -10,6 +10,9 @@
   # cat -> bat
   cat = "bat --paging=never";
 
+  # find -> fd
+  find = "fd";
+
   # git
   gs = "git status -sb";
   gl = "git --no-pager log --oneline -n 20";
@@ -29,6 +32,9 @@
   checkout = "git switch";
   discard = "git restore";
 
+  # github cli
+  github = "gh";
+
   # lazygit
   lg = "lazygit";
 
@@ -40,9 +46,14 @@
   # fastfetch
   ff = "fastfetch";
 
+  # helix
+  helix = "hx";
+
   # zed
   zed = "zeditor";
 
-  # emacs
-  emacs = "emacs -nw";
+  # podman
+  pps = "podman ps -a";
+  ppsw = "podman ps -a -w 1";
+  pprmaf = "podman pod rm --all --force";
 }

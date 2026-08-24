@@ -1,12 +1,16 @@
 let
   abbreviations = (import ./aliases.nix);
+
+  fishOnlyAbbrs = {
+    ghrip = "ghr intility procurement";
+  };
 in
 {
   programs.fish = {
     enable = true;
     generateCompletions = true;
     preferAbbrs = true;
-    shellAbbrs = abbreviations;
+    shellAbbrs = abbreviations // fishOnlyAbbrs;
     functions = { };
     interactiveShellInit = ''
       # Disable welcome message
