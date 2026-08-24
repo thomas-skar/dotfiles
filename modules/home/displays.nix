@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.wdisplays ];
+  home.packages = [
+    pkgs.wdisplays
+    pkgs.wlr-randr
+  ];
 
   services.kanshi = {
     enable = true;
@@ -19,12 +22,12 @@
             position = "1280,1440";
           }
           {
-            criteria = "DVI-I-1";
-            position = "2560,0";
+            criteria = "Lenovo Group Limited P27q-20 V90B1496"; # DVI-I-1
+            position = "0,0";
           }
           {
-            criteria = "DVI-I-2";
-            position = "0,0";
+            criteria = "Lenovo Group Limited P27q-20 V90AW8FB"; # DVI-I-2
+            position = "2560,0";
           }
         ];
       }
