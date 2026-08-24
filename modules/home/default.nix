@@ -7,10 +7,10 @@
     ./bash.nix
     ./chromium.nix
     ./displays.nix
-    ./emacs.nix
     ./fish.nix
     ./fonts.nix
     ./git.nix
+    ./helix.nix
     ./just.nix
     ./librewolf.nix
     ./obsidian.nix
@@ -24,7 +24,6 @@
 
   home.packages = [
     # command line tools, etc
-    pkgs.su
     pkgs.gh
     pkgs.nil
     pkgs.nixd
@@ -33,7 +32,6 @@
     pkgs.usage
     pkgs.tokei
     pkgs.wlrctl
-    pkgs.shadow
     pkgs.sqlite
     pkgs.kubectl
     pkgs.kustomize
@@ -81,7 +79,7 @@
   };
   programs.k9s.enable = true;
   programs.vim.enable = true;
-  programs.neovim.enable = true;
+  programs.neovim.enable = false;
   programs.yazi.enable = true;
   programs.mise = {
     enable = true;
@@ -96,10 +94,7 @@
   programs.delta.enable = true;
   programs.jq.enable = true;
   programs.parallel.enable = true;
-  programs.ranger.enable = true;
-
-  # services
-  services.podman.enable = true; # TODO
+  programs.ranger.enable = false;
 
   # theming
   gtk = {
