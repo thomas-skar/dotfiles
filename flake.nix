@@ -41,8 +41,9 @@
       ...
     }@inputs:
     let
+      username = "thomas";
       system = "x86_64-linux";
-      specialArgs = { inherit inputs system; };
+      specialArgs = { inherit inputs username system; };
     in
     {
       systemConfigs.default = system-manager.lib.makeSystemConfig {
