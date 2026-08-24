@@ -267,6 +267,20 @@
         </none>
       </action>
     </keybind>
+    <!-- Run or raise protonmail (Copilot+M) -->
+    <keybind key="S-C-A-W-m">
+      <action name="ForEach">
+        <query identifier="proton-mail" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="proton-mail" />
+        </none>
+      </action>
+    </keybind>
+
 
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
