@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   imports = [
     ./etc.nix
     ./keyd.nix
+    ./podman.nix
     ./systemd.nix
     ./users.nix
   ];
@@ -16,7 +17,7 @@
   nix.enable = true;
   nix.settings = {
     experimental-features = "nix-command flakes";
-    trusted-users = [ "thomas" ];
+    trusted-users = [ username ];
     auto-optimise-store = true;
     trusted-substituters = [
       "https://cache.nixos.org/"

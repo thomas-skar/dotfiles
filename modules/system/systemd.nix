@@ -1,3 +1,4 @@
+{ username, ... }:
 {
   systemd.services."apparmor-profiles" = {
     enable = true;
@@ -11,7 +12,7 @@
     description = "fix icon directory permissions";
     wantedBy = [ "system-manager.target" ];
     script = builtins.readFile ../../scripts/icon-permissions.sh;
-    scriptArgs = "thomas";
+    scriptArgs = username;
   };
 
   systemd.services."nix-store-permissions" = {
