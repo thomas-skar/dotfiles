@@ -81,13 +81,13 @@
       <action name="If">
         <query monitor="eDP-1" />
         <then>
-          <action name="MoveToOutput" output="DVI-I-2" />
+          <action name="MoveToOutput" output="DVI-I-1" />
         </then>
         <else>
           <action name="If">
-            <query monitor="DVI-I-2" />
+            <query monitor="DVI-I-1" />
             <then>
-              <action name="MoveToOutput" output="DVI-I-1" />
+              <action name="MoveToOutput" output="DVI-I-2" />
             </then>
             <else>
               <action name="MoveToOutput" output="eDP-1" />
@@ -111,6 +111,7 @@
       />
     </keybind>
     <!-- Set preset window size and center window (CapsLock+V) -->
+    <!-- TODO: size based on display? eDP-1 VS DVI-I-X -->
     <keybind key="S-C-A-W-M-v">
       <action name="ResizeTo" width="1920" height="1080" />
       <action name="AutoPlace" policy="center" />
