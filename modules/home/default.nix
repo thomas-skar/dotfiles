@@ -9,6 +9,8 @@
     ./displays.nix
     ./fish.nix
     ./fonts.nix
+    ./foot.nix
+    ./ghostty.nix
     ./git.nix
     ./helix.nix
     ./just.nix
@@ -17,7 +19,6 @@
     ./ssh.nix
     ./starship.nix
     ./teams.nix
-    ./terminals.nix
     ./xdg.nix
     ./zed.nix
   ];
