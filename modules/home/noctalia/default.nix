@@ -60,8 +60,34 @@
         show_dots = true;
       };
 
+      idle = {
+        behavior_order = [
+          "lock"
+          "screen-off"
+          "lock-and-suspend"
+        ];
+        behaviour = {
+          lock = {
+            action = "lock";
+            enabled = true;
+            timeout = 180.0;
+          };
+          screen-off = {
+            action = "screen_off";
+            enabled = true;
+            timeout = 300.0;
+          };
+          lock-and-suspend = {
+            action = "lock_and_suspend";
+            enabled = true;
+            timeout = 600.0;
+          };
+        };
+      };
+
       location.address = "Oslo, Norway";
 
+      lockscreen.allow_empty_password = true;
       lockscreen.monitors = [ "eDP-1" ];
       lockscreen_widgets.enabled = false;
 
