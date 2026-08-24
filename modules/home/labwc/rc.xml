@@ -110,10 +110,30 @@
         bottom="-25"
       />
     </keybind>
-    <!-- Set preset window size and center window (CapsLock+V) -->
-    <!-- TODO: size based on display? eDP-1 VS DVI-I-X -->
+    <!-- Set preset window size 1 and center window (CapsLock+V) -->
     <keybind key="S-C-A-W-M-v">
-      <action name="ResizeTo" width="1920" height="1080" />
+      <action name="If">
+        <query monitor="eDP-1" />
+        <then>
+          <action name="ResizeTo" width="1280" height="800" />
+        </then>
+        <else>
+          <action name="ResizeTo" width="1920" height="1200" />
+        </else>
+      </action>
+      <action name="AutoPlace" policy="center" />
+    </keybind>
+    <!-- Set preset window size 2 and center window (CapsLock+B) -->
+    <keybind key="S-C-A-W-M-b">
+      <action name="If">
+        <query monitor="eDP-1" />
+        <then>
+          <action name="ResizeTo" width="1440" height="900" />
+        </then>
+        <else>
+          <action name="ResizeTo" width="2240" height="1320" />
+        </else>
+      </action>
       <action name="AutoPlace" policy="center" />
     </keybind>
     <!-- Next window of same type (CapsLock+K) -->
