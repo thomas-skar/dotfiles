@@ -14,6 +14,7 @@
     ./git.nix
     ./helix.nix
     ./just.nix
+    ./k8s.nix
     ./librewolf.nix
     ./obsidian.nix
     ./ssh.nix
@@ -34,9 +35,6 @@
     pkgs.tokei
     pkgs.wlrctl
     pkgs.sqlite
-    pkgs.kubectl
-    pkgs.kustomize
-    pkgs.openshift
     pkgs.systemctl-tui
     pkgs.systemd-manager-tui
     # gui applications
@@ -78,7 +76,6 @@
     enable = true;
     enableFishIntegration = true;
   };
-  programs.k9s.enable = true;
   programs.vim.enable = true;
   programs.neovim.enable = false;
   programs.yazi.enable = true;
