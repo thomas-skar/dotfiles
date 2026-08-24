@@ -8,6 +8,7 @@
 - [ ] export environment variable to flake.nix (absolute path)
 - [ ] fix element-desktop keyring error
 - [ ] fix tutanota-desktop error
+- [ ] ghostty: make the quick terminal keybind work globally (i.e. even when ghostty is not focused)
 - [ ] labwc
   - [ ] turn off the "left click on desktop" bind !!!
   - [ ] custom themerc?

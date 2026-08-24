@@ -16,7 +16,7 @@
       working-directory = "inherit"; # or home
 
       keybind = [
-        "global:shift+ctrl+alt+super+period=toggle_quick_terminal"
+        "all:shift+ctrl+alt+super+period=toggle_quick_terminal"
       ];
       key-remap = [ ];
 
@@ -40,7 +40,7 @@
       right-click-action = "context-menu";
 
       quick-terminal-position = "top";
-      quick-terminal-size = "40%";
+      quick-terminal-size = "60%";
       gtk-quick-terminal-layer = "overlay";
       # gtk-quick-terminal-namespace = "";
       quick-terminal-autohide = false;
