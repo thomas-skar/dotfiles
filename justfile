@@ -24,3 +24,7 @@ alias b := build
 # nix garbage collection
 clean:
     nix-collect-garbage -d
+
+# show dependency graph
+tree:
+    nix-tree --derivation .#systemConfigs.default
