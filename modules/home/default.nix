@@ -43,7 +43,6 @@
     pkgs.bruno
     pkgs.slack
     pkgs.spotify
-    pkgs.pcmanfm
     pkgs.localsend
     pkgs._1password-gui
     pkgs.signal-desktop
