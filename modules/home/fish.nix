@@ -49,4 +49,5 @@ in
   home.file.".config/fish/functions/ghr.fish".source = ../../scripts/ghr.fish;
   home.file.".config/fish/functions/prms.fish".source = ../../scripts/prms.fish;
   home.file.".config/fish/functions/whoami.fish".source = ../../scripts/whoami.fish;
+  home.file.".config/fish/functions/desktop.fish".source = ../../scripts/desktop.fish;
 }
