@@ -1,16 +1,14 @@
 let
   abbreviations = (import ./aliases.nix);
-
-  fishOnlyAbbrs = {
-    ghrip = "ghr intility procurement";
-  };
 in
 {
   programs.fish = {
     enable = true;
     generateCompletions = true;
     preferAbbrs = true;
-    shellAbbrs = abbreviations // fishOnlyAbbrs;
+    shellAbbrs = abbreviations // {
+      ghrip = "ghr intility procurement";
+    };
     functions = { };
     interactiveShellInit = ''
       # Disable welcome message
@@ -39,6 +37,10 @@ in
 
       if test -d /usr/share/glib-2.0/schemas
         set -gxp XDG_DATA_DIRS /usr/share/glib-2.0/schemas
+      end
+
+      if test -d /home/$USER/.local/share
+        set -gxa XDG_DATA_DIRS /home/$USER/.local/share
       end
     '';
   };
