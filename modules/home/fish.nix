@@ -26,20 +26,19 @@ in
       end
 
       if test -d /run/system-manager/sw/share
-        set -gx XDG_DATA_DIRS /run/system-manager/sw/share
+        set -gxp XDG_DATA_DIRS /run/system-manager/sw/share
       end
 
       if test -d /etc/profiles/per-user/$USER/share
-        set -gx XDG_DATA_DIRS /etc/profiles/per-user/$USER/share
+        set -gxp XDG_DATA_DIRS /etc/profiles/per-user/$USER/share
       end
 
       if test -d /run/wrappers/bin
         fish_add_path /run/wrappers/bin
       end
 
-      # gnome apps fix
       if test -d /usr/share/glib-2.0/schemas
-        set -gxa XDG_DATA_DIRS /usr/share/glib-2.0/schemas
+        set -gxp XDG_DATA_DIRS /usr/share/glib-2.0/schemas
       end
     '';
   };
