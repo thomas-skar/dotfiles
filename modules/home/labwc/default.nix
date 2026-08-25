@@ -16,7 +16,7 @@
     package = pkgs.labwc;
     autostart = [
       "/opt/intility/idn/Intility.DesktopNotifications.Client.Linux &"
-      "noctalia -d"
+      "noctalia"
     ];
     environment = [
       "XKB_DEFAULT_LAYOUT=no"

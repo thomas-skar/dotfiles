@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <labwc_config>
   <core>
-    <decoration>client</decoration>
+    <decoration>server</decoration>
     <gap>10</gap>
   </core>
   <placement>
@@ -369,9 +369,9 @@
   </libinput>
   <windowRules>
     <!-- Global: turn off server decorations (but keep borders) -->
-    <windowRule identifier="*">
+    <!-- <windowRule identifier="*">
       <action name="SetDecorations" decorations="border" />
-    </windowRule>
+    </windowRule> -->
 
     <!-- Teams: move to eDP-1 -->
     <windowRule identifier="teams-for-linux">
