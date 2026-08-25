@@ -38,6 +38,7 @@
     pkgs.systemctl-tui
     pkgs.systemd-manager-tui
     pkgs.thinkfan
+    pkgs.nix-tree
     # gui applications
     pkgs.bruno
     pkgs.slack
