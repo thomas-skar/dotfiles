@@ -29,7 +29,7 @@
       tab-inherit-working-directory = false;
       split-inherit-working-directory = true;
 
-      window-decoration = "client";
+      window-decoration = "auto"; # none/auto/client/server
       window-theme = "auto";
       window-new-tab-position = "end";
       window-show-tab-bar = "auto";
