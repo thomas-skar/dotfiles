@@ -30,6 +30,8 @@
       url = "github:nix-community/nur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # TODO: flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
