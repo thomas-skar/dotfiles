@@ -1,6 +1,6 @@
 {
   xdg = {
-    enable = false; # BREAKS UBUNTU STUFF?
+    enable = true;
 
     localBinInPath = true;
 
