@@ -1,5 +1,4 @@
 {
-  description = "Standalone System Manager configuration";
 
   nixConfig = {
     extra-substituters = [ "https://cache.numtide.com" ];
@@ -31,48 +30,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:denful/import-tree";
   };
 
-  outputs =
-    {
-      self,
-      system-manager,
-      home-manager,
-      nix-system-graphics,
-      ...
-    }@inputs:
-    let
-      username = "thomas";
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs username system; };
-    in
-    {
-      systemConfigs.default = system-manager.lib.makeSystemConfig {
-        specialArgs = specialArgs;
-        modules = [
-          ./modules/system
-
-          nix-system-graphics.systemModules.default
-          {
-            system-graphics.enable = true;
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              startAsUserService = false;
-              backupFileExtension = "bak";
-              overwriteBackup = true;
-              users."${username}" = import ./modules/home;
-              extraSpecialArgs = specialArgs;
-            };
-          }
-        ];
-      };
-
-      systemConfigs.x86_64-linux.systemConfigs.default = self.systemConfigs.default;
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
