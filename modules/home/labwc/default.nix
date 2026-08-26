@@ -29,4 +29,6 @@
 
   home.file.".config/labwc/menu.xml".source = ./menu.xml;
   home.file.".config/labwc/rc.xml".source = ./rc.xml;
+
+  home.file.".local/share/themes/nix/labwc/themerc".source = ./themerc;
 }

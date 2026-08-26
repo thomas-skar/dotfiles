@@ -26,7 +26,7 @@
     </overlay>
   </snapping>
   <theme>
-    <name>labTeallach</name>
+    <name>nix</name>
     <icon>MacTahoe</icon>
     <dropShadows>yes</dropShadows>
     <keepBorder>yes</keepBorder>
@@ -248,17 +248,28 @@
         </none>
       </action>
     </keybind>
-    <!-- Run or raise pycharm (Copilot+P) -->
+    <!-- Run or raise pycharm/ protonmail (Copilot+P) -->
     <keybind key="S-C-A-W-p">
       <action name="ForEach">
-        <query identifier="jetbrains-pycharm" />
-        <then>
-          <action name="Raise" />
-          <action name="Focus" />
-        </then>
+        <action name="ForEach">
+          <query identifier="proton-mail" focused="no" />
+          <then>
+            <action name="Raise" />
+            <action name="Focus" />
+          </then>
+        </action>
+        <none>
+          <action name="ForEach">
+            <query identifier="jetbrains-pycharm" focused="no" />
+            <then>
+              <action name="Raise" />
+              <action name="Focus" />
+            </then>
+          </action>
+        </none>
       </action>
     </keybind>
-    <!-- Run or raise teams (Copilot+T) -->
+    <!-- Run or raise teams-for-linux/PWA (Copilot+T) -->
     <keybind key="S-C-A-W-t">
       <action name="ForEach">
         <query identifier="teams-for-linux" />
@@ -267,11 +278,24 @@
           <action name="Focus" />
         </then>
         <none>
-          <action name="Execute" command="teams-for-linux" />
+          <query
+            identifier="msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default"
+          />
+          <then>
+            <action name="Raise" />
+            <action name="Focus" />
+          </then>
+          <none>
+            <!-- <action name="Execute" command="teams-for-linux" /> -->
+            <action
+              name="Execute"
+              command="gio launch /home/thomas/.local/share/applications/msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default.desktop"
+            />
+          </none>
         </none>
       </action>
     </keybind>
-    <!-- Run or raise (cursed) outlook pwa (Copilot+O) -->
+    <!-- Run or raise (cursed) outlook PWA (Copilot+O) -->
     <keybind key="S-C-A-W-o">
       <action name="ForEach">
         <query identifier="msedge-_eoficlgicibekocmfdomjbfnjmehnhcd-Default" />
@@ -284,19 +308,6 @@
             name="Execute"
             command="gio launch /home/thomas/.local/share/applications/msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default.desktop"
           />
-        </none>
-      </action>
-    </keybind>
-    <!-- Run or raise protonmail (Copilot+M) -->
-    <keybind key="S-C-A-W-m">
-      <action name="ForEach">
-        <query identifier="proton-mail" />
-        <then>
-          <action name="Raise" />
-          <action name="Focus" />
-        </then>
-        <none>
-          <action name="Execute" command="proton-mail" />
         </none>
       </action>
     </keybind>
@@ -368,11 +379,6 @@
     </device>
   </libinput>
   <windowRules>
-    <!-- Global: turn off server decorations (but keep borders) -->
-    <!-- <windowRule identifier="*">
-      <action name="SetDecorations" decorations="border" />
-    </windowRule> -->
-
     <!-- Teams: move to eDP-1 -->
     <windowRule identifier="teams-for-linux">
       <action name="MoveToOutput" output="eDP-1" />
