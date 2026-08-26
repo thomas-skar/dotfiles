@@ -41,7 +41,7 @@
         metrics = false;
         anthropic_retention = false;
       };
-      window_decorations = "client";
+      window_decorations = "server";
       which_key.enabled = true;
       autosave = "on_focus_change";
       auto_update = false;
@@ -50,7 +50,7 @@
       tabs = {
         show_close_button = "always";
         file_icons = true;
-        show_branch_status_icon = true;
+        # show_branch_status_icon = true;
       };
       status_bar = {
         show_active_file = true;
@@ -95,10 +95,19 @@
         };
       };
       lsp = {
-        "nixd" = { };
-        "nil" = { };
+        "nixd" = {
+          formatting.command = [ "nixfmt" ];
+        };
+        "nil" = {
+          formatting.command = [ "nixfmt" ];
+          nix.binary = "/run/system-manager/sw/bin/nix";
+          nix.flake.autoArchive = true;
+          nix.flake.autoEvalInputs = true;
+          nix.flake.nixpkgsInputName = "nixpkgs";
+        };
       };
       edit_predictions = {
+        provider = "copilot";
         allow_data_collection = "no";
       };
     };
