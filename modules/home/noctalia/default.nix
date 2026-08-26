@@ -91,7 +91,7 @@
       lockscreen.monitors = [ "eDP-1" ];
       lockscreen_widgets.enabled = false;
 
-      notification.monitors = [ "eDP-1" ];
+      # notification.monitors = [ "eDP-1" ];
 
       osd.monitors = [ "eDP-1" ];
 
