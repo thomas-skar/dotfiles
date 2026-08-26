@@ -202,7 +202,7 @@
         };
 
         package = {
-          disabled = false;
+          disabled = true;
           symbol = "pkg ";
           style = "bold 208";
           display_private = false;
