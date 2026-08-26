@@ -1,8 +1,15 @@
-{
+{ pkgs, ... }: {
   programs.zed-editor = {
     enable = true;
     installRemoteServer = false;
     defaultEditor = true;
+
+    extraPackages = [
+      pkgs.nil
+      pkgs.nixd
+      pkgs.nixfmt
+      pkgs.prettier
+    ];
 
     extensions = [
       "nix"

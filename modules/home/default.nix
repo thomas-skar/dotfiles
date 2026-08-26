@@ -27,9 +27,6 @@
   home.packages = [
     # command line tools, etc
     pkgs.gh
-    pkgs.nil
-    pkgs.nixd
-    pkgs.nixfmt
     pkgs.dust
     pkgs.usage
     pkgs.tokei
