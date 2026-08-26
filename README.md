@@ -40,6 +40,10 @@ Reload kanshi (monitor placement tool):
 kanshictl reload
 ```
 
+```shell
+systemctl --user restart kanshi
+```
+
 ???
 
 ```shell
@@ -52,3 +56,6 @@ git update-index --skip-worktree --assume-unchanged extra/flake.nix
 Resources:
 
 - [displaylink](https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu)
+- [msodbcsql](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)
+- [labwc-themes](https://github.com/labwc/labwc-themes)
+- [mactahoe-icon-theme](https://github.com/vinceliuice/MacTahoe-icon-theme)
