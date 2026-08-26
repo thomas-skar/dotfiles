@@ -136,6 +136,20 @@
       </action>
       <action name="AutoPlace" policy="center" />
     </keybind>
+    <!-- Set preset window size 3 and center window (CapsLock+X) -->
+    <keybind key="S-C-A-W-M-x">
+      <action name="If">
+        <query monitor="eDP-1" />
+        <then>
+          <action name="ResizeTo" width="576" height="1080" />
+        </then>
+        <else>
+          <action name="ResizeTo" width="768" height="1296" />
+        </else>
+      </action>
+      <action name="AutoPlace" policy="center" />
+    </keybind>
+
     <!-- Next window of same type (CapsLock+K) -->
     <keybind key="S-C-A-W-M-k">
       <action
