@@ -30,6 +30,8 @@
   push = "git push";
   amend = "git commit --amend";
   checkout = "git switch";
+  co = "git switch";
+  gco = "git switch";
   discard = "git restore";
 
   # github cli
