@@ -272,26 +272,28 @@
     <!-- Run or raise teams-for-linux/PWA (Copilot+T) -->
     <keybind key="S-C-A-W-t">
       <action name="ForEach">
-        <query identifier="teams-for-linux" />
+        <query identifier="teams-for-linux" focused="no" />
         <then>
           <action name="Raise" />
           <action name="Focus" />
         </then>
         <none>
-          <query
-            identifier="msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default"
-          />
-          <then>
-            <action name="Raise" />
-            <action name="Focus" />
-          </then>
-          <none>
-            <!-- <action name="Execute" command="teams-for-linux" /> -->
-            <action
-              name="Execute"
-              command="gio launch /home/thomas/.local/share/applications/msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default.desktop"
+          <action name="ForEach">
+            <query
+              identifier="msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default"
+              focused="no"
             />
-          </none>
+            <then>
+              <action name="Raise" />
+              <action name="Focus" />
+            </then>
+            <none>
+              <action
+                name="Execute"
+                command="gio launch /home/thomas/.local/share/applications/msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default.desktop"
+              />
+            </none>
+          </action>
         </none>
       </action>
     </keybind>
