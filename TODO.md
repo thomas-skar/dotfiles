@@ -1,4 +1,5 @@
-- [ ] podman: fix `podman ps -a` errors (missing root permissions?)
+- [ ] flake-parts !!!
+
 - [ ] 1password >>> microsoft-edge
 
 - [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
@@ -36,3 +37,4 @@
 - [x] zed settings
 - [x] global justfile?
 - [x] noctalia settings
+- [x] podman: fix `podman ps -a` errors (missing root permissions?)
