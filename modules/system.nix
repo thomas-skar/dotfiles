@@ -1,9 +1,51 @@
-{ self, ... }:
+{ self, inputs, ... }:
 {
-  flake.nixosModules.systemConfig = { pkgs, ... }: {
-    imports = [ self.nixosModules.systemModuleBundle ]; # ./bundles.nix
+  # nixos (system-manager) modules from /modules/features/
+  flake.nixosModules.systemFeatures.imports = with self.nixosModules; [
+    home-manager
+    system-graphics
+    keyd
+    apparmor
+    systemd
+    gdm
+  ];
+
+  # home(-manager) modules from /modules/features/
+  flake.homeModules.homeFeatures.imports = with self.homeModules; [
+    fish
+    labwc
+    noctalia
+    atuin
+    bash
+    btop
+    chromium
+    displays
+    fonts
+    foot
+    ghostty
+    git
+    gtk
+    helix
+    just
+    k8s
+    librewolf
+    obsidian
+    podman
+    ssh
+    starship
+    teams
+    xdg
+    zed
+  ];
+
+  # nixos (system-manager) configuration
+  flake.nixosModules.systemConfiguration = { pkgs, ... }: {
+    imports = [ self.nixosModules.systemFeatures ];
 
     environment.systemPackages = [ pkgs.coreutils ];
+
+    nixpkgs.hostPlatform = "x86_64-linux";
+    nixpkgs.config.allowUnfree = true;
 
     nix.enable = true;
     nix.settings = {
@@ -23,11 +65,6 @@
       sync-before-registering = true;
     };
 
-    nixpkgs.hostPlatform = "x86_64-linux";
-    nixpkgs.config.allowUnfree = true;
-
-    system.autoUpgrade.enable = false;
-
     services.userborn.enable = true;
 
     users.users."thomas" = {
@@ -42,14 +79,14 @@
       shell = "/etc/profiles/per-user/thomas/bin/fish";
       useDefaultShell = true;
     };
-
     users.groups."thomas".gid = 1000;
 
-    home-manager.users."thomas" = self.homeModules.userConfig;
+    home-manager.users."thomas" = self.homeModules.homeConfiguration;
   };
 
-  flake.homeModules.userConfig = { pkgs, ... }: {
-    imports = [ self.homeModules.userModuleBundle ]; # ./bundles.nix
+  # home(-manager) configuration
+  flake.homeModules.homeConfiguration = { pkgs, ... }: {
+    imports = [ self.homeModules.homeFeatures ];
 
     home.packages = [
       # command line tools, etc
@@ -88,25 +125,6 @@
 
     programs.home-manager.enable = true;
     programs.bat.enable = true;
-    programs.btop = {
-      enable = true;
-      settings = {
-        color_theme = "TTY";
-        theme_background = false;
-        truecolor = true;
-        force_tty = false;
-        disable_mouse = false;
-        rounded_corners = true;
-        terminal_sync = true;
-        graph_symbol = "braille";
-        shown_boxes = "net proc mem cpu";
-        proc_sorting = "cpu direct";
-        proc_left = false;
-        base_10_sizes = true;
-        background_update = true;
-        show_io_stat = true;
-      };
-    };
     programs.eza.enable = true;
     programs.fastfetch.enable = true;
     programs.fd.enable = true;
@@ -137,17 +155,19 @@
     programs.jq.enable = true;
     programs.parallel.enable = true;
     programs.ranger.enable = false;
-
-    # theming
-    gtk = {
-      enable = true;
-
-      theme.name = "Adwaita";
-      iconTheme.name = "MacTahoe";
-      cursorTheme.name = "Adwaita";
-
-      gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-      gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
-    };
   };
+
+  # system-manager flake input
+  flake-file.inputs.system-manager = {
+    url = "github:numtide/system-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.userborn.inputs.flake-parts.follows = "flake-parts";
+  };
+
+  # system manager config(s)
+  flake.systemConfigs.default = inputs.system-manager.lib.makeSystemConfig {
+    modules = [ self.nixosModules.systemConfiguration ];
+  };
+
+  flake.systemConfigs.x86_64-linux.systemConfigs.default = self.systemConfigs.default;
 }
