@@ -21,10 +21,18 @@ build:
 
 alias b := build
 
-# nix garbage collection
+# regen flake.nix w/ flake-file
+write:
+    nix run .#write-flake
+
+# check if flake.nix is up-to-date
+check:
+    nix flake check
+
+# run nix garbage collection
 clean:
     nix-collect-garbage -d
 
-# show dependency graph
+# show nix dependency graph
 tree:
     nix-tree --derivation .#systemConfigs.default
