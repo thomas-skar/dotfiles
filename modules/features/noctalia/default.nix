@@ -57,7 +57,7 @@
         dock = {
           enabled = true;
           background_opacity = 0.75;
-          icon_size = 24;
+          icon_size = 32;
           magnification = true;
           monitors = [ "eDP-1" ];
           reserve_space = false;
@@ -120,6 +120,7 @@
             compact = true;
             fetch_exchange_rates = false;
             sort_by_usage = false;
+            show_icons = false;
           };
 
           panel = {
