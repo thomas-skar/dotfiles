@@ -297,19 +297,31 @@
         </none>
       </action>
     </keybind>
-    <!-- Run or raise (cursed) outlook PWA (Copilot+O) -->
+    <!-- Run or raise (cursed) outlook PWA/ obsidian (Copilot+O) -->
     <keybind key="S-C-A-W-o">
       <action name="ForEach">
-        <query identifier="msedge-_eoficlgicibekocmfdomjbfnjmehnhcd-Default" />
+        <query
+          identifier="msedge-_eoficlgicibekocmfdomjbfnjmehnhcd-Default"
+          focused="no"
+        />
         <then>
           <action name="Raise" />
           <action name="Focus" />
         </then>
         <none>
-          <action
-            name="Execute"
-            command="gio launch /home/thomas/.local/share/applications/msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default.desktop"
-          />
+          <action name="ForEach">
+            <query identifier="md.Obsidian" focused="no" />
+            <then>
+              <action name="Raise" />
+              <action name="Focus" />
+            </then>
+            <none>
+              <action
+                name="Execute"
+                command="gio launch /home/thomas/.local/share/applications/msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default.desktop"
+              />
+            </none>
+          </action>
         </none>
       </action>
     </keybind>
