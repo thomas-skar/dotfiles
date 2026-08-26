@@ -39,6 +39,7 @@
     pkgs.systemd-manager-tui
     pkgs.thinkfan
     pkgs.nix-tree
+    pkgs.wl-color-picker
     # gui applications
     pkgs.bruno
     pkgs.slack
@@ -55,7 +56,6 @@
     # miscellaneous
     pkgs.gnome-themes-extra
     pkgs.whitesur-icon-theme
-
   ];
   home.stateVersion = "26.11";
   home.sessionPath = [ "$HOME/.local/bin" ];
