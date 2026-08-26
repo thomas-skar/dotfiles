@@ -1,4 +1,5 @@
-- [ ] flake-file
+- [ ] noctalia: launcher .desktop items
+- [ ] noctalia: dock icons
 - [ ] 1password <-> microsoft-edge
 
 - [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
@@ -36,3 +37,4 @@
 - [x] noctalia settings
 - [x] podman: fix `podman ps -a` errors (missing root permissions?)
 - [x] flake-parts !!!
+- [x] flake-file

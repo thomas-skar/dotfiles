@@ -1,9 +1,10 @@
 { inputs, ... }:
 {
+  flake-file.inputs.noctalia.url = "github:noctalia-dev/noctalia/cachix";
+  # flake-file.inputs.noctalia.inputs.nixpkgs.follows = "nixpkgs";
+
   flake.homeModules.noctalia = {
-    imports = [
-      inputs.noctalia.homeModules.default
-    ];
+    imports = [ inputs.noctalia.homeModules.default ];
 
     home.file.".config/noctalia/palettes/custom.json".source = ./palette.json;
 

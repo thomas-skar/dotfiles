@@ -1,38 +1,38 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-
-  nixConfig = {
-    extra-substituters = [ "https://cache.numtide.com" ];
-    extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
-  };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    system-manager = {
-      url = "github:numtide/system-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-system-graphics = {
+    import-tree.url = "github:denful/import-tree";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    nur = {
+      url = "github:nix-community/nur";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    system-graphics = {
       url = "github:soupglasses/nix-system-graphics";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
-
-    nur = {
-      url = "github:nix-community/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        userborn.inputs.flake-parts.follows = "flake-parts";
+      };
     };
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:denful/import-tree";
   };
-
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
