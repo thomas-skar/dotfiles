@@ -53,6 +53,8 @@
         pps = "podman ps -a";
         ppsw = "podman ps -a -w 1";
         pprmaf = "podman pod rm --all --force";
+        # oc
+        noctx = "oc config unset current-context";
         # functions
         ghrip = "ghr intility procurement";
       };
