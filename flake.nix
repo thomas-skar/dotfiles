@@ -4,6 +4,10 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
+    flake-compat = {
+      url = "github:nixos/flake-compat";
+      flake = false;
+    };
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -14,6 +18,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:denful/import-tree";
+    jetbrains-plugins = {
+      url = "github:nix-community/nix-jetbrains-plugins";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
     nur = {
@@ -30,9 +42,14 @@
     system-manager = {
       url = "github:numtide/system-manager";
       inputs = {
+        flake-compat.follows = "flake-compat";
         nixpkgs.follows = "nixpkgs";
-        userborn.inputs.flake-parts.follows = "flake-parts";
+        userborn.inputs = {
+          flake-parts.follows = "flake-parts";
+          systems.follows = "systems";
+        };
       };
     };
+    systems.url = "github:nix-systems/default";
   };
 }

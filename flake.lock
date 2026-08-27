@@ -5,13 +5,13 @@
       "locked": {
         "lastModified": 1767039857,
         "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
-        "owner": "edolstra",
+        "owner": "nixos",
         "repo": "flake-compat",
         "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
         "type": "github"
       },
       "original": {
-        "owner": "edolstra",
+        "owner": "nixos",
         "repo": "flake-compat",
         "type": "github"
       }
@@ -33,7 +33,9 @@
     },
     "flake-parts": {
       "inputs": {
-        "nixpkgs-lib": ["nixpkgs"]
+        "nixpkgs-lib": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1787559586,
@@ -74,7 +76,9 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1787715947,
@@ -102,6 +106,32 @@
       "original": {
         "owner": "denful",
         "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "jetbrains-plugins": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787391692,
+        "narHash": "sha256-qWfOfgPq4lZsXZiHkzglH7Ndm5Y3ksIGfKBKBXC20ak=",
+        "owner": "nix-community",
+        "repo": "nix-jetbrains-plugins",
+        "rev": "6c3be1180b287e1d825b9fb360e77b4a7c7296b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-jetbrains-plugins",
         "type": "github"
       }
     },
@@ -158,8 +188,12 @@
     },
     "nur": {
       "inputs": {
-        "flake-parts": ["flake-parts"],
-        "nixpkgs": ["nixpkgs"]
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1787746584,
@@ -177,9 +211,17 @@
     },
     "pre-commit-hooks-nix": {
       "inputs": {
-        "flake-compat": ["system-manager", "userborn", "flake-compat"],
+        "flake-compat": [
+          "system-manager",
+          "userborn",
+          "flake-compat"
+        ],
         "gitignore": "gitignore",
-        "nixpkgs": ["system-manager", "userborn", "nixpkgs"]
+        "nixpkgs": [
+          "system-manager",
+          "userborn",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1769069492,
@@ -197,20 +239,25 @@
     },
     "root": {
       "inputs": {
+        "flake-compat": "flake-compat",
         "flake-file": "flake-file",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "jetbrains-plugins": "jetbrains-plugins",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "nur": "nur",
         "system-graphics": "system-graphics",
-        "system-manager": "system-manager"
+        "system-manager": "system-manager",
+        "systems": "systems"
       }
     },
     "system-graphics": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1763296639,
@@ -228,8 +275,12 @@
     },
     "system-manager": {
       "inputs": {
-        "flake-compat": "flake-compat",
-        "nixpkgs": ["nixpkgs"],
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "userborn": "userborn"
       },
       "locked": {
@@ -263,11 +314,21 @@
     },
     "userborn": {
       "inputs": {
-        "flake-compat": ["system-manager", "flake-compat"],
-        "flake-parts": ["flake-parts"],
-        "nixpkgs": ["system-manager", "nixpkgs"],
+        "flake-compat": [
+          "system-manager",
+          "flake-compat"
+        ],
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "system-manager",
+          "nixpkgs"
+        ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "systems": "systems"
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1770377964,
