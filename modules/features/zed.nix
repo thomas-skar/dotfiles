@@ -12,6 +12,7 @@
         pkgs.nixfmt
         pkgs.prettier
         pkgs.just-lsp
+        pkgs.alejandra
       ];
 
       extensions = [
