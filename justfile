@@ -21,11 +21,17 @@ build:
 
 alias b := build
 
-# regen flake.nix w/ flake-file
+# regen nix flake w/ flake-file
 write:
     nix run .#write-flake
 
-# check if flake.nix is up-to-date
+alias w := write
+
+# show nix flake outputs
+show:
+    nix flake show
+
+# check if nix flake is up-to-date
 check:
     nix flake check
 
@@ -36,3 +42,5 @@ clean:
 # show nix dependency graph
 tree:
     nix-tree --derivation .#systemConfigs.default
+
+alias t := tree
