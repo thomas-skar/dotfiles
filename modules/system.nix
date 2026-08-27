@@ -8,6 +8,7 @@
     apparmor
     systemd
     gdm
+    jetbrains
   ];
 
   # home(-manager) modules from /modules/features/
@@ -36,6 +37,8 @@
     teams
     xdg
     zed
+    goland
+    pycharm
   ];
 
   # nixos (system-manager) configuration
@@ -102,6 +105,9 @@
       pkgs.thinkfan
       pkgs.nix-tree
       pkgs.wl-color-picker
+      pkgs.lazyjournal
+      # pkgs.harlequin
+      pkgs.sqlit-tui
       # gui applications
       pkgs.bruno
       pkgs.slack
@@ -112,8 +118,6 @@
       pkgs.element-desktop
       pkgs.tutanota-desktop
       pkgs.protonmail-desktop
-      pkgs.jetbrains.goland
-      pkgs.jetbrains.pycharm
       pkgs.qalculate-gtk
       # miscellaneous
       pkgs.gnome-themes-extra
@@ -157,14 +161,24 @@
     programs.parallel.enable = true;
     programs.ranger.enable = false;
     programs.nix-index.enable = true;
+    programs.lazysql.enable = false;
 
   };
 
   # system-manager flake input
-  flake-file.inputs.system-manager = {
-    url = "github:numtide/system-manager";
-    inputs.nixpkgs.follows = "nixpkgs";
-    inputs.userborn.inputs.flake-parts.follows = "flake-parts";
+  flake-file.inputs = {
+    systems.url = "github:nix-systems/default";
+    flake-compat = {
+      url = "github:nixos/flake-compat";
+      flake = false;
+    };
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.userborn.inputs.systems.follows = "systems";
+      inputs.userborn.inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   # system manager config(s)
