@@ -2,8 +2,8 @@
 {
   # nixos (system-manager) modules from /modules/features/
   flake.nixosModules.systemFeatures.imports = with self.nixosModules; [
-    home-manager
-    system-graphics
+    homeManager
+    systemGraphics
     keyd
     apparmor
     systemd
@@ -82,6 +82,7 @@
     users.groups."thomas".gid = 1000;
 
     home-manager.users."thomas" = self.homeModules.homeConfiguration;
+
   };
 
   # home(-manager) configuration
@@ -155,6 +156,8 @@
     programs.jq.enable = true;
     programs.parallel.enable = true;
     programs.ranger.enable = false;
+    programs.nix-index.enable = true;
+
   };
 
   # system-manager flake input
