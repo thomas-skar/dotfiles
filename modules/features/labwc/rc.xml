@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <labwc_config>
+
   <core>
     <decoration>server</decoration>
     <gap>10</gap>
   </core>
+
   <placement>
     <policy>cascade</policy>
   </placement>
+
   <windowSwitcher outlines="yes" preview="yes" unshade="yes">
     <osd style="classic" output="all" />
     <fields>
@@ -16,15 +19,18 @@
       <field content="output" width="10%" />
     </fields>
   </windowSwitcher>
+
   <focus>
     <followMouse>no</followMouse>
     <raiseOnFocus>no</raiseOnFocus>
   </focus>
+
   <snapping>
     <overlay>
       <enabled>yes</enabled>
     </overlay>
   </snapping>
+
   <theme>
     <!-- noctalia vs nix (custom) -->
     <name>noctalia</name>
@@ -32,6 +38,7 @@
     <dropShadows>yes</dropShadows>
     <keepBorder>yes</keepBorder>
   </theme>
+
   <keyboard>
     <!-- Next window (Alt+Tab) -->
     <keybind key="A-Tab">
@@ -295,7 +302,7 @@
         <none>
           <action name="ForEach">
             <query
-              identifier="msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default"
+              identifier="msedge-ompifgpmddkgmclendfeacglnodjjndh-Default"
               focused="no"
             />
             <then>
@@ -305,7 +312,7 @@
             <none>
               <action
                 name="Execute"
-                command="gio launch /home/thomas/.local/share/applications/msedge-_ompifgpmddkgmclendfeacglnodjjndh-Default.desktop"
+                command="gio launch /home/thomas/.local/share/applications/msedge-ompifgpmddkgmclendfeacglnodjjndh-Default.desktop"
               />
             </none>
           </action>
@@ -316,7 +323,7 @@
     <keybind key="S-C-A-W-o">
       <action name="ForEach">
         <query
-          identifier="msedge-_eoficlgicibekocmfdomjbfnjmehnhcd-Default"
+          identifier="msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default"
           focused="no"
         />
         <then>
@@ -392,10 +399,12 @@
       <action name="Execute" command="noctalia msg brightness-down" />
     </keybind>
   </keyboard>
+
   <mouse>
     <!-- TODO: replace -->
     <default />
   </mouse>
+
   <libinput>
     <device>
       <accelProfile>adaptive</accelProfile>
@@ -405,8 +414,10 @@
       <tap>yes</tap>
       <tapAndDrag>no</tapAndDrag>
       <threeFingerDrag>no</threeFingerDrag>
+      <disableWhileTyping>yes</disableWhileTyping>
     </device>
   </libinput>
+
   <windowRules>
     <!-- Teams: move to eDP-1 -->
     <windowRule identifier="teams-for-linux">
@@ -421,7 +432,7 @@
       <action name="MoveToOutput" output="eDP-1" />
     </windowRule>
     <!-- Outlook PWA: move to eDP-1 -->
-    <windowRule identifier="msedge-_eoficlgicibekocmfdomjbfnjmehnhcd-Default">
+    <windowRule identifier="msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default">
       <action name="MoveToOutput" output="eDP-1" />
     </windowRule>
 
@@ -442,6 +453,6 @@
     <windowRule identifier="microsoft-identity-broker">
       <action name="ToggleAlwaysOnTop" />
     </windowRule>
-
   </windowRules>
+
 </labwc_config>
