@@ -16,7 +16,6 @@
         "XKB_DEFAULT_LAYOUT=no"
         "XDG_CURRENT_DESKTOP=labwc:wlroots"
         "XCURSOR_THEME=Adwaita"
-        "GTK_THEME=Adwaita:dark"
       ];
       systemd.enable = true;
     };
