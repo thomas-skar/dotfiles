@@ -121,6 +121,7 @@
             fetch_exchange_rates = false;
             sort_by_usage = false;
             show_icons = false;
+            providers.calculator.global = false;
           };
 
           panel = {
@@ -135,8 +136,15 @@
           custom_palette = "custom";
 
           templates = {
-            enable_builtin_templates = false;
+            enable_builtin_templates = true;
             enable_community_templates = false;
+            builtin_ids = [
+              "gtk3"
+              "gtk4"
+              "kcolorscheme"
+              "labwc"
+              "qt"
+            ];
           };
         };
 
