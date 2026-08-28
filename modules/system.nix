@@ -25,7 +25,7 @@
     foot
     ghostty
     git
-    gtk
+    # gtk
     helix
     just
     k8s
