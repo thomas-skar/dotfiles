@@ -42,7 +42,6 @@
         # just
         j = "just";
         jg = "just --global-justfile";
-        sms = "just --global-justfile switch";
         # fastfetch
         ff = "fastfetch";
         # helix
@@ -55,6 +54,8 @@
         pprmaf = "podman pod rm --all --force";
         # oc
         noctx = "oc config unset current-context";
+        # pnpm
+        pn = "pnpm";
         # functions
         ghrip = "ghr intility procurement";
       };
