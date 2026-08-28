@@ -26,7 +26,8 @@
     </overlay>
   </snapping>
   <theme>
-    <name>nix</name>
+    <!-- noctalia vs nix (custom) -->
+    <name>noctalia</name>
     <icon>MacTahoe</icon>
     <dropShadows>yes</dropShadows>
     <keepBorder>yes</keepBorder>
