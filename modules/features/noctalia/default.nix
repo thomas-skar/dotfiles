@@ -62,7 +62,7 @@
         desktop_widgets.enabled = false;
         dock = {
           enabled = true;
-          background_opacity = 0.75;
+          background_opacity = 0.66;
           icon_size = 32;
           magnification = true;
           monitors = [ "eDP-1" ];
@@ -114,6 +114,7 @@
           ];
         };
         shell = {
+          font_family = "SF Pro Text";
           polkit_agent = true;
           launch_apps_as_systemd_services = false;
           launcher = {
@@ -121,7 +122,7 @@
             compact = true;
             fetch_exchange_rates = false;
             sort_by_usage = false;
-            show_icons = false;
+            show_icons = true;
             providers.calculator.global = false;
           };
           panel = {
