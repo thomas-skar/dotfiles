@@ -166,18 +166,24 @@
   };
 
   # system-manager flake input
-  flake-file.inputs = {
-    systems.url = "github:nix-systems/default";
-    flake-compat = {
-      url = "github:nixos/flake-compat";
-      flake = false;
+  flake-file = {
+    inputs = {
+      system-manager = {
+        url = "github:numtide/system-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-compat.follows = "flake-compat";
+        inputs.userborn.inputs.systems.follows = "systems";
+        inputs.userborn.inputs.flake-parts.follows = "flake-parts";
+      };
+      flake-compat = {
+        url = "github:nixos/flake-compat";
+        flake = false;
+      };
+      systems.url = "github:nix-systems/default";
     };
-    system-manager = {
-      url = "github:numtide/system-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.userborn.inputs.systems.follows = "systems";
-      inputs.userborn.inputs.flake-parts.follows = "flake-parts";
+    nixConfig = {
+      extra-substituters = [ "https://cache.numtide.com" ];
+      extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
     };
   };
 
