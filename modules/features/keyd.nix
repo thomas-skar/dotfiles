@@ -1,5 +1,6 @@
 {
-  flake.nixosModules.keyd = { pkgs, lib, ... }: {
+
+  flake.modules.nixos.keyd = { pkgs, lib, ... }: {
     environment.systemPackages = [ pkgs.keyd ];
 
     environment.etc."keyd/default.conf".text = ''
@@ -13,6 +14,14 @@
       [hyper:C-M-S-A]
 
       [hyper2:C-M-S-A-G]
+    '';
+
+    environment.etc."libinput/local-overrides.quirks".text = ''
+      [Serial Keyboards]
+
+      MatchUdevType=keyboard
+      MatchName=keyd*keyboard
+      AttrKeyboardIntegration=internal
     '';
 
     # systemd service: https://github.com/NixOS/nixpkgs/blob/nixos-26.05/nixos/modules/services/hardware/keyd.nix
