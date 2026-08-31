@@ -43,6 +43,7 @@
           "com.intellij.tasks"
           "intellij.vitejs"
           "org.toml.lang"
+          "com.github.oxc.project.oxcintellijplugin"
         ])
       ];
     };
@@ -64,6 +65,7 @@
         "com.github.copilot"
         "net.seesharpsoft.intellij.plugins.csv"
         "mobi.hsz.idea.gitignore"
+        "com.github.oxc.project.oxcintellijplugin"
       ])
     ];
   };
