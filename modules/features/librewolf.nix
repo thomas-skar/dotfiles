@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ withSystem, ... }:
 {
   flake-file.inputs.nur = {
     url = "github:nix-community/nur";
@@ -6,17 +6,17 @@
     inputs.flake-parts.follows = "flake-parts";
   };
 
-  flake.homeModules.librewolf = {
-
-    programs.librewolf = {
-      enable = true;
-      profiles.default.extensions.packages =
-        with inputs.nur.legacyPackages.x86_64-linux.repos.rycee.firefox-addons; [
+  # withSystem is required to use the nur overlay
+  flake.modules.homeManager.librewolf = withSystem "x86_64-linux" (
+    { pkgs, ... }: {
+      programs.librewolf = {
+        enable = true;
+        profiles.default.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           darkreader
           multi-account-containers
           ublock-origin
         ];
-    };
-
-  };
+      };
+    }
+  );
 }
