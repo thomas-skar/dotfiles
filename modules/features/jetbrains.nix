@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 {
   flake-file.inputs = {
     systems.url = "github:nix-systems/default";
@@ -12,6 +12,16 @@
       inputs.systems.follows = "systems";
       inputs.flake-compat.follows = "flake-compat";
     };
+  };
+
+  flake.modules.generic.goland = {
+    imports = [ self.nixosModules.jetbrains ];
+    home-manager.sharedModules = [ self.homeModules.goland ];
+  };
+
+  flake.modules.generic.pycharm = {
+    imports = [ self.nixosModules.jetbrains ];
+    home-manager.sharedModules = [ self.homeModules.pycharm ];
   };
 
   # run `sudo sysctl --system` to apply
