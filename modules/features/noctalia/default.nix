@@ -79,12 +79,12 @@
             lock = {
               action = "lock";
               enabled = true;
-              timeout = 180.0;
+              timeout = 300.0;
             };
             screen-off = {
               action = "screen_off";
               enabled = true;
-              timeout = 300.0;
+              timeout = 360.0;
             };
             lock-and-suspend = {
               action = "lock_and_suspend";
@@ -114,7 +114,7 @@
           ];
         };
         shell = {
-          font_family = "SF Pro Text";
+          font_family = "SF Pro";
           polkit_agent = true;
           launch_apps_as_systemd_services = false;
           launcher = {
