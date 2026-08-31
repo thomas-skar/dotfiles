@@ -8,7 +8,6 @@
       settings = {
         "*" = {
           UserKnownHostsFile = "~/.ssh/known_hosts";
-          IdentityAgent = "~/.1password/agent.sock";
         };
         "Host github.com" = {
           HostName = "github.com";

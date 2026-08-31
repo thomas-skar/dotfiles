@@ -1,15 +1,20 @@
 { self, inputs, ... }:
 {
   # nixos (system-manager) modules from /modules/features/
-  flake.nixosModules.systemFeatures.imports = with self.nixosModules; [
-    homeManager
-    systemGraphics
-    keyd
-    apparmor
-    systemd
-    gdm
-    jetbrains
-  ];
+  flake.nixosModules.systemFeatures.imports =
+    with self.nixosModules;
+    [
+      homeManager
+      systemGraphics
+      keyd
+      apparmor
+      systemd
+      gdm
+      jetbrains
+    ]
+    ++ [
+      self.modules.generic."1password"
+    ];
 
   # home(-manager) modules from /modules/features/
   flake.homeModules.homeFeatures.imports =
@@ -118,7 +123,6 @@
       pkgs.slack
       pkgs.spotify
       pkgs.localsend
-      pkgs._1password-gui
       pkgs.signal-desktop
       pkgs.element-desktop
       pkgs.tutanota-desktop
