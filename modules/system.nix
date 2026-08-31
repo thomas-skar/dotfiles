@@ -6,14 +6,15 @@
     [
       homeManager
       systemGraphics
-      keyd
       apparmor
       systemd
       gdm
-      jetbrains
     ]
     ++ [
       self.modules.generic."1password"
+      self.modules.generic.goland
+      self.modules.generic.pycharm
+      self.modules.nixos.keyd
     ];
 
   # home(-manager) modules from /modules/features/
@@ -43,8 +44,6 @@
       teams
       xdg
       zed
-      goland
-      pycharm
     ]
     ++ [
       self.modules.homeManager.fonts
