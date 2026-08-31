@@ -15,6 +15,10 @@
   };
 
   inputs = {
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-compat = {
       url = "github:nixos/flake-compat";
       flake = false;
