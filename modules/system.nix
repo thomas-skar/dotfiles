@@ -12,34 +12,39 @@
   ];
 
   # home(-manager) modules from /modules/features/
-  flake.homeModules.homeFeatures.imports = with self.homeModules; [
-    fish
-    labwc
-    noctalia
-    atuin
-    bash
-    btop
-    chromium
-    displays
-    fonts
-    foot
-    ghostty
-    git
-    # gtk
-    helix
-    just
-    k8s
-    librewolf
-    obsidian
-    podman
-    ssh
-    starship
-    teams
-    xdg
-    zed
-    goland
-    pycharm
-  ];
+  flake.homeModules.homeFeatures.imports =
+    with self.homeModules;
+    [
+      fish
+      labwc
+      noctalia
+      atuin
+      bash
+      btop
+      chromium
+      displays
+      # fonts
+      foot
+      ghostty
+      git
+      # gtk
+      helix
+      just
+      k8s
+      obsidian
+      podman
+      ssh
+      starship
+      teams
+      xdg
+      zed
+      goland
+      pycharm
+    ]
+    ++ [
+      self.modules.homeManager.fonts
+      self.modules.homeManager.librewolf
+    ];
 
   # nixos (system-manager) configuration
   flake.nixosModules.systemConfiguration = { pkgs, ... }: {
