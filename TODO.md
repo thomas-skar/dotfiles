@@ -1,9 +1,9 @@
-- [ ] noctalia: launcher .desktop items
-- [ ] noctalia: dock icons
+- [ ] noctalia
+  - [ ] launcher .desktop items
+  - [ ] dock icons
+  - [ ] labwc theme
 - [ ] 1password <-> microsoft-edge
 
-- [ ] system-manager switch: get rid of "dirty" warnings (git add ???)
-  - [ ] justfile: git add all files before switching
 - [ ] flake.nix: replace nur input with just firefox addons?
 - [ ] fix element-desktop keyring error
 - [ ] fix tutanota-desktop error
