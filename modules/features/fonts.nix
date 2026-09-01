@@ -18,7 +18,7 @@
       fonts.fontconfig = {
         enable = true;
         defaultFonts = {
-          sansSerif = [ "SF Pro" ];
+          sansSerif = [ "Noto Sans" ];
           monospace = [ "JetBrains Mono" ];
         };
       };
