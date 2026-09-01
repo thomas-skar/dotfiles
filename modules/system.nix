@@ -14,6 +14,7 @@
       self.modules.generic."1password"
       self.modules.generic.goland
       self.modules.generic.pycharm
+      self.modules.generic.gtk
       self.modules.nixos.keyd
     ];
 
@@ -33,7 +34,6 @@
       foot
       ghostty
       git
-      # gtk
       helix
       just
       k8s
