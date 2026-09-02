@@ -15,6 +15,9 @@
       self.modules.generic.goland
       self.modules.generic.pycharm
       self.modules.generic.gtk
+      self.modules.generic.delta
+      self.modules.generic.jujutsu
+      self.modules.generic.noctalia
       self.modules.nixos.keyd
     ];
 
@@ -24,13 +27,11 @@
     [
       fish
       labwc
-      noctalia
       atuin
       bash
       btop
       chromium
       displays
-      # fonts
       foot
       ghostty
       git
@@ -55,6 +56,10 @@
     imports = [ self.nixosModules.systemFeatures ];
 
     environment.systemPackages = [ pkgs.coreutils ];
+    environment.pathsToLink = [
+      "/share/applications"
+      "/share/xdg-desktop-portals"
+    ];
 
     nixpkgs.hostPlatform = "x86_64-linux";
     nixpkgs.config.allowUnfree = true;
@@ -67,12 +72,10 @@
       trusted-substituters = [
         "https://cache.nixos.org/"
         "https://cache.numtide.com"
-        "https://noctalia.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
       sync-before-registering = true;
     };
@@ -127,6 +130,7 @@
       pkgs.tutanota-desktop
       pkgs.protonmail-desktop
       pkgs.qalculate-gtk
+      pkgs.foliate
       # miscellaneous
       pkgs.gnome-themes-extra
       pkgs.whitesur-icon-theme
