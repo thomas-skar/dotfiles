@@ -42,6 +42,9 @@
         # just
         j = "just";
         jg = "just --global-justfile";
+        # mise
+        m = "mise";
+        mr = "mise run";
         # fastfetch
         ff = "fastfetch";
         # helix
