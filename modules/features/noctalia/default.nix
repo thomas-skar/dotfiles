@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 {
   flake-file = {
     inputs.noctalia = {
@@ -8,6 +8,20 @@
     nixConfig = {
       extra-substituters = [ "https://noctalia.cachix.org" ];
       extra-trusted-public-keys = [
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      ];
+    };
+  };
+
+  flake.modules.generic.noctalia = {
+    imports = [ self.modules.nixos.noctalia ];
+    home-manager.sharedModules = [ self.homeModules.noctalia ];
+  };
+
+  flake.modules.nixos.noctalia = {
+    nix.settings = {
+      trusted-substituters = [ "https://noctalia.cachix.org" ];
+      trusted-public-keys = [
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
     };
@@ -30,8 +44,6 @@
           margin_ends = 0;
           widget_spacing = 14;
           start = [
-            "workspaces"
-            "spacer_start"
             "active_window"
           ];
           center = [
@@ -75,7 +87,7 @@
             "screen-off"
             "lock-and-suspend"
           ];
-          behaviour = {
+          behavior = {
             lock = {
               action = "lock";
               enabled = true;
