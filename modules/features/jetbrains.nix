@@ -54,6 +54,7 @@
           "intellij.vitejs"
           "org.toml.lang"
           "com.github.oxc.project.oxcintellijplugin"
+          "com.github.l34130.mise"
         ])
       ];
     };
@@ -76,6 +77,7 @@
         "net.seesharpsoft.intellij.plugins.csv"
         "mobi.hsz.idea.gitignore"
         "com.github.oxc.project.oxcintellijplugin"
+        "com.github.l34130.mise"
       ])
     ];
   };
