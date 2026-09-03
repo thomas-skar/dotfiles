@@ -37,6 +37,8 @@
       zed
       fonts
       librewolf
+      sql
+      mise
     ];
   };
 
@@ -94,15 +96,11 @@
       pkgs.usage
       pkgs.tokei
       pkgs.wlrctl
-      pkgs.sqlite
       pkgs.systemctl-tui
-      pkgs.systemd-manager-tui
       pkgs.thinkfan
       pkgs.nix-tree
       pkgs.wl-color-picker
       pkgs.lazyjournal
-      # pkgs.harlequin
-      pkgs.sqlit-tui
       # gui applications
       pkgs.bruno
       pkgs.slack
@@ -119,7 +117,7 @@
       pkgs.whitesur-icon-theme
     ];
 
-    home.stateVersion = "26.11";
+    home.stateVersion = "26.11"; # TODO ?
     home.sessionPath = [ "$HOME/.local/bin" ];
     home.sessionVariables = { };
 
@@ -140,22 +138,13 @@
     programs.vim.enable = true;
     programs.neovim.enable = false;
     programs.yazi.enable = true;
-    programs.mise = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    programs.direnv = {
-      enable = true;
-      mise.enable = true;
-    };
-    programs.television.enable = true;
+    programs.television.enable = false;
     programs.zellij.enable = false;
     programs.jq.enable = true;
-    programs.parallel.enable = true;
+    programs.parallel.enable = false;
     programs.ranger.enable = false;
-    programs.nix-index.enable = true;
-    programs.lazysql.enable = false;
-
+    programs.nix-index.enable = false;
+    programs.micro.enable = true;
   };
 
   # system-manager flake input
