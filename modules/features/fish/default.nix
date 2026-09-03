@@ -64,6 +64,8 @@
         noctx = "oc config unset current-context";
         # pnpm
         pn = "pnpm";
+        # sqlit
+        sql = "sqlit";
         # functions
         ghrip = "ghr intility procurement";
       };

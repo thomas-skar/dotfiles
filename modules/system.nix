@@ -39,6 +39,7 @@
       librewolf
       sql
       mise
+      python
     ];
   };
 
