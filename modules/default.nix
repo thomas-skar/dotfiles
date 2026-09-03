@@ -6,10 +6,6 @@
 
   imports = [
     inputs.flake-file.flakeModules.dendritic # flake-file + flake+parts + import-tree
-    # inputs.flake-file.flakeModules.allfollow
-    # inputs.flake-file.flakeModules.nix-auto-follow
-    inputs.flake-parts.flakeModules.modules
-    # inputs.flake-parts.flakeModules.flakeModules
     inputs.home-manager.flakeModules.home-manager
   ];
 

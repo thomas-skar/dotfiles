@@ -1,6 +1,5 @@
 {
   flake.nixosModules.gdm = {
-
     systemd.services."rip-gdm" = {
       enable = true;
       description = "kill gdm";

@@ -13,18 +13,15 @@
     };
   };
 
-  flake.modules.generic.noctalia = {
-    imports = [ self.modules.nixos.noctalia ];
-    home-manager.sharedModules = [ self.homeModules.noctalia ];
-  };
-
-  flake.modules.nixos.noctalia = {
+  flake.nixosModules.noctalia = {
     nix.settings = {
       trusted-substituters = [ "https://noctalia.cachix.org" ];
       trusted-public-keys = [
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       ];
     };
+
+    home-manager.sharedModules = [ self.homeModules.noctalia ];
   };
 
   flake.homeModules.noctalia = {

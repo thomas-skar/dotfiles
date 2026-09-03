@@ -1,30 +1,20 @@
 { self, inputs, ... }:
 {
-  # nixos (system-manager) modules from /modules/features/
-  flake.nixosModules.systemFeatures.imports =
-    with self.nixosModules;
-    [
+  flake.nixosModules.systemFeatures = {
+    imports = with self.nixosModules; [
       homeManager
       systemGraphics
       apparmor
       systemd
       gdm
-    ]
-    ++ [
-      self.modules.generic."1password"
-      self.modules.generic.goland
-      self.modules.generic.pycharm
-      self.modules.generic.gtk
-      self.modules.generic.delta
-      self.modules.generic.jujutsu
-      self.modules.generic.noctalia
-      self.modules.nixos.keyd
-    ];
-
-  # home(-manager) modules from /modules/features/
-  flake.homeModules.homeFeatures.imports =
-    with self.homeModules;
-    [
+      onepassword
+      goland
+      pycharm
+      gtk
+      delta
+      jujutsu
+      noctalia
+      keyd
       fish
       labwc
       atuin
@@ -45,11 +35,10 @@
       teams
       xdg
       zed
-    ]
-    ++ [
-      self.modules.homeManager.fonts
-      self.modules.homeManager.librewolf
+      fonts
+      librewolf
     ];
+  };
 
   # nixos (system-manager) configuration
   flake.nixosModules.systemConfiguration = { pkgs, ... }: {
@@ -102,8 +91,6 @@
 
   # home(-manager) configuration
   flake.homeModules.homeConfiguration = { pkgs, ... }: {
-    imports = [ self.homeModules.homeFeatures ];
-
     home.packages = [
       # command line tools, etc
       pkgs.gh
@@ -140,7 +127,6 @@
     home.sessionPath = [ "$HOME/.local/bin" ];
     home.sessionVariables = { };
 
-    programs.home-manager.enable = true;
     programs.bat.enable = true;
     programs.eza.enable = true;
     programs.fastfetch.enable = true;
@@ -168,7 +154,6 @@
     };
     programs.television.enable = true;
     programs.zellij.enable = false;
-    programs.delta.enable = true;
     programs.jq.enable = true;
     programs.parallel.enable = true;
     programs.ranger.enable = false;

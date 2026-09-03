@@ -1,4 +1,9 @@
+{ self, ... }:
 {
+  flake.nixosModules.btop = {
+    home-manager.sharedModules = [ self.homeModules.btop ];
+  };
+
   flake.homeModules.btop = {
     programs.btop = {
       enable = true;

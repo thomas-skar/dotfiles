@@ -1,4 +1,9 @@
+{ self, ... }:
 {
+  flake.nixosModules.labwc = {
+    home-manager.sharedModules = [ self.homeModules.labwc ];
+  };
+
   flake.homeModules.labwc = { pkgs, ... }: {
     home.packages = [
       pkgs.labwc-tweaks
@@ -10,7 +15,7 @@
       package = pkgs.labwc;
       autostart = [
         "/opt/intility/idn/Intility.DesktopNotifications.Client.Linux &"
-        "noctalia"
+        "noctalia -d"
       ];
       environment = [
         "XKB_DEFAULT_LAYOUT=no"

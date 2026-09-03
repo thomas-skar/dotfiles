@@ -1,4 +1,4 @@
-{ withSystem, ... }:
+{ self, withSystem, ... }:
 {
   flake-file.inputs.nur = {
     url = "github:nix-community/nur";
@@ -6,8 +6,12 @@
     inputs.flake-parts.follows = "flake-parts";
   };
 
+  flake.nixosModules.librewolf = {
+    home-manager.sharedModules = [ self.homeModules.librewolf ];
+  };
+
   # withSystem is required to use the nur overlay
-  flake.modules.homeManager.librewolf = withSystem "x86_64-linux" (
+  flake.homeModules.librewolf = withSystem "x86_64-linux" (
     { pkgs, ... }: {
       programs.librewolf = {
         enable = true;

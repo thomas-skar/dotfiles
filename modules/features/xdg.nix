@@ -1,6 +1,10 @@
+{ self, ... }:
 {
-  flake.homeModules.xdg = {
+  flake.nixosModules.xdg = {
+    home-manager.sharedModules = [ self.homeModules.xdg ];
+  };
 
+  flake.homeModules.xdg = {
     # TODO: move edge to system ?
     xdg = {
       enable = true;

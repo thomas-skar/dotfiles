@@ -14,12 +14,12 @@
     };
   };
 
-  flake.modules.generic.goland = {
+  flake.nixosModules.goland = {
     imports = [ self.nixosModules.jetbrains ];
     home-manager.sharedModules = [ self.homeModules.goland ];
   };
 
-  flake.modules.generic.pycharm = {
+  flake.nixosModules.pycharm = {
     imports = [ self.nixosModules.jetbrains ];
     home-manager.sharedModules = [ self.homeModules.pycharm ];
   };

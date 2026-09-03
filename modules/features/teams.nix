@@ -1,6 +1,10 @@
+{ self, ... }:
 {
-  flake.homeModules.teams = { pkgs, ... }: {
+  flake.nixosModules.teams = {
+    home-manager.sharedModules = [ self.homeModules.teams ];
+  };
 
+  flake.homeModules.teams = { pkgs, ... }: {
     home.packages = [
       pkgs.teams-for-linux
     ];

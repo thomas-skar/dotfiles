@@ -1,6 +1,5 @@
 {
-
-  flake.modules.nixos.keyd = { pkgs, lib, ... }: {
+  flake.nixosModules.keyd = { pkgs, lib, ... }: {
     environment.systemPackages = [ pkgs.keyd ];
 
     environment.etc."keyd/default.conf".text = ''

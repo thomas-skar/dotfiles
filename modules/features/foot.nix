@@ -1,4 +1,9 @@
+{ self, ... }:
 {
+  flake.nixosModules.foot = {
+    home-manager.sharedModules = [ self.homeModules.foot ];
+  };
+
   flake.homeModules.foot = {
     programs.foot = {
       enable = true;
@@ -9,7 +14,6 @@
         main.initial-color-theme = "dark";
         main.initial-window-size-pixels = "1280x720";
         main.bold-text-in-bright = "no";
-
         # monokai pro
         colors-dark = {
           background = "2D2A2E";

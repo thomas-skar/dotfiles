@@ -1,4 +1,9 @@
+{ self, ... }:
 {
+  flake.nixosModules.displays = {
+    home-manager.sharedModules = [ self.homeModules.displays ];
+  };
+
   flake.homeModules.displays = { pkgs, ... }: {
     home.packages = [
       pkgs.wdisplays

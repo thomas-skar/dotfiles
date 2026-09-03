@@ -1,6 +1,10 @@
+{ self, ... }:
 {
-  flake.homeModules.ssh = {
+  flake.nixosModules.ssh = {
+    home-manager.sharedModules = [ self.homeModules.ssh ];
+  };
 
+  flake.homeModules.ssh = {
     # TODO: move to modules/system ?
     programs.ssh = {
       enable = true;

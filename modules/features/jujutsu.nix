@@ -1,10 +1,10 @@
 { self, ... }:
 {
-  flake.modules.generic.jujutsu = {
-    home-manager.sharedModules = [ self.modules.homeManager.jujutsu ];
+  flake.nixosModules.jujutsu = {
+    home-manager.sharedModules = [ self.homeModules.jujutsu ];
   };
 
-  flake.modules.homeManager.jujutsu = { pkgs, ... }: {
+  flake.homeModules.jujutsu = { pkgs, ... }: {
     home.packages = [
       pkgs.lazyjj
     ];

@@ -1,6 +1,10 @@
+{ self, ... }:
 {
-  flake.homeModules.podman = { pkgs, ... }: {
+  flake.nixosModules.podman = {
+    home-manager.sharedModules = [ self.homeModules.podman ];
+  };
 
+  flake.homeModules.podman = { pkgs, ... }: {
     home.packages = [
       pkgs.shadow
     ];
