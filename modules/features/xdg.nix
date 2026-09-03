@@ -1,16 +1,27 @@
 { self, ... }:
 {
   flake.nixosModules.xdg = {
+    environment.pathsToLink = [
+      "/share/applications"
+      "/share/xdg-desktop-portal"
+    ];
+
     home-manager.sharedModules = [ self.homeModules.xdg ];
   };
 
-  flake.homeModules.xdg = {
+  flake.homeModules.xdg = { pkgs, ... }: {
     # TODO: move edge to system ?
     xdg = {
       enable = true;
-
+      portal = {
+        enable = true;
+        extraPortals = [
+          pkgs.xdg-desktop-portal-wlr
+          pkgs.xdg-desktop-portal-gtk
+        ];
+        config.common.default = "*";
+      };
       localBinInPath = true;
-
       mimeApps = {
         enable = true;
         defaultApplications = {
@@ -23,7 +34,6 @@
           "x-scheme-handler/slack" = "slack.desktop";
         };
       };
-
       desktopEntries = {
         "microsoft-edge" = {
           name = "Microsoft Edge";

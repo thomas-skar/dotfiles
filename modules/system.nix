@@ -45,10 +45,6 @@
     imports = [ self.nixosModules.systemFeatures ];
 
     environment.systemPackages = [ pkgs.coreutils ];
-    environment.pathsToLink = [
-      "/share/applications"
-      "/share/xdg-desktop-portals"
-    ];
 
     nixpkgs.hostPlatform = "x86_64-linux";
     nixpkgs.config.allowUnfree = true;

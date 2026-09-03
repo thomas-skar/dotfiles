@@ -18,8 +18,6 @@
         working-directory = "inherit"; # or home
         keybind = [
           "global:shift+ctrl+alt+super+period=toggle_quick_terminal"
-          "global:shift+ctrl+alt+super+backquote=toggle_quick_terminal"
-          "global:super+backquote=toggle_quick_terminal"
         ];
         key-remap = [ ];
         window-padding-x = 8;
@@ -44,7 +42,7 @@
         shell-integration = "detect";
         shell-integration-features = true;
         gtk-single-instance = "detect";
-        gtk-titlebar = true;
+        gtk-titlebar = false;
         gtk-toolbar-style = "raised";
         gtk-titlebar-style = "native";
         gtk-wide-tabs = true;
