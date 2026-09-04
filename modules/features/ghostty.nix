@@ -18,6 +18,9 @@
         working-directory = "inherit"; # or home
         keybind = [
           "global:shift+ctrl+alt+super+period=toggle_quick_terminal"
+          "shift+ctrl+f=unbind"
+          "shift+ctrl+o=unbind"
+          "shift+ctrl+p=unbind"
         ];
         key-remap = [ ];
         window-padding-x = 8;
