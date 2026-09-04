@@ -12,9 +12,18 @@
         pkgs.nil
         pkgs.nixd
         pkgs.nixfmt
+        pkgs.prettier
+        pkgs.just-lsp
+        pkgs.alejandra
+        pkgs.lua-language-server
+        pkgs.stylua
+        pkgs.oxfmt
         pkgs.fzf
         pkgs.ripgrep
       ];
+      sideloadInitLua = true;
     };
+
+    home.file.".config/nvim/init.lua".source = ./init.lua;
   };
 }
