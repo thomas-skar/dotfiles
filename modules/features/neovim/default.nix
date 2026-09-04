@@ -4,7 +4,7 @@
     home-manager.sharedModules = [ self.homeModules.neovim ];
   };
 
-  flake.homeModules.neovim = { pkgs, ... }: {
+  flake.homeModules.neovim = { pkgs, config, ... }: {
     programs.neovim = {
       enable = true;
       defaultEditor = true;
@@ -24,6 +24,7 @@
       sideloadInitLua = true;
     };
 
-    home.file.".config/nvim/init.lua".source = ./init.lua;
+    home.file.".config/nvim/init.lua".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/init.lua";
   };
 }

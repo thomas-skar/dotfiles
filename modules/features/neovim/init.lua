@@ -3,16 +3,16 @@ if vim.loader then
     vim.loader.enable()
 end
 
+-- options
 vim.g.mapleader = " "
-
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.o.mouse = "a"
 vim.o.breakindent = true
 vim.o.cursorline = true
 vim.o.linebreak = true
 vim.o.list = true
 vim.o.number = true
-vim.o.pumborder = "single"
-vim.o.winborder = "single"
 vim.o.ruler = true
 vim.o.autoindent = true
 vim.o.expandtab = true
@@ -21,6 +21,12 @@ vim.o.incsearch = true
 vim.o.infercase = true
 vim.o.smartcase = true
 vim.o.smartindent = true
+vim.o.spelloptions = 'camel'
+vim.o.virtualedit = 'block'
+vim.o.formatoptions = 'rqnl1j'
+vim.opt.signcolumn = "yes"
+vim.opt.fillchars = "eob: "
+vim.opt.termguicolors = true
 
 -- add plugins
 vim.pack.add({
@@ -32,28 +38,33 @@ vim.pack.add({
     'https://github.com/nvim-mini/mini.notify',
     'https://github.com/nvim-mini/mini.indentscope',
     'https://github.com/nvim-mini/mini.cursorword',
+    'https://github.com/stevearc/oil.nvim',
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-telescope/telescope.nvim",
-    'https://github.com/stevearc/oil.nvim'
+    "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
 })
 
--- color scheme
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        if ev.data.spec.name == "telescope-fzf-native.nvim" and (ev.data.kind == "install" or ev.data.kind == "update") then
+            vim.system({ "make" }, { cwd = ev.data.path })
+        end
+    end
+})
+
+--  setup plugins
 require("monokai-pro").setup({
     filter = "pro",
     devicons = true,
 })
 vim.cmd.colorscheme("monokai-pro")
 
--- icons
 require("mini.icons").setup()
 
--- statusline
 require("mini.statusline").setup()
 
--- tabline
 require("mini.tabline").setup()
 
--- cmdline
 require("mini.cmdline").setup({
     autocomplete = {
         enable = true,
@@ -67,25 +78,60 @@ require("mini.cmdline").setup({
     }
 })
 
--- notify
 require("mini.notify").setup({
     lsp_progress = {
         enable = true
     }
 })
 
--- indentscope
 require("mini.indentscope").setup({
     draw = {
         animation = require('mini.indentscope').gen_animation.none()
     }
 })
 
--- cursorword
 require("mini.cursorword").setup()
 
--- telescope
-require("telescope").setup()
+require("oil").setup({
+    default_file_explorer = true,
+    delete_to_trash = true,
+    view_options = {
+        show_hidden = true,
+    },
+    float = {
+        border = "rounded",
+    },
+})
 
--- oil
-require("oil").setup()
+
+local telescope = require("telescope")
+
+telescope.setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = telescope.actions.close,
+            },
+        },
+    },
+    extensions = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+        }
+    }
+})
+
+telescope.load_extension("fzf")
+
+
+-- keymaps
+vim.keymap.set({"n","v"}, "<C-f>", "/", {desc = "Search (Ctrl+F)"})
+vim.keymap.set({"n"}, "<Esc>", "<CMD>nohlsearch<CR>", {silent = true, desc = "Exit search (ESC)"})
+
+vim.keymap.set({"n","v","i"}, "<C-p>", "<CMD>Telescope find_files<CR>", {desc = "Telescope file picker (Ctrl+P)"})
+vim.keymap.set({"n","v","i"}, "<S-C-f>", "<CMD>Telescope grep_string<CR>", {desc = "Telescope find in files (Ctrl+F)"})
+
+vim.keymap.set({"n","v","i"}, "<C-o>", "<CMD>Oil --float<CR>", {desc = "Open Oil (Ctrl+O)"})
