@@ -8,7 +8,7 @@
     programs.zed-editor = {
       enable = true;
       installRemoteServer = false;
-      defaultEditor = true;
+      defaultEditor = false;
 
       extraPackages = [
         pkgs.nil
