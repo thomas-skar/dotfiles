@@ -40,6 +40,8 @@
       sql
       mise
       python
+      neovim
+      rofi
     ];
   };
 
@@ -137,7 +139,6 @@
       enableFishIntegration = true;
     };
     programs.vim.enable = true;
-    programs.neovim.enable = false;
     programs.yazi.enable = true;
     programs.television.enable = false;
     programs.zellij.enable = false;
