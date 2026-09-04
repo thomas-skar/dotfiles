@@ -102,6 +102,7 @@
             };
           };
           "Lua" = {
+            indent_guides.enabled = true;
             inlay_hints = {
               enabled = true;
               show_type_hints = true;
@@ -109,60 +110,57 @@
               show_other_hints = true;
             };
             format_on_save = "on";
-            formatter.external = {
-              command = "stylua";
-              arguments = [
-                "--syntax=Lua54"
-                "--respect-ignores"
-                "--stdin-filepath"
-                "{buffer_path}"
-                "-"
-              ];
-            };
-          };
-          lsp = {
-            "nil".settings = {
-              formatting.command = [ "nixfmt" ];
-              nix.binary = "/run/system-manager/sw/bin/nix";
-              nix.flake.autoArchive = true;
-              nix.flake.autoEvalInputs = true;
-              nix.flake.nixpkgsInputName = "nixpkgs";
-            };
-            "nixd".settings = {
-              formatting.command = [ "nixfmt" ];
-            };
-            "lua-language-server".settings = {
-              "Lua" = {
-                diagnostics = {
-                  globals = [ "vim" ];
-                };
+            formatter = {
+              external = {
+                command = "stylua";
+                arguments = [ "-" ];
               };
             };
-            edit_predictions = {
-              provider = "copilot";
-              allow_data_collection = "no";
+            document_symbols = "on";
+          };
+        };
+        lsp = {
+          "nil".settings = {
+            formatting.command = [ "nixfmt" ];
+            nix.binary = "/run/system-manager/sw/bin/nix";
+            nix.flake.autoArchive = true;
+            nix.flake.autoEvalInputs = true;
+            nix.flake.nixpkgsInputName = "nixpkgs";
+          };
+          "nixd".settings = {
+            formatting.command = [ "nixfmt" ];
+          };
+          "lua-language-server".settings = {
+            "Lua" = {
+              diagnostics = {
+                globals = [ "vim" ];
+              };
             };
           };
-
-          mutableUserKeymaps = true;
-          userKeymaps = [
-            {
-              context = "Editor";
-              bindings = {
-                alt-left = "editor::MoveToPreviousWordStart";
-                alt-right = "editor::MoveToNextWordEnd";
-                super-left = "editor::MoveToBeginningOfLine";
-                super-right = "editor::MoveToEndOfLine";
-                super-up = "editor::MoveToBeginning";
-                super-down = "editor::MoveToEnd";
-                alt-backspace = "editor::DeleteToPreviousWordStart";
-                super-backspace = "editor::DeleteToBeginningOfLine";
-                shift-super-backspace = "editor::DeleteToEndOfLine";
-              };
-            }
-          ];
+          edit_predictions = {
+            provider = "copilot";
+            allow_data_collection = "no";
+          };
         };
       };
+
+      mutableUserKeymaps = true;
+      userKeymaps = [
+        {
+          context = "Editor";
+          bindings = {
+            alt-left = "editor::MoveToPreviousWordStart";
+            alt-right = "editor::MoveToNextWordEnd";
+            super-left = "editor::MoveToBeginningOfLine";
+            super-right = "editor::MoveToEndOfLine";
+            super-up = "editor::MoveToBeginning";
+            super-down = "editor::MoveToEnd";
+            alt-backspace = "editor::DeleteToPreviousWordStart";
+            super-backspace = "editor::DeleteToBeginningOfLine";
+            shift-super-backspace = "editor::DeleteToEndOfLine";
+          };
+        }
+      ];
     };
   };
 }
