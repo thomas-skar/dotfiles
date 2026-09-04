@@ -130,7 +130,7 @@
             categories = false;
             compact = true;
             fetch_exchange_rates = false;
-            sort_by_usage = false;
+            sort_by_usage = true;
             show_icons = true;
             providers.calculator.global = false;
           };
@@ -145,13 +145,14 @@
           custom_palette = "custom";
           templates = {
             enable_builtin_templates = true;
-            enable_community_templates = false;
             builtin_ids = [
               "gtk3"
               "gtk4"
               "labwc"
               "qt"
             ];
+            enable_community_templates = true;
+            community_ids = [ "rofi" ];
           };
         };
         wallpaper.directory = "/usr/share/backgrounds";
