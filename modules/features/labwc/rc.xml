@@ -11,6 +11,7 @@
   </placement>
 
   <windowSwitcher outlines="yes" preview="yes" unshade="yes">
+    <!-- style: "classic" or "thumbnail" -->
     <osd style="classic" output="all" />
     <fields>
       <field content="icon" width="5%" />
@@ -361,6 +362,11 @@
       </action>
     </keybind>
 
+    <!-- Rofi (Super+Alt+Space) -->
+    <keybind key="W-A-Space">
+      <action name="Execute" command="rofi -show run" />
+    </keybind>
+
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
@@ -409,7 +415,7 @@
     <device>
       <accelProfile>adaptive</accelProfile>
       <naturalScroll>yes</naturalScroll>
-      <pointerSpeed>1.0</pointerSpeed>
+      <pointerSpeed>0.8</pointerSpeed>
       <scrollMethod>twofinger</scrollMethod>
       <tap>yes</tap>
       <tapAndDrag>no</tapAndDrag>

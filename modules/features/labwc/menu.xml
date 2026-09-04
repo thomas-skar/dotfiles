@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <openbox_menu>
   <menu id="root-menu">
+    <item label="Rofi">
+      <action name="Execute" command="rofi -show run" />
+    </item>
+    <separator />
     <item label="Ghostty (Copilot+G)">
       <action name="Execute" command="ghostty" />
     </item>
     <item label="Foot">
       <action name="Execute" command="foot" />
+    </item>
+    <separator />
+    <item label="Start Noctalia">
+      <action name="Execute" command="noctalia -d" />
+    </item>
+    <item label="Reload Noctalia">
+      <action name="Execute" command="noctalia msg config-reload" />
+    </item>
+    <separator />
+    <item label="Restart kanshi">
+      <action name="Execute" command="systemctl --user restart kanshi" />
     </item>
     <separator />
     <item label="Reconfigure (CapsLock+R)">
@@ -16,18 +31,11 @@
     </item>
   </menu>
   <menu id="client-menu">
-    <item label="Minimize">
-      <action name="Iconify" />
-    </item>
-    <item label="Maximize (CapsLock+Enter)">
-      <action name="Maximize" direction="both" />
-    </item>
-    <separator />
-    <item label="Omnipresent">
-      <action name="ToggleOmnipresent" />
-    </item>
-    <item label="Decorations">
+    <item label="Toggle decorations">
       <action name="ToggleDecorations" />
+    </item>
+    <item label="Toggle floating">
+      <action name="ToggleAlwaysOnTop" />
     </item>
     <separator />
     <item label="Close (Meta+Q)">
