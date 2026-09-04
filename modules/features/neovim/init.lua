@@ -1,137 +1,173 @@
+-- 1. vim options
+do
+  if vim.loader then vim.loader.enable() end
 
-if vim.loader then
-    vim.loader.enable()
+  vim.g.mapleader = ' '
+  vim.g.maplocalleader = ' '
+  vim.g.have_nerd_font = true
+  vim.o.number = true -- turn on line numbers
+  vim.o.relativenumber = false -- turn off relative line numbers
+  vim.o.mouse = 'a' -- enable mouse mode
+  vim.o.showmode = false -- handled by statusline
+  vim.o.breakindent = true
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
+  vim.o.signcolumn = 'yes'
+  vim.o.updatetime = 250
+  vim.o.timeoutlen = 300
+  vim.o.splitright = true
+  vim.o.splitbelow = true
+  vim.o.cursorline = true
+  vim.o.scrolloff = 10
+  vim.o.confirm = true
+
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
 end
 
--- options
-vim.g.mapleader = " "
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.o.mouse = "a"
-vim.o.breakindent = true
-vim.o.cursorline = true
-vim.o.linebreak = true
-vim.o.list = true
-vim.o.number = true
-vim.o.ruler = true
-vim.o.autoindent = true
-vim.o.expandtab = true
-vim.o.ignorecase = true
-vim.o.incsearch = true
-vim.o.infercase = true
-vim.o.smartcase = true
-vim.o.smartindent = true
-vim.o.spelloptions = 'camel'
-vim.o.virtualedit = 'block'
-vim.o.formatoptions = 'rqnl1j'
-vim.opt.signcolumn = "yes"
-vim.opt.fillchars = "eob: "
-vim.opt.termguicolors = true
+-- 2. keymaps >:)
+do
+  -- clear search highlight with <Esc>
+  vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- add plugins
-vim.pack.add({
-    "https://github.com/loctvl842/monokai-pro.nvim",
-    'https://github.com/nvim-mini/mini.icons',
-    'https://github.com/nvim-mini/mini.statusline',
-    'https://github.com/nvim-mini/mini.tabline',
-    'https://github.com/nvim-mini/mini.cmdline',
-    'https://github.com/nvim-mini/mini.notify',
-    'https://github.com/nvim-mini/mini.indentscope',
-    'https://github.com/nvim-mini/mini.cursorword',
-    'https://github.com/stevearc/oil.nvim',
-    "https://github.com/nvim-lua/plenary.nvim",
-    "https://github.com/nvim-telescope/telescope.nvim",
-    "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
-})
+  -- search with <Ctrl-F>
+  vim.keymap.set({ 'n', 'v' }, '<C-f>', '/')
 
-vim.api.nvim_create_autocmd("PackChanged", {
-    callback = function(ev)
-        if ev.data.spec.name == "telescope-fzf-native.nvim" and (ev.data.kind == "install" or ev.data.kind == "update") then
-            vim.system({ "make" }, { cwd = ev.data.path })
-        end
+  -- open the telescope file picket with <Ctrl-P>
+  vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', '<CMD>Telescope find_files<CR>')
+
+  -- open the telescope "find in files" with <Shift-Ctrl-F>
+  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-f>', '<CMD>Telescope grep_string<CR>')
+
+  -- open oil with <Ctrl-O>
+  vim.keymap.set({ 'n', 'v', 'i' }, '<C-o>', '<CMD>Oil --float<CR>')
+end
+
+-- 3. plugin pre-reqs
+do
+  local function run_build(name, cmd, cwd)
+    local result = vim.system(cmd, { cwd = cwd }):wait()
+    if result.code ~= 0 then
+      local stderr = result.stderr or ''
+      local stdout = result.stdout or ''
+      local output = stderr ~= '' and stderr or stdout
+      if output == '' then output = 'No output from build command.' end
+      vim.notify(('Build failed for %s:\n%s'):format(name, output), vim.log.levels.ERROR)
     end
-})
+  end
 
---  setup plugins
-require("monokai-pro").setup({
-    filter = "pro",
+  vim.api.nvim_create_autocmd('PackChanged', {
+    callback = function(ev)
+      local name = ev.data.spec.name
+      local kind = ev.data.kind
+      if kind ~= 'install' and kind ~= 'update' then return end
+
+      if name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
+        run_build(name, { 'make' }, ev.data.path)
+        return
+      end
+    end,
+  })
+end
+
+-- 4. plugins
+do
+  -- [[ colorscheme ]]
+  vim.pack.add { 'https://github.com/loctvl842/monokai-pro.nvim' }
+  require('monokai-pro').setup {
+    filter = 'pro',
     devicons = true,
-})
-vim.cmd.colorscheme("monokai-pro")
+  }
+  vim.cmd.colorscheme 'monokai-pro'
 
-require("mini.icons").setup()
+  -- [[ mini ]]
+  vim.pack.add { 'https://github.com/nvim-mini/mini.nvim' }
 
-require("mini.statusline").setup()
+  -- [[ mini icons ]]
+  if vim.g.have_nerd_font then require('mini.icons').setup() end
 
-require("mini.tabline").setup()
+  -- [[ mini statusline ]]
+  require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
 
-require("mini.cmdline").setup({
+  -- [[ mini tabline ]]
+  require('mini.tabline').setup()
+
+  -- [[ mini cmdline ]]
+  require('mini.cmdline').setup {
     autocomplete = {
-        enable = true,
-        map_arrows = true
+      enable = true,
+      map_arrows = true,
     },
     autocorrect = {
-        enable = true
+      enable = true,
     },
     autopeek = {
-        enable = true
-    }
-})
+      enable = true,
+    },
+  }
 
-require("mini.notify").setup({
+  -- [[ mini notify ]]
+  require('mini.notify').setup {
     lsp_progress = {
-        enable = true
-    }
-})
+      enable = true,
+    },
+  }
 
-require("mini.indentscope").setup({
+  -- [[ mini indentscope ]]
+  require('mini.indentscope').setup {
     draw = {
-        animation = require('mini.indentscope').gen_animation.none()
-    }
-})
+      animation = require('mini.indentscope').gen_animation.none(),
+    },
+  }
 
-require("mini.cursorword").setup()
+  -- [[ mini cursorword ]]
+  require('mini.cursorword').setup()
 
-require("oil").setup({
+  -- [[ todo comments]]
+  vim.pack.add { 'https://github.com/folke/todo-comments.nvim' }
+  require('todo-comments').setup { signs = false }
+
+  -- [[ oil  ]]
+  vim.pack.add { 'https://github.com/stevearc/oil.nvim' }
+  require('oil').setup {
     default_file_explorer = true,
     delete_to_trash = true,
     view_options = {
-        show_hidden = true,
+      show_hidden = true,
     },
     float = {
-        border = "rounded",
+      border = 'rounded',
     },
-})
+  }
+end
 
+-- 5. telescope
+do
+  local telescope_plugins = {
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/nvim-telescope/telescope.nvim',
+  }
 
-local telescope = require("telescope")
+  if vim.fn.executable 'make' == 1 then table.insert(telescope_plugins, 'https://github.com/nvim-telescope/telescope-fzf-native.nvim') end
 
-telescope.setup({
+  vim.pack.add(telescope_plugins)
+
+  require('telescope').setup {
     defaults = {
-        mappings = {
-            i = {
-                ["<esc>"] = telescope.actions.close,
-            },
+      mappings = {
+        i = {
+          ['<esc>'] = require('telescope.actions').close,
         },
+      },
     },
     extensions = {
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-        }
-    }
-})
-
-telescope.load_extension("fzf")
-
-
--- keymaps
-vim.keymap.set({"n","v"}, "<C-f>", "/", {desc = "Search (Ctrl+F)"})
-vim.keymap.set({"n"}, "<Esc>", "<CMD>nohlsearch<CR>", {silent = true, desc = "Exit search (ESC)"})
-
-vim.keymap.set({"n","v","i"}, "<C-p>", "<CMD>Telescope find_files<CR>", {desc = "Telescope file picker (Ctrl+P)"})
-vim.keymap.set({"n","v","i"}, "<S-C-f>", "<CMD>Telescope grep_string<CR>", {desc = "Telescope find in files (Ctrl+F)"})
-
-vim.keymap.set({"n","v","i"}, "<C-o>", "<CMD>Oil --float<CR>", {desc = "Open Oil (Ctrl+O)"})
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = 'smart_case',
+      },
+    },
+  }
+  pcall(require('telescope').load_extension, 'fzf')
+end

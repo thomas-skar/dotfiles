@@ -20,6 +20,8 @@
         pkgs.oxfmt
         pkgs.fzf
         pkgs.ripgrep
+        pkgs.gcc
+        pkgs.gnumake # or cmake
       ];
       sideloadInitLua = true;
     };
