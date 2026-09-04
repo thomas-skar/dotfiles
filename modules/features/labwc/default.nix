@@ -4,7 +4,7 @@
     home-manager.sharedModules = [ self.homeModules.labwc ];
   };
 
-  flake.homeModules.labwc = { pkgs, ... }: {
+  flake.homeModules.labwc = { pkgs, config, ... }: {
     home.packages = [
       pkgs.labwc-tweaks
       pkgs.labwc-menu-generator
@@ -24,8 +24,11 @@
       systemd.enable = true;
     };
 
-    home.file.".config/labwc/menu.xml".source = ./menu.xml;
-    home.file.".config/labwc/rc.xml".source = ./rc.xml;
+    home.file.".config/labwc/menu.xml".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/labwc/menu.xml";
+    home.file.".config/labwc/rc.xml".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/labwc/rc.xml";
+
     home.file.".local/share/themes/nix/labwc/themerc".source = ./themerc;
   };
 
