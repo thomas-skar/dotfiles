@@ -9,7 +9,6 @@
       enable = true;
       installRemoteServer = false;
       defaultEditor = false;
-
       extraPackages = [
         pkgs.nil
         pkgs.nixd
@@ -17,6 +16,9 @@
         pkgs.prettier
         pkgs.just-lsp
         pkgs.alejandra
+        pkgs.lua-language-server
+        pkgs.stylua
+        pkgs.oxfmt
       ];
 
       extensions = [
@@ -27,6 +29,7 @@
         "toml"
         "xml"
         "fish"
+        "lua"
       ];
 
       mutableUserSettings = true;
@@ -54,11 +57,9 @@
         autosave = "on_focus_change";
         auto_update = false;
         session.trust_all_worktrees = true;
-
         tabs = {
           show_close_button = "always";
           file_icons = true;
-          # show_branch_status_icon = true;
         };
         status_bar = {
           show_active_file = true;
@@ -75,7 +76,6 @@
           button = true;
           dock = "left";
         };
-
         semantic_tokens = "combined";
         code_lens = "menu";
         prettier.allowed = true;
@@ -101,43 +101,68 @@
               ];
             };
           };
-        };
-        lsp = {
-          "nixd" = {
-            formatting.command = [ "nixfmt" ];
+          "Lua" = {
+            inlay_hints = {
+              enabled = true;
+              show_type_hints = true;
+              show_parameter_hints = true;
+              show_other_hints = true;
+            };
+            format_on_save = "on";
+            formatter.external = {
+              command = "stylua";
+              arguments = [
+                "--syntax=Lua54"
+                "--respect-ignores"
+                "--stdin-filepath"
+                "{buffer_path}"
+                "-"
+              ];
+            };
           };
-          "nil" = {
-            formatting.command = [ "nixfmt" ];
-            nix.binary = "/run/system-manager/sw/bin/nix";
-            nix.flake.autoArchive = true;
-            nix.flake.autoEvalInputs = true;
-            nix.flake.nixpkgsInputName = "nixpkgs";
+          lsp = {
+            "nil".settings = {
+              formatting.command = [ "nixfmt" ];
+              nix.binary = "/run/system-manager/sw/bin/nix";
+              nix.flake.autoArchive = true;
+              nix.flake.autoEvalInputs = true;
+              nix.flake.nixpkgsInputName = "nixpkgs";
+            };
+            "nixd".settings = {
+              formatting.command = [ "nixfmt" ];
+            };
+            "lua-language-server".settings = {
+              "Lua" = {
+                diagnostics = {
+                  globals = [ "vim" ];
+                };
+              };
+            };
+            edit_predictions = {
+              provider = "copilot";
+              allow_data_collection = "no";
+            };
           };
-        };
-        edit_predictions = {
-          provider = "copilot";
-          allow_data_collection = "no";
+
+          mutableUserKeymaps = true;
+          userKeymaps = [
+            {
+              context = "Editor";
+              bindings = {
+                alt-left = "editor::MoveToPreviousWordStart";
+                alt-right = "editor::MoveToNextWordEnd";
+                super-left = "editor::MoveToBeginningOfLine";
+                super-right = "editor::MoveToEndOfLine";
+                super-up = "editor::MoveToBeginning";
+                super-down = "editor::MoveToEnd";
+                alt-backspace = "editor::DeleteToPreviousWordStart";
+                super-backspace = "editor::DeleteToBeginningOfLine";
+                shift-super-backspace = "editor::DeleteToEndOfLine";
+              };
+            }
+          ];
         };
       };
-
-      mutableUserKeymaps = true;
-      userKeymaps = [
-        {
-          context = "Editor";
-          bindings = {
-            alt-left = "editor::MoveToPreviousWordStart";
-            alt-right = "editor::MoveToNextWordEnd";
-            super-left = "editor::MoveToBeginningOfLine";
-            super-right = "editor::MoveToEndOfLine";
-            super-up = "editor::MoveToBeginning";
-            super-down = "editor::MoveToEnd";
-            alt-backspace = "editor::DeleteToPreviousWordStart";
-            super-backspace = "editor::DeleteToBeginningOfLine";
-            shift-super-backspace = "editor::DeleteToEndOfLine";
-          };
-        }
-      ];
     };
-
   };
 }
