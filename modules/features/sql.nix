@@ -14,10 +14,6 @@
 
   flake.homeModules.sql = {
     # pkgs.sqlit-tui
-    programs.uv.tool.packages = [
-      "sqlit"
-      "sqlit-tui"
-      "mssql-python"
-    ];
+    programs.uv.tool.packages = [ "sqlit-tui" ];
   };
 }
