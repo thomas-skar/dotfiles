@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "codeLens.enable": true,
+  "completion.enable": true,
+  "diagnostics.enable": true,
+  "diagnostics.globals": ["vim"],
+  "hint.enable": true,
+  "hint.arrayIndex": "Disable",
+  "hint.paramName": "All",
+  "hint.paramType": true,
+  "hint.setType": true,
+  "signatureHelp.enable": true
+}
