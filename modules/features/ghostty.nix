@@ -18,6 +18,8 @@
         working-directory = "inherit"; # or home
         keybind = [
           "global:shift+ctrl+alt+super+period=toggle_quick_terminal"
+          "shift+ctrl+d=new_split:down"
+          "shift+ctrl+e=unbind"
           "shift+ctrl+f=unbind"
           "shift+ctrl+o=unbind"
           "shift+ctrl+p=unbind"
@@ -31,7 +33,7 @@
         tab-inherit-working-directory = false;
         split-inherit-working-directory = true;
         window-decoration = "server"; # none/auto/client/server
-        window-theme = "auto";
+        window-theme = "ghostty"; # "auto" | "system" | "dark"
         window-new-tab-position = "end";
         window-show-tab-bar = "auto";
         focus-follows-mouse = true;
@@ -39,20 +41,21 @@
         right-click-action = "context-menu";
         quick-terminal-position = "top";
         quick-terminal-size = "60%";
-        gtk-quick-terminal-layer = "overlay";
+        gtk-quick-terminal-layer = "top";
         quick-terminal-autohide = false;
-        quick-terminal-keyboard-interactivity = "on-demand";
+        quick-terminal-keyboard-interactivity = "exclusive"; # "on-demand"
         shell-integration = "detect";
         shell-integration-features = true;
         gtk-single-instance = "detect";
+        gtk-tabs-location = "top"; # "top" | "bottom" | "hidden"
+        gtk-titlebar-hide-when-maximized = false;
         gtk-titlebar = false;
-        gtk-toolbar-style = "raised";
-        gtk-titlebar-style = "native";
-        gtk-wide-tabs = true;
+        gtk-toolbar-style = "flat"; # "flat" | "raised" | "raised-border"
+        gtk-titlebar-style = "native"; # "native" | "tabs"
+        gtk-wide-tabs = false;
         auto-update = "off";
         quit-after-last-window-closed = false;
       };
     };
-
   };
 }
