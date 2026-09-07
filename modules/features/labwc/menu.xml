@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <openbox_menu>
   <menu id="root-menu">
-    <item label="Rofi">
-      <action name="Execute" command="rofi -show run" />
-    </item>
-    <separator />
     <item label="Ghostty (Copilot+G)">
       <action name="Execute" command="ghostty" />
     </item>

@@ -34,7 +34,7 @@
 
   <theme>
     <!-- noctalia vs nix (custom) -->
-    <name>noctalia</name>
+    <name>nix</name>
     <icon>MacTahoe</icon>
     <dropShadows>yes</dropShadows>
     <keepBorder>yes</keepBorder>
@@ -362,11 +362,6 @@
       </action>
     </keybind>
 
-    <!-- Rofi (Super+Alt+Space) -->
-    <keybind key="W-A-Space">
-      <action name="Execute" command="rofi -show run" />
-    </keybind>
-
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher" />
@@ -425,31 +420,19 @@
   </libinput>
 
   <windowRules>
-    <!-- Teams: move to eDP-1 -->
-    <windowRule identifier="teams-for-linux">
-      <action name="MoveToOutput" output="eDP-1" />
-    </windowRule>
-    <!-- Slack: move to eDP-1 -->
+    <!-- Slack: open on eDP-1 -->
     <windowRule identifier="slack">
       <action name="MoveToOutput" output="eDP-1" />
     </windowRule>
-    <!-- Spotify: move to eDP-1 -->
+    <!-- Spotify: open on eDP-1 -->
     <windowRule identifier="spotify">
       <action name="MoveToOutput" output="eDP-1" />
     </windowRule>
-    <!-- Outlook PWA: move to eDP-1 -->
-    <windowRule identifier="msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default">
+    <!-- Proton: open on eDP-1 -->
+    <windowRule identifier="proton-mail">
       <action name="MoveToOutput" output="eDP-1" />
     </windowRule>
 
-    <!-- Ghostty: move to DVI-I-1 -->
-    <windowRule identifier="com.mitchellh.ghostty">
-      <action name="MoveToOutput" output="DVI-I-1" />
-    </windowRule>
-    <!-- Zed: move to DVI-I-1 -->
-    <windowRule identifier="dev.zed.Zed">
-      <action name="MoveToOutput" output="DVI-I-1" />
-    </windowRule>
 
     <!-- Gnome keychain prompt: float window  -->
     <windowRule identifier="gcr-prompter">
@@ -459,6 +442,20 @@
     <windowRule identifier="microsoft-identity-broker">
       <action name="ToggleAlwaysOnTop" />
     </windowRule>
+
+    <!-- Ghostty: disable window decorations -->
+    <windowRule identifier="com.mitchellh.ghostty">
+      <action name="SetDecorations" decorations="border" />
+    </windowRule>
+    <!-- Foot: disable window decorations -->
+    <windowRule identifier="foot">
+      <action name="SetDecorations" decorations="border" />
+    </windowRule>
+    <!-- Zed: disable window decorations -->
+    <windowRule identifier="dev.zed.Zed">
+      <action name="SetDecorations" decorations="border" />
+    </windowRule>
+
   </windowRules>
 
 </labwc_config>
