@@ -43,7 +43,9 @@ check:
 
 # run nix garbage collection
 clean:
-    nix-collect-garbage -d
+    nix-collect-garbage --delete-older-than 1d
+
+alias d := clean
 
 # show nix dependency graph
 tree:

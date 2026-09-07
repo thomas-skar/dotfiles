@@ -1,6 +1,6 @@
 - [ ] noctalia
-  - [ ] launcher .desktop items
-  - [ ] dock icons
+  - [x] launcher .desktop items
+  - [x] dock icons
   - [ ] labwc theme
 - [ ] 1password <-> microsoft-edge
 
