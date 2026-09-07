@@ -24,5 +24,9 @@
       };
     };
 
+    xdg.desktopEntries."Helix" = {
+      name = "Helix";
+      noDisplay = true;
+    };
   };
 }

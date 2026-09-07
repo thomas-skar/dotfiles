@@ -28,5 +28,10 @@
 
     home.file.".config/nvim/init.lua".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/init.lua";
+
+    xdg.desktopEntries."nvim" = {
+      name = "Neovim wrapper";
+      noDisplay = true;
+    };
   };
 }

@@ -41,7 +41,10 @@
       mise
       python
       neovim
-      rofi
+      yazi
+      vim
+      micro
+      shell
     ];
   };
 
@@ -115,38 +118,23 @@
       pkgs.protonmail-desktop
       pkgs.qalculate-gtk
       pkgs.foliate
-      # miscellaneous
-      pkgs.gnome-themes-extra
-      pkgs.whitesur-icon-theme
     ];
 
     home.stateVersion = "26.11"; # TODO ?
     home.sessionPath = [ "$HOME/.local/bin" ];
     home.sessionVariables = { };
 
-    programs.bat.enable = true;
-    programs.eza.enable = true;
     programs.fastfetch.enable = true;
-    programs.fd.enable = true;
     programs.fzf = {
       enable = true;
       enableBashIntegration = false;
       enableFishIntegration = false;
     };
-    programs.ripgrep.enable = true;
-    programs.zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    programs.vim.enable = true;
-    programs.yazi.enable = true;
     programs.television.enable = false;
     programs.zellij.enable = false;
     programs.jq.enable = true;
     programs.parallel.enable = false;
     programs.ranger.enable = false;
-    programs.nix-index.enable = false;
-    programs.micro.enable = true;
   };
 
   # system-manager flake input

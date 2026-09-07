@@ -4,7 +4,12 @@
     home-manager.sharedModules = [ self.homeModules.gtk ];
   };
 
-  flake.homeModules.gtk = {
+  flake.homeModules.gtk = { pkgs, ... }: {
+    home.packages = [
+      pkgs.gnome-themes-extra
+      pkgs.whitesur-icon-theme
+    ];
+
     gtk = {
       enable = true;
 

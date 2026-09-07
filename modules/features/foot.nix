@@ -45,5 +45,16 @@
         };
       };
     };
+
+    xdg.desktopEntries = {
+      footclient = {
+        name = "Foot Client";
+        noDisplay = true;
+      };
+      foot-server = {
+        name = "Foot Server";
+        noDisplay = true;
+      };
+    };
   };
 }

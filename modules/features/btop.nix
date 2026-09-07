@@ -24,5 +24,10 @@
         show_io_stat = true;
       };
     };
+
+    xdg.desktopEntries.btop = {
+      name = "btop++";
+      noDisplay = true;
+    };
   };
 }

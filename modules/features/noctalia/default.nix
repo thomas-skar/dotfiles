@@ -141,6 +141,7 @@
         };
         theme = {
           mode = "dark";
+          shell_mode = "dark";
           source = "custom";
           custom_palette = "custom";
           templates = {
@@ -148,10 +149,10 @@
             builtin_ids = [
               "gtk3"
               "gtk4"
-              "labwc"
               "qt"
+              # "labwc"
             ];
-            enable_community_templates = true;
+            enable_community_templates = false;
             community_ids = [ "rofi" ];
           };
         };
@@ -167,7 +168,6 @@
             show_label = false;
             vpn_status = "both";
           };
-          spacer_start.type = "spacer";
           spacer_end = {
             type = "spacer";
             length = 33;
@@ -178,6 +178,11 @@
           };
         };
       };
+    };
+
+    xdg.desktopEntries."dev.noctalia.Noctalia" = {
+      name = "Noctalia";
+      noDisplay = true;
     };
   };
 }
