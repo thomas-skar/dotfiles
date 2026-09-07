@@ -21,6 +21,12 @@ build:
 
 alias b := build
 
+# update nix flake input
+update input:
+    nix flake update {{input}}
+
+alias u := update
+
 # regen nix flake w/ flake-file
 write:
     nix run .#write-flake
