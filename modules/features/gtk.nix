@@ -7,6 +7,11 @@
   flake.homeModules.gtk = {
     gtk = {
       enable = true;
+
+      colorScheme = "dark";
+      gtk3.colorScheme = "dark";
+      gtk4.colorScheme = "dark";
+
       iconTheme.name = "MacTahoe";
       cursorTheme.name = "Adwaita";
     };
