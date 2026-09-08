@@ -52,7 +52,7 @@
         gtk-titlebar = false;
         gtk-toolbar-style = "flat"; # "flat" | "raised" | "raised-border"
         gtk-titlebar-style = "native"; # "native" | "tabs"
-        gtk-wide-tabs = false;
+        gtk-wide-tabs = true;
         auto-update = "off";
         quit-after-last-window-closed = false;
       };
