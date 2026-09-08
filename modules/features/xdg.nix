@@ -10,19 +10,21 @@
   };
 
   flake.homeModules.xdg =
-    # { pkgs, ... }:
+    { pkgs, ... }:
     {
-      # TODO: move edge to system ?
       xdg = {
         enable = true;
-        # portal = {
-        #   enable = true;
-        #   extraPortals = [
-        #     pkgs.xdg-desktop-portal-wlr
-        #     pkgs.xdg-desktop-portal-gtk
-        #   ];
-        #   config.common.default = "*";
-        # };
+        portal = {
+          # this fixes noctalia launcher/ icons issues for some reason...
+          enable = true;
+          extraPortals = [
+            # TODO: remove extra portals?
+            pkgs.xdg-desktop-portal-wlr
+            pkgs.xdg-desktop-portal-gtk
+            pkgs.xdg-desktop-portal-gnome
+          ];
+          # config.common.default = "*";
+        };
         localBinInPath = true;
         mimeApps = {
           enable = true;
@@ -36,6 +38,7 @@
             "x-scheme-handler/slack" = "slack.desktop";
           };
         };
+        # TODO: move to system ?
         desktopEntries = {
           "microsoft-edge" = {
             name = "Microsoft Edge";
