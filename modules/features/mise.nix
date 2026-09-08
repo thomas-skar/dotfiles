@@ -14,5 +14,10 @@
       enable = true;
       mise.enable = true;
     };
+
+    programs.fish.shellAbbrs = {
+      m = "mise";
+      mr = "mise run";
+    };
   };
 }

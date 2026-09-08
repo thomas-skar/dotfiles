@@ -7,7 +7,6 @@
   flake.homeModules.git = {
     programs.git = {
       enable = true;
-
       # TODO: move to modules/system ?
       settings = {
         user.name = "Thomas Skar";
@@ -16,22 +15,26 @@
       };
     };
 
-    # TODO: separate homeModule
-    programs.lazygit = {
-      enable = true;
-      enableFishIntegration = true;
-      settings = {
-        gui.language = "en";
-        gui.showRandomTip = false;
-        gui.nerdFontsVersion = "3";
-        git.autoFetch = false;
-        update.method = "never";
-        confirmOnQuit = false;
-        quitOnTopLevelReturn = true;
-        disableStartupPopups = true;
-        notARepository = "quit";
-      };
+    programs.fish.shellAbbrs = {
+      gs = "git status -sb";
+      gl = "git --no-pager log --oneline -n 20";
+      glog = "git log --oneline";
+      gif = "git --no-pager diff";
+      gifs = "git --no-pager diff --staged";
+      gb = "git --no-pager branch";
+      gbd = "git branch -D";
+      grv = "git remote -v";
+      gfp = "git fetch --prune";
+      add = "git add";
+      adda = "git add --all";
+      cmt = "git commit -m";
+      pull = "git pull";
+      push = "git push";
+      amend = "git commit --amend";
+      checkout = "git switch";
+      co = "git switch";
+      gco = "git switch";
+      discard = "git restore";
     };
-
   };
 }

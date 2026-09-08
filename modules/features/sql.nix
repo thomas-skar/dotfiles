@@ -15,5 +15,9 @@
   flake.homeModules.sql = {
     # pkgs.sqlit-tui
     programs.uv.tool.packages = [ "sqlit-tui" ];
+
+    programs.fish.shellAbbrs = {
+      sql = "sqlit";
+    };
   };
 }

@@ -25,6 +25,10 @@
       };
     };
 
+    programs.fish.shellAbbrs = {
+      noctx = "oc config unset current-context";
+    };
+
     # https://github.com/derailed/k9s/blob/master/skins/monokai.yaml
     home.file.".config/k9s/skins/monokai.yaml".text = ''
       foreground: &foreground "#ffffff"

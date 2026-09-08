@@ -45,6 +45,8 @@
       vim
       micro
       shell
+      lazygit
+      github
     ];
   };
 
@@ -97,7 +99,6 @@
   flake.homeModules.homeConfiguration = { pkgs, ... }: {
     home.packages = [
       # command line tools, etc
-      pkgs.gh
       pkgs.dust
       pkgs.usage
       pkgs.tokei
@@ -124,7 +125,6 @@
     home.sessionPath = [ "$HOME/.local/bin" ];
     home.sessionVariables = { };
 
-    programs.fastfetch.enable = true;
     programs.fzf = {
       enable = true;
       enableBashIntegration = false;

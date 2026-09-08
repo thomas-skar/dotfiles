@@ -162,5 +162,9 @@
         }
       ];
     };
+
+    programs.fish.shellAbbrs = {
+      zed = "zeditor";
+    };
   };
 }

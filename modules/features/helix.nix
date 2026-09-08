@@ -24,6 +24,10 @@
       };
     };
 
+    programs.fish.shellAbbrs = {
+      helix = "hx";
+    };
+
     xdg.desktopEntries."Helix" = {
       name = "Helix";
       noDisplay = true;
