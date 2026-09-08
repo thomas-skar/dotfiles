@@ -301,22 +301,7 @@
           <action name="Focus" />
         </then>
         <none>
-          <action name="ForEach">
-            <query
-              identifier="msedge-ompifgpmddkgmclendfeacglnodjjndh-Default"
-              focused="no"
-            />
-            <then>
-              <action name="Raise" />
-              <action name="Focus" />
-            </then>
-            <none>
-              <action
-                name="Execute"
-                command="gio launch /home/thomas/.local/share/applications/msedge-ompifgpmddkgmclendfeacglnodjjndh-Default.desktop"
-              />
-            </none>
-          </action>
+          <action name="Execute" command="teams-for-linux" />
         </none>
       </action>
     </keybind>
