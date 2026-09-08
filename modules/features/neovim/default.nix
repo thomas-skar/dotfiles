@@ -18,10 +18,12 @@
         pkgs.lua-language-server
         pkgs.stylua
         pkgs.oxfmt
+        pkgs.gopls
         pkgs.fzf
         pkgs.ripgrep
         pkgs.gcc
         pkgs.gnumake # or cmake
+        pkgs.tree-sitter
       ];
       sideloadInitLua = true;
     };
@@ -30,7 +32,10 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/init.lua";
 
     programs.fish.shellAbbrs = {
+      v = "nvim";
+      "v." = "nvim .";
       nv = "nvim";
+      "nv." = "nvim .";
     };
 
     xdg.desktopEntries."nvim" = {
