@@ -1,13 +1,9 @@
-- [ ] noctalia
-  - [x] launcher .desktop items
-  - [x] dock icons
-  - [ ] labwc theme
 - [ ] 1password <-> microsoft-edge
 
-- [ ] flake.nix: replace nur input with just firefox addons?
 - [ ] fix element-desktop keyring error
 - [ ] fix tutanota-desktop error
 - [ ] ghostty: make the quick terminal keybind work globally (i.e. even when ghostty is not focused)
+- [ ] flake.nix: replace nur input with just firefox addons?
 - [ ] labwc
   - [ ] turn off the "left click on desktop" bind !!!
   - [x] CapsLock+P keybind (power)
@@ -38,3 +34,7 @@
 - [x] podman: fix `podman ps -a` errors (missing root permissions?)
 - [x] flake-parts !!!
 - [x] flake-file
+- [x] noctalia
+  - [x] launcher .desktop items
+  - [x] dock icons
+  - [x] labwc theme
