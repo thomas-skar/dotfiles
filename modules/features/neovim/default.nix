@@ -31,6 +31,9 @@
     home.file.".config/nvim/init.lua".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/init.lua";
 
+    home.file.".config/nvim/lua".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/lua";
+
     programs.fish.shellAbbrs = {
       v = "nvim";
       "v." = "nvim .";
