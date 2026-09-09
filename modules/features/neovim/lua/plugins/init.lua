@@ -1,3 +1,5 @@
+-- TODO: https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
+
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
     local name = ev.data.spec.name
@@ -18,6 +20,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end,
 })
 
+require 'plugins.blink'
 require 'plugins.conform'
 require 'plugins.mini'
 require 'plugins.monokai-pro'

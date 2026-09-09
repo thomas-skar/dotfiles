@@ -2,7 +2,7 @@ vim.pack.add { 'https://github.com/nvim-mini/mini.nvim' }
 
 -- icons
 if vim.g.have_nerd_font then
-  require('mini.icons').setup { style = 'ascii' }
+  require('mini.icons').setup { style = 'glyph' }
   vim.cmd ':lua MiniIcons.mock_nvim_web_devicons()'
 end
 
@@ -27,12 +27,11 @@ require('mini.notify').setup {
   },
 }
 
--- indentscope
-require('mini.indentscope').setup {
-  draw = {
-    animation = require('mini.indentscope').gen_animation.none(),
-  },
-}
-
 -- cursorword
 require('mini.cursorword').setup {}
+
+-- pairs
+require('mini.pairs').setup {}
+
+-- indentscope
+require('mini.indentscope').setup {}

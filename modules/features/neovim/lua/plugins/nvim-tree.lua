@@ -1,3 +1,5 @@
+-- TODO: nvim-tree exploded after :restart
+
 vim.pack.add { 'https://github.com/nvim-tree/nvim-tree.lua' }
 
 require('nvim-tree').setup {
@@ -10,6 +12,7 @@ require('nvim-tree').setup {
     side = 'left',
     number = false,
     cursorline = true,
+    adaptive_size = true,
   },
   update_focused_file = {
     enable = true,

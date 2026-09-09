@@ -9,6 +9,7 @@
       enable = true;
       defaultEditor = true;
       extraPackages = [
+        # language servers, etc
         pkgs.nil
         pkgs.nixd
         pkgs.nixfmt
@@ -19,11 +20,19 @@
         pkgs.stylua
         pkgs.oxfmt
         pkgs.gopls
+        pkgs.taplo
+        pkgs.golangci-lint-langserver
+        pkgs.copilot-language-server
+        # command line tools
         pkgs.fzf
         pkgs.ripgrep
+        pkgs.tree-sitter
+        pkgs.golangci-lint
+        # dependencies
         pkgs.gcc
         pkgs.gnumake # or cmake
-        pkgs.tree-sitter
+        pkgs.rustc
+        pkgs.cargo
       ];
       sideloadInitLua = true;
     };

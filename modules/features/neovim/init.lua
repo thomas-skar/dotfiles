@@ -1,5 +1,7 @@
+-- enable experimental lua module loader
 if vim.loader then vim.loader.enable() end
 
+-- enable experimental ui2
 require('vim._core.ui2').enable {
   enable = true,
 }
@@ -17,7 +19,7 @@ vim.g.have_nerd_font = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- providers?
+-- disable providers?
 vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -30,34 +32,57 @@ vim.opt.relativenumber = false
 vim.opt.showmode = false
 vim.opt.signcolumn = 'yes'
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = false
 vim.opt.winborder = 'rounded'
 vim.opt.pumborder = 'rounded'
 vim.opt.laststatus = 3
+vim.opt.ruler = true
+
+-- indentation
+vim.opt.autoindent = true
 
 -- delays, etc
 vim.o.updatetime = 500
 
--- search
+-- search?
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- scrolling
+vim.opt.scrolloff = 5
 
 -- splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- completion menu
-vim.o.autocomplete = true
+vim.opt.autocomplete = true
 vim.opt.completeopt = 'menu,menuone,noselect,popup'
 
 -- clipboard
 vim.opt.clipboard = 'unnamedplus'
 
--- mouse mode
+-- enable mouse clicks
 vim.opt.mouse = 'a'
+
+-- undofile
+vim.opt.undofile = true
+
+-- hidden characters
+vim.opt.list = false
+vim.opt.listchars:append { eol = '↲', tab = '>-', trail = '~' }
+
+-- navigation (jump between lines with arrow keys)
+vim.opt.whichwrap:append '<,>,[,]'
+
+-- ???
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.virtualedit:append 'onemore'
 
 ------------------------------------------------------------------------------------
 
 require 'autocmds'
 require 'keymaps'
-require 'lsp'
 require 'plugins'
+require 'lsp'
