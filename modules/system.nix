@@ -61,7 +61,10 @@
 
     nix.enable = true;
     nix.settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       trusted-users = [ "thomas" ];
       auto-optimise-store = true;
       trusted-substituters = [
@@ -135,6 +138,8 @@
     programs.jq.enable = true;
     programs.parallel.enable = false;
     programs.ranger.enable = false;
+    programs.man.generateCaches = false;
+
   };
 
   # system-manager flake input
