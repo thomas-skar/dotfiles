@@ -10,11 +10,11 @@ end
 require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
 
 -- notify
-require('mini.notify').setup {
-  lsp_progress = {
-    enable = false,
-  },
-}
+-- require('mini.notify').setup {
+--   lsp_progress = {
+--     enable = false,
+--   },
+-- }
 
 -- cursorword
 require('mini.cursorword').setup {}

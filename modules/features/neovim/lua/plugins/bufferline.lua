@@ -1,3 +1,5 @@
+-- TODO: keymaps to jump between "tabs"?
+
 vim.pack.add { 'https://github.com/akinsho/bufferline.nvim' }
 
 require('bufferline').setup {
@@ -12,10 +14,12 @@ require('bufferline').setup {
     },
     show_buffer_icons = true,
     show_buffer_close_icons = true,
-    separator_style = 'slant',
+    separator_style = 'thin',
     always_show_bufferline = true,
-    -- custom_filter = function(buf_number, buf_numbers)
-    --   if vim.bo[buf_number].filetype == 'NvimTree' then return false end
-    -- end,
+    diagnostics = 'nvim_lsp',
+    show_duplicate_prefix = true,
+    hover = {
+      enabled = true,
+    },
   },
 }

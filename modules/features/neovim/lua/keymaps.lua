@@ -102,8 +102,11 @@ vim.keymap.set('n', '<C-p>', '<CMD>lua Snacks.picker.files()<CR>')
 -- open snacks grep picker with <Shift-Ctrl-F>
 vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
 
--- open snacks help picker <Shift-Ctrl-H>
+-- open snacks help picker with <Shift-Ctrl-H>
 vim.keymap.set('n', '<S-C-h>', '<CMD>lua Snacks.picker.help()<CR>')
+
+-- open snacks lazygit with <Space> -> lg
+vim.keymap.set('n', '<leader>lg', '<CMD>lua Snacks.lazygit()<CR>')
 
 -- open oil with <Ctrl-O>
 vim.keymap.set('n', '<C-o>', '<CMD>Oil --float<CR>')

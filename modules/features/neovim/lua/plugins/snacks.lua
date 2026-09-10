@@ -1,3 +1,5 @@
+-- TODO: <Ctrl-Backspace> in picker insert mode
+
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
 require('snacks').setup {
@@ -8,9 +10,22 @@ require('snacks').setup {
   },
   indent = {
     enabled = true,
+    priority = 1,
+    only_scope = false,
+    only_current = false,
+  },
+  scope = {
+    enabled = true,
+    priority = 200,
+    treesitter = {
+      enabled = true,
+    },
   },
   scroll = {
     enabled = true,
+    animate = {
+      easing = 'linear',
+    },
   },
   picker = {
     focus = 'input',
@@ -70,5 +85,13 @@ require('snacks').setup {
         layout = { preset = 'telescope' },
       },
     },
+  },
+  notifier = {
+    enabled = true,
+    style = 'compact',
+  },
+  lazygit = {
+    enabled = true,
+    configure = true,
   },
 }
