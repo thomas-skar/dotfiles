@@ -47,6 +47,7 @@
       shell
       lazygit
       github
+      fastfetch
     ];
   };
 
