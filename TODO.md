@@ -1,40 +1,10 @@
-- [ ] 1password <-> microsoft-edge
+# TODO
 
-- [ ] fix element-desktop keyring error
-- [ ] fix tutanota-desktop error
-- [ ] ghostty: make the quick terminal keybind work globally (i.e. even when ghostty is not focused)
-- [ ] flake.nix: replace nur input with just firefox addons?
-- [ ] labwc
-  - [ ] turn off the "left click on desktop" bind !!!
-  - [x] CapsLock+P keybind (power)
-  - [x] keybind(s) to cycle through windows (jk)
-  - [x] screenshot keybind (noctalia?)
-  - [x] theme (openbox) !!!
-  - [x] noctalia clipboard manager keybind
-  - [x] custom themerc?
-
----
-
-- [x] docker/podman
-- [x] add script (or justfile recipe) to fix files & directories with broken permissions in /nix/store
-- [x] fix desktop apps that won't open (sandboxing errors)
-- [x] gnome/ gtk/ dconf dark mode
-- [x] gtk/ gnome icon theme (and cursor theme?)
-- [x] change default shell to fish
-- [x] noctalia lock screen: PAM
-- [x] find a way to change the default/ login shell permanently
-- [x] ghostty settings
-- [x] noctalia uses the wrong icon theme when run @ labwc startup?
-- [x] add _something_ to kill gnome-shell (at startup? :)
-  - [x] or every process owned by gdm >:)
-- [x] install fonts (jetbrains mono)
-- [x] zed settings
-- [x] global justfile?
-- [x] noctalia settings
-- [x] podman: fix `podman ps -a` errors (missing root permissions?)
-- [x] flake-parts !!!
-- [x] flake-file
-- [x] noctalia
-  - [x] launcher .desktop items
-  - [x] dock icons
-  - [x] labwc theme
+- [ ] 1password: microsoft-edge sso
+- [ ] ghostty: global quick terminal keybind
+- [ ] labwc: turn off the "left click on desktop" bind
+- [ ] noctalia: only works when launched from ghostty (icons, desktop icons)
+- [ ] element-desktop: fix keyring error(s)
+- [ ] tutanota-desktop: fix error(s)
+- [ ] zed: nix lsp error messages
+- [ ] labwc/ghostty: set default window size
