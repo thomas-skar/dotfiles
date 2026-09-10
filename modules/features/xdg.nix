@@ -15,15 +15,24 @@
       xdg = {
         enable = true;
         portal = {
-          # this fixes noctalia launcher/ icons issues for some reason...
           enable = true;
           extraPortals = [
-            # TODO: remove extra portals?
             pkgs.xdg-desktop-portal-wlr
-            pkgs.xdg-desktop-portal-gtk
-            pkgs.xdg-desktop-portal-gnome
+            # pkgs.xdg-desktop-portal-gtk
+            # pkgs.xdg-desktop-portal-gnome
           ];
-          # config.common.default = "*";
+          config = {
+            common = {
+              default = [
+                "gnome"
+                "gtk"
+              ];
+              "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+            };
+            labwc = {
+              "org.freedesktop.impl.portal.Inhibit" = "none";
+            };
+          };
         };
         localBinInPath = true;
         mimeApps = {
