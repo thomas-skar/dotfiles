@@ -9,17 +9,6 @@ end
 -- statusline
 require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
 
--- tabline
-require('mini.tabline').setup {}
-
--- cmdline
-require('mini.cmdline').setup {
-  autocomplete = {
-    enable = true,
-    map_arrows = true,
-  },
-}
-
 -- notify
 require('mini.notify').setup {
   lsp_progress = {
@@ -32,6 +21,3 @@ require('mini.cursorword').setup {}
 
 -- pairs
 require('mini.pairs').setup {}
-
--- indentscope
-require('mini.indentscope').setup {}

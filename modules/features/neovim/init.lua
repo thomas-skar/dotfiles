@@ -56,7 +56,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- completion menu
-vim.opt.autocomplete = true
+vim.opt.autocomplete = false
 vim.opt.completeopt = 'menu,menuone,noselect,popup'
 
 -- clipboard
@@ -67,6 +67,9 @@ vim.opt.mouse = 'a'
 
 -- undofile
 vim.opt.undofile = true
+
+-- swapfile
+vim.opt.swapfile = false
 
 -- hidden characters
 vim.opt.list = false

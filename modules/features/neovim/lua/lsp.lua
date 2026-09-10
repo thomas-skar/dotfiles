@@ -12,8 +12,9 @@ vim.diagnostic.config {
 -- lsp config
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- TODO: check if blink is installed
--- capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_compatibilities({}, false))
+local ok, cmp = pcall(require, 'blink.cmp')
+
+if ok then capabilities = vim.tbl_deep_extend('force', capabilities, cmp.get_lsp_capabilities({}, false)) end
 
 vim.lsp.config('*', {
   capabilities = capabilities,
