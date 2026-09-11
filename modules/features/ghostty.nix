@@ -10,7 +10,7 @@
       enableFishIntegration = true; # TODO if enabled
       systemd.enable = true;
       settings = {
-        font-family = "JetBrains Mono";
+        font-family = "JetBrainsMono Nerd Font"; # "JetBrains Mono"
         font-thicken = true;
         theme = "Monokai Pro";
         maximize = false;
