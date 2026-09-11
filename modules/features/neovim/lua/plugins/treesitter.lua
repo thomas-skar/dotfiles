@@ -28,6 +28,7 @@ require('nvim-treesitter').install {
   'typescript',
   'xml',
   'yaml',
+  'regex',
 }
 
 ---@param buf integer

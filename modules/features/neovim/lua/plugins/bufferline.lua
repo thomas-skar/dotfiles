@@ -21,5 +21,10 @@ require('bufferline').setup {
     hover = {
       enabled = true,
     },
+    custom_filter = function(buf_number)
+      local name = vim.api.nvim_buf_get_name(buf_number)
+      if name == '' then return false end
+      return true
+    end,
   },
 }

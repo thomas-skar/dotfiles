@@ -23,6 +23,7 @@ vim.keymap.set('n', 'dd', '"_dd')
 vim.keymap.set('n', '<C-f>', '/')
 
 -- clear search highlight with <Esc>
+-- TODO: close lsp, etc popup windows with <Esc>
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- enter command mode with <Shift-Ctrl-P>
@@ -30,9 +31,6 @@ vim.keymap.set('n', '<S-C-p>', ':')
 
 -- save buffer with <Ctrl-S>
 vim.keymap.set('n', '<C-s>', '<CMD>update | redraw<CR>')
-
--- close buffer with <Ctrl-W>
-vim.keymap.set('n', '<C-w>', '<CMD>q<CR>')
 
 -- select line with <Ctrl-L>
 vim.keymap.set('n', '<C-l>', 'V')
@@ -89,27 +87,6 @@ vim.keymap.set('v', '<C-k><C-c>', 'gc')
 -- jump to start/end of file with <Super-Up> and <Super-Down>
 vim.keymap.set('n', '<D-Up>', '<CMD>goto<CR>') -- gg
 vim.keymap.set('n', '<D-Down>', 'G$')
-
-----------------------------------------------------------------------------------------------------
-
--- open snacks file explorer with <Ctrl-E> and <Shift-Ctrl-E>:w
-vim.keymap.set('n', '<C-e>', '<CMD>lua Snacks.explorer.reveal()<CR>')
-vim.keymap.set('n', '<S-C-e>', '<CMD>lua Snacks.explorer.reveal()<CR>')
-
--- open snacks file picker with <Ctrl-P>
-vim.keymap.set('n', '<C-p>', '<CMD>lua Snacks.picker.files()<CR>')
-
--- open snacks grep picker with <Shift-Ctrl-F>
-vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
-
--- open snacks help picker with <Shift-Ctrl-H>
-vim.keymap.set('n', '<S-C-h>', '<CMD>lua Snacks.picker.help()<CR>')
-
--- open snacks lazygit with <Space> -> lg
-vim.keymap.set('n', '<leader>lg', '<CMD>lua Snacks.lazygit()<CR>')
-
--- open oil with <Ctrl-O>
-vim.keymap.set('n', '<C-o>', '<CMD>Oil --float<CR>')
 
 ----------------------------------------------------------------------------------------------------
 

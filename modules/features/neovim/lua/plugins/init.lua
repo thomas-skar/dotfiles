@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end,
 })
 
+require 'plugins.copilot'
 require 'plugins.blink'
 require 'plugins.conform'
 require 'plugins.mini'
@@ -30,3 +31,7 @@ require 'plugins.treesitter'
 require 'plugins.bufferline'
 require 'plugins.snacks'
 require 'plugins.markview'
+require 'plugins.lazydev'
+
+-- require 'plugins.noice'
+-- require 'plugins.lualine'

@@ -2,96 +2,208 @@
 
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
-require('snacks').setup {
-  explorer = {
+---@type snacks.Config
+local opts = {}
+
+opts.explorer = {
+  replace_netrw = false,
+  trash = true,
+}
+
+opts.indent = {
+  enabled = true,
+  animate = {
     enabled = true,
-    replace_netrw = true,
-    trash = true,
-  },
-  indent = {
-    enabled = true,
-    priority = 1,
-    only_scope = false,
-    only_current = false,
   },
   scope = {
     enabled = true,
-    priority = 200,
-    treesitter = {
-      enabled = true,
-    },
-  },
-  scroll = {
-    enabled = true,
-    animate = {
-      easing = 'linear',
-    },
-  },
-  picker = {
-    focus = 'input',
-    actions = {
-      file_picker = function()
-        --@diagnostic disable-next-line
-        Snacks.picker.files()
-      end,
-    },
-    sources = {
-      -- file explorer (tree)
-      explorer = {
-        finder = 'explorer',
-        tree = true,
-        watch = true,
-        follow_file = true,
-        auto_close = false,
-        layout = { preset = 'sidebar', preview = 'main' },
-        win = {
-          input = {
-            keys = {
-              -- don't close explorer with <Esc>
-              ['<Esc>'] = { '', mode = 'n' },
-              -- open file picker with <Ctrl-P>
-              ['<C-p>'] = { 'file_picker' },
-            },
-          },
-          list = {
-            keys = {
-              -- don't close explorer with <Esc>
-              ['<Esc>'] = { '', mode = 'n' },
-              -- open file picker with <Ctrl-P>
-              ['<C-p>'] = { 'file_picker' },
-            },
-          },
-        },
-      },
-      -- file picker (telescope)
-      files = {
-        hidden = true,
-        layout = { preset = 'telescope' },
-        win = {
-          input = {
-            keys = {
-              -- close window with <Esc>
-              ['<Esc>'] = { 'close', mode = 'i' },
-            },
-          },
-        },
-      },
-      -- find in files
-      grep = {
-        layout = { preset = 'telescope' },
-      },
-      -- help picker
-      help = {
-        layout = { preset = 'telescope' },
-      },
-    },
-  },
-  notifier = {
-    enabled = true,
-    style = 'compact',
-  },
-  lazygit = {
-    enabled = true,
-    configure = true,
   },
 }
+
+opts.scope = {
+  enabled = true,
+  treesitter = {
+    enabled = true,
+    injections = true,
+  },
+}
+
+opts.statuscolumn = {
+  enabled = true,
+}
+
+opts.words = {
+  enabled = true,
+}
+
+opts.scroll = {
+  enabled = true,
+  animate = {
+    easing = 'linear',
+  },
+}
+
+opts.notifier = {
+  enabled = true,
+  style = 'compact',
+}
+
+opts.lazygit = {
+  configure = true,
+}
+
+opts.zen = {
+  toggles = {
+    dim = false,
+    git_signs = false,
+    mini_diff_signs = true,
+    diagnostics = true,
+    inlay_hints = true,
+  },
+  center = true,
+  show = {
+    statusline = false,
+    tabline = false,
+  },
+  win = {
+    style = 'zen',
+  },
+}
+
+opts.dashboard = {
+  enabled = true,
+  preset = {
+    pick = nil,
+    keys = {
+      { icon = ' ', key = 'p', desc = 'Open file', action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = ' ', key = 'f', desc = 'Search in files', action = ":lua Snacks.dashboard.pick('live_grep')" },
+      { icon = ' ', key = 'r', desc = 'Recent files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+      { icon = ' ', key = 'o', desc = 'Open file explorer', action = ':Oil' },
+      { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+    },
+    header = nil,
+  },
+  sections = {
+    { section = 'header' },
+    { section = 'keys', gap = 1, padding = 1 },
+  },
+}
+
+opts.styles = {
+  zen = {
+    width = 160, -- up from 120
+    backdrop = {
+      transparent = false,
+    },
+  },
+}
+
+-- TODO: keybinds
+opts.terminal = {
+  win = {
+    style = 'terminal',
+  },
+}
+
+opts.picker = {
+  focus = 'input',
+  actions = {
+    -- open the file picket
+    file_picker = function() Snacks.picker.files() end,
+    -- unfocus picker
+    focus_main = function(picker) vim.api.nvim_set_current_win(picker.main) end,
+  },
+  sources = {
+    files = {
+      hidden = true,
+      layout = { preset = 'telescope' },
+      win = {
+        input = {
+          keys = {
+            -- close window with <Esc>
+            ['<Esc>'] = { 'close', mode = 'i' },
+          },
+        },
+      },
+    },
+    grep = {
+      layout = {
+        preset = 'telescope',
+      },
+    },
+    help = {
+      layout = {
+        preset = 'telescope',
+      },
+    },
+    explorer = {
+      finder = 'explorer',
+      hidden = true,
+      tree = true,
+      watch = true,
+      follow_file = true,
+      jump = {
+        close = true,
+      },
+      layout = {
+        preset = 'sidebar',
+        auto_hide = { 'input' },
+        -- preview = 'main',
+      },
+      win = {
+        input = {
+          keys = {
+            -- don't close explorer with <Esc>
+            -- TODO: clean input!
+            ['<Esc>'] = { '', mode = 'n' },
+            -- open file picker with <Ctrl-P>
+            ['<C-p>'] = { 'file_picker' },
+            -- unfocus explorer with <Ctrl-E>
+            ['<C-e>'] = { 'focus_main' },
+          },
+        },
+        list = {
+          keys = {
+            -- don't close explorer with <Esc>
+            ['<Esc>'] = { '', mode = 'n' },
+            -- open file picker with <Ctrl-P>
+            ['<C-p>'] = { 'file_picker' },
+            -- unfocus explorer with <Ctrl-E>
+            ['<C-e>'] = { 'focus_main' },
+          },
+        },
+      },
+    },
+  },
+}
+
+require('snacks').setup(opts)
+
+-- TODO: close explorer with <Ctrl-E> when it is focused
+
+-- open snacks file picker with <Ctrl-P>
+vim.keymap.set('n', '<C-p>', '<CMD>lua Snacks.picker.files()<CR>')
+
+-- open snacks grep picker with <Shift-Ctrl-F>
+vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
+
+-- open snacks help picker with <Shift-Ctrl-H>
+vim.keymap.set('n', '<S-C-h>', '<CMD>lua Snacks.picker.help()<CR>')
+
+-- open snacks notification history with <Space> -> no
+vim.keymap.set('n', '<leader>no', '<CMD>lua Snacks.picker.notifications()<CR>')
+
+-- open snacks lazygit with <Space> -> lg
+vim.keymap.set('n', '<leader>lg', '<CMD>lua Snacks.lazygit()<CR>')
+
+-- open snacks zen mode with <Space> -> zz
+vim.keymap.set('n', '<leader>zz', '<CMD>lua Snacks.zen()<CR>')
+
+-- (open and) move focus between the snacks explorer and the "main" buffer with <Ctrl-E>
+vim.keymap.set('n', '<C-e>', function()
+  local explorer_pickers = Snacks.picker.get { source = 'explorer' }
+  for _, v in pairs(explorer_pickers) do
+    if not v:is_focused() then v:focus() end
+  end
+  if #explorer_pickers == 0 then Snacks.explorer.reveal() end
+end)

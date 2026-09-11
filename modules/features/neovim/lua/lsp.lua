@@ -28,7 +28,7 @@ vim.lsp.config('lua_ls', {
       codeLens = { enable = true },
       hint = { enable = true, semicolon = 'Disable' },
       diagnostics = {
-        globals = { 'vim' },
+        globals = { 'vim', 'Snacks' },
       },
       workspace = {
         checkThirdParty = false,
@@ -61,6 +61,7 @@ vim.lsp.config('gopls', {
       analyses = {
         unusedparams = true,
         shadow = true,
+        unreachable = true,
       },
       hints = {
         assignVariableTypes = true,
@@ -71,6 +72,16 @@ vim.lsp.config('gopls', {
         parameterNames = true,
         rangeVariableTypes = true,
       },
+      fileWatcher = 'fsnotify',
+      symbolScope = 'all',
+      symbolMatcher = 'FastFuzzy',
+      linksInHover = 'gopls',
+      hoverKind = 'FullDocumentation',
+      diagnosticsTrigger = 'Edit',
+      vulncheck = 'Imports',
+      completeFunctionCalls = true,
+      matcher = 'Fuzzy',
+      newGoFileHeader = true,
     },
   },
 })
@@ -142,6 +153,26 @@ vim.lsp.config('ty', {
   settings = {},
 })
 
+vim.lsp.config('copilot', {
+  cmt = { 'copilot-language-server', '--stdio' },
+  root_markers = { '.git' },
+  init_options = {
+    editorInfo = {
+      name = 'Neovim',
+      version = tostring(vim.version()),
+    },
+    editorPluginInfo = {
+      name = 'Neovim',
+      version = tostring(vim.version()),
+    },
+  },
+  settings = {
+    telemetry = {
+      telemetryLevel = '',
+    },
+  },
+})
+
 -- TODO: copilot ls
 -- TODO: docker ls
 -- TODO: graphql ls ???
@@ -152,4 +183,4 @@ vim.lsp.config('ty', {
 -- TODO: yaml-language-server
 -- TODO: json language server ???
 
-vim.lsp.enable { 'lua_ls', 'gopls', 'nixd', 'golangci_lint_ls', 'stylua', 'ruff', 'taplo', 'ty' }
+vim.lsp.enable { 'lua_ls', 'gopls', 'nixd', 'golangci_lint_ls', 'stylua', 'ruff', 'taplo', 'ty', 'copilot' }

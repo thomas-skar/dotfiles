@@ -24,6 +24,7 @@
         pkgs.golangci-lint-langserver
         pkgs.copilot-language-server
         # command line tools
+        pkgs.jq
         pkgs.fzf
         pkgs.ripgrep
         pkgs.tree-sitter

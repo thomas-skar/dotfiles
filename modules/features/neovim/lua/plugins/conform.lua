@@ -5,6 +5,7 @@ require('conform').setup {
     lua = { 'stylua' },
     go = { 'gofmt', 'goimports' },
     nix = { 'nixfmt' },
+    json = { 'jq' },
   },
   default_format_opts = { lsp_format = 'fallback' },
   format_on_save = { lsp_format = 'fallback' },
