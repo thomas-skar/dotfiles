@@ -27,6 +27,9 @@
     </item>
   </menu>
   <menu id="client-menu">
+    <item label="Toggle fullscreen">
+      <action name="ToggleFullscreen" />
+    </item>
     <item label="Toggle decorations">
       <action name="ToggleDecorations" />
     </item>
