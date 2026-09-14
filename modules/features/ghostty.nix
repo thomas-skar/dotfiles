@@ -18,6 +18,7 @@
         working-directory = "inherit"; # or home
         keybind = [
           "global:shift+ctrl+alt+super+period=toggle_quick_terminal"
+          "ctrl+d=new_split:right"
           "shift+ctrl+d=new_split:down"
           "shift+ctrl+e=unbind"
           "shift+ctrl+f=unbind"
