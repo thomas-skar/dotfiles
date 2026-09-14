@@ -37,7 +37,7 @@ opts.words = {
 }
 
 opts.scroll = {
-  enabled = true,
+  enabled = not vim.g.neovide,
   animate = {
     easing = 'linear',
   },
@@ -143,11 +143,11 @@ opts.picker = {
       watch = true,
       follow_file = true,
       jump = {
-        close = true,
+        close = false,
       },
       layout = {
         preset = 'sidebar',
-        auto_hide = { 'input' },
+        -- auto_hide = { 'input' },
         -- preview = 'main',
       },
       win = {

@@ -22,6 +22,7 @@ require('oil').setup {
   },
   preview_win = {
     update_on_cursor_moved = true,
+    disable_preview = function(filename) return false end,
   },
   keymaps_help = {
     border = 'rounded',
@@ -31,6 +32,7 @@ require('oil').setup {
     ['h'] = { 'actions.show_help', mode = 'n' },
     ['p'] = { 'actions.preview', mode = 'n' },
     ['<CR>'] = 'actions.select',
+    ['<leader>cd'] = { 'actions.cd', mode = 'n' },
   },
 }
 

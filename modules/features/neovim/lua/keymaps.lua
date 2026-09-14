@@ -3,7 +3,8 @@
 -- TODO: move with alt + arrow keys ???
 -- TODO: move between buffers with ???
 -- TODO: duplicate lines with ???
--- TODO: toggle block comments with Ctrl-K --> Ctrl-B
+-- TODO: toggle block comments with Ctrl-K --> Ctrl-B ?
+-- TODO: split right w/ ???
 
 -- unbind <Ctrl-C>
 vim.keymap.set('n', '<C-c>', '<nop>')
@@ -23,8 +24,11 @@ vim.keymap.set('n', 'dd', '"_dd')
 vim.keymap.set('n', '<C-f>', '/')
 
 -- clear search highlight with <Esc>
--- TODO: close lsp, etc popup windows with <Esc>
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- close floating windows with <Esc>
+-- TODO: exclude snacks explorer
+-- vim.keymap.set('n', '<Esc>', '<cmd>fc<CR>')
 
 -- enter command mode with <Shift-Ctrl-P>
 vim.keymap.set('n', '<S-C-p>', ':')
@@ -88,6 +92,8 @@ vim.keymap.set('v', '<C-k><C-c>', 'gc')
 vim.keymap.set('n', '<D-Up>', '<CMD>goto<CR>') -- gg
 vim.keymap.set('n', '<D-Down>', 'G$')
 
+-- split right with <Space> --> sr
+vim.keymap.set('n', '<leader>sr', '<CMD>vsplit<CR>')
 ----------------------------------------------------------------------------------------------------
 
 -- open neovim config file with <Space> -> cf

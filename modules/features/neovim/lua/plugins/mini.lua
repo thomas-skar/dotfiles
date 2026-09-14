@@ -19,35 +19,13 @@ require('mini.pairs').setup {}
 
 -- bufremove
 require('mini.bufremove').setup {}
-
--- close buffer with <Ctrl-W>
-vim.keymap.set('n', '<C-w>', '<CMD>lua MiniBufremove.delete(0, false)<CR>')
-
 -- comment
 require('mini.comment').setup {}
 
 -- trailspace
 require('mini.trailspace').setup {}
 
--- map
-local map = require 'mini.map'
-map.setup {
-  integrations = {
-    map.gen_integration.builtin_search(),
-    map.gen_integration.diff(),
-    map.gen_integration.diagnostic(),
-    map.gen_integration.gitsigns(),
-  },
-  window = {
-    focusable = false,
-    side = 'right',
-    show_integration_count = true,
-    width = 6,
-    winblend = 90,
-  },
-}
+------------------------------------------------------------------------------------
 
--- open map @ startup
-vim.api.nvim_create_autocmd({ 'BufEnter', 'VimEnter' }, {
-  callback = function() require('mini.map').open() end,
-})
+-- close buffer with <Ctrl-W>
+vim.keymap.set('n', '<C-w>', '<CMD>lua MiniBufremove.delete(0, false)<CR>')

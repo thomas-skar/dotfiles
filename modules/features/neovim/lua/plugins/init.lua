@@ -31,7 +31,11 @@ require 'plugins.treesitter'
 require 'plugins.bufferline'
 require 'plugins.snacks'
 require 'plugins.markview'
-require 'plugins.lazydev'
+require 'plugins.lazydev' -- TODO
+require 'plugins.gitsigns'
+require 'plugins.satellite'
 
+-- require 'plugins.hover'
 -- require 'plugins.noice'
 -- require 'plugins.lualine'
+-- require 'plugins.hover'
