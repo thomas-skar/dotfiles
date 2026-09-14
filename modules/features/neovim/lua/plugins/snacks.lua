@@ -179,6 +179,8 @@ opts.picker = {
 
 require('snacks').setup(opts)
 
+------------------------------------------------------------------------------------
+
 -- TODO: close explorer with <Ctrl-E> when it is focused
 
 -- open snacks file picker with <Ctrl-P>
@@ -189,6 +191,9 @@ vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
 
 -- open snacks help picker with <Shift-Ctrl-H>
 vim.keymap.set('n', '<S-C-h>', '<CMD>lua Snacks.picker.help()<CR>')
+
+-- open snacks terminal with <Ctrl-J>
+vim.keymap.set({ 'n', 't' }, '<C-j>', '<CMD>lua Snacks.terminal.toggle()<CR>')
 
 -- open snacks notification history with <Space> -> no
 vim.keymap.set('n', '<leader>no', '<CMD>lua Snacks.picker.notifications()<CR>')
@@ -202,8 +207,25 @@ vim.keymap.set('n', '<leader>zz', '<CMD>lua Snacks.zen()<CR>')
 -- (open and) move focus between the snacks explorer and the "main" buffer with <Ctrl-E>
 vim.keymap.set('n', '<C-e>', function()
   local explorer_pickers = Snacks.picker.get { source = 'explorer' }
+  if #explorer_pickers == 0 then
+    Snacks.explorer.reveal()
+    return
+  end
   for _, v in pairs(explorer_pickers) do
     if not v:is_focused() then v:focus() end
   end
-  if #explorer_pickers == 0 then Snacks.explorer.reveal() end
 end)
+
+------------------------------------------------------------------------------------
+
+-- open the snacks explorer @ startup ONCE
+vim.api.nvim_create_autocmd('VimEnter', {
+  once = true,
+  callback = function()
+    -- local window_id = vim.api.nvim_get_current_win()
+    local explorer_pickers = Snacks.picker.get { source = 'explorer' }
+    if #explorer_pickers == 0 then
+      Snacks.explorer.reveal() -- vim.api.nvim_set_current_win(window_id) -- TODO: focus main buffer
+    end
+  end,
+})

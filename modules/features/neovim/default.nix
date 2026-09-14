@@ -26,6 +26,7 @@
         pkgs.taplo
         pkgs.golangci-lint-langserver
         pkgs.copilot-language-server
+        pkgs.gotools
         # command line tools
         pkgs.jq
         pkgs.fzf
@@ -64,6 +65,7 @@
     programs.neovide = {
       enable = true;
       settings = {
+        fork = true;
         tabs = true;
         font = {
           normal = [ "JetBrainsMono Nerd Font" ];

@@ -4,7 +4,7 @@
 -- TODO: move between buffers with ???
 -- TODO: duplicate lines with ???
 -- TODO: toggle block comments with Ctrl-K --> Ctrl-B ?
--- TODO: split right w/ ???
+-- TODO: enter insert mode from visual mode with "i"
 
 -- unbind <Ctrl-C>
 vim.keymap.set('n', '<C-c>', '<nop>')
@@ -58,9 +58,6 @@ vim.keymap.set('n', '<S-C-z>', '<CMD>redo<CR>')
 -- exit terminal mode with <Esc>
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
--- open terminal with <Ctrl-J>
-vim.keymap.set('n', '<C-j>', '<CMD>split | terminal<CR>')
-
 -- enter visual mode with <Shift-Up>, <Shift-Down>, <Shift-Left>, <Shift-Right>
 vim.keymap.set('n', '<S-Up>', 'v<Up>')
 vim.keymap.set('n', '<S-Down>', 'v<Down>')
@@ -94,6 +91,10 @@ vim.keymap.set('n', '<D-Down>', 'G$')
 
 -- split right with <Space> --> sr
 vim.keymap.set('n', '<leader>sr', '<CMD>vsplit<CR>')
+
+-- enter "visual line" mode with L
+vim.keymap.set('v', 'l', '<S-v>')
+
 ----------------------------------------------------------------------------------------------------
 
 -- open neovim config file with <Space> -> cf

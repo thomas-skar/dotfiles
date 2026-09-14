@@ -90,6 +90,9 @@ vim.opt.smarttab = true
 -- navigation
 vim.opt.virtualedit:append 'onemore'
 
+-- line wrap
+vim.opt.wrap = false
+
 ------------------------------------------------------------------------------------
 
 if vim.g.neovide then
