@@ -292,7 +292,7 @@
         </none>
       </action>
     </keybind>
-    <!-- Run or raise teams-for-linux/PWA (Copilot+T) -->
+    <!-- Run or raise teams-for-linux (Copilot+T) -->
     <keybind key="S-C-A-W-t">
       <action name="ForEach">
         <query identifier="teams-for-linux" focused="no" />
@@ -330,6 +330,32 @@
               />
             </none>
           </action>
+        </none>
+      </action>
+    </keybind>
+    <!-- Run or raise librewolf (Copilot+L) -->
+    <keybind key="S-C-A-W-l">
+      <action name="ForEach">
+        <query identifier="librewolf" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="librewolf" />
+        </none>
+      </action>
+    </keybind>
+    <!-- Run or raise neovide (Copilot+V) -->
+    <keybind key="S-C-A-W-v">
+      <action name="ForEach">
+        <query identifier="neovide" />
+        <then>
+          <action name="Raise" />
+          <action name="Focus" />
+        </then>
+        <none>
+          <action name="Execute" command="neovide" />
         </none>
       </action>
     </keybind>
@@ -395,7 +421,7 @@
     <device>
       <accelProfile>adaptive</accelProfile>
       <naturalScroll>yes</naturalScroll>
-      <pointerSpeed>0.8</pointerSpeed>
+      <pointerSpeed>0.7</pointerSpeed>
       <scrollMethod>twofinger</scrollMethod>
       <tap>yes</tap>
       <tapAndDrag>no</tapAndDrag>
