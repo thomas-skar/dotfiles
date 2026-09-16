@@ -318,7 +318,7 @@
         </then>
         <none>
           <action name="ForEach">
-            <query identifier="md.Obsidian" focused="no" />
+            <query identifier="md.obsidian.Obsidian" focused="no" />
             <then>
               <action name="Raise" />
               <action name="Focus" />
@@ -466,6 +466,11 @@
     <windowRule identifier="dev.zed.Zed">
       <action name="SetDecorations" decorations="border" />
     </windowRule>
+    <!-- Neovide: disable window decorations -->
+    <windowRule identifier="neovide">
+      <action name="SetDecorations" decorations="border" />
+    </windowRule>
+
 
   </windowRules>
 
