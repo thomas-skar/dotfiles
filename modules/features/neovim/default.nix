@@ -27,6 +27,7 @@
         pkgs.golangci-lint-langserver
         pkgs.copilot-language-server
         pkgs.gotools
+        pkgs.basedpyright
         # command line tools
         pkgs.jq
         pkgs.fzf

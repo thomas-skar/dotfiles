@@ -1,4 +1,5 @@
 -- TODO: https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
+-- TODO: lazy loading
 
 require 'plugins.copilot'
 require 'plugins.blink'
@@ -15,7 +16,7 @@ require 'plugins.gitsigns'
 require 'plugins.satellite'
 require 'plugins.lualine'
 require 'plugins.rainbow-delimiters'
-require 'plugins.lazydev' -- TODO
+require 'plugins.lazydev'
 
 -- require 'plugins.hover'
 -- require 'plugins.noice'

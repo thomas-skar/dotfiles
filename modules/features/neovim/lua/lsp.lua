@@ -139,6 +139,29 @@ vim.lsp.config('taplo', {
   root_markers = { '.taplo.toml', 'taplo.toml', '.git' },
 })
 
+vim.lsp.config('basedpyright', {
+  cmd = { 'basedpyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  root_markers = { 'pyproject.toml', 'pyrightconfig.json', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
+  settings = {
+    basedpyright = {
+      analysis = {
+        autoSearchPaths = true,
+        openFilesOnly = true,
+        autoImportCompletions = true,
+        diagnosticMode = 'openFilesOnly',
+        inlayHints = {
+          variableTypes = true,
+          callArgumentTypes = true,
+          functionReturnTypes = true,
+          genericTypes = true,
+        },
+        autoFormatStrings = true,
+      },
+    },
+  },
+})
+
 vim.lsp.config('ruff', {
   cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
@@ -183,4 +206,4 @@ vim.lsp.config('copilot', {
 -- TODO: yaml-language-server
 -- TODO: json language server ???
 
-vim.lsp.enable { 'lua_ls', 'gopls', 'nixd', 'golangci_lint_ls', 'stylua', 'ruff', 'taplo', 'ty', 'copilot' }
+vim.lsp.enable { 'lua_ls', 'gopls', 'nixd', 'golangci_lint_ls', 'stylua', 'ruff', 'taplo', 'ty', 'copilot', 'basedpyright' }

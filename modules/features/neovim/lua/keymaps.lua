@@ -2,7 +2,8 @@
 -- TODO: duplicate lines with ???
 -- TODO: toggle comments with Ctrl-K --> Ctrl-C
 -- TODO: toggle block comments with Ctrl-K --> Ctrl-B ?
--- TODO: close floating windows with <Esc> (:fc)
+-- TODO: close floating windows with <Esc> (:fc) ???
+-- TODO: move lines with <Alt-Up> and <Alt-Down> in visual mode
 
 -- unbind <Ctrl-C>
 vim.keymap.set('n', '<C-c>', '<nop>')
@@ -24,9 +25,6 @@ vim.keymap.set('n', '<C-f>', '/')
 -- clear search highlight with <Esc>
 vim.keymap.set('n', '<Esc>', '<CMD>nohlsearch<CR>')
 
--- enter command mode with <Shift-Ctrl-P>
-vim.keymap.set('n', '<S-C-p>', ':')
-
 -- save buffer with <Ctrl-S>
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<CMD>update | redraw<CR>')
 
@@ -45,6 +43,9 @@ vim.keymap.set('v', '<C-x>', 'x')
 -- paste with <Ctrl-v>
 vim.keymap.set('n', '<C-v>', 'p')
 
+-- paste with <Ctrl-v> in insert mode
+vim.keymap.set('i', '<C-v>', '<C-O>p')
+
 -- undo with <Ctrl-Z>
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-z>', '<CMD>undo<CR>')
 
@@ -52,7 +53,7 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<C-z>', '<CMD>undo<CR>')
 vim.keymap.set({ 'n', 'i', 'v' }, '<S-C-z>', '<CMD>redo<CR>')
 
 -- exit terminal mode with <Esc>
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+-- vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- enter visual mode with <Shift-Up>, <Shift-Down>, <Shift-Left>, <Shift-Right>
 vim.keymap.set('n', '<S-Up>', 'v<Up>')
@@ -79,9 +80,6 @@ vim.keymap.set('i', '<C-BS>', '<C-W>')
 
 -- delete lines with <Super-Backspace>
 vim.keymap.set('i', '<D-BS>', '<C-O>d0')
-
--- close all buffers with <Ctrl-K> --> <Ctrl-W>
-vim.keymap.set('n', '<C-k><C-w>', '<CMD>bufdo bwipeout<CR>')
 
 -- move cursor left/right with <Alt-Left> and <Alt-Right>
 vim.keymap.set({ 'n', 'v' }, '<A-Left>', 'b')
@@ -123,6 +121,11 @@ vim.keymap.set('v', 'i', '<Esc>i')
 -- split window with <Ctrl-Super-Right> and <Ctrl-Super-Down>
 vim.keymap.set('n', '<C-D-Right>', '<CMD>vsplit<CR>')
 vim.keymap.set('n', '<C-D-Down>', '<CMD>split<CR>')
+
+-- search for word under cursor with / in visual mode
+vim.keymap.set('v', '/', '*N')
+
+-- TODO: search for word under cursor with / in normal mode (but allow normal search)
 
 ----------------------------------------------------------------------------------------------------
 
