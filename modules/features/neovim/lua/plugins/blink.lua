@@ -105,14 +105,3 @@ cmp.setup {
     enabled = false,
   },
 }
-
--- pairs
-vim.pack.add {
-  'https://github.com/saghen/blink.lib',
-  { src = 'https://github.com/saghen/blink.pairs', version = vim.version.range '*' },
-}
-
-local pairs = require 'blink.pairs'
-
-pairs.build():pwait(60000)
-pairs.setup {}

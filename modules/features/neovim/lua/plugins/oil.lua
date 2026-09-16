@@ -41,16 +41,5 @@ require('oil').setup {
 
 ------------------------------------------------------------------------------------
 
--- open oil with <Ctrl-O> and <Shift-Ctrl-O>
-vim.keymap.set('n', '<C-o>', '<CMD>Oil<CR>')
+-- open oil with <Shift-Ctrl-O>
 vim.keymap.set('n', '<S-C-o>', '<CMD>Oil<CR>')
-
--- open oil preview automatically
-
--- vim.api.nvim_create_autocmd('User', {
---   pattern = 'OilEnter',
---   callback = vim.schedule_wrap(function(args)
---     local oil = require 'oil'
---     if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then oil.open_preview() end
---   end),
--- })

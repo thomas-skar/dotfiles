@@ -1,4 +1,7 @@
-vim.pack.add { 'https://github.com/zbirenbaum/copilot.lua', 'https://github.com/copilotlsp-nvim/copilot-lsp' }
+vim.pack.add {
+  'https://github.com/zbirenbaum/copilot.lua',
+  'https://github.com/copilotlsp-nvim/copilot-lsp',
+}
 
 require('copilot').setup {
   panel = {
@@ -6,11 +9,30 @@ require('copilot').setup {
   },
   suggestion = {
     enabled = true,
+    auto_trigger = true,
+    hide_during_completion = true,
+    trigger_on_accept = true,
+    keymap = {
+      accept = '<Tab>',
+      dismiss = '<Esc>',
+    },
   },
   nes = {
-    enabled = false, -- TODO:
+    enabled = false,
   },
   server = {
     type = 'binary',
   },
 }
+
+------------------------------------------------------------------------------------
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuOpen',
+  callback = function() vim.b.copilot_suggestion_hidden = true end,
+})
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuClose',
+  callback = function() vim.b.copilot_suggestion_hidden = false end,
+})

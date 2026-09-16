@@ -2,9 +2,7 @@
 if vim.loader then vim.loader.enable() end
 
 -- enable experimental ui2
-require('vim._core.ui2').enable {
-  enable = true,
-}
+require('vim._core.ui2').enable { enable = true }
 
 ------------------------------------------------------------------------------------
 

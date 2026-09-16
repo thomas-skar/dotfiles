@@ -7,17 +7,15 @@ vim.api.nvim_create_autocmd('CursorHold', {
       return
     end
 
-    -- vim.diagnostic.open_float(nil, {
-    --   focusable = false,
-    --   silent = true,
-    --   close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-    --   border = 'rounded',
-    --   source = 'always',
-    --   prefix = ' ',
-    --   scope = 'cursor',
-    -- })
+    local clients = vim.lsp.get_clients { bufnr = 0 }
+    if #clients == 0 then return end
 
-    if next(vim.lsp.get_clients { bufnr = 0 }) ~= nil then vim.lsp.buf.hover { focusable = false, silent = true } end
+    for _, client in pairs(clients) do
+      if client:supports_method(vim.lsp.protocol.Methods.textDocument_hover) then
+        vim.lsp.buf.hover { focusable = false, silent = true }
+        return
+      end
+    end
   end,
 })
 

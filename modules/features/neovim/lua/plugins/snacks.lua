@@ -20,6 +20,10 @@ opts.indent = {
   },
 }
 
+opts.words = {
+  enabled = true,
+}
+
 opts.scope = {
   enabled = true,
   treesitter = {
@@ -108,7 +112,7 @@ opts.terminal = {
 opts.picker = {
   focus = 'input',
   actions = {
-    -- open the file picket
+    -- open the file picker
     file_picker = function() Snacks.picker.files() end,
     -- unfocus picker
     focus_main = function(picker) vim.api.nvim_set_current_win(picker.main) end,
@@ -130,13 +134,30 @@ opts.picker = {
       layout = {
         preset = 'telescope',
       },
+      win = {
+        input = {
+          keys = {
+            -- close window with <Esc>
+            ['<Esc>'] = { 'close', mode = 'i' },
+          },
+        },
+      },
     },
     help = {
       layout = {
         preset = 'telescope',
       },
+      win = {
+        input = {
+          keys = {
+            -- close window with <Esc>
+            ['<Esc>'] = { 'close', mode = 'i' },
+          },
+        },
+      },
     },
     explorer = {
+      focus = 'list',
       finder = 'explorer',
       hidden = true,
       tree = true,
@@ -154,8 +175,7 @@ opts.picker = {
         input = {
           keys = {
             -- don't close explorer with <Esc>
-            -- TODO: clean input!
-            ['<Esc>'] = { '', mode = 'n' },
+            ['<Esc>'] = { '', mode = 'n' }, -- TODO: clear input with <Esc> in insert mode
             -- open file picker with <Ctrl-P>
             ['<C-p>'] = { 'file_picker' },
             -- unfocus explorer with <Ctrl-E>
@@ -189,11 +209,14 @@ vim.keymap.set('n', '<C-p>', '<CMD>lua Snacks.picker.files()<CR>')
 -- open snacks grep picker with <Shift-Ctrl-F>
 vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
 
+-- open snacks buffer picker with <Ctrl-B>
+vim.keymap.set('n', '<C-b>', '<CMD>lua Snacks.picker.buffers()<CR>')
+
 -- open snacks help picker with <Shift-Ctrl-H>
 vim.keymap.set('n', '<S-C-h>', '<CMD>lua Snacks.picker.help()<CR>')
 
--- open snacks terminal with <Ctrl-J>
-vim.keymap.set({ 'n', 't' }, '<C-j>', '<CMD>lua Snacks.terminal.toggle()<CR>')
+-- open snacks terminal with <Ctrl-T>
+vim.keymap.set({ 'n', 't' }, '<C-t>', '<CMD>lua Snacks.terminal.toggle()<CR>')
 
 -- open snacks notification history with <Space> -> no
 vim.keymap.set('n', '<leader>no', '<CMD>lua Snacks.picker.notifications()<CR>')

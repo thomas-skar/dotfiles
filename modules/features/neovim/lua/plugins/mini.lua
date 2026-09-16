@@ -8,9 +8,6 @@ if vim.g.have_nerd_font then
   vim.cmd ':lua MiniIcons.mock_nvim_web_devicons()'
 end
 
--- statusline
-require('mini.statusline').setup { use_icons = vim.g.have_nerd_font }
-
 -- cursorword
 require('mini.cursorword').setup {}
 
@@ -19,6 +16,7 @@ require('mini.pairs').setup {}
 
 -- bufremove
 require('mini.bufremove').setup {}
+
 -- comment
 require('mini.comment').setup {}
 
