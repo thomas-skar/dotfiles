@@ -48,6 +48,7 @@
       lazygit
       github
       fastfetch
+      bruno
     ];
   };
 
@@ -55,7 +56,10 @@
   flake.nixosModules.systemConfiguration = { pkgs, ... }: {
     imports = [ self.nixosModules.systemFeatures ];
 
-    environment.systemPackages = [ pkgs.coreutils ];
+    environment.systemPackages = [
+      pkgs.coreutils
+      pkgs.libinput
+    ];
 
     nixpkgs.hostPlatform = "x86_64-linux";
     nixpkgs.config.allowUnfree = true;
@@ -113,7 +117,6 @@
       pkgs.wl-color-picker
       pkgs.lazyjournal
       # gui applications
-      pkgs.bruno
       pkgs.slack
       pkgs.spotify
       pkgs.localsend
@@ -129,6 +132,7 @@
     home.sessionPath = [ "$HOME/.local/bin" ];
     home.sessionVariables = { };
 
+    # TODO: move programs to separate modules
     programs.fzf = {
       enable = true;
       enableBashIntegration = false;

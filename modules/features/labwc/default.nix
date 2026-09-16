@@ -20,6 +20,7 @@
         "XDG_SESSION_TYPE=wayland"
         "XCURSOR_THEME=Adwaita"
         "QA_QPA_PLATFORM=wayland"
+        "TMPDIR=$HOME/tmp"
       ];
       systemd.enable = true;
     };
