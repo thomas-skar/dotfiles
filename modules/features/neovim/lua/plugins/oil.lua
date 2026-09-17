@@ -22,10 +22,6 @@ require('oil').setup {
   },
   preview_win = {
     update_on_cursor_moved = true,
-    -- disable_preview = function(filename)
-    --   -- TODO: disable preview for directories?
-    --   return false
-    -- end,
   },
   keymaps_help = {
     border = 'rounded',

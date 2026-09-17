@@ -1,9 +1,16 @@
 -- TODO: move with ctrl + arrow keys
--- TODO: duplicate lines with ???
--- TODO: toggle comments with Ctrl-K --> Ctrl-C
--- TODO: toggle block comments with Ctrl-K --> Ctrl-B ?
+-- TODO: duplicate lines with Shift-Alt-Up and Shift-Alt-Down ???
+-- TODO: toggle comments with Ctrl-K --> Ctrl-C (or leader kc)
+-- TODO: toggle block comments with Ctrl-K --> Ctrl-B ? (or leader kb)
 -- TODO: close floating windows with <Esc> (:fc) ???
 -- TODO: move lines with <Alt-Up> and <Alt-Down> in visual mode
+-- TODO: keymap :w in insert mode ?!?!?!?
+-- TODO: select word --> next occurence with <Ctrl-D>
+-- TODO: visual mode, wrap selection: {} [] () "" ''
+-- TODO: go to definition
+-- TODO: copy line with <Ctrl-C>
+-- TODO: cut line with <Ctrl-X>
+-- TODO: select everything with <Ctrl-A>
 
 -- unbind <Ctrl-C>
 vim.keymap.set('n', '<C-c>', '<nop>')
@@ -18,6 +25,9 @@ vim.keymap.set({ 'n', 'v' }, 'd', '"_d')
 vim.keymap.set('n', 'dd', '"_dd')
 
 ----------------------------------------------------------------------------------------------------
+
+-- exit insert mode with <Space> --> jk
+vim.keymap.set('i', '<leader>jk', '<Esc><Esc>')
 
 -- search with <Ctrl-F>
 vim.keymap.set('n', '<C-f>', '/')
@@ -51,9 +61,6 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<C-z>', '<CMD>undo<CR>')
 
 -- redo with <Shift-Ctrl-Z>
 vim.keymap.set({ 'n', 'i', 'v' }, '<S-C-z>', '<CMD>redo<CR>')
-
--- exit terminal mode with <Esc>
--- vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- enter visual mode with <Shift-Up>, <Shift-Down>, <Shift-Left>, <Shift-Right>
 vim.keymap.set('n', '<S-Up>', 'v<Up>')
@@ -122,10 +129,16 @@ vim.keymap.set('v', 'i', '<Esc>i')
 vim.keymap.set('n', '<C-D-Right>', '<CMD>vsplit<CR>')
 vim.keymap.set('n', '<C-D-Down>', '<CMD>split<CR>')
 
--- search for word under cursor with / in visual mode
+-- TODO: normal mode, search for word under cursor with / (but allow normal search)
+
+-- search for word under cursor with / in visual mode (TODO: not wanted behaviour)
 vim.keymap.set('v', '/', '*N')
 
--- TODO: search for word under cursor with / in normal mode (but allow normal search)
+-- show lsp code actions with <Ctrl-.>
+vim.keymap.set({ 'n', 'i' }, '<C-.>', '<CMD>lua vim.lsp.buf.code_action()<CR>')
+
+-- unindent (outdent?) with <Shift-Tab> in insert mode
+vim.keymap.set('i', '<S-Tab>', '<C-D>') -- or <<
 
 ----------------------------------------------------------------------------------------------------
 

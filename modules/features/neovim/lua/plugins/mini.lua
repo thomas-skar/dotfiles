@@ -19,3 +19,8 @@ require('mini.comment').setup {}
 
 -- trailspace
 require('mini.trailspace').setup {}
+
+-- statusline
+if vim.g.statusline == 'mini' then require('mini.statusline').setup {
+  use_icons = vim.g.have_nerd_font,
+} end
