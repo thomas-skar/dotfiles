@@ -28,6 +28,28 @@
         pkgs.copilot-language-server
         pkgs.gotools
         pkgs.basedpyright
+        pkgs.vscode-json-languageserver
+        pkgs.yaml-language-server
+        pkgs.sqls
+        pkgs.bash-language-server
+        pkgs.marksman
+        pkgs.helm-ls
+        pkgs.tombi
+        pkgs.jsonnet-language-server
+        pkgs.ansible-language-server
+        pkgs.tailwindcss-language-server
+        pkgs.vscode-css-languageserver
+        pkgs.terraform-ls
+        pkgs.terraform-lsp
+        pkgs.htmx-lsp
+        pkgs.postgres-language-server
+        pkgs.typescript-language-server
+        pkgs.dockerfile-language-server
+        pkgs.ty
+        pkgs.vscode-langservers-extracted
+        pkgs.docker-language-server
+        pkgs.htmx-lsp2
+        pkgs.cmake-language-server
         # command line tools
         pkgs.jq
         pkgs.fzf
