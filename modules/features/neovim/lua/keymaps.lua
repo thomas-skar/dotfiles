@@ -3,24 +3,20 @@
 -- TODO: toggle comments with Ctrl-K --> Ctrl-C (or leader kc)
 -- TODO: toggle block comments with Ctrl-K --> Ctrl-B ? (or leader kb)
 -- TODO: close floating windows with <Esc> (:fc) ???
--- TODO: move lines with <Alt-Up> and <Alt-Down> in visual mode
 -- TODO: keymap :w in insert mode ?!?!?!?
 -- TODO: select word --> next occurence with <Ctrl-D>
 -- TODO: visual mode, wrap selection: {} [] () "" ''
 -- TODO: go to definition
--- TODO: copy line with <Ctrl-C>
--- TODO: cut line with <Ctrl-X>
--- TODO: select everything with <Ctrl-A>
 
 -- unbind <Ctrl-C>
 vim.keymap.set('n', '<C-c>', '<nop>')
 
--- unbind .
+-- unbind . (???)
 vim.keymap.set('n', '.', '<nop>')
 
 ----------------------------------------------------------------------------------------------------
 
--- override "delete line(s)" to not yank text
+-- override "delete line(s)" to not yank text TODO: expand this to fix quirks
 vim.keymap.set({ 'n', 'v' }, 'd', '"_d')
 vim.keymap.set('n', 'dd', '"_dd')
 
@@ -45,9 +41,11 @@ vim.keymap.set('n', '<C-l>', 'V')
 vim.keymap.set('i', '<C-l>', '<Esc>V')
 
 -- copy with <Ctrl-C>
+vim.keymap.set('n', '<C-c>', 'Vy')
 vim.keymap.set('v', '<C-c>', 'y')
 
 -- cut with <Ctrl-X>
+vim.keymap.set('n', '<C-x>', 'Vx')
 vim.keymap.set('v', '<C-x>', 'x')
 
 -- paste with <Ctrl-v>
@@ -81,6 +79,10 @@ vim.keymap.set('v', '<S-Down>', '<Down>')
 -- move lines up or down with <Alt-Up> and <Alt-Down>
 vim.keymap.set('n', '<A-Up>', 'ddkP')
 vim.keymap.set('n', '<A-Down>', 'ddp')
+
+-- move lines up or down with <Alt-Up> and <Alt-Down> in visual mode
+vim.keymap.set('v', '<A-Up>', ":m '<-2<cr>gv=gv", { silent = true })
+vim.keymap.set('v', '<A-Down>', ":m '>+1<cr>gv=gv", { silent = true })
 
 -- delete words with <Ctrl-Backspace>
 vim.keymap.set('i', '<C-BS>', '<C-W>')
@@ -121,6 +123,7 @@ vim.keymap.set('n', '<leader>sr', '<CMD>vsplit<CR>')
 
 -- enter "visual line mode" in visual mode with L
 vim.keymap.set('v', 'l', '<S-v>')
+vim.keymap.set('v', '<A-Up>', ":m '<-2<cr>gv=gv")
 
 -- enter insert mode from visual mode with i
 vim.keymap.set('v', 'i', '<Esc>i')
@@ -139,6 +142,9 @@ vim.keymap.set({ 'n', 'i' }, '<C-.>', '<CMD>lua vim.lsp.buf.code_action()<CR>')
 
 -- unindent (outdent?) with <Shift-Tab> in insert mode
 vim.keymap.set('i', '<S-Tab>', '<C-D>') -- or <<
+
+-- select everything with <Ctrl-A>
+vim.keymap.set({ 'n', 'v' }, '<C-a>', 'ggVG')
 
 ----------------------------------------------------------------------------------------------------
 

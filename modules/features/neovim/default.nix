@@ -71,6 +71,12 @@
     home.file.".config/nvim/lua".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/lua";
 
+    home.file.".config/nvim/plugin".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/plugin";
+
+    home.file.".config/nvim/ftplugin".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/ftplugin";
+
     programs.fish.shellAbbrs = {
       v = "nvim";
       "v." = "nvim .";

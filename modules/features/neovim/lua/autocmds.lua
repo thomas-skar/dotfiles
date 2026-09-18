@@ -1,3 +1,5 @@
+-- TODO: show diagnostics AND lsp at the same time @ hover
+
 -- show diagnostics/lsp @ hover
 vim.api.nvim_create_autocmd('CursorHold', {
   callback = function()
@@ -12,6 +14,7 @@ vim.api.nvim_create_autocmd('CursorHold', {
 
     for _, client in pairs(clients) do
       if client:supports_method(vim.lsp.protocol.Methods.textDocument_hover) then
+        ---@diagnostic disable-next-line: redundant-parameter
         vim.lsp.buf.hover { focusable = false, silent = true }
         return
       end

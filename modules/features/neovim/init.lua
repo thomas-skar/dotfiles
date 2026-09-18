@@ -123,5 +123,4 @@ end
 
 require 'autocmds'
 require 'keymaps'
-require 'plugins'
 require 'lsp'

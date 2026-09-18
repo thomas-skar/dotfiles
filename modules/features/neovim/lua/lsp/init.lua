@@ -11,7 +11,7 @@ vim.diagnostic.config {
 
 ------------------------------------------------------------------------------------
 
-vim.pack.add { 'https://github.com/neovim/nvim-lspconfig' }
+vim.pack.add { { src = 'https://github.com/neovim/nvim-lspconfig', name = 'lspconfig' } }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local ok, cmp = pcall(require, 'blink.cmp')

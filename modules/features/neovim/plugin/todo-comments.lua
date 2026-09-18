@@ -6,4 +6,7 @@ require('todo-comments').setup {
     multiline = true,
     comments_only = true,
   },
+  keywords = {
+    DOCS = { icon = ' ', color = 'hint' },
+  },
 }

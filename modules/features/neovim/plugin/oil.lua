@@ -4,7 +4,7 @@ vim.pack.add {
 }
 
 require('oil').setup {
-  default_file_explorer = true,
+  default_file_explorer = vim.g.file_explorer == 'oil',
   delete_to_trash = true,
   watch_for_changes = true,
   view_options = { show_hidden = true },

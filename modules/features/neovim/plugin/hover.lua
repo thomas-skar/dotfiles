@@ -1,3 +1,5 @@
+-- TODO: enable, configure
+
 vim.pack.add { 'https://github.com/lewis6991/hover.nvim' }
 
 if vim.g.enable_hover then

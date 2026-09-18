@@ -1,3 +1,4 @@
+-- TODO: move config parts to separate files
 -- TODO: <Ctrl-Backspace> in picker insert mode
 
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
@@ -9,7 +10,7 @@ local opts = {}
 
 ---@type snacks.explorer.Config
 opts.explorer = {
-  replace_netrw = false,
+  replace_netrw = vim.g.file_explorer == 'snacks',
   trash = true,
 }
 
@@ -69,14 +70,15 @@ opts.lazygit = {
   configure = true,
 }
 
+---@type snacks.toggle.Config
+opts.toggle = {
+  enabled = false,
+}
+
 ---@type snacks.zen.Config
 opts.zen = {
   toggles = {
     dim = false,
-    git_signs = false,
-    mini_diff_signs = true,
-    diagnostics = true,
-    -- inlay_hints = true,
   },
   center = true,
   show = {
@@ -95,9 +97,6 @@ opts.dashboard = {
     pick = nil,
     keys = {
       -- TODO: lazygit shortcut?
-      -- TODO: Snacks.picker.projects()
-      -- TODO: Snacks.picker.notifications() ???
-      -- TODO: Snacks.picker.marks()
       { icon = ' ', key = 'p', desc = 'Open file', action = ":lua Snacks.dashboard.pick('files')" },
       {
         icon = '󰙅 ',
@@ -122,6 +121,8 @@ opts.dashboard = {
           -- TODO: close dashboard
         end,
       },
+      { icon = ' ', key = 'g', desc = 'Open lazygit', action = ':lua Snacks.lazygit()' },
+      { icon = ' ', key = 's', desc = 'Switch project', action = ":lua Snacks.dashboard.pick('projects')" },
       { icon = '󰋖 ', key = 'h', desc = 'Show help', action = ":lua Snacks.dashboard.pick('help')" },
       { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
     },
@@ -133,7 +134,6 @@ opts.dashboard = {
   },
 }
 
--- TODO: type ?
 opts.styles = {
   zen = {
     width = 160, -- up from 120
@@ -147,6 +147,7 @@ opts.styles = {
   },
 }
 
+-- TODO: floating terminal ?
 ---@type snacks.terminal.Config
 opts.terminal = {
   win = {
@@ -184,8 +185,8 @@ opts.picker = {
         return
       end
 
-      -- TODO: don't reset cursor position to root dir after <Esc>
       picker:focus('list', { show = true })
+      -- TODO: figure out a way to reset the cursor(line?) position to the current file
     end,
     -- open the file picker
     file_picker = function() Snacks.picker.files() end,
@@ -231,8 +232,7 @@ opts.picker = {
       jump = { close = false },
       layout = {
         preset = 'sidebar',
-        ---@diagnostic disable-next-line: assign-type-mismatch
-        preview = { main = true, enabled = false },
+        preview = 'main',
       },
       win = {
         input = {
@@ -256,17 +256,23 @@ opts.picker = {
             -- disable i
             ['i'] = '',
             -- toggle preview with P
-            ['p'] = 'toggle_preview',
+            ['<S-p>'] = 'toggle_preview',
             -- default: close explorer with Q
             ['q'] = 'close',
           },
         },
         preview = {
           border = 'rounded',
-          focusable = false,
           title = 'PREVIEW',
+          focusable = false,
+          backdrop = false,
         },
       },
+    },
+    projects = {
+      dev = { '~/code' },
+      patterns = { '.git', 'package.json', 'Makefile', 'justfile', 'mise.toml', 'pyproject.toml', 'flake.nix' },
+      recent = true,
     },
   },
 }
@@ -282,41 +288,59 @@ Snacks.setup(opts)
 
 -- TODO: open pickers in other modes (insert, visual, command?)
 
--- open snacks file picker with <Ctrl-P> and <Shift-Ctrl-P>
+-- open file picker with <Ctrl-P> and <Shift-Ctrl-P>
 vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', '<CMD>lua Snacks.picker.files()<CR>')
 vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-p>', '<CMD>lua Snacks.picker.files()<CR>')
 
--- open snacks grep picker with <Shift-Ctrl-F>
+-- open grep picker with <Shift-Ctrl-F>
 vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
 
--- open snacks buffer picker with <Ctrl-B> or <Space> --> bu
+-- open buffer picker with <Ctrl-B> or <Space> --> bu
 vim.keymap.set('n', '<C-b>', '<CMD>lua Snacks.picker.buffers()<CR>')
 vim.keymap.set('n', '<leader>bu', '<CMD>lua Snacks.picker.buffers()<CR>')
 
--- open snacks help picker with <Shift-Ctrl-H>
+-- open help picker with <Shift-Ctrl-H>
 vim.keymap.set('n', '<S-C-h>', '<CMD>lua Snacks.picker.help()<CR>')
 
--- open snacks notification history with <Space> -> no
+-- open notification picker with <Space> -> no
 vim.keymap.set('n', '<leader>no', '<CMD>lua Snacks.picker.notifications()<CR>')
 
--- open snacks lsp config picker with <Space> -> ls
+-- open lsp config picker with <Space> -> ls
 vim.keymap.set('n', '<leader>ls', '<CMD>lua Snacks.picker.lsp_config()<CR>')
 
--- open snacks lsp diagnostics picker with <Space> -> er OR di
+-- open todo comments picker with <Space> -> to(do)
+vim.keymap.set('n', '<leader>to', '<CMD>lua Snacks.picker.todo_comments()<CR>')
+
+-- open projects picker with <Space> -> pr
+vim.keymap.set('n', '<leader>pr', '<CMD>lua Snacks.picker.projects()<CR>')
+
+-- open marks picker with <Space> -> ma
+vim.keymap.set('n', '<leader>ma', '<CMD>lua Snacks.picker.marks()<CR>')
+
+-- open icon picker with <Space> -> ic
+vim.keymap.set('n', '<leader>ic', '<CMD>lua Snacks.picker.icons()<CR>')
+
+-- open picker picker with <Space> -> pi
+vim.keymap.set('n', '<leader>pi', '<CMD>lua Snacks.picker.pickers()<CR>')
+
+-- open lsp diagnostics picker with <Space> -> er OR di
 vim.keymap.set('n', '<leader>er', '<CMD>lua Snacks.picker.diagnostics()<CR>')
 vim.keymap.set('n', '<leader>di', '<CMD>lua Snacks.picker.diagnostics()<CR>')
 
--- open snacks lazygit with <Space> -> lg
+-- open lazygit with <Space> -> lg
 vim.keymap.set('n', '<leader>lg', '<CMD>lua Snacks.lazygit()<CR>')
 
--- open snacks zen mode with <Space> -> zz
+-- toggle zen mode with <Space> -> zz
 vim.keymap.set('n', '<leader>zz', '<CMD>lua Snacks.zen()<CR>')
 
 -- close buffer with <Ctrl-W>
 vim.keymap.set('n', '<C-w>', '<CMD>lua Snacks.bufdelete()<CR>')
 
--- close all buffers with <Ctrl-K> -> <Ctrl-W>
+-- close all buffers with <Ctrl-K> -> <Ctrl-W> OR <Space> -> kw
 vim.keymap.set('n', '<C-k><C-w>', '<CMD>lua Snacks.bufdelete.all()<CR>')
+vim.keymap.set('n', '<space>kw', '<CMD>lua Snacks.bufdelete.all()<CR>')
+
+------------------------------------------------------------------------------------
 
 -- focus/ open snacks terminal with <Ctrl-T> and <Shift-Ctrl-T>
 local open_terminal = function()
@@ -340,25 +364,25 @@ vim.keymap.set({ 'n', 't', 'i', 'v' }, '<S-C-t>', open_terminal)
 
 -- open snacks scratch file(s) with <Space> -> sf
 vim.keymap.set('n', '<leader>sf', function()
-  -- local scratch_files = Snacks.scratch.list()
-  -- if #scratch_files == 0 then
-  --   Snacks.scratch.open()
-  --   return
-  -- end
-
   -- TODO: input to create new scratch file w/ file type
   Snacks.scratch.select()
 end)
 
 -- (open and) move focus between the snacks explorer and the "main" buffer with <Ctrl-E>
 vim.keymap.set('n', '<C-e>', function()
+  ---@type snacks.Picker[]
   local explorer_pickers = Snacks.picker.get { source = 'explorer' }
   if #explorer_pickers == 0 then
     Snacks.explorer.reveal()
     return
   end
+
   for _, v in pairs(explorer_pickers) do
-    if not v:is_focused() then v:focus() end
+    if not v:is_focused() then
+      v:focus() --
+      -- TODO: open preview window
+      -- TODO: refresh(?) preview window (blank preview issue)
+    end
   end
 end)
 
