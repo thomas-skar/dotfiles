@@ -22,8 +22,8 @@ build:
 alias b := build
 
 # update nix flake input
-update input:
-    nix flake update {{input}}
+update input="":
+    nix flake update {{ input }}
 
 alias u := update
 
