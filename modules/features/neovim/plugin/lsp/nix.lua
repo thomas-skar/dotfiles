@@ -1,11 +1,11 @@
 -- nil
-vim.lsp.config('nil', {
+vim.lsp.config('nil_ls', {
   cmd = { 'nil' },
   filetypes = { 'nix' },
   root_markers = { 'flake.nix', '.git' },
 })
 
-vim.lsp.enable 'nil'
+vim.lsp.enable 'nil_ls'
 
 -- nixd
 vim.lsp.config('nixd', {

@@ -1,7 +1,8 @@
--- TODO: show diagnostics AND lsp at the same time @ hover
+-- TODO: show diagnostics AND lsp at the same time @ hover ???
 
 -- show diagnostics/lsp @ hover
 vim.api.nvim_create_autocmd('CursorHold', {
+  pattern = '*',
   callback = function()
     local diags = vim.diagnostic.get(0, { scope = 'cursor' })
     if #diags > 0 then
@@ -17,6 +18,25 @@ vim.api.nvim_create_autocmd('CursorHold', {
         ---@diagnostic disable-next-line: redundant-parameter
         vim.lsp.buf.hover { focusable = false, silent = true }
         return
+      end
+    end
+  end,
+})
+
+-- clear "CursorHold" eventignore @ CursorMoved
+vim.api.nvim_create_autocmd('CursorMoved', {
+  pattern = '*',
+  callback = function()
+    if type(vim.o.eventignore) == 'string' then
+      if vim.o.eventignore == '' then return end
+      if string.find(vim.o.eventignore, 'CursorHold') ~= nil then
+        vim.o.eventignore = vim.o.eventignore:gsub('CursorHold,', ''):gsub('CursorHold', '')
+        return
+      end
+    elseif type(vim.o.eventignore) == 'table' then
+      ---@diagnostic disable-next-line: param-type-mismatch
+      for i, v in ipairs(vim.o.eventignore) do
+        if v == 'CursorHold' then vim.o.eventignore:remove(i) end
       end
     end
   end,

@@ -1,4 +1,6 @@
 -- TODO: move config parts to separate files
+-- TODO: explorer preview: disable for current "main" file?
+-- TODO: open dashboard when closing all other/ last buffer
 -- TODO: <Ctrl-Backspace> in picker insert mode
 
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
@@ -24,7 +26,6 @@ opts.indent = {
     enabled = true,
   },
 }
-
 ---@type snacks.words.Config
 opts.words = {
   enabled = true,
@@ -96,8 +97,9 @@ opts.dashboard = {
   preset = {
     pick = nil,
     keys = {
-      -- TODO: lazygit shortcut?
-      { icon = ' ', key = 'p', desc = 'Open file', action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = ' ', key = 'p', desc = 'Find file', action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = '󰱽 ', key = 'f', desc = 'Search in files', action = ":lua Snacks.dashboard.pick('live_grep')" },
+      { icon = ' ', key = 'r', desc = 'Recent files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
       {
         icon = '󰙅 ',
         key = 'e',
@@ -108,9 +110,7 @@ opts.dashboard = {
           -- TODO: close dashboard
         end,
       },
-      { icon = ' ', key = 'f', desc = 'Search in files', action = ":lua Snacks.dashboard.pick('live_grep')" },
-      { icon = ' ', key = 'r', desc = 'Recent files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
-      { icon = ' ', key = 'o', desc = 'Open file explorer', action = ':Oil' },
+      { icon = ' ', key = 'o', desc = 'Open file explorer', action = ':Oil' },
       {
         icon = ' ',
         key = 't',
@@ -232,7 +232,8 @@ opts.picker = {
       jump = { close = false },
       layout = {
         preset = 'sidebar',
-        preview = 'main',
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        preview = { main = true, enabled = false },
       },
       win = {
         input = {
@@ -327,6 +328,9 @@ vim.keymap.set('n', '<leader>pi', '<CMD>lua Snacks.picker.pickers()<CR>')
 vim.keymap.set('n', '<leader>er', '<CMD>lua Snacks.picker.diagnostics()<CR>')
 vim.keymap.set('n', '<leader>di', '<CMD>lua Snacks.picker.diagnostics()<CR>')
 
+-- open dashboard with <Space> -> da
+vim.keymap.set('n', '<leader>da', '<CMD>lua Snacks.dashboard()<CR>')
+
 -- open lazygit with <Space> -> lg
 vim.keymap.set('n', '<leader>lg', '<CMD>lua Snacks.lazygit()<CR>')
 
@@ -373,6 +377,7 @@ vim.keymap.set('n', '<C-e>', function()
   ---@type snacks.Picker[]
   local explorer_pickers = Snacks.picker.get { source = 'explorer' }
   if #explorer_pickers == 0 then
+    -- TODO: don't focus explorer when revealing it
     Snacks.explorer.reveal()
     return
   end
@@ -387,11 +392,13 @@ vim.keymap.set('n', '<C-e>', function()
 end)
 
 -- open scratch file (with file type input) with <Shift-Ctrl-N>
-vim.keymap.set('n', '<S-C-n>', function()
-  Snacks.input({}, function(value)
-    if value ~= nil then Snacks.scratch.open { ft = value } end
+if vim.g.neovide then
+  vim.keymap.set('n', '<S-C-n>', function()
+    Snacks.input({}, function(value)
+      if value ~= nil then Snacks.scratch.open { ft = value } end
+    end)
   end)
-end)
+end
 
 ------------------------------------------------------------------------------------
 

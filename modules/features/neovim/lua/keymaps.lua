@@ -2,11 +2,11 @@
 -- TODO: duplicate lines with Shift-Alt-Up and Shift-Alt-Down ???
 -- TODO: toggle comments with Ctrl-K --> Ctrl-C (or leader kc)
 -- TODO: toggle block comments with Ctrl-K --> Ctrl-B ? (or leader kb)
--- TODO: close floating windows with <Esc> (:fc) ???
 -- TODO: keymap :w in insert mode ?!?!?!?
 -- TODO: select word --> next occurence with <Ctrl-D>
--- TODO: visual mode, wrap selection: {} [] () "" ''
 -- TODO: go to definition
+-- TODO: toggle floating windows (lsp, diag, etc) with <Shift-K>?
+-- TODO: save all with <Ctrl-S>
 
 -- unbind <Ctrl-C>
 vim.keymap.set('n', '<C-c>', '<nop>')
@@ -21,15 +21,14 @@ vim.keymap.set({ 'n', 'v' }, 'd', '"_d')
 vim.keymap.set('n', 'dd', '"_dd')
 
 ----------------------------------------------------------------------------------------------------
+-- enter insert mode with <Space><Space>
+vim.keymap.set('n', '<leader><space>', 'i')
 
 -- exit insert mode with <Space> --> jk
 vim.keymap.set('i', '<leader>jk', '<Esc><Esc>')
 
 -- search with <Ctrl-F>
 vim.keymap.set('n', '<C-f>', '/')
-
--- clear search highlight with <Esc>
-vim.keymap.set('n', '<Esc>', '<CMD>nohlsearch<CR>')
 
 -- save buffer with <Ctrl-S>
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<CMD>update | redraw<CR>')
@@ -75,14 +74,6 @@ vim.keymap.set('i', '<S-Right>', '<C-O>v<Right>')
 -- override <Shift-Up> and <Shift-Down> in visual mode (default: start/end of file)
 vim.keymap.set('v', '<S-Up>', '<Up>')
 vim.keymap.set('v', '<S-Down>', '<Down>')
-
--- move lines up or down with <Alt-Up> and <Alt-Down>
-vim.keymap.set('n', '<A-Up>', 'ddkP')
-vim.keymap.set('n', '<A-Down>', 'ddp')
-
--- move lines up or down with <Alt-Up> and <Alt-Down> in visual mode
-vim.keymap.set('v', '<A-Up>', ":m '<-2<cr>gv=gv", { silent = true })
-vim.keymap.set('v', '<A-Down>', ":m '>+1<cr>gv=gv", { silent = true })
 
 -- delete words with <Ctrl-Backspace>
 vim.keymap.set('i', '<C-BS>', '<C-W>')
@@ -153,3 +144,47 @@ vim.keymap.set('n', '<leader>so', '<CMD>source $MYVIMRC<CR>')
 
 -- restart neovim with <Space> -> re
 vim.keymap.set('n', '<leader>re', '<CMD>restart!<CR>')
+
+-- enable lsp inlay hints with <Space> -> ih
+vim.keymap.set('n', '<leader>ih', '<CMD>lua vim.lsp.inlay_hint.enable(true)<CR>')
+
+----------------------------------------------------------------------------------------------------
+
+-- close floating windows, clear search highlights, etc with <Esc>
+vim.keymap.set('n', '<Esc>', function()
+  local done = false
+
+  -- close popup windows
+  local wins = vim.api.nvim_list_wins()
+  for _, win in ipairs(wins) do
+    -- don't close snacks windows (explorer)
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.bo[buf].filetype:find 'snacks' then goto continue end
+
+    -- close floating windows
+    local cfg = vim.api.nvim_win_get_config(win)
+    if cfg.relative ~= '' then
+      vim.api.nvim_win_close(win, true)
+      done = true
+    end
+    ::continue::
+  end
+
+  if done then
+    -- NOTE: include CursorHold in eventignore to prevent popup window from reopening immediately
+    if type(vim.o.eventignore) == 'string' then
+      if vim.o.eventignore == '' then
+        vim.o.eventignore = 'CursorHold'
+      else
+        vim.o.eventignore = vim.o.eventignore .. ',CursorHold'
+      end
+    elseif type(vim.o.eventignore) == 'table' then
+      vim.o.eventignore:append 'CursorHold'
+    end
+
+    return
+  end
+
+  -- clear search highlights
+  vim.cmd 'nohlsearch'
+end)

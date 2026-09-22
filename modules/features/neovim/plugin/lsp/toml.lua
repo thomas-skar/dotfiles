@@ -7,4 +7,6 @@ vim.lsp.config('taplo', {
 
 vim.lsp.enable 'taplo'
 
--- tombi TODO:
+-- tombi
+vim.lsp.config('tombi', {})
+vim.lsp.enable 'tombi'

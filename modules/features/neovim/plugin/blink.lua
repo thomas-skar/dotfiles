@@ -77,7 +77,8 @@ cmp.setup {
     },
   },
   sources = {
-    default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+    default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+    -- default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
     providers = {
       cmdline = {
         min_keyword_length = function(ctx)
@@ -85,11 +86,13 @@ cmp.setup {
           return 0
         end,
       },
-      lazydev = {
-        name = 'LazyDev',
-        module = 'lazydev.integrations.blink',
-        score_offset = 100,
-      },
+      -- lazydev = {
+      --   name = 'LazyDev',
+      --   module = 'lazydev.integrations.blink',
+      --   score_offset = 100,
+      --   -- WARN: not sure if this works or not
+      --   enabled = function() return vim.fn.exists ':LazyDev' == 2 end,
+      -- },
       copilot = {
         name = 'copilot',
         module = 'blink-copilot',

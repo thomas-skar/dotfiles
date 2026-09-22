@@ -1,6 +1,8 @@
 -- NOTE: all modules in this directory are sourced automatically @ startup
 
--- TODO: lazy load plugins
+-- TODO: number files so they're imported in the correct order (01_, 02_, etc)
+-- TODO: fix lazydev <-> blink
+-- TODO: lazy load plugins:
 -- DOCS: https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
 
 do
