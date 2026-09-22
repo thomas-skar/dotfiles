@@ -8,13 +8,6 @@
       <action name="Execute" command="foot" />
     </item>
     <separator />
-    <item label="Start Noctalia">
-      <action name="Execute" command="noctalia -d" />
-    </item>
-    <item label="Reload Noctalia">
-      <action name="Execute" command="noctalia msg config-reload" />
-    </item>
-    <separator />
     <item label="Restart kanshi">
       <action name="Execute" command="systemctl --user restart kanshi" />
     </item>
