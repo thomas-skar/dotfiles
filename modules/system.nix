@@ -116,6 +116,7 @@
       pkgs.nix-tree
       pkgs.wl-color-picker
       pkgs.lazyjournal
+      pkgs.doxx
       # gui applications
       pkgs.slack
       pkgs.spotify
