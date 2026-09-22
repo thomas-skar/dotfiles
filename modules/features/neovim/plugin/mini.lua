@@ -45,18 +45,18 @@ require('mini.move').setup {
 
 -- (surround)
 require('mini.surround').setup {
-  custom_surroundings = {
-    -- brackets
-    ['('] = { output = { left = '(', right = ')' } },
-    -- square brackets
-    ['['] = { output = { left = '[', right = ']' } },
-    -- curly brackets
-    ['{'] = { output = { left = '{', right = '}' } },
-    -- single quotes
-    ["'"] = { output = { left = "'", right = "'" } },
-    -- double quotes
-    ['"'] = { output = { left = '"', right = '"' } },
-  },
+  -- custom_surroundings = {
+  --   -- brackets
+  --   ['('] = { output = { left = '(', right = ')' } },
+  --   -- square brackets
+  --   ['['] = { output = { left = '[', right = ']' } },
+  --   -- curly brackets
+  --   ['{'] = { output = { left = '{', right = '}' } },
+  --   -- single quotes
+  --   ["'"] = { output = { left = "'", right = "'" } },
+  --   -- double quotes
+  --   ['"'] = { output = { left = '"', right = '"' } },
+  -- },
   mappings = {
     add = 'sa',
     delete = 'sd',
@@ -81,3 +81,14 @@ require('mini.surround').setup {
 -- vim.keymap.set('v', "'", "sa'")
 -- -- double quotes
 -- vim.keymap.set('v', '"', 'sa"')
+
+local keymap_opts = { expr = false, silent = true, noremap = true }
+
+-- TODO: s does something by default >:(
+vim.keymap.set('x', '"', 'sa"', keymap_opts)
+vim.keymap.set('x', '<', 'sa<', keymap_opts)
+vim.keymap.set('x', "'", "sa'", keymap_opts)
+vim.keymap.set('x', '[[', 'sa[', keymap_opts)
+vim.keymap.set('x', '{', 'sa{', keymap_opts)
+vim.keymap.set('x', '(', 'sa(', keymap_opts)
+vim.keymap.set('x', '`', 'sa`', keymap_opts)
