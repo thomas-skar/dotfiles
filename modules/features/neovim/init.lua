@@ -1,3 +1,5 @@
+-- TODO: copy "minimax" exmaple config structure: https://nvim-mini.org/MiniMax/configs/nvim-0.12/
+
 -- enable experimental lua module loader
 if vim.loader then vim.loader.enable() end
 

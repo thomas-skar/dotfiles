@@ -1,6 +1,7 @@
 -- TODO: move config parts to separate files
 -- TODO: explorer preview: disable for current "main" file?
 -- TODO: open dashboard when closing all other/ last buffer
+--  TODO: if explorer is the last buffer, close it and open the dashboard?
 -- TODO: <Ctrl-Backspace> in picker insert mode
 
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
@@ -147,29 +148,20 @@ opts.styles = {
   },
 }
 
--- TODO: floating terminal ?
 ---@type snacks.terminal.Config
 opts.terminal = {
   win = {
+    -- TODO: floating terminal ?
     style = 'terminal',
     keys = {
       -- close terminal with <Esc>
       term_normal = {
         '<Esc>',
-        function(self)
-          vim.cmd 'stopinsert'
-          self:hide()
-        end,
-        mode = 't',
-        expr = true,
-      },
-      -- TODO: go back to terminal mode with <Esc> ?
-      term_normal_2 = {
-        '<Esc>',
         function(self) self:hide() end,
         mode = { 'n', 'v' },
         expr = true,
       },
+      -- TODO: close terminal with <Esc> in terminal mode (t) IF terminal != lazygit
     },
   },
 }
@@ -210,9 +202,13 @@ opts.picker = {
     help = { layout = { preset = 'telescope' } },
     lazygit = {
       win = {
+        list = {
+          ['<Esc>'] = { '', mode = { 't' } },
+        },
         input = {
           keys = {
             -- TODO: don't close window with <Esc>
+            ['<Esc>'] = { '', mode = { 't' } },
           },
         },
       },
@@ -348,11 +344,10 @@ vim.keymap.set('n', '<space>kw', '<CMD>lua Snacks.bufdelete.all()<CR>')
 
 -- focus/ open snacks terminal with <Ctrl-T> and <Shift-Ctrl-T>
 local open_terminal = function()
-  local term = Snacks.terminal.get()
-  if term == nil then
-    -- .get() creates a new temrinal if none exists
-    return
-  end
+  local term, created = Snacks.terminal.get()
+  if created == true then Snacks.terminal.toggle() end
+
+  if term == nil then return end
 
   -- hide terminal if it's already focused
   if vim.api.nvim_get_current_buf() == term.buf then
@@ -364,7 +359,9 @@ local open_terminal = function()
 end
 
 vim.keymap.set({ 'n', 't', 'i', 'v' }, '<C-t>', open_terminal)
-vim.keymap.set({ 'n', 't', 'i', 'v' }, '<S-C-t>', open_terminal)
+
+-- NOTE: keyind conflicts with "open new tab" in ghostty
+if vim.g.neovide then vim.keymap.set({ 'n', 't', 'i', 'v' }, '<S-C-t>', open_terminal) end
 
 -- open snacks scratch file(s) with <Space> -> sf
 vim.keymap.set('n', '<leader>sf', function()

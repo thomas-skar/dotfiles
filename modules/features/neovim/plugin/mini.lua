@@ -41,54 +41,27 @@ require('mini.move').setup {
   },
 }
 
--- TODO: visual mode, wrap selection: {} [] () "" ''
+-- surround
+if vim.g.surround == 'mini' then
+  require('mini.surround').setup {
+    mappings = {
+      add = 'sa',
+      delete = '', -- sd
+      find = '', -- sf
+      find_left = '', -- sF
+      highlight = '', -- sh
+      replace = '', -- sr
+      suffix_last = '', -- l
+      suffix_next = '', -- n
+    },
+  }
 
--- (surround)
-require('mini.surround').setup {
-  -- custom_surroundings = {
-  --   -- brackets
-  --   ['('] = { output = { left = '(', right = ')' } },
-  --   -- square brackets
-  --   ['['] = { output = { left = '[', right = ']' } },
-  --   -- curly brackets
-  --   ['{'] = { output = { left = '{', right = '}' } },
-  --   -- single quotes
-  --   ["'"] = { output = { left = "'", right = "'" } },
-  --   -- double quotes
-  --   ['"'] = { output = { left = '"', right = '"' } },
-  -- },
-  mappings = {
-    add = 'sa',
-    delete = 'sd',
-    find = 'sf',
-    find_left = 'sF',
-    highlight = 'sh',
-    replace = 'sr',
-    suffix_last = 'l',
-    suffix_next = 'n',
-  },
-  search_method = 'cover',
-}
-
--- -- TODO: fix mappings (use functions?)
--- -- brackets
--- vim.keymap.set('v', '(', 'sa(')
--- -- square brackets
--- vim.keymap.set('v', '[', 'sa[')
--- -- curly brackets
--- vim.keymap.set('v', '{', 'sa{')
--- -- single quotes
--- vim.keymap.set('v', "'", "sa'")
--- -- double quotes
--- vim.keymap.set('v', '"', 'sa"')
-
-local keymap_opts = { expr = false, silent = true, noremap = true }
-
--- TODO: s does something by default >:(
-vim.keymap.set('x', '"', 'sa"', keymap_opts)
-vim.keymap.set('x', '<', 'sa<', keymap_opts)
-vim.keymap.set('x', "'", "sa'", keymap_opts)
-vim.keymap.set('x', '[[', 'sa[', keymap_opts)
-vim.keymap.set('x', '{', 'sa{', keymap_opts)
-vim.keymap.set('x', '(', 'sa(', keymap_opts)
-vim.keymap.set('x', '`', 'sa`', keymap_opts)
+  -- WARN: keybinds doesn't work :(
+  vim.keymap.set('x', '"', 'sa"')
+  vim.keymap.set('x', '<', 'sa<')
+  vim.keymap.set('x', "'", "sa'")
+  vim.keymap.set('x', '[[', 'sa[')
+  vim.keymap.set('x', '{', 'sa{')
+  vim.keymap.set('x', '(', 'sa(')
+  vim.keymap.set('x', '`', 'sa`')
+end

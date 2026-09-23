@@ -1,4 +1,3 @@
--- completion
 vim.pack.add {
   'https://github.com/saghen/blink.lib',
   'https://github.com/saghen/blink.cmp',
@@ -78,7 +77,9 @@ cmp.setup {
   },
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
-    -- default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+    per_filetype = {
+      lua = { inherit_defaults = true, 'lazydev' },
+    },
     providers = {
       cmdline = {
         min_keyword_length = function(ctx)
@@ -86,13 +87,12 @@ cmp.setup {
           return 0
         end,
       },
-      -- lazydev = {
-      --   name = 'LazyDev',
-      --   module = 'lazydev.integrations.blink',
-      --   score_offset = 100,
-      --   -- WARN: not sure if this works or not
-      --   enabled = function() return vim.fn.exists ':LazyDev' == 2 end,
-      -- },
+      lazydev = {
+        name = 'LazyDev',
+        module = 'lazydev.integrations.blink',
+        score_offset = 100,
+        enabled = function() return vim.bo.filetype == 'lua' end,
+      },
       copilot = {
         name = 'copilot',
         module = 'blink-copilot',

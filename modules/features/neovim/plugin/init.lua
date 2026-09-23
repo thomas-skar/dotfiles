@@ -12,6 +12,9 @@ do
   ---@type "snacks"|"oil"|nil
   vim.g.file_explorer = 'oil'
 
+  ---@type "visual"|"mini"|nil
+  vim.g.surround = 'visual'
+
   ---@type boolean|nil
   vim.g.enable_noice = false
 

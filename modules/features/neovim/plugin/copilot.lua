@@ -27,6 +27,7 @@ require('copilot').setup {
 
 ------------------------------------------------------------------------------------
 
+-- DOCS: https://main.cmp.saghen.dev/recipes.html#hide-copilot-on-suggestion
 vim.api.nvim_create_autocmd('User', {
   pattern = 'BlinkCmpMenuOpen',
   callback = function() vim.b.copilot_suggestion_hidden = true end,

@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.highlight.on_yank() end,
 })
 
--- stop the autocomplete popup menu from appearing inside telescope
+-- stop the autocomplete popup menu from appearing inside "telescope"
 vim.api.nvim_create_autocmd('BufEnter', {
   callback = function(ev)
     if vim.bo[ev.buf].buftype ~= '' then vim.bo[ev.buf].autocomplete = false end
