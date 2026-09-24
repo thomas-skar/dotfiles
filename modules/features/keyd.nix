@@ -2,6 +2,12 @@
   flake.nixosModules.keyd = { pkgs, lib, ... }: {
     environment.systemPackages = [ pkgs.keyd ];
 
+    # modifier keys:
+    # C - control
+    # M - meta/ super
+    # A - alt
+    # S - shift
+    # G - altgr
     environment.etc."keyd/default.conf".text = ''
       [ids]
       *
