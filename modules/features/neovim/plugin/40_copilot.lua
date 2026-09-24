@@ -18,7 +18,7 @@ require('copilot').setup {
     },
   },
   nes = {
-    enabled = true,
+    enabled = false,
   },
   server = {
     type = 'binary',

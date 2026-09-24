@@ -1,5 +1,3 @@
--- TODO: show diagnostics AND lsp at the same time @ hover ???
-
 local group = vim.api.nvim_create_augroup('custom', {})
 
 -- show diagnostics/lsp @ hover
