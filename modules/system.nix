@@ -8,8 +8,8 @@
       systemd
       gdm
       onepassword
-      goland
-      pycharm
+      # goland
+      # pycharm
       gtk
       delta
       jujutsu
