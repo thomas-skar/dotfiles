@@ -15,13 +15,21 @@ vim.keymap.set('n', '.', '<nop>')
 -- unbind "s" (delete character under cursor)
 vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 
-----------------------------------------------------------------------------------------------------
+-- unbind all "copilot key" + nunber combinations
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-">', '<Nop>') -- 2
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-#>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-¤>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-%>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-&>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-/>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-(>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-)>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-=>', '<Nop>') -- 9
 
 -- override "delete line(s)" to not yank text TODO: expand this to fix quirks
 vim.keymap.set({ 'n', 'x' }, 'd', '"_d')
 vim.keymap.set('n', 'dd', '"_dd')
 
-----------------------------------------------------------------------------------------------------
 -- enter insert mode with <Space><Space>
 vim.keymap.set('n', '<leader><space>', 'i')
 
@@ -146,8 +154,6 @@ vim.keymap.set('x', '<leader>kc', 'gc')
 -- TODO: toggle block comments with <Space> -> kb
 -- TODO: toggle block comments with Ctrl-K --> Ctrl-B
 
-----------------------------------------------------------------------------------------------------
-
 -- source neovim config with <Space> -> so
 vim.keymap.set('n', '<leader>so', '<CMD>source $MYVIMRC<CR>')
 
@@ -156,8 +162,6 @@ vim.keymap.set('n', '<leader>re', '<CMD>restart!<CR>')
 
 -- enable lsp inlay hints with <Space> -> ih
 vim.keymap.set('n', '<leader>ih', '<CMD>lua vim.lsp.inlay_hint.enable(true)<CR>')
-
-----------------------------------------------------------------------------------------------------
 
 -- close floating windows, clear search highlights, etc with <Esc>
 vim.keymap.set('n', '<Esc>', function()
