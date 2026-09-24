@@ -12,6 +12,9 @@
         user.name = "Thomas Skar";
         user.email = "thomas.skar@intility.no";
         init.defaultBranch = "main";
+        url = {
+          "git@github.com:".insteadOf = "https://github.com";
+        };
       };
     };
 
