@@ -49,6 +49,7 @@
       github
       fastfetch
       bruno
+      bookokrat
     ];
   };
 
