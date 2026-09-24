@@ -1,5 +1,5 @@
--- gopls settings
 return {
+  ---@type lspconfig.settings.gopls
   settings = {
     gopls = {
       semanticTokens = true,

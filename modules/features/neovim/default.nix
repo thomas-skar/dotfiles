@@ -13,52 +13,46 @@
       defaultEditor = true;
       extraPackages = [
         # language servers, etc
+        pkgs.ty
         pkgs.nil
         pkgs.nixd
-        pkgs.nixfmt
-        pkgs.prettier
-        pkgs.just-lsp
-        pkgs.alejandra
-        pkgs.lua-language-server
-        pkgs.stylua
-        pkgs.oxfmt
+        pkgs.ruff
         pkgs.gopls
         pkgs.taplo
-        pkgs.golangci-lint-langserver
-        pkgs.copilot-language-server
-        pkgs.gotools
-        pkgs.basedpyright
-        pkgs.vscode-json-languageserver
-        pkgs.yaml-language-server
-        pkgs.sqls
-        pkgs.bash-language-server
-        pkgs.marksman
-        pkgs.helm-ls
         pkgs.tombi
-        pkgs.jsonnet-language-server
-        pkgs.ansible-language-server
-        pkgs.tailwindcss-language-server
-        pkgs.vscode-css-languageserver
-        pkgs.terraform-ls
-        pkgs.terraform-lsp
-        pkgs.htmx-lsp
-        pkgs.postgres-language-server
-        pkgs.typescript-language-server
-        pkgs.dockerfile-language-server
-        pkgs.ty
-        pkgs.vscode-langservers-extracted
+        pkgs.oxfmt
+        pkgs.oxlint
+        pkgs.nixfmt
+        pkgs.stylua
+        pkgs.just-lsp
+        pkgs.marksman
+        pkgs.alejandra
+        pkgs.typescript_7
+        pkgs.basedpyright
+        pkgs.lua-language-server
+        pkgs.yaml-language-server
         pkgs.docker-language-server
-        pkgs.htmx-lsp2
-        pkgs.cmake-language-server
-        # command line tools
+        pkgs.jsonnet-language-server
+        pkgs.golangci-lint-langserver
+        pkgs.typescript-language-server
+        pkgs.tailwindcss-language-server
+        pkgs.graphql-language-service-cli
+
+        pkgs.vscode-css-languageserver
+        pkgs.vscode-html-languageserver
+        pkgs.vscode-json-languageserver
+        pkgs.vscode-langservers-extracted
+
+        # command line tools, etc
         pkgs.jq
         pkgs.fzf
         pkgs.ripgrep
+        pkgs.gotools
         pkgs.tree-sitter
         pkgs.golangci-lint
+
         # dependencies
         pkgs.gcc
-        pkgs.gnumake # or cmake
         pkgs.rustc
         pkgs.cargo
       ];

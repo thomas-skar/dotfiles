@@ -15,7 +15,7 @@ vim.lsp.enable {
   'lua_ls',
   'stylua',
   'nil_ls',
-  -- 'nixd',
+  'nixd',
   'ruff',
   'ty',
   'basedpyright',
@@ -25,7 +25,13 @@ vim.lsp.enable {
   'ts_ls',
   'oxlint',
   'oxfmt',
-  'yaml-language-server',
+  'docker_language_server',
+  'yamlls',
+  'cssls',
+  'graphql',
+  'tailwindcss',
+  'jsonnet_ls',
+  'marksman',
 }
 
 vim.lsp.inlay_hint.enable(true)

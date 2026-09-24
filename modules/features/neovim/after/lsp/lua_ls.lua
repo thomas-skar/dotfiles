@@ -1,5 +1,5 @@
--- lua_ls settings
 return {
+  ---@type lspconfig.settings.lua_ls
   settings = {
     Lua = {
       codeLens = { enable = true },
