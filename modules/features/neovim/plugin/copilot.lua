@@ -18,9 +18,16 @@ require('copilot').setup {
     },
   },
   nes = {
-    enabled = false,
+    enabled = true,
   },
   server = {
     type = 'binary',
+  },
+  server_opts_overrides = {
+    settings = {
+      telemetry = {
+        telemetryLevel = 'off', -- default: "all"
+      },
+    },
   },
 }
