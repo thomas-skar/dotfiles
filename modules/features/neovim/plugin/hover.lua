@@ -2,7 +2,7 @@
 
 vim.pack.add { 'https://github.com/lewis6991/hover.nvim' }
 
-if vim.g.enable_hover then
+if Config.enable_hover_plugin then
   require('hover').setup {
     providers = {
       'hover.providers.diagnostic',

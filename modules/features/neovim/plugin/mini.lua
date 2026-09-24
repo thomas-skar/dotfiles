@@ -20,11 +20,6 @@ require('mini.comment').setup {}
 -- trailspace
 require('mini.trailspace').setup {}
 
--- statusline
-if vim.g.statusline == 'mini' then require('mini.statusline').setup {
-  use_icons = vim.g.have_nerd_font,
-} end
-
 -- move
 require('mini.move').setup {
   mappings = {
@@ -41,8 +36,13 @@ require('mini.move').setup {
   },
 }
 
+-- statusline
+if Config.statusline == 'mini' then require('mini.statusline').setup {
+  use_icons = vim.g.have_nerd_font,
+} end
+
 -- surround
-if vim.g.surround == 'mini' then
+if Config.surround == 'mini' then
   require('mini.surround').setup {
     mappings = {
       add = 'sa',

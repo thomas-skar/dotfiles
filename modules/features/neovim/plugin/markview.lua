@@ -1,7 +1,8 @@
 -- TODO: mermaid
+-- TODO: move setup to after/ftplugin
 
 vim.api.nvim_create_autocmd('FileType', {
-  desc = 'Setup markview plugin when opening markfown files',
+  desc = 'Setup markview plugin when opening markdown files',
   pattern = { 'markdown', 'html', 'yaml' },
   once = true,
   callback = function()

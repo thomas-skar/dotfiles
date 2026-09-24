@@ -1,7 +1,5 @@
--- lua language server
-vim.lsp.config('lua_ls', {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
+-- lua_ls settings
+return {
   settings = {
     Lua = {
       codeLens = { enable = true },
@@ -18,15 +16,4 @@ vim.lsp.config('lua_ls', {
       },
     },
   },
-})
-
-vim.lsp.enable 'lua_ls'
-
--- stylua
-vim.lsp.config('stylua', {
-  cmd = { 'stylua', '--lsp' },
-  filetypes = { 'lua' },
-  root_markers = { '.stylua.toml', 'stylua.toml', '.editorconfig' },
-})
-
-vim.lsp.enable 'stylua'
+}

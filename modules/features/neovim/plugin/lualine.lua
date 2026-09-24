@@ -1,6 +1,6 @@
 vim.pack.add { 'https://github.com/nvim-lualine/lualine.nvim' }
 
-if vim.g.statusline == 'lualine' then
+if Config.statusline == 'lualine' then
   require('lualine').setup {
     options = {
       icons_enabled = true,

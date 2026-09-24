@@ -1,9 +1,7 @@
--- yaml language server
-vim.lsp.config('yaml-language-server', {
+-- yaml-language-server settings
+return {
   settings = {
     redhat = { telemetry = { enabled = false } },
     yaml = { format = { enable = true } },
   },
-})
-
-vim.lsp.enable 'yaml-language-server'
+}

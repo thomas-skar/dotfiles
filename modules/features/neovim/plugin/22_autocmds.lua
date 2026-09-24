@@ -1,7 +1,10 @@
 -- TODO: show diagnostics AND lsp at the same time @ hover ???
 
+local group = vim.api.nvim_create_augroup('custom', {})
+
 -- show diagnostics/lsp @ hover
 vim.api.nvim_create_autocmd('CursorHold', {
+  group = group,
   pattern = '*',
   callback = function()
     local diags = vim.diagnostic.get(0, { scope = 'cursor' })
@@ -25,6 +28,7 @@ vim.api.nvim_create_autocmd('CursorHold', {
 
 -- clear "CursorHold" eventignore @ CursorMoved
 vim.api.nvim_create_autocmd('CursorMoved', {
+  group = group,
   pattern = '*',
   callback = function()
     if type(vim.o.eventignore) == 'string' then
@@ -44,12 +48,27 @@ vim.api.nvim_create_autocmd('CursorMoved', {
 
 -- highlight text when copying
 vim.api.nvim_create_autocmd('TextYankPost', {
+  group = group,
   callback = function() vim.highlight.on_yank() end,
 })
 
 -- stop the autocomplete popup menu from appearing inside "telescope"
 vim.api.nvim_create_autocmd('BufEnter', {
+  group = group,
   callback = function(ev)
     if vim.bo[ev.buf].buftype ~= '' then vim.bo[ev.buf].autocomplete = false end
   end,
+})
+
+-- DOCS: https://main.cmp.saghen.dev/recipes.html#hide-copilot-on-suggestion
+vim.api.nvim_create_autocmd('User', {
+  group = group,
+  pattern = 'BlinkCmpMenuOpen',
+  callback = function() vim.b.copilot_suggestion_hidden = true end,
+})
+
+vim.api.nvim_create_autocmd('User', {
+  group = group,
+  pattern = 'BlinkCmpMenuClose',
+  callback = function() vim.b.copilot_suggestion_hidden = false end,
 })

@@ -1,3 +1,5 @@
+-- TODO: accept changes with <CR>
+
 vim.pack.add {
   -- 'https://github.com/stevearc/oil.nvim'
   'https://github.com/barrettruth/canola.nvim',
