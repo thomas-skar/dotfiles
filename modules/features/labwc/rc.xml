@@ -178,27 +178,13 @@
       />
     </keybind>
 
-    <!-- Run or raise ghostty/ goland (Copilot+G) -->
+    <!-- Run or raise ghostty (Copilot+G) -->
     <keybind key="S-C-A-W-g">
       <action name="ForEach">
         <query identifier="com.mitchellh.ghostty" />
         <then>
-          <action name="ForEach">
-            <query identifier="com.mitchellh.ghostty" focused="no" />
-            <then>
-              <action name="Raise" />
-              <action name="Focus" />
-            </then>
-            <none>
-              <action name="ForEach">
-                <query identifier="jetbrains-goland" focused="no" />
-                <then>
-                  <action name="Raise" />
-                  <action name="Focus" />
-                </then>
-              </action>
-            </none>
-          </action>
+          <action name="Raise" />
+          <action name="Focus" />
         </then>
         <none>
           <action name="Execute" command="ghostty" />
@@ -271,7 +257,7 @@
         </none>
       </action>
     </keybind>
-    <!-- Run or raise pycharm/ protonmail (Copilot+P) -->
+    <!-- Run or raise protonmail (Copilot+P) -->
     <keybind key="S-C-A-W-p">
       <action name="ForEach">
         <action name="ForEach">
@@ -282,13 +268,7 @@
           </then>
         </action>
         <none>
-          <action name="ForEach">
-            <query identifier="jetbrains-pycharm" focused="no" />
-            <then>
-              <action name="Raise" />
-              <action name="Focus" />
-            </then>
-          </action>
+          <action name="Execute" command="proton-mail" />
         </none>
       </action>
     </keybind>
