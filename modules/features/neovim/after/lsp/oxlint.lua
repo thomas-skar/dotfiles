@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local config = {
-  cmd = { 'oxlint', '--stdio' },
+  cmd = { 'oxlint', '--lsp' },
   root_markers = { 'package.json' },
 }
 
