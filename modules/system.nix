@@ -49,7 +49,7 @@
       github
       fastfetch
       bruno
-      bookokrat
+      zsa
     ];
   };
 
@@ -127,7 +127,6 @@
       pkgs.tutanota-desktop
       pkgs.protonmail-desktop
       pkgs.qalculate-gtk
-      pkgs.foliate
     ];
 
     home.stateVersion = "26.11"; # TODO ?

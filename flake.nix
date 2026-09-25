@@ -73,5 +73,9 @@
       };
     };
     systems.url = "github:nix-systems/default";
+    zapp = {
+      url = "github:zsa/zapp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

@@ -365,7 +365,8 @@
         "nur": "nur",
         "system-graphics": "system-graphics",
         "system-manager": "system-manager",
-        "systems": "systems_2"
+        "systems": "systems_2",
+        "zapp": "zapp"
       }
     },
     "sf-arabic": {
@@ -556,6 +557,26 @@
         "owner": "jfroche",
         "ref": "system-manager",
         "repo": "userborn",
+        "type": "github"
+      }
+    },
+    "zapp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783587726,
+        "narHash": "sha256-K+L8Hyw8BFyYoHGofRJrZqwTwth3Q2ypAq3uj8rO57I=",
+        "owner": "zsa",
+        "repo": "zapp",
+        "rev": "a1be75837323001ad1ae8e5787d88cd33f2ccc46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsa",
+        "repo": "zapp",
         "type": "github"
       }
     }
