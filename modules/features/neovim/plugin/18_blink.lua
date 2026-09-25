@@ -1,7 +1,8 @@
 vim.pack.add {
-  'https://github.com/saghen/blink.lib',
-  'https://github.com/saghen/blink.cmp',
-  'https://github.com/fang2hou/blink-copilot',
+  { src = 'https://github.com/saghen/blink.lib', name = 'blink-lib' },
+  { src = 'https://github.com/saghen/blink.cmp', name = 'blink-cmp' },
+  { src = 'https://github.com/fang2hou/blink-copilot', name = 'blink-copilot' },
+  { src = 'https://github.com/rafamadriz/friendly-snippets', name = 'friendly-snippets' },
 }
 
 local cmp = require 'blink.cmp'
@@ -42,7 +43,7 @@ cmp.setup {
     },
   },
   signature = {
-    enabled = true,
+    enabled = false, -- TODO: ?
     window = {
       border = 'rounded',
     },
@@ -100,6 +101,11 @@ cmp.setup {
         async = true,
         opts = {
           max_completions = 3,
+        },
+      },
+      snippets = {
+        opts = {
+          friendly_snippets = true,
         },
       },
     },

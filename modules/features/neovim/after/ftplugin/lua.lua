@@ -1,15 +1,17 @@
-vim.pack.add { 'https://github.com/folke/lazydev.nvim' }
+local ok, lazydev = pcall(require, 'lazydev')
 
----@type lazydev.Config
-local opts = {
-  library = {
-    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-    { path = 'snacks.nvim', words = { 'Snacks' } },
-  },
-  integrations = {
-    lspconfig = true,
-    cmp = true,
-  },
-}
+if ok then
+  ---@type lazydev.Config
+  local opts = {
+    library = {
+      { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      { path = 'snacks.nvim', words = { 'Snacks' } },
+    },
+    integrations = {
+      lspconfig = true,
+      cmp = true,
+    },
+  }
 
-require('lazydev').setup(opts)
+  lazydev.setup(opts)
+end

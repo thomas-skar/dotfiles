@@ -163,41 +163,5 @@ vim.keymap.set('n', '<leader>re', '<CMD>restart!<CR>')
 -- enable lsp inlay hints with <Space> -> ih
 vim.keymap.set('n', '<leader>ih', '<CMD>lua vim.lsp.inlay_hint.enable(true)<CR>')
 
--- close floating windows, clear search highlights, etc with <Esc>
-vim.keymap.set('n', '<Esc>', function()
-  local done = false
-
-  -- close popup windows
-  local wins = vim.api.nvim_list_wins()
-  for _, win in ipairs(wins) do
-    -- don't close snacks windows (explorer)
-    local buf = vim.api.nvim_win_get_buf(win)
-    if vim.bo[buf].filetype:find 'snacks' then goto continue end
-
-    -- close floating windows
-    local cfg = vim.api.nvim_win_get_config(win)
-    if cfg.relative ~= '' then
-      vim.api.nvim_win_close(win, true)
-      done = true
-    end
-    ::continue::
-  end
-
-  if done then
-    -- NOTE: include CursorHold in eventignore to prevent popup window from reopening immediately
-    if type(vim.o.eventignore) == 'string' then
-      if vim.o.eventignore == '' then
-        vim.o.eventignore = 'CursorHold'
-      else
-        vim.o.eventignore = vim.o.eventignore .. ',CursorHold'
-      end
-    elseif type(vim.o.eventignore) == 'table' then
-      vim.o.eventignore:append 'CursorHold'
-    end
-
-    return
-  end
-
-  -- clear search highlights
-  vim.cmd 'nohlsearch'
-end)
+-- show messages (logs) with <Space> -> lo
+vim.keymap.set('n', '<leader>lo', '<CMD>messages<CR>')

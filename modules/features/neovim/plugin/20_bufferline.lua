@@ -1,6 +1,6 @@
--- TODO: keymaps to jump between "tabs"?
-
-vim.pack.add { 'https://github.com/akinsho/bufferline.nvim' }
+vim.pack.add {
+  { src = 'https://github.com/akinsho/bufferline.nvim', name = 'bufferline' },
+}
 
 require('bufferline').setup {
   options = {

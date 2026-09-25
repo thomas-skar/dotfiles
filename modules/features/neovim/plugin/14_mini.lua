@@ -1,6 +1,8 @@
 -- TODO: https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-keymap.md
 
-vim.pack.add { 'https://github.com/nvim-mini/mini.nvim' }
+vim.pack.add {
+  { src = 'https://github.com/nvim-mini/mini.nvim', name = 'mini' },
+}
 
 -- icons
 if vim.g.have_nerd_font then

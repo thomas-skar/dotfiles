@@ -1,4 +1,6 @@
-vim.pack.add { 'https://github.com/khoido2003/monokai-v2.nvim' }
+vim.pack.add {
+  { src = 'https://github.com/khoido2003/monokai-v2.nvim', name = 'monokai-pro' },
+}
 
 require('monokai-v2').setup {
   transparent_background = false,

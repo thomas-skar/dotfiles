@@ -10,6 +10,3 @@ Config.file_explorer = 'oil'
 
 ---@type "visual"|"mini"|nil
 Config.surround = 'visual'
-
----@type boolean|nil
-Config.enable_hover_plugin = false

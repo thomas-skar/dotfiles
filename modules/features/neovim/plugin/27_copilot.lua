@@ -1,6 +1,6 @@
 vim.pack.add {
-  'https://github.com/zbirenbaum/copilot.lua',
-  'https://github.com/copilotlsp-nvim/copilot-lsp',
+  { src = 'https://github.com/zbirenbaum/copilot.lua', name = 'copilot' },
+  { src = 'https://github.com/copilotlsp-nvim/copilot-lsp', name = 'copilot-lsp' },
 }
 
 require('copilot').setup {

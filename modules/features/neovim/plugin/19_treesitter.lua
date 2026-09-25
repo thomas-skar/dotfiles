@@ -1,4 +1,6 @@
-vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }
+vim.pack.add {
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main', name = 'treesitter' },
+}
 
 require('nvim-treesitter').install {
   'bash',

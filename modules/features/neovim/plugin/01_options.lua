@@ -54,7 +54,7 @@ vim.opt.completeopt = 'menu,menuone,noselect,popup'
 -- clipboard
 vim.opt.clipboard = 'unnamedplus'
 
--- enable mouse clicks
+-- enable mouse clicks, etc
 vim.opt.mouse = 'a'
 vim.opt.mousemoveevent = true
 

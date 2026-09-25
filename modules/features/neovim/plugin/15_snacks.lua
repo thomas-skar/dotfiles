@@ -4,7 +4,9 @@
 --  TODO: if explorer is the last buffer, close it and open the dashboard?
 -- TODO: <Ctrl-Backspace> in picker insert mode
 
-vim.pack.add { 'https://github.com/folke/snacks.nvim' }
+vim.pack.add {
+  { src = 'https://github.com/folke/snacks.nvim', name = 'snacks' },
+}
 
 local Snacks = require 'snacks'
 
