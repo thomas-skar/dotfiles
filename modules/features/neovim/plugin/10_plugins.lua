@@ -10,3 +10,6 @@ Config.file_explorer = 'oil'
 
 ---@type "visual"|"mini"|nil
 Config.surround = 'visual'
+
+---@type boolean
+Config.copilot = true

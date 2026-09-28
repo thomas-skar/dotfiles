@@ -1,14 +1,15 @@
-vim.pack.add {
+-- 1. plugin sources
+local plugins = {
   { src = 'https://github.com/saghen/blink.lib' },
   { src = 'https://github.com/saghen/blink.cmp' },
-  { src = 'https://github.com/fang2hou/blink-copilot' },
   { src = 'https://github.com/rafamadriz/friendly-snippets' },
 }
+if Config.copilot then table.insert(plugins, { src = 'https://github.com/fang2hou/blink-copilot' }) end
+vim.pack.add(plugins)
 
-local cmp = require 'blink.cmp'
-
-cmp.build():pwait()
-cmp.setup {
+-- 2. config
+---@type blink.cmp.Config
+local opts = {
   appearance = {
     nerd_font_variant = 'normal',
   },
@@ -77,7 +78,7 @@ cmp.setup {
     },
   },
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
     per_filetype = {
       lua = { inherit_defaults = true, 'lazydev' },
     },
@@ -94,15 +95,6 @@ cmp.setup {
         score_offset = 100,
         enabled = function() return vim.bo.filetype == 'lua' end,
       },
-      copilot = {
-        name = 'copilot',
-        module = 'blink-copilot',
-        score_offset = 100,
-        async = true,
-        opts = {
-          max_completions = 3,
-        },
-      },
       snippets = {
         opts = {
           friendly_snippets = true,
@@ -114,3 +106,34 @@ cmp.setup {
     enabled = false,
   },
 }
+
+if Config.copilot then
+  opts.sources.default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' }
+  opts.sources.providers.copilot = {
+    name = 'copilot',
+    module = 'blink-copilot',
+    score_offset = 100,
+    async = true,
+    opts = {
+      max_completions = 3,
+    },
+  }
+end
+
+-- 3. setup
+local cmp = require 'blink.cmp'
+cmp.build():pwait()
+cmp.setup(opts)
+
+-- 4. autocmds
+if Config.copilot then
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'BlinkCmpMenuOpen',
+    callback = function() vim.b.copilot_suggestion_hidden = true end,
+  })
+
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'BlinkCmpMenuClose',
+    callback = function() vim.b.copilot_suggestion_hidden = false end,
+  })
+end
