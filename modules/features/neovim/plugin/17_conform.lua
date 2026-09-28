@@ -5,14 +5,30 @@ vim.pack.add {
 require('conform').setup {
   formatters_by_ft = {
     lua = { 'stylua' },
-    go = { 'gofmt', 'goimports' },
-    nix = { 'nixfmt' },
-    json = { 'jq' },
-    python = { 'ruff' },
+    go = { 'gofmt', 'goimports', 'golangci-lint' },
+    nix = { 'nixfmt', 'alejandra', stop_after_first = true },
+    json = { 'oxfmt', 'jq' },
+    python = { 'ruff_format', 'ruff_organize_imports' },
+    xml = { 'xmlstarlet' },
+    just = { 'just' },
+    toml = { 'taplo', 'tombi' },
+    yaml = {},
+    javascript = { 'oxfmt' },
+    typescript = { 'oxfmt', 'oxlint' },
+    fish = { 'fish_indent' },
+    sh = { 'shfmt' },
+    ['*'] = { 'codespell' },
+    ['_'] = {},
   },
-  default_format_opts = { lsp_format = 'fallback' },
-  format_on_save = { lsp_format = 'fallback' },
-  format_after_save = { lsp_format = 'fallback' },
+  default_format_opts = {
+    lsp_format = 'fallback',
+  },
+  format_on_save = {
+    lsp_format = 'fallback',
+  },
+  format_after_save = {
+    lsp_format = 'fallback',
+  },
   notify_on_error = true,
   notify_no_formatters = true,
 }

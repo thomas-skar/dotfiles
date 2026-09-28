@@ -37,8 +37,6 @@ require('oil').setup {
   },
 }
 
-------------------------------------------------------------------------------------
-
 -- open oil with <Shift-Ctrl-O> or <Space> --> oi
 vim.keymap.set('n', '<S-C-o>', '<CMD>Oil<CR>')
 vim.keymap.set('n', '<leader>oi', '<CMD>Oil<CR>')

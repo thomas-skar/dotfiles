@@ -67,3 +67,9 @@ if Config.surround == 'mini' then
   vim.keymap.set('x', '(', 'sa(')
   vim.keymap.set('x', '`', 'sa`')
 end
+
+-- misc
+local misc = require 'mini.misc'
+
+Config.now = function(f) misc.safely('now', f) end
+Config.later = function(f) misc.safely('later', f) end
