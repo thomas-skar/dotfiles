@@ -1,37 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <labwc_config>
-
   <core>
     <decoration>server</decoration>
     <gap>10</gap>
   </core>
-
   <placement>
     <policy>cascade</policy>
   </placement>
-
   <windowSwitcher outlines="yes" preview="yes" unshade="yes">
     <!-- style: "classic" or "thumbnail" -->
-    <osd style="classic" output="all" />
+    <osd style="classic" output="all"/>
     <fields>
-      <field content="icon" width="5%" />
-      <field content="desktop_entry_name" width="25%" />
-      <field content="title" width="60%" />
-      <field content="output" width="10%" />
+      <field content="icon" width="5%"/>
+      <field content="desktop_entry_name" width="25%"/>
+      <field content="title" width="60%"/>
+      <field content="output" width="10%"/>
     </fields>
   </windowSwitcher>
-
   <focus>
     <followMouse>no</followMouse>
     <raiseOnFocus>no</raiseOnFocus>
   </focus>
-
   <snapping>
     <overlay>
       <enabled>yes</enabled>
     </overlay>
   </snapping>
-
   <theme>
     <!-- noctalia vs nix (custom) -->
     <name>nix</name>
@@ -39,67 +33,66 @@
     <dropShadows>yes</dropShadows>
     <keepBorder>yes</keepBorder>
   </theme>
-
   <keyboard>
     <!-- Next window (Alt+Tab) -->
     <keybind key="A-Tab">
-      <action name="NextWindow" workspace="all" output="all" identifier="all" />
+      <action name="NextWindow" workspace="all" output="all" identifier="all"/>
     </keybind>
     <!-- Close window (Super+Q) -->
     <keybind key="W-q">
-      <action name="Close" />
+      <action name="Close"/>
     </keybind>
     <!-- Show labwc client menu (Alt+Space) -->
     <keybind key="A-Space">
-      <action name="ShowMenu" menu="client-menu" atCursor="no" />
+      <action name="ShowMenu" menu="client-menu" atCursor="no"/>
     </keybind>
     <!-- Show desktop (CapsLock+D) -->
     <keybind key="S-C-A-W-M-d">
-      <action name="ToggleShowDesktop" />
+      <action name="ToggleShowDesktop"/>
     </keybind>
     <!-- Reload labwc config (CapsLock+R) -->
     <keybind key="S-C-A-W-M-r">
-      <action name="Reconfigure" />
+      <action name="Reconfigure"/>
     </keybind>
     <!-- Maximize window (CapsLock+Return) -->
     <keybind key="S-C-A-W-M-Return">
-      <action name="SnapToEdge" direction="center" />
+      <action name="SnapToEdge" direction="center"/>
     </keybind>
     <!-- Center window (CapsLock+C) -->
     <keybind key="S-C-A-W-M-c">
-      <action name="AutoPlace" policy="center" />
+      <action name="AutoPlace" policy="center"/>
     </keybind>
     <!-- Resize window left (CapsLock+Left) -->
     <keybind key="S-C-A-W-M-Left">
-      <action name="SnapToEdge" direction="left" combine="yes" />
+      <action name="SnapToEdge" direction="left" combine="yes"/>
     </keybind>
     <!-- Resize window right (CapsLock+Right) -->
     <keybind key="S-C-A-W-M-Right">
-      <action name="SnapToEdge" direction="right" combine="yes" />
+      <action name="SnapToEdge" direction="right" combine="yes"/>
     </keybind>
     <!-- Resize window up (CapsLock+Up) -->
     <keybind key="S-C-A-W-M-Up">
-      <action name="SnapToEdge" direction="up" combine="yes" />
+      <action name="SnapToEdge" direction="up" combine="yes"/>
     </keybind>
     <!-- Resize window down (CapsLock+Down) -->
     <keybind key="S-C-A-W-M-Down">
-      <action name="SnapToEdge" direction="down" combine="yes" />
+      <action name="SnapToEdge" direction="down" combine="yes"/>
     </keybind>
     <!-- Move window to next output (CapsLock+N): eDP-1 >>> DVI-I-2 >>> DVI-I-1 >>> eDP-1 -->
     <keybind key="S-C-A-W-M-n">
       <action name="If">
-        <query monitor="eDP-1" />
+        <query monitor="eDP-1"/>
         <then>
-          <action name="MoveToOutput" output="DVI-I-1" />
+          <action name="MoveToOutput" output="DVI-I-1"/>
         </then>
         <else>
           <action name="If">
-            <query monitor="DVI-I-1" />
+            <query monitor="DVI-I-1"/>
             <then>
-              <action name="MoveToOutput" output="DVI-I-2" />
+              <action name="MoveToOutput" output="DVI-I-2"/>
             </then>
             <else>
-              <action name="MoveToOutput" output="eDP-1" />
+              <action name="MoveToOutput" output="eDP-1"/>
             </else>
           </action>
         </else>
@@ -107,153 +100,135 @@
     </keybind>
     <!-- Grow window (CapsLock+Plus) -->
     <keybind key="S-C-A-W-M-+">
-      <action name="ResizeRelative" left="25" right="25" top="25" bottom="25" />
+      <action name="ResizeRelative" left="25" right="25" top="25" bottom="25"/>
     </keybind>
     <!-- Shrink window (CapsLock+Minus) -->
     <keybind key="S-C-A-W-M--">
-      <action
-        name="ResizeRelative"
-        left="-25"
-        right="-25"
-        top="-25"
-        bottom="-25"
-      />
+      <action name="ResizeRelative" left="-25" right="-25" top="-25" bottom="-25"/>
     </keybind>
     <!-- Set preset window size 1 and center window (CapsLock+V) -->
     <keybind key="S-C-A-W-M-v">
       <action name="If">
-        <query monitor="eDP-1" />
+        <query monitor="eDP-1"/>
         <then>
-          <action name="ResizeTo" width="1280" height="800" />
+          <action name="ResizeTo" width="1280" height="800"/>
         </then>
         <else>
-          <action name="ResizeTo" width="1920" height="1200" />
+          <action name="ResizeTo" width="1920" height="1200"/>
         </else>
       </action>
-      <action name="AutoPlace" policy="center" />
+      <action name="AutoPlace" policy="center"/>
     </keybind>
     <!-- Set preset window size 2 and center window (CapsLock+B) -->
     <keybind key="S-C-A-W-M-b">
       <action name="If">
-        <query monitor="eDP-1" />
+        <query monitor="eDP-1"/>
         <then>
-          <action name="ResizeTo" width="1440" height="900" />
+          <action name="ResizeTo" width="1440" height="900"/>
         </then>
         <else>
-          <action name="ResizeTo" width="2240" height="1320" />
+          <action name="ResizeTo" width="2240" height="1320"/>
         </else>
       </action>
-      <action name="AutoPlace" policy="center" />
+      <action name="AutoPlace" policy="center"/>
     </keybind>
     <!-- Set preset window size 3 and center window (CapsLock+X) -->
     <keybind key="S-C-A-W-M-x">
       <action name="If">
-        <query monitor="eDP-1" />
+        <query monitor="eDP-1"/>
         <then>
-          <action name="ResizeTo" width="576" height="1080" />
+          <action name="ResizeTo" width="576" height="1080"/>
         </then>
         <else>
-          <action name="ResizeTo" width="768" height="1296" />
+          <action name="ResizeTo" width="768" height="1296"/>
         </else>
       </action>
-      <action name="AutoPlace" policy="center" />
+      <action name="AutoPlace" policy="center"/>
     </keybind>
-
     <!-- Next window of same type (CapsLock+K) -->
     <keybind key="S-C-A-W-M-k">
-      <action
-        name="NextWindow"
-        workspace="all"
-        output="all"
-        identifier="current"
-      />
+      <action name="NextWindow" workspace="all" output="all" identifier="current"/>
     </keybind>
     <!-- Previous window of same type (CapsLock+L) -->
     <keybind key="S-C-A-W-M-j">
-      <action
-        name="PreviousWindow"
-        workspace="all"
-        output="all"
-        identifier="current"
-      />
+      <action name="PreviousWindow" workspace="all" output="all" identifier="current"/>
     </keybind>
-
     <!-- Run or raise ghostty (Copilot+G) -->
     <keybind key="S-C-A-W-g">
       <action name="ForEach">
-        <query identifier="com.mitchellh.ghostty" />
+        <query identifier="com.mitchellh.ghostty"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="ghostty" />
+          <action name="Execute" command="ghostty"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise microsoft edge (Copilot+E) -->
     <keybind key="S-C-A-W-e">
       <action name="ForEach">
-        <query identifier="microsoft-edge" />
+        <query identifier="microsoft-edge"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="microsoft-edge" />
+          <action name="Execute" command="microsoft-edge"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise zed (Copilot+Z) -->
     <keybind key="S-C-A-W-z">
       <action name="ForEach">
-        <query identifier="dev.zed.Zed" />
+        <query identifier="dev.zed.Zed"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="zeditor" />
+          <action name="Execute" command="zeditor"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise files app (Copilot+F) -->
     <keybind key="S-C-A-W-f">
       <action name="ForEach">
-        <query identifier="org.gnome.Nautilus" />
+        <query identifier="org.gnome.Nautilus"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="nautilus" />
+          <action name="Execute" command="nautilus"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise slack/ spotify (Copilot+S) -->
     <keybind key="S-C-A-W-s">
       <action name="ForEach">
-        <query identifier="slack" />
+        <query identifier="slack"/>
         <then>
           <action name="ForEach">
-            <query identifier="slack" focused="no" />
+            <query identifier="slack" focused="no"/>
             <then>
-              <action name="Raise" />
-              <action name="Focus" />
+              <action name="Raise"/>
+              <action name="Focus"/>
             </then>
             <none>
               <action name="ForEach">
-                <query identifier="spotify" focused="no" />
+                <query identifier="spotify" focused="no"/>
                 <then>
-                  <action name="Raise" />
-                  <action name="Focus" />
+                  <action name="Raise"/>
+                  <action name="Focus"/>
                 </then>
               </action>
             </none>
           </action>
         </then>
         <none>
-          <action name="Execute" command="slack" />
+          <action name="Execute" command="slack"/>
         </none>
       </action>
     </keybind>
@@ -261,53 +236,47 @@
     <keybind key="S-C-A-W-p">
       <action name="ForEach">
         <action name="ForEach">
-          <query identifier="proton-mail" focused="no" />
+          <query identifier="proton-mail" focused="no"/>
           <then>
-            <action name="Raise" />
-            <action name="Focus" />
+            <action name="Raise"/>
+            <action name="Focus"/>
           </then>
         </action>
         <none>
-          <action name="Execute" command="proton-mail" />
+          <action name="Execute" command="proton-mail"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise teams-for-linux (Copilot+T) -->
     <keybind key="S-C-A-W-t">
       <action name="ForEach">
-        <query identifier="teams-for-linux" focused="no" />
+        <query identifier="teams-for-linux" focused="no"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="teams-for-linux" />
+          <action name="Execute" command="teams-for-linux"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise (cursed) outlook PWA/ obsidian (Copilot+O) -->
     <keybind key="S-C-A-W-o">
       <action name="ForEach">
-        <query
-          identifier="msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default"
-          focused="no"
-        />
+        <query identifier="msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default" focused="no"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
           <action name="ForEach">
-            <query identifier="md.obsidian.Obsidian" focused="no" />
+            <query identifier="md.obsidian.Obsidian" focused="no"/>
             <then>
-              <action name="Raise" />
-              <action name="Focus" />
+              <action name="Raise"/>
+              <action name="Focus"/>
             </then>
             <none>
-              <action
-                name="Execute"
-                command="gio launch /home/thomas/.local/share/applications/msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default.desktop"
-              />
+              <action name="Execute" command="gio launch /home/thomas/.local/share/applications/msedge-eoficlgicibekocmfdomjbfnjmehnhcd-Default.desktop"/>
             </none>
           </action>
         </none>
@@ -316,87 +285,83 @@
     <!-- Run or raise librewolf (Copilot+L) -->
     <keybind key="S-C-A-W-l">
       <action name="ForEach">
-        <query identifier="librewolf" />
+        <query identifier="librewolf"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="librewolf" />
+          <action name="Execute" command="librewolf"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise neovide (Copilot+V) -->
     <keybind key="S-C-A-W-v">
       <action name="ForEach">
-        <query identifier="neovide" />
+        <query identifier="neovide"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="neovide" />
+          <action name="Execute" command="neovide"/>
         </none>
       </action>
     </keybind>
     <!-- Run or raise 1password (Copilot+1) -->
     <keybind key="S-C-A-W-1">
       <action name="ForEach">
-        <query identifier="1password" />
+        <query identifier="1password"/>
         <then>
-          <action name="Raise" />
-          <action name="Focus" />
+          <action name="Raise"/>
+          <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="1password" />
+          <action name="Execute" command="1password"/>
         </none>
       </action>
     </keybind>
-
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
-      <action name="Execute" command="noctalia msg panel-toggle launcher" />
+      <action name="Execute" command="noctalia msg panel-toggle launcher"/>
     </keybind>
     <!-- Noctalia: lock session (CapsLock+L) -->
     <keybind key="S-C-A-W-M-l">
-      <action name="Execute" command="noctalia msg session lock" />
+      <action name="Execute" command="noctalia msg session lock"/>
     </keybind>
     <!-- Noctalia: show session menu (CapsLock+P) -->
     <keybind key="S-C-A-W-M-p">
-      <action name="Execute" command="noctalia msg panel-toggle session" />
+      <action name="Execute" command="noctalia msg panel-toggle session"/>
     </keybind>
     <!-- Noctalia: show clipboard manager (CapsLock+M) -->
     <keybind key="S-C-A-W-M-m">
-      <action name="Execute" command="noctalia msg panel-toggle clipboard" />
+      <action name="Execute" command="noctalia msg panel-toggle clipboard"/>
     </keybind>
     <!-- Noctalia: screenshot (PrtSc) -->
     <keybind key="Print">
-      <action name="Execute" command="noctalia msg screenshot-region" />
+      <action name="Execute" command="noctalia msg screenshot-region"/>
     </keybind>
-
     <!-- Noctalia: hardware controls -->
     <keybind key="XF86AudioRaiseVolume">
-      <action name="Execute" command="noctalia msg volume-up" />
+      <action name="Execute" command="noctalia msg volume-up"/>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
-      <action name="Execute" command="noctalia msg volume-down" />
+      <action name="Execute" command="noctalia msg volume-down"/>
     </keybind>
     <keybind key="XF86AudioMute">
-      <action name="Execute" command="noctalia msg volume-mute" />
+      <action name="Execute" command="noctalia msg volume-mute"/>
     </keybind>
     <keybind key="XF86MonBrightnessUp">
-      <action name="Execute" command="noctalia msg brightness-up" />
+      <action name="Execute" command="noctalia msg brightness-up"/>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
-      <action name="Execute" command="noctalia msg brightness-down" />
+      <action name="Execute" command="noctalia msg brightness-down"/>
     </keybind>
   </keyboard>
-
   <mouse>
     <!-- TODO: replace -->
-    <default />
+    <default/>
   </mouse>
-
   <libinput>
     <device>
       <accelProfile>adaptive</accelProfile>
@@ -409,49 +374,42 @@
       <disableWhileTyping>yes</disableWhileTyping>
     </device>
   </libinput>
-
   <windowRules>
     <!-- Slack: open on eDP-1 -->
     <windowRule identifier="slack">
-      <action name="MoveToOutput" output="eDP-1" />
+      <action name="MoveToOutput" output="eDP-1"/>
     </windowRule>
     <!-- Spotify: open on eDP-1 -->
     <windowRule identifier="spotify">
-      <action name="MoveToOutput" output="eDP-1" />
+      <action name="MoveToOutput" output="eDP-1"/>
     </windowRule>
     <!-- Proton: open on eDP-1 -->
     <windowRule identifier="proton-mail">
-      <action name="MoveToOutput" output="eDP-1" />
+      <action name="MoveToOutput" output="eDP-1"/>
     </windowRule>
-
-
     <!-- Gnome keychain prompt: float window  -->
     <windowRule identifier="gcr-prompter">
-      <action name="ToggleAlwaysOnTop" />
+      <action name="ToggleAlwaysOnTop"/>
     </windowRule>
     <!-- Microsoft login prompt: float window -->
     <windowRule identifier="microsoft-identity-broker">
-      <action name="ToggleAlwaysOnTop" />
+      <action name="ToggleAlwaysOnTop"/>
     </windowRule>
-
     <!-- Ghostty: disable window decorations -->
     <windowRule identifier="com.mitchellh.ghostty">
-      <action name="SetDecorations" decorations="border" />
+      <action name="SetDecorations" decorations="border"/>
     </windowRule>
     <!-- Foot: disable window decorations -->
     <windowRule identifier="foot">
-      <action name="SetDecorations" decorations="border" />
+      <action name="SetDecorations" decorations="border"/>
     </windowRule>
     <!-- Zed: disable window decorations -->
     <windowRule identifier="dev.zed.Zed">
-      <action name="SetDecorations" decorations="border" />
+      <action name="SetDecorations" decorations="border"/>
     </windowRule>
     <!-- Neovide: disable window decorations -->
     <windowRule identifier="neovide">
-      <action name="SetDecorations" decorations="border" />
+      <action name="SetDecorations" decorations="border"/>
     </windowRule>
-
-
   </windowRules>
-
 </labwc_config>

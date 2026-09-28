@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <openbox_menu>
   <menu id="root-menu">
     <item label="Ghostty (Copilot+G)">
-      <action name="Execute" command="ghostty" />
+      <action name="Execute" command="ghostty"/>
     </item>
     <item label="Foot">
-      <action name="Execute" command="foot" />
+      <action name="Execute" command="foot"/>
     </item>
-    <separator />
+    <separator/>
     <item label="Restart kanshi">
-      <action name="Execute" command="systemctl --user restart kanshi" />
+      <action name="Execute" command="systemctl --user restart kanshi"/>
     </item>
-    <separator />
+    <separator/>
     <item label="Reconfigure (CapsLock+R)">
-      <action name="Reconfigure" />
+      <action name="Reconfigure"/>
     </item>
     <item label="Exit">
-      <action name="Exit" />
+      <action name="Exit"/>
     </item>
   </menu>
   <menu id="client-menu">
     <item label="Toggle fullscreen">
-      <action name="ToggleFullscreen" />
+      <action name="ToggleFullscreen"/>
     </item>
     <item label="Toggle decorations">
-      <action name="ToggleDecorations" />
+      <action name="ToggleDecorations"/>
     </item>
     <item label="Toggle floating">
-      <action name="ToggleAlwaysOnTop" />
+      <action name="ToggleAlwaysOnTop"/>
     </item>
-    <separator />
+    <separator/>
     <item label="Close (Meta+Q)">
-      <action name="Close" />
+      <action name="Close"/>
     </item>
   </menu>
 </openbox_menu>
