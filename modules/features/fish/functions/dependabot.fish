@@ -1,5 +1,5 @@
-# pull request squash merge
-function prms
+# manage dependabot PRs
+function dependabot
     if ! command -v gh >/dev/null
         echo "gh is not installed"
         return 1
@@ -20,13 +20,14 @@ function prms
         return 1
     end
 
-    set -f prs (gh pr list --json number,title,headRefName --template '{{range .}}{{tablerow .number .title .headRefName}}{{end}}' | fzf --reverse --multi --accept-nth=1)
+    set -f prs (gh pr list --author "app/dependabot" --state open --json number,title,headRefName --template '{{range .}}{{tablerow .number .title .headRefName}}{{end}}' | fzf --reverse --multi --accept-nth=1)
     if not test -n "$prs"
         return 1
     end
 
+    # TODO: implement more dependabot actions
     for pr in $prs
-        gh pr merge "$pr" --squash
+        gh pr comment "$pr" --body "@dependabot rebase"
     end
 
     return 0

@@ -53,11 +53,9 @@
       '';
     };
 
-    home.file.".config/fish/functions/ghr.fish".source = ./functions/ghr.fish;
-    home.file.".config/fish/functions/gbn.fish".source = ./functions/gbn.fish;
-    home.file.".config/fish/functions/prms.fish".source = ./functions/prms.fish;
-    home.file.".config/fish/functions/whoami.fish".source = ./functions/whoami.fish;
-    home.file.".config/fish/functions/desktop.fish".source = ./functions/desktop.fish;
-
+    home.file.".config/fish/functions" = {
+      source = ./functions;
+      recursive = true;
+    };
   };
 }
