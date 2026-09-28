@@ -20,8 +20,14 @@
     </item>
   </menu>
   <menu id="client-menu">
+    <item label="Minimize">
+      <action name="Iconify"/>
+    </item>
     <item label="Toggle fullscreen">
       <action name="ToggleFullscreen"/>
+    </item>
+    <item label="Toggle shade">
+      <action name="ToggleShade"/>
     </item>
     <item label="Toggle decorations">
       <action name="ToggleDecorations"/>

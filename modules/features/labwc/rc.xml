@@ -7,7 +7,7 @@
   <placement>
     <policy>cascade</policy>
   </placement>
-  <windowSwitcher outlines="yes" preview="yes" unshade="yes">
+  <windowSwitcher outlines="yes" preview="yes" unshade="no" order="focus">
     <!-- style: "classic" or "thumbnail" -->
     <osd style="classic" output="all"/>
     <fields>
@@ -36,7 +36,7 @@
   <keyboard>
     <!-- Next window (Alt+Tab) -->
     <keybind key="A-Tab">
-      <action name="NextWindow" workspace="all" output="all" identifier="all"/>
+      <action name="NextWindow" workspace="current" output="all" identifier="all"/>
     </keybind>
     <!-- Close window (Super+Q) -->
     <keybind key="W-q">
@@ -101,6 +101,7 @@
     <!-- Grow window (CapsLock+Plus) -->
     <keybind key="S-C-A-W-M-+">
       <action name="ResizeRelative" left="25" right="25" top="25" bottom="25"/>
+      <action name="FitToOutput"/>
     </keybind>
     <!-- Shrink window (CapsLock+Minus) -->
     <keybind key="S-C-A-W-M--">
@@ -117,6 +118,7 @@
           <action name="ResizeTo" width="1920" height="1200"/>
         </else>
       </action>
+      <action name="FitToOutput"/>
       <action name="AutoPlace" policy="center"/>
     </keybind>
     <!-- Set preset window size 2 and center window (CapsLock+B) -->
@@ -130,6 +132,7 @@
           <action name="ResizeTo" width="2240" height="1320"/>
         </else>
       </action>
+      <action name="FitToOutput"/>
       <action name="AutoPlace" policy="center"/>
     </keybind>
     <!-- Set preset window size 3 and center window (CapsLock+X) -->
@@ -143,6 +146,7 @@
           <action name="ResizeTo" width="768" height="1296"/>
         </else>
       </action>
+      <action name="FitToOutput"/>
       <action name="AutoPlace" policy="center"/>
     </keybind>
     <!-- Next window of same type (CapsLock+K) -->
