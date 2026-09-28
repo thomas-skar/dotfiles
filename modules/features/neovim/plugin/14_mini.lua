@@ -1,7 +1,7 @@
 -- TODO: https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-keymap.md
 
 vim.pack.add {
-  { src = 'https://github.com/nvim-mini/mini.nvim', name = 'mini' },
+  { src = 'https://github.com/nvim-mini/mini.nvim' },
 }
 
 -- icons

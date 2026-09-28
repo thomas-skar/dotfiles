@@ -1,5 +1,5 @@
 vim.pack.add {
-  { src = 'https://github.com/NStefan002/visual-surround.nvim', name = 'visual-surround' },
+  { src = 'https://github.com/NStefan002/visual-surround.nvim' },
 }
 
 if Config.surround == 'visual' then require('visual-surround').setup {

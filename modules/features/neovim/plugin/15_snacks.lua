@@ -1,11 +1,12 @@
--- TODO: move config parts to separate files
+-- TODO: move config parts to separate files?
 -- TODO: explorer preview: disable for current "main" file?
 -- TODO: open dashboard when closing all other/ last buffer
 --  TODO: if explorer is the last buffer, close it and open the dashboard?
 -- TODO: <Ctrl-Backspace> in picker insert mode
+-- TODO: jump between explorer and terminal if they're both open
 
 vim.pack.add {
-  { src = 'https://github.com/folke/snacks.nvim', name = 'snacks' },
+  { src = 'https://github.com/folke/snacks.nvim' },
 }
 
 local Snacks = require 'snacks'
@@ -100,6 +101,7 @@ opts.dashboard = {
   preset = {
     pick = nil,
     keys = {
+      { icon = ' ', key = 'n', desc = 'New file', action = 'enew' },
       { icon = ' ', key = 'p', desc = 'Find file', action = ":lua Snacks.dashboard.pick('files')" },
       { icon = '󰱽 ', key = 'f', desc = 'Search in files', action = ":lua Snacks.dashboard.pick('live_grep')" },
       { icon = ' ', key = 'r', desc = 'Recent files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
@@ -109,8 +111,7 @@ opts.dashboard = {
         desc = 'Open file tree',
         action = function()
           Snacks.dashboard.pick 'explorer'
-          Snacks.dashboard.update()
-          -- TODO: close dashboard
+          vim.cmd 'enew'
         end,
       },
       { icon = ' ', key = 'o', desc = 'Open file explorer', action = ':Oil' },
@@ -119,12 +120,23 @@ opts.dashboard = {
         key = 't',
         desc = 'Open terminal',
         action = function()
+          -- TODO: fullscreen terminal?
           Snacks.terminal.open()
-          Snacks.dashboard.update()
-          -- TODO: close dashboard
+          vim.cmd 'enew'
         end,
       },
       { icon = ' ', key = 'g', desc = 'Open lazygit', action = ':lua Snacks.lazygit()' },
+      {
+        icon = ' ',
+        key = 'i',
+        desc = 'Open "IDE"',
+        action = function()
+          Snacks.dashboard.pick 'explorer'
+          Snacks.terminal.open()
+          vim.cmd 'enew'
+          vim.cmd 'bnext'
+        end,
+      },
       { icon = ' ', key = 's', desc = 'Switch project', action = ":lua Snacks.dashboard.pick('projects')" },
       { icon = '󰋖 ', key = 'h', desc = 'Show help', action = ":lua Snacks.dashboard.pick('help')" },
       { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
@@ -346,6 +358,9 @@ vim.keymap.set('n', '<space>kw', '<CMD>lua Snacks.bufdelete.all()<CR>')
 
 -- focus/ open snacks terminal with <Ctrl-T> and <Shift-Ctrl-T>
 local open_terminal = function()
+  -- ---@type snacks.terminal.Opts
+  -- local terminal_opts = { cwd = vim.fn.getcwd() }
+  -- local term, created = Snacks.terminal.get('', terminal_opts)
   local term, created = Snacks.terminal.get()
   if created == true then Snacks.terminal.toggle() end
 
@@ -361,8 +376,6 @@ local open_terminal = function()
 end
 
 vim.keymap.set({ 'n', 't', 'i', 'v' }, '<C-t>', open_terminal)
-
--- NOTE: keyind conflicts with "open new tab" in ghostty
 if vim.g.neovide then vim.keymap.set({ 'n', 't', 'i', 'v' }, '<S-C-t>', open_terminal) end
 
 -- open snacks scratch file(s) with <Space> -> sf
@@ -372,12 +385,13 @@ vim.keymap.set('n', '<leader>sf', function()
 end)
 
 -- (open and) move focus between the snacks explorer and the "main" buffer with <Ctrl-E>
-vim.keymap.set('n', '<C-e>', function()
+vim.keymap.set({ 'n', 't' }, '<C-e>', function()
   ---@type snacks.Picker[]
   local explorer_pickers = Snacks.picker.get { source = 'explorer' }
   if #explorer_pickers == 0 then
-    -- TODO: don't focus explorer when revealing it
+    -- TODO: dont move focus to explorer when opening it!
     Snacks.explorer.reveal()
+    vim.cmd 'bnext'
     return
   end
 

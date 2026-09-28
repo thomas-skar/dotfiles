@@ -1,8 +1,8 @@
 vim.pack.add {
-  { src = 'https://github.com/saghen/blink.lib', name = 'blink-lib' },
-  { src = 'https://github.com/saghen/blink.cmp', name = 'blink-cmp' },
-  { src = 'https://github.com/fang2hou/blink-copilot', name = 'blink-copilot' },
-  { src = 'https://github.com/rafamadriz/friendly-snippets', name = 'friendly-snippets' },
+  { src = 'https://github.com/saghen/blink.lib' },
+  { src = 'https://github.com/saghen/blink.cmp' },
+  { src = 'https://github.com/fang2hou/blink-copilot' },
+  { src = 'https://github.com/rafamadriz/friendly-snippets' },
 }
 
 local cmp = require 'blink.cmp'

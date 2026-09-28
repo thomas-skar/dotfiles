@@ -1,6 +1,6 @@
 vim.pack.add {
-  { src = 'https://github.com/neovim/nvim-lspconfig', name = 'lspconfig' },
-  { src = 'https://github.com/folke/lazydev.nvim', name = 'lazydev' },
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/folke/lazydev.nvim' },
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -1,5 +1,5 @@
 vim.pack.add {
-  { src = 'https://github.com/lewis6991/satellite.nvim', name = 'satellite' },
+  { src = 'https://github.com/lewis6991/satellite.nvim' },
 }
 
 require('satellite').setup {

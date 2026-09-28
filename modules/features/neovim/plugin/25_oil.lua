@@ -2,7 +2,7 @@
 
 vim.pack.add {
   -- { src = 'https://github.com/stevearc/oil.nvim', name = 'oil' },
-  { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim', name = 'oil' },
+  { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' },
 }
 
 require('oil').setup {

@@ -1,5 +1,5 @@
 vim.pack.add {
-  { src = 'https://github.com/nvim-lualine/lualine.nvim', name = 'lualine' },
+  { src = 'https://github.com/nvim-lualine/lualine.nvim' },
 }
 
 if Config.statusline == 'lualine' then

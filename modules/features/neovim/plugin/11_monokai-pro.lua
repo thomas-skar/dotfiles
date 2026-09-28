@@ -1,5 +1,5 @@
 vim.pack.add {
-  { src = 'https://github.com/khoido2003/monokai-v2.nvim', name = 'monokai-pro' },
+  { src = 'https://github.com/khoido2003/monokai-v2.nvim' },
 }
 
 require('monokai-v2').setup {

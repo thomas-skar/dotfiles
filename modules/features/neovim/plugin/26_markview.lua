@@ -2,7 +2,7 @@
 -- TODO: move setup to after/ftplugin?
 
 vim.pack.add {
-  { src = 'https://github.com/OXY2DEV/markview.nvim', name = 'markview' },
+  { src = 'https://github.com/OXY2DEV/markview.nvim' },
 }
 
 vim.api.nvim_create_autocmd('FileType', {

@@ -165,3 +165,7 @@ vim.keymap.set('n', '<leader>ih', '<CMD>lua vim.lsp.inlay_hint.enable(true)<CR>'
 
 -- show messages (logs) with <Space> -> lo
 vim.keymap.set('n', '<leader>lo', '<CMD>messages<CR>')
+
+-- focus the "main" window with <Ctrl-M>
+-- WARN: surely there is a better way to do this...
+vim.keymap.set('n', '<C-m>', function() vim.cmd 'bnext' end)
