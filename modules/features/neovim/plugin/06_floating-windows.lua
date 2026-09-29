@@ -1,8 +1,5 @@
 -- TODO: fine tune behaviour
 
--- ---@type "lsp"|"diag"|nil
--- Config.floating_window_type = nil
-
 ---@param bufnr number|nil
 ---@return number|nil
 Config.get_hover_preview_winid = function(bufnr)
@@ -19,21 +16,16 @@ vim.api.nvim_create_autocmd('CursorHold', {
     local bufnr = vim.api.nvim_get_current_buf()
     if Config.get_hover_preview_winid(bufnr) then return end
 
-    -- if Config.floating_window_type ~= 'diag' then
     local errors = vim.diagnostic.get(bufnr, { scope = 'cursor' })
     if #errors > 0 then
       vim.diagnostic.open_float { focusable = false, scope = 'cursor' }
-      -- Config.floating_window_type = 'diag'
       return
-      -- end
     end
 
-    -- if Config.floating_window_type ~= 'lsp' then
     local lsp_clients = vim.lsp.get_clients { bufnr = bufnr, method = 'textDocument/hover' }
     if #lsp_clients == 0 then return end
     vim.lsp.buf.hover { focusable = false, silent = true }
     Config.floating_window_type = 'lsp'
-    -- end
   end,
 })
 
@@ -53,8 +45,6 @@ vim.api.nvim_create_autocmd('CursorMoved', {
         if v == 'CursorHold' then vim.o.eventignore:remove(i) end
       end
     end
-
-    -- Config.floating_window_type = nil
   end,
 })
 
@@ -63,23 +53,17 @@ vim.keymap.set('n', 'K', function()
   local bufnr = vim.api.nvim_get_current_buf()
   local winid = Config.get_hover_preview_winid(bufnr)
 
-  -- if Config.floating_window_type ~= 'diag' then
   local errors = vim.diagnostic.get(bufnr, { scope = 'cursor' })
   if #errors > 0 then
     if winid then vim.api.nvim_win_close(winid, true) end
     vim.diagnostic.open_float { focusable = false, scope = 'cursor' }
-    -- Config.floating_window_type = 'diag'
     return
   end
-  -- end
 
-  -- if Config.floating_window_type ~= 'lsp' then
   local lsp_clients = vim.lsp.get_clients { bufnr = bufnr, method = 'textDocument/hover' }
   if #lsp_clients == 0 then return end
   if winid then vim.api.nvim_win_close(winid, true) end
   vim.lsp.buf.hover { focusable = false, silent = true }
-  Config.floating_window_type = 'lsp'
-  -- end
 end)
 
 -- close floating windows, clear search highlights, etc with <Esc>
@@ -113,12 +97,10 @@ vim.keymap.set('n', '<Esc>', function()
     elseif type(vim.o.eventignore) == 'table' then
       vim.o.eventignore:append 'CursorHold'
     end
-
-    -- Config.floating_window_type = nil
-
     return
   end
 
   -- clear search highlights
+  -- TODO: check if highlight are active
   vim.cmd 'nohlsearch'
 end)

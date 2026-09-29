@@ -5,6 +5,10 @@
 -- TODO: go to definition with "gdf"?
 -- TODO: toggle floating windows (lsp, diag, etc) with <Shift-K>?
 -- TODO: save all with <Ctrl-S>
+-- TODO: toggle hover with <Shift-Esc> ? (show status in "lualine"?)
+-- TODO: toggle block comments with <Space> -> kb AND Ctrl-K --> Ctrl-B
+-- TODO: toggle line comments with Ctrl-K --> Ctrl-C
+-- TODO: escape insert mode with <Esc> !!!
 
 -- unbind <Ctrl-C> (???)
 vim.keymap.set('n', '<C-c>', '<nop>')
@@ -149,10 +153,6 @@ vim.keymap.set({ 'n', 'x' }, '<C-a>', 'ggVG')
 -- toggle line comments with <Space> -> kc
 vim.keymap.set('n', '<leader>kc', 'gcc')
 vim.keymap.set('x', '<leader>kc', 'gc')
-
--- TODO: toggle line comments with Ctrl-K --> Ctrl-C
--- TODO: toggle block comments with <Space> -> kb
--- TODO: toggle block comments with Ctrl-K --> Ctrl-B
 
 -- source neovim config with <Space> -> so
 vim.keymap.set('n', '<leader>so', '<CMD>source $MYVIMRC<CR>')

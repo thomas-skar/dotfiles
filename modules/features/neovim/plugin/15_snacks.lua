@@ -1,15 +1,13 @@
 -- TODO: move config parts to separate files?
 -- TODO: explorer preview: disable for current "main" file?
 -- TODO: open dashboard when closing all other/ last buffer
---  TODO: if explorer is the last buffer, close it and open the dashboard?
+-- TODO: if explorer is the last buffer, close it and open the dashboard?
 -- TODO: <Ctrl-Backspace> in picker insert mode
 -- TODO: jump between explorer and terminal if they're both open
 
 vim.pack.add {
   { src = 'https://github.com/folke/snacks.nvim' },
 }
-
-local Snacks = require 'snacks'
 
 ---@type snacks.Config
 local opts = {}
@@ -110,7 +108,7 @@ opts.dashboard = {
         key = 'e',
         desc = 'Open file tree',
         action = function()
-          Snacks.dashboard.pick 'explorer'
+          require('snacks').dashboard.pick 'explorer'
           vim.cmd 'enew'
         end,
       },
@@ -120,23 +118,12 @@ opts.dashboard = {
         key = 't',
         desc = 'Open terminal',
         action = function()
-          -- TODO: fullscreen terminal?
-          Snacks.terminal.open()
+          -- todo: fullscreen terminal?
+          require('snacks').terminal.open()
           vim.cmd 'enew'
         end,
       },
       { icon = ' ', key = 'g', desc = 'Open lazygit', action = ':lua Snacks.lazygit()' },
-      {
-        icon = ' ',
-        key = 'i',
-        desc = 'Open "IDE"',
-        action = function()
-          Snacks.dashboard.pick 'explorer'
-          Snacks.terminal.open()
-          vim.cmd 'enew'
-          vim.cmd 'bnext'
-        end,
-      },
       { icon = ' ', key = 's', desc = 'Switch project', action = ":lua Snacks.dashboard.pick('projects')" },
       { icon = '󰋖 ', key = 'h', desc = 'Show help', action = ":lua Snacks.dashboard.pick('help')" },
       { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
@@ -195,7 +182,7 @@ opts.picker = {
       -- TODO: figure out a way to reset the cursor(line?) position to the current file
     end,
     -- open the file picker
-    file_picker = function() Snacks.picker.files() end,
+    file_picker = function() require('snacks').picker.files() end,
     -- unfocus picker
     focus_main = function(picker) vim.api.nvim_set_current_win(picker.main) end,
   },
@@ -252,8 +239,6 @@ opts.picker = {
             ['<Esc>'] = { 'input_escape', mode = { 'i', 'n' } },
             -- open file picker with <Ctrl-P>
             ['<C-p>'] = { 'file_picker' },
-            -- unfocus explorer with <Ctrl-E>
-            ['<C-e>'] = { 'focus_main' },
           },
         },
         list = {
@@ -262,8 +247,6 @@ opts.picker = {
             ['<Esc>'] = { 'focus_main', mode = 'n' },
             -- open file picker with <Ctrl-P>
             ['<C-p>'] = { 'file_picker' },
-            -- unfocus explorer with <Ctrl-E>
-            ['<C-e>'] = { 'focus_main' },
             -- disable i
             ['i'] = '',
             -- toggle preview with P
@@ -293,7 +276,7 @@ opts.scratch = {
   enabled = true,
 }
 
-Snacks.setup(opts)
+require('snacks').setup(opts)
 
 ------------------------------------------------------------------------------------
 
@@ -358,11 +341,9 @@ vim.keymap.set('n', '<space>kw', '<CMD>lua Snacks.bufdelete.all()<CR>')
 
 -- focus/ open snacks terminal with <Ctrl-T> and <Shift-Ctrl-T>
 local open_terminal = function()
-  -- ---@type snacks.terminal.Opts
-  -- local terminal_opts = { cwd = vim.fn.getcwd() }
-  -- local term, created = Snacks.terminal.get('', terminal_opts)
-  local term, created = Snacks.terminal.get()
-  if created == true then Snacks.terminal.toggle() end
+  local snacks = require 'snacks'
+  local term, created = snacks.terminal.get()
+  if created == true then snacks.terminal.toggle() end
 
   if term == nil then return end
 
@@ -378,37 +359,42 @@ end
 vim.keymap.set({ 'n', 't', 'i', 'v' }, '<C-t>', open_terminal)
 if vim.g.neovide then vim.keymap.set({ 'n', 't', 'i', 'v' }, '<S-C-t>', open_terminal) end
 
--- open snacks scratch file(s) with <Space> -> sf
-vim.keymap.set('n', '<leader>sf', function()
-  -- TODO: input to create new scratch file w/ file type
-  Snacks.scratch.select()
-end)
+-- (open and) move focus between the snacks explorer and the "main" buffer with <Ctrl-E> and <Shift-Ctrl-E>
+local open_explorer = function()
+  local snacks = require 'snacks'
 
--- (open and) move focus between the snacks explorer and the "main" buffer with <Ctrl-E>
-vim.keymap.set({ 'n', 't' }, '<C-e>', function()
   ---@type snacks.Picker[]
-  local explorer_pickers = Snacks.picker.get { source = 'explorer' }
+  local explorer_pickers = snacks.picker.get { source = 'explorer' }
   if #explorer_pickers == 0 then
-    -- TODO: dont move focus to explorer when opening it!
-    Snacks.explorer.reveal()
-    vim.cmd 'bnext'
+    snacks.explorer.reveal()
+    -- TODO: autocmd to focus main?
     return
   end
 
   for _, v in pairs(explorer_pickers) do
     if not v:is_focused() then
-      v:focus() --
-      -- TODO: open preview window
-      -- TODO: refresh(?) preview window (blank preview issue)
+      v:focus()
+    else
+      vim.api.nvim_set_current_win(v.main)
     end
   end
+end
+
+vim.keymap.set({ 'n', 't' }, '<C-e>', open_explorer)
+vim.keymap.set({ 'n', 't' }, '<S-C-e>', open_explorer)
+
+-- open snacks scratch file(s) with <Space> -> sf
+vim.keymap.set('n', '<leader>sf', function()
+  -- TODO: input to create new scratch file w/ file type
+  require('snacks').scratch.select()
 end)
 
 -- open scratch file (with file type input) with <Shift-Ctrl-N>
 if vim.g.neovide then
   vim.keymap.set('n', '<S-C-n>', function()
-    Snacks.input({}, function(value)
-      if value ~= nil then Snacks.scratch.open { ft = value } end
+    local snacks = require 'snacks'
+    snacks.input({}, function(value)
+      if value ~= nil then snacks.scratch.open { ft = value } end
     end)
   end)
 end
