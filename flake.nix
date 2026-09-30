@@ -21,7 +21,10 @@
     };
     bookokrat = {
       url = "github:bugzmanov/bookokrat";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     flake-compat = {
       url = "github:nixos/flake-compat";
@@ -32,6 +35,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

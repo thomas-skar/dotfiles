@@ -9,6 +9,7 @@
     inputs.home-manager.flakeModules.home-manager
   ];
 
+  # TODO: figure out a way to declare overylays in the same module as the flake input
   perSystem = { system, ... }: {
     _module.args.pkgs = import inputs.nixpkgs {
       inherit system;

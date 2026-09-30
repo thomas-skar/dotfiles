@@ -57,7 +57,9 @@
     },
     "bookokrat": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -357,6 +359,7 @@
         "flake-compat": "flake-compat",
         "flake-file": "flake-file",
         "flake-parts": "flake-parts",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "jetbrains-plugins": "jetbrains-plugins",
