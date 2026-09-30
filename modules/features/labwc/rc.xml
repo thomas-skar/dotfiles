@@ -170,6 +170,19 @@
         </none>
       </action>
     </keybind>
+    <!-- Run or raise foot (Copilot+F) -->
+    <keybind key="S-C-A-W-f">
+      <action name="ForEach">
+        <query identifier="foot"/>
+        <then>
+          <action name="Raise"/>
+          <action name="Focus"/>
+        </then>
+        <none>
+          <action name="Execute" command="foot"/>
+        </none>
+      </action>
+    </keybind>
     <!-- Run or raise microsoft edge (Copilot+E) -->
     <keybind key="S-C-A-W-e">
       <action name="ForEach">
@@ -183,21 +196,21 @@
         </none>
       </action>
     </keybind>
-    <!-- Run or raise zed (Copilot+Z) -->
+    <!-- Run or raise gram (Copilot+Z) -->
     <keybind key="S-C-A-W-z">
       <action name="ForEach">
-        <query identifier="dev.zed.Zed"/>
+        <query identifier="app.liten.Gram"/>
         <then>
           <action name="Raise"/>
           <action name="Focus"/>
         </then>
         <none>
-          <action name="Execute" command="zeditor"/>
+          <action name="Execute" command="gram"/>
         </none>
       </action>
     </keybind>
-    <!-- Run or raise files app (Copilot+F) -->
-    <keybind key="S-C-A-W-f">
+    <!-- Run or raise nautilus (Copilot+N) -->
+    <keybind key="S-C-A-W-n">
       <action name="ForEach">
         <query identifier="org.gnome.Nautilus"/>
         <then>
@@ -379,39 +392,33 @@
     </device>
   </libinput>
   <windowRules>
-    <!-- Slack: open on eDP-1 -->
+    <!-- open on eDP-1 -->
     <windowRule identifier="slack">
       <action name="MoveToOutput" output="eDP-1"/>
     </windowRule>
-    <!-- Spotify: open on eDP-1 -->
     <windowRule identifier="spotify">
       <action name="MoveToOutput" output="eDP-1"/>
     </windowRule>
-    <!-- Proton: open on eDP-1 -->
     <windowRule identifier="proton-mail">
       <action name="MoveToOutput" output="eDP-1"/>
     </windowRule>
-    <!-- Gnome keychain prompt: float window  -->
+    <!-- always on top  -->
     <windowRule identifier="gcr-prompter">
       <action name="ToggleAlwaysOnTop"/>
     </windowRule>
-    <!-- Microsoft login prompt: float window -->
     <windowRule identifier="microsoft-identity-broker">
       <action name="ToggleAlwaysOnTop"/>
     </windowRule>
-    <!-- Ghostty: disable window decorations -->
+    <!-- disable window decorations -->
     <windowRule identifier="com.mitchellh.ghostty">
       <action name="SetDecorations" decorations="border"/>
     </windowRule>
-    <!-- Foot: disable window decorations -->
     <windowRule identifier="foot">
       <action name="SetDecorations" decorations="border"/>
     </windowRule>
-    <!-- Zed: disable window decorations -->
     <windowRule identifier="dev.zed.Zed">
       <action name="SetDecorations" decorations="border"/>
     </windowRule>
-    <!-- Neovide: disable window decorations -->
     <windowRule identifier="neovide">
       <action name="SetDecorations" decorations="border"/>
     </windowRule>
