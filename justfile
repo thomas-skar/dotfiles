@@ -43,7 +43,8 @@ check:
 
 # run nix garbage collection
 clean:
-    nix-collect-garbage --delete-older-than 1d
+    sudo /run/system-manager/sw/bin/nix-env --delete-generations old --profile /nix/var/nix/profiles/system-manager-profiles/system-manager
+    nix-collect-garbage -d
 
 alias d := clean
 
