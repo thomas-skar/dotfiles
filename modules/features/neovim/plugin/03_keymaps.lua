@@ -30,6 +30,9 @@ vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-(>', '<Nop>')
 vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-)>', '<Nop>')
 vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-=>', '<Nop>') -- 9
 
+-- unbind "copilot key" + Z
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-S-D-Z>', '<Nop>')
+
 -- override "delete line(s)" to not yank text TODO: expand this to fix quirks
 vim.keymap.set({ 'n', 'x' }, 'd', '"_d')
 vim.keymap.set('n', 'dd', '"_dd')
