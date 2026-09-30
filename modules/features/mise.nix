@@ -4,7 +4,11 @@
     home-manager.sharedModules = [ self.homeModules.mise ];
   };
 
-  flake.homeModules.mise = {
+  flake.homeModules.mise = { pkgs, ... }: {
+    home.packages = [
+      pkgs.usage
+    ];
+
     programs.mise = {
       enable = true;
       enableFishIntegration = true; # TODO if enabled
