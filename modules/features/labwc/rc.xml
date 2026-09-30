@@ -170,19 +170,6 @@
         </none>
       </action>
     </keybind>
-    <!-- Run or raise foot (Copilot+G) (ghostty muscle memory) -->
-    <keybind key="S-C-A-W-g">
-      <action name="ForEach">
-        <query identifier="foot"/>
-        <then>
-          <action name="Raise"/>
-          <action name="Focus"/>
-        </then>
-        <none>
-          <action name="Execute" command="foot"/>
-        </none>
-      </action>
-    </keybind>
     <!-- Run or raise microsoft edge (Copilot+E) -->
     <keybind key="S-C-A-W-e">
       <action name="ForEach">
@@ -196,8 +183,8 @@
         </none>
       </action>
     </keybind>
-    <!-- Run or raise gram (Copilot+Z) -->
-    <keybind key="S-C-A-W-z">
+    <!-- Run or raise gram (Copilot+G) -->
+    <keybind key="S-C-A-W-g">
       <action name="ForEach">
         <query identifier="app.liten.Gram"/>
         <then>
