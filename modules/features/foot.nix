@@ -9,12 +9,24 @@
       enable = true;
       server.enable = false;
       settings = {
-        main.font = "JetBrains Mono:size=12";
-        main.dpi-aware = "no";
-        main.initial-color-theme = "dark";
-        main.initial-window-size-pixels = "1280x720";
-        main.bold-text-in-bright = "no";
-        # monokai pro
+        main = {
+          font = "JetBrainsMono Nerd Font:size=12";
+          dpi-aware = "no";
+          initial-color-theme = "dark";
+          initial-window-size-pixels = "1280x720";
+          initial-window-mode = "windowed";
+          bold-text-in-bright = "no";
+          pad = "8x7 center";
+        };
+        security.osc52 = "enabled";
+        cursor = {
+          style = "block";
+          blink = "no";
+        };
+        mouse = {
+          hide-when-typing = "no";
+          alternate-scroll-mode = "yes";
+        };
         colors-dark = {
           background = "2D2A2E";
           foreground = "FCFCFA";
@@ -43,6 +55,7 @@
           dim6 = "78DCE8"; # dim cyan
           dim7 = "FCFCFA"; # dim white
         };
+        csd.preferred = "server";
       };
     };
 
