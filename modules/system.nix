@@ -2,43 +2,40 @@
 {
   flake.nixosModules.systemFeatures = {
     imports = with self.nixosModules; [
+      # dependencies
       homeManager
       systemGraphics
+
+      # system settings
       apparmor
       systemd
       gdm
-      onepassword
-      # goland
-      # pycharm
       gtk
+      keyd
+      displays
+      ssh
+      xdg
+      fonts
+
+      # desktop environment
+      noctalia
+      labwc
+
+      # command lint tools
       delta
       jujutsu
-      noctalia
-      keyd
       fish
-      labwc
       atuin
       bash
       btop
-      chromium
-      displays
-      foot
-      ghostty
       git
       helix
       just
       k8s
-      obsidian
       podman
-      ssh
-      starship
-      teams
-      xdg
-      zed
-      fonts
-      librewolf
       sql
       mise
+      starship
       python
       neovim
       yazi
@@ -48,8 +45,20 @@
       lazygit
       github
       fastfetch
+
+      # graphical applications
+      onepassword
+      chromium
+      foot
+      ghostty
+      obsidian
+      teams
+      zed
+      librewolf
       bruno
       zsa
+
+      gram
     ];
   };
 
