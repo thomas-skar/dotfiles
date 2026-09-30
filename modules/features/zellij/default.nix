@@ -20,5 +20,11 @@
     };
 
     xdg.configFile."zellij/config.kdl".source = ./config.kdl;
+
+    programs.fish.shellAbbrs = {
+      ze = "zellij";
+      tm = "zellij";
+      tmux = "zellij";
+    };
   };
 }
