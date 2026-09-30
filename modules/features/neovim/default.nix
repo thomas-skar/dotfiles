@@ -78,8 +78,6 @@
       programs.fish.shellAbbrs = {
         v = "nvim";
         "v." = "nvim .";
-        nv = "nvim";
-        "nv." = "nvim .";
       };
 
       xdg.desktopEntries."nvim" = {
