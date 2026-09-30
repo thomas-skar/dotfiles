@@ -49,7 +49,6 @@
       onepassword
       chromium
       foot
-      ghostty
       obsidian
       teams
       librewolf
