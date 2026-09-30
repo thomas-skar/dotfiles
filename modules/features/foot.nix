@@ -16,7 +16,7 @@
           initial-window-size-pixels = "1280x720";
           initial-window-mode = "windowed";
           bold-text-in-bright = "no";
-          pad = "8x7 center";
+          pad = "10x9 center";
         };
         security.osc52 = "enabled";
         cursor = {
