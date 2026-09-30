@@ -1,0 +1,76 @@
+on_focus_close "quit"
+simplified_ui false
+default_shell "fish"
+pane_frames true
+theme "ansi"
+default_layout "default"
+default_mode "normal"
+mouse_mode true
+copy_clipboard "system"
+copy_on_select true
+auto_layout true
+show_startup_tips false
+show_release_notes false
+web_server false
+advanced_mouse_actions true
+default_cwd "/home/thomas"
+mouse_hover_effects true
+focus_follows_mouse true
+mouse_click_through false
+mouse_hover_tips true
+
+ui {
+  pane_frames {
+    rounded_corners true
+    hide_session_name true
+  }
+}
+
+keybinds {
+	normal {
+		bind "Ctrl Shift t" {
+			NewTab
+			SwitchToMode "Normal"
+		}
+		bind "Ctrl Shift w" {
+			CloseTab
+			SwitchToMode "Normal"
+		}
+		bind "Alt 1" {
+			GoToTab 1
+			SwitchToMode "Normal"
+		}
+		bind "Alt 2" {
+			GoToTab 2
+			SwitchToMode "Normal"
+		}
+		bind "Alt 3" {
+			GoToTab 3
+			SwitchToMode "Normal"
+		}
+		bind "Alt 4" {
+			GoToTab 4
+			SwitchToMode "Normal"
+		}
+		bind "Alt 5" {
+			GoToTab 5
+			SwitchToMode "Normal"
+		}
+		bind "Alt 6" {
+			GoToTab 6
+			SwitchToMode "Normal"
+		}
+		bind "Alt 7" {
+			GoToTab 7
+			SwitchToMode "Normal"
+		}
+		bind "Alt 8" {
+			GoToTab 8
+			SwitchToMode "Normal"
+		}
+		bind "Alt 9" {
+			GoToTab 9
+			SwitchToMode "Normal"
+		}
+	}
+}
