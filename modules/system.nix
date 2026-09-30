@@ -29,7 +29,6 @@
       bash
       btop
       git
-      helix
       just
       k8s
       podman
@@ -40,11 +39,11 @@
       neovim
       yazi
       vim
-      micro
       shell
       lazygit
       github
       fastfetch
+      zellij
 
       # graphical applications
       onepassword
@@ -53,11 +52,8 @@
       ghostty
       obsidian
       teams
-      zed
       librewolf
       bruno
-      zsa
-
       gram
     ];
   };
@@ -113,12 +109,13 @@
 
   };
 
+  # TODO: move packages to separate modules
+
   # home(-manager) configuration
   flake.homeModules.homeConfiguration = { pkgs, ... }: {
     home.packages = [
       # command line tools, etc
       pkgs.dust
-      pkgs.usage
       pkgs.tokei
       pkgs.wlrctl
       pkgs.systemctl-tui
@@ -143,13 +140,13 @@
     home.sessionVariables = { };
 
     # TODO: move programs to separate modules
+
     programs.fzf = {
       enable = true;
       enableBashIntegration = false;
       enableFishIntegration = false;
     };
     programs.television.enable = false;
-    programs.zellij.enable = false;
     programs.jq.enable = true;
     programs.parallel.enable = false;
     programs.ranger.enable = false;
