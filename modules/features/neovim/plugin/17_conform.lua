@@ -17,6 +17,7 @@ require('conform').setup {
     typescript = { 'oxfmt', 'oxlint' },
     fish = { 'fish_indent' },
     sh = { 'shfmt' },
+    kdl = { 'kdlfmt' },
     ['*'] = { 'codespell' },
     ['_'] = {},
   },

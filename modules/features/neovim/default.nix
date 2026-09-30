@@ -17,7 +17,7 @@
         enable = true;
         defaultEditor = true;
         extraPackages = [
-          # language servers, etc
+          # language servers, formatters, etc
           pkgs.ty
           pkgs.nil
           pkgs.nixd
@@ -29,6 +29,7 @@
           pkgs.oxlint
           pkgs.nixfmt
           pkgs.stylua
+          pkgs.kdlfmt
           pkgs.just-lsp
           pkgs.marksman
           pkgs.prettierd
@@ -43,7 +44,6 @@
           pkgs.typescript-language-server
           pkgs.tailwindcss-language-server
           pkgs.graphql-language-service-cli
-
           pkgs.vscode-css-languageserver
           pkgs.vscode-html-languageserver
           pkgs.vscode-json-languageserver
