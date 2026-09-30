@@ -8,15 +8,17 @@
     programs.zellij = {
       enable = true;
       enableBashIntegration = false;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
       enableZshIntegration = false;
       plugins = [
         pkgs.zellijPlugins.zjstatus
         pkgs.zellijPlugins.zjframes
       ];
+      layouts = {
+        custom = ./layout.kdl;
+      };
     };
 
     xdg.configFile."zellij/config.kdl".source = ./config.kdl;
-    xdg.configFile."zellij/layouts/custom.kdl".source = ./layout.kdl;
   };
 }
