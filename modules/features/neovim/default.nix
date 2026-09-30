@@ -91,10 +91,19 @@
       enable = true;
       settings = {
         fork = true;
+        frame = "none";
+        maximized = false;
+        idle = true;
+        mouse-cursor-icon = "i-beam"; # arrow
         tabs = true;
+        startup-message-capture = true;
+        wayland-app-id = "neovide";
+
         font = {
           normal = [ "JetBrainsMono Nerd Font" ];
           size = 12.0;
+          hinting = "full";
+          edging = "antialias";
         };
       };
     };
