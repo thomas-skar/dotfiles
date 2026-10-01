@@ -5,30 +5,35 @@ default:
 
 # run system-manager switch
 switch:
+    git add .
     nix run 'github:numtide/system-manager' --extra-experimental-features "nix-command flakes" --accept-flake-config -- switch --sudo --flake .#systemConfigs.default
 
 alias s := switch
 
 # run system-manager switch with --refresh
 refresh:
+    git add .
     nix run 'github:numtide/system-manager' --extra-experimental-features "nix-command flakes" -- switch --sudo --refresh --flake .#systemConfigs.default
 
 alias r := refresh
 
 # run system-manager build
 build:
+    git add .
     nix run 'github:numtide/system-manager' --extra-experimental-features "nix-command flakes" -- build --flake .#systemConfigs.default
 
 alias b := build
 
 # update nix flake input
 update input="":
+    git add .
     nix flake update {{ input }}
 
 alias u := update
 
 # regen nix flake w/ flake-file
 write:
+    git add .
     nix run .#write-flake
 
 alias w := write
