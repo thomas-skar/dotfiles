@@ -1,4 +1,9 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  lib,
+  ...
+}:
 {
   flake.nixosModules.systemFeatures = {
     imports = with self.nixosModules; [
@@ -54,6 +59,9 @@
       librewolf
       bruno
       gram
+      ghostty
+      microsoft-edge
+
     ];
   };
 
@@ -88,7 +96,19 @@
       sync-before-registering = true;
     };
 
-    services.userborn.enable = true;
+    system.autoUpgrade = {
+      enable = false;
+    };
+
+    system-manager = {
+      linkCurrentSystem = true;
+    };
+
+    services.userborn = {
+      enable = lib.mkForce true;
+      importLegacyState = true;
+      static = false;
+    };
 
     users.users."thomas" = {
       enable = true;
@@ -123,15 +143,15 @@
       pkgs.wl-color-picker
       pkgs.lazyjournal
       pkgs.doxx
+
       # gui applications
       pkgs.slack
       pkgs.spotify
       pkgs.localsend
       pkgs.signal-desktop
-      pkgs.element-desktop
-      pkgs.tutanota-desktop
-      pkgs.protonmail-desktop
       pkgs.qalculate-gtk
+      pkgs.tangram
+      pkgs.nwg-look
     ];
 
     home.stateVersion = "26.11"; # TODO ?
