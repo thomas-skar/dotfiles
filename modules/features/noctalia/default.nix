@@ -104,8 +104,12 @@
         };
         location.address = "Oslo, Norway";
         lockscreen = {
+          enabled = true;
           allow_empty_password = true;
           monitors = [ "eDP-1" ];
+          lock_before_suspend = true;
+          transition = [ ];
+          fingerprint = true;
         };
         lockscreen_widgets.enabled = false;
         osd.monitors = [ "eDP-1" ];
@@ -138,6 +142,8 @@
             open_near_click_session = true;
             open_near_click_control_center = true;
           };
+          settings_show_advanced = true;
+          settings_expand_all_groups = true;
         };
         theme = {
           mode = "dark";
