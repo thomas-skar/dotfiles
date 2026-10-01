@@ -1,6 +1,43 @@
 { self, ... }:
 {
-  flake.nixosModules.labwc = {
+  flake.nixosModules.labwc = { pkgs, ... }: {
+    environment.systemPackages = [ pkgs.labwc ];
+
+    environment.variables = {
+      WLR_BACKEND = "wayland,libinput";
+      WLR_RENDERER = "vulkan";
+      WLR_RENDERER_ALLOW_SOFTWARE = "1";
+      WLR_RENDERER_FORCE_SOFTWARE = "0";
+      WLR_NO_HARDWARE_CURSORS = "1";
+      # WAYLAND_DISPLAY = "wayland-0";
+      # DISPLAY = ":0";
+      # XDG_SESSION_ID = "1";
+      XKB_DEFAULT_LAYOUT = "no";
+      GTK_THEME = "Adwaita";
+      QT_QPA_PLATFORM = "wayland";
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    };
+
+    systemd.services."wayland-compositor" = {
+      enable = false;
+      after = [
+        "graphical.target"
+        "systemd-user-sessions.service"
+        "modprobe@drm.service"
+      ];
+      conflicts = [ "getty@tty2.service" ];
+      serviceConfig = {
+        User = "thomas";
+        WorkingDirectory = "~";
+        PAMName = "login";
+        TTYPath = "/dev/tty2";
+        UnsetEnvironment = "TERM";
+        StandardOutput = "journal";
+        ExecStart = "${pkgs.labwc}/bin/labwc";
+      };
+      wantedBy = [ "graphical.target" ];
+    };
+
     home-manager.sharedModules = [ self.homeModules.labwc ];
   };
 
@@ -13,7 +50,7 @@
     wayland.windowManager.labwc = {
       enable = true;
       package = pkgs.labwc;
-      autostart = [ "/opt/intility/idn/Intility.DesktopNotifications.Client.Linux" ];
+      autostart = [ ];
       environment = [
         "XKB_DEFAULT_LAYOUT=no"
         "XDG_CURRENT_DESKTOP=labwc:wlroots"
@@ -21,6 +58,13 @@
         "XCURSOR_THEME=Adwaita"
         "QA_QPA_PLATFORM=wayland"
         "TMPDIR=$HOME/tmp"
+        "WLR_BACKEND=wayland,libinput"
+        "WLR_RENDERER=vulkan"
+        "WLR_RENDERER_ALLOW_SOFTWARE=1"
+        "WLR_RENDERER_FORCE_SOFTWARE=0"
+        "WLR_NO_HARDWARE_CURSORS=1"
+        "GTK_THEME=Adwaita:dark"
+        "ELECTRON_OZONE_PLATFORM_HINT=wayland"
       ];
       systemd.enable = true;
     };
