@@ -60,6 +60,8 @@
       };
     };
 
+    xdg.terminal-exec.settings.default = [ "foot.desktop" ];
+
     xdg.desktopEntries = {
       footclient = {
         name = "Foot Client";
