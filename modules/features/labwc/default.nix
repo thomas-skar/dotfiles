@@ -4,7 +4,7 @@
     environment.systemPackages = [ pkgs.labwc ];
 
     environment.variables = {
-      WLR_BACKEND = "wayland,libinput";
+      WLR_BACKEND = "wayland,libinput,drm";
       WLR_RENDERER = "vulkan";
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
       WLR_RENDERER_FORCE_SOFTWARE = "0";
@@ -58,7 +58,7 @@
         "XCURSOR_THEME=Adwaita"
         "QA_QPA_PLATFORM=wayland"
         "TMPDIR=$HOME/tmp"
-        "WLR_BACKEND=wayland,libinput"
+        "WLR_BACKEND=wayland,libinput,drm"
         "WLR_RENDERER=vulkan"
         "WLR_RENDERER_ALLOW_SOFTWARE=1"
         "WLR_RENDERER_FORCE_SOFTWARE=0"
