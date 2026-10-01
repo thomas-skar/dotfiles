@@ -153,6 +153,7 @@
       pkgs.qalculate-gtk
       pkgs.tangram
       pkgs.nwg-look
+      pkgs.protonmail-desktop
     ];
 
     home.stateVersion = "26.11"; # TODO ?
