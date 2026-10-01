@@ -92,5 +92,15 @@
       }
     '';
 
+    environment.etc."apparmor.d/nix-bwrap".text = ''
+      abi <abi/4.0>,
+      include <tunables/global>
+
+      profile nix-bwrap /nix/store/**/bin/bwrap flags=(unconfined) {
+        userns,
+        include if exists <local/bwrap>
+      }
+    '';
+
   };
 }
