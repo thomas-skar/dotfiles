@@ -8,7 +8,7 @@
     programs.ghostty = {
       enable = true;
       enableFishIntegration = true; # TODO if enabled
-      systemd.enable = true;
+      systemd.enable = false;
       settings = {
         font-family = "JetBrainsMono Nerd Font"; # "JetBrains Mono"
         font-thicken = true;
