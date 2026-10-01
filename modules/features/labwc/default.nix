@@ -13,7 +13,7 @@
       # DISPLAY = ":0";
       # XDG_SESSION_ID = "1";
       XKB_DEFAULT_LAYOUT = "no";
-      GTK_THEME = "Adwaita";
+      # GTK_THEME = "Adwaita";
       QT_QPA_PLATFORM = "wayland";
       ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     };
@@ -63,7 +63,7 @@
         "WLR_RENDERER_ALLOW_SOFTWARE=1"
         "WLR_RENDERER_FORCE_SOFTWARE=0"
         "WLR_NO_HARDWARE_CURSORS=1"
-        "GTK_THEME=Adwaita:dark"
+        # "GTK_THEME=Adwaita:dark"
         "ELECTRON_OZONE_PLATFORM_HINT=wayland"
       ];
       systemd.enable = true;
