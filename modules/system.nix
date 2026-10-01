@@ -21,6 +21,7 @@
       ssh
       xdg
       fonts
+      ly
 
       # desktop environment
       noctalia
