@@ -1,6 +1,10 @@
 { self, ... }:
 {
-  flake.nixosModules.xdg = {
+  flake.nixosModules.xdg = { pkgs, ... }: {
+    environment.systemPackages = [
+      pkgs.gnome-themes-extra
+    ];
+
     environment.pathsToLink = [
       "/share/applications"
       "/share/xdg-desktop-portal"
@@ -15,6 +19,10 @@
   flake.homeModules.xdg =
     { pkgs, ... }:
     {
+      home.packages = [
+        pkgs.gnome-themes-extra
+      ];
+
       xdg = {
         enable = true;
         mime.enable = true;
