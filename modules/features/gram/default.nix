@@ -32,6 +32,7 @@
     };
 
     home.file.".config/gram/settings.jsonc".source = ./settings.jsonc;
+    home.file.".config/gram/keymap.jsonc".source = ./keymap.jsonc;
 
     xdg.desktopEntries."app.liten.Gram" = {
       type = "Application";
