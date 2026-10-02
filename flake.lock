@@ -324,6 +324,27 @@
         "url": "https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
       }
     },
+    "obsidian-extensions": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1790938615,
+        "narHash": "sha256-OvgeZiRCheOB6pz/Uoi/lWi5jesdTj36jAZJ0zb+6sg=",
+        "owner": "karaolidis",
+        "repo": "nix-obsidian-extensions",
+        "rev": "68820e10b5512561f6dc51a4a806080704f1a0be",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karaolidis",
+        "repo": "nix-obsidian-extensions",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -366,6 +387,7 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "nur": "nur",
+        "obsidian-extensions": "obsidian-extensions",
         "system-graphics": "system-graphics",
         "system-manager": "system-manager",
         "systems": "systems_2",
@@ -527,6 +549,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "obsidian-extensions",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785360170,
+        "narHash": "sha256-XE1lKgQ3eIO3E7zWryqcRsax+mYXod/5RHBn4YaR9YE=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "d1187f8bc71fb8aab02395869ec3f5c1920f75c0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
         "type": "github"
       }
     },
