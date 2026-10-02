@@ -7,7 +7,12 @@
   flake.homeModules.lazygit = { config, ... }: {
     programs.lazygit = {
       enable = config.programs.git.enable;
+
+      enableZshIntegration = config.programs.zsh.enable;
+      enableBashIntegration = config.programs.bash.enable;
       enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
+
       settings = {
         gui.language = "en";
         gui.showRandomTip = false;

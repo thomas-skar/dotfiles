@@ -7,7 +7,11 @@
   flake.homeModules.ghostty = { config, ... }: {
     programs.ghostty = {
       enable = true;
+
+      enableZshIntegration = config.programs.zsh.enable;
+      enableBashIntegration = config.programs.bash.enable;
       enableFishIntegration = config.programs.fish.enable;
+
       systemd.enable = false;
       settings = {
         font-family = "JetBrainsMono Nerd Font"; # "JetBrains Mono"

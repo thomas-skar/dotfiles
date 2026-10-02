@@ -7,8 +7,12 @@
   flake.homeModules.atuin = { config, ... }: {
     programs.atuin = {
       enable = true;
+
+      enableZshIntegration = config.programs.zsh.enable;
       enableBashIntegration = config.programs.bash.enable;
       enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
+
       settings = {
         auto_sync = false;
         update_check = false;

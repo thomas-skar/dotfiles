@@ -7,9 +7,14 @@
   flake.homeModules.starship = { config, ... }: {
     programs.starship = {
       enable = true;
-      enableFishIntegration = config.programs.fish.enable;
-      enableInteractive = true;
       enableTransience = false;
+      enableInteractive = true;
+
+      enableZshIntegration = config.programs.zsh.enable;
+      enableBashIntegration = config.programs.bash.enable;
+      enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
+
       settings = {
         format = "$all$custom$line_break$status$container$shell$character";
         add_newline = false;
