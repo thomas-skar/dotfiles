@@ -1,3 +1,7 @@
+# symlink recipes
+mod symlink "symlink.just"
+
+alias sa := symlink::all
 
 [private]
 default:
