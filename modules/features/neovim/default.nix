@@ -66,14 +66,9 @@
         sideloadInitLua = true;
       };
 
-      home.file.".config/nvim/init.lua".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/init.lua";
-
-      home.file.".config/nvim/plugin".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/plugin";
-
-      home.file.".config/nvim/after".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/dotfiles/modules/features/neovim/after";
+      home.file.".config/nvim/init.lua".source = ./init.lua;
+      home.file.".config/nvim/plugin".source = ./plugin;
+      home.file.".config/nvim/after".source = ./after;
 
       programs.fish.shellAbbrs = {
         v = "nvim";
