@@ -50,6 +50,8 @@
       github
       fastfetch
       zellij
+      devenv
+      direnv
 
       # graphical applications
       onepassword
