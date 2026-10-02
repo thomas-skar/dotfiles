@@ -27,6 +27,11 @@
   flake.homeModules.noctalia = {
     imports = [ inputs.noctalia.homeModules.default ];
 
+    disabledModules = [
+      "programs/noctalia.nix"
+      "programs/noctalia"
+    ];
+
     home.file.".config/noctalia/palettes/custom.json".source = ./palette.json;
 
     programs.noctalia = {
