@@ -4,19 +4,12 @@
     home-manager.sharedModules = [ self.homeModules.mise ];
   };
 
-  flake.homeModules.mise = { pkgs, ... }: {
-    home.packages = [
-      pkgs.usage
-    ];
+  flake.homeModules.mise = { pkgs, config, ... }: {
+    home.packages = [ pkgs.usage ];
 
     programs.mise = {
       enable = true;
-      enableFishIntegration = true; # TODO if enabled
-    };
-
-    programs.direnv = {
-      enable = true;
-      mise.enable = true;
+      enableFishIntegration = config.programs.fish.enable;
     };
 
     programs.fish.shellAbbrs = {

@@ -4,10 +4,10 @@
     home-manager.sharedModules = [ self.homeModules.starship ];
   };
 
-  flake.homeModules.starship = {
+  flake.homeModules.starship = { config, ... }: {
     programs.starship = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = config.programs.fish.enable;
       enableInteractive = true;
       enableTransience = false;
       settings = {

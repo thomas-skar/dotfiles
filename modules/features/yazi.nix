@@ -4,8 +4,14 @@
     home-manager.sharedModules = [ self.homeModules.yazi ];
   };
 
-  flake.homeModules.yazi = {
-    programs.yazi.enable = true;
+  flake.homeModules.yazi = { config, ... }: {
+    programs.yazi = {
+      enable = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableFishIntegration = config.programs.fish.enable;
+      enableNushellIntegration = config.programs.nushell.enable;
+      enableZshIntegration = config.programs.zsh.enable;
+    };
 
     xdg.desktopEntries.yazi = {
       name = "Yazi File Manager";

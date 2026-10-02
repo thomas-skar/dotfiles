@@ -4,11 +4,11 @@
     home-manager.sharedModules = [ self.homeModules.atuin ];
   };
 
-  flake.homeModules.atuin = {
+  flake.homeModules.atuin = { config, ... }: {
     programs.atuin = {
       enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableFishIntegration = config.programs.fish.enable;
       settings = {
         auto_sync = false;
         update_check = false;

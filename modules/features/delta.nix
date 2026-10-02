@@ -4,11 +4,11 @@
     home-manager.sharedModules = [ self.homeModules.delta ];
   };
 
-  flake.homeModules.delta = {
+  flake.homeModules.delta = { config, ... }: {
     programs.delta = {
       enable = true;
-      enableGitIntegration = true; # TODO if enabled
-      enableJujutsuIntegration = true; # TODO if enabled
+      enableGitIntegration = config.programs.git.enable;
+      enableJujutsuIntegration = config.programs.jujutsu.enable;
       options = { };
     };
   };

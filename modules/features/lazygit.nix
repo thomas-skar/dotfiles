@@ -4,10 +4,10 @@
     home-manager.sharedModules = [ self.homeModules.lazygit ];
   };
 
-  flake.homeModules.lazygit = {
+  flake.homeModules.lazygit = { config, ... }: {
     programs.lazygit = {
-      enable = true;
-      enableFishIntegration = true;
+      enable = config.programs.git.enable;
+      enableFishIntegration = config.programs.fish.enable;
       settings = {
         gui.language = "en";
         gui.showRandomTip = false;

@@ -10,7 +10,7 @@
       server.enable = false;
       settings = {
         main = {
-          shell = "fish --init-command zellij";
+          shell = "fish --init-command zellij"; # TODO: if fish and zellij
           font = "JetBrainsMono Nerd Font:size=12";
           dpi-aware = "no";
           initial-color-theme = "dark";

@@ -15,6 +15,7 @@
   };
   flake.homeModules.bat = {
     programs.bat.enable = true;
+
     programs.fish.shellAbbrs = {
       cat = "bat --paging=never";
     };
@@ -25,6 +26,7 @@
   };
   flake.homeModules.eza = { lib, ... }: {
     programs.eza.enable = true;
+
     programs.fish.shellAbbrs = {
       ls = lib.mkForce "eza -l";
       lsa = lib.mkForce "eza -la";
@@ -38,6 +40,7 @@
   };
   flake.homeModules.fd = {
     programs.fd.enable = true;
+
     programs.fish.shellAbbrs = {
       find = "fd";
     };
@@ -49,6 +52,7 @@
   flake.homeModules.ripgrep = {
     programs.ripgrep.enable = true;
     programs.ripgrep-all.enable = true;
+
     programs.fish.shellAbbrs = {
       cat = "bat --paging=never";
     };
@@ -57,11 +61,12 @@
   flake.nixosModules.zoxide = {
     home-manager.sharedModules = [ self.homeModules.zoxide ];
   };
-  flake.homeModules.zoxide = {
+  flake.homeModules.zoxide = { config, ... }: {
     programs.zoxide = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = config.programs.fish.enable;
     };
+
     programs.fish.shellAbbrs = {
       cd = "z";
     };
