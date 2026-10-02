@@ -1,7 +1,8 @@
 # symlink recipes
 mod symlink "symlink.just"
 
-alias sa := symlink::all
+# (s)ym(l)ink (a)ll
+alias sla := symlink::all
 
 [private]
 default:
