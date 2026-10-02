@@ -16,7 +16,7 @@ script target source:
     end
 
 # replace all config file symlinks
-all: gram labwc neovim
+all: gram labwc neovim zellij
 
 # replace gram config file symlinks
 gram:
@@ -34,3 +34,8 @@ neovim:
     just --justfile symlink.just script ".config/nvim/init.lua" "modules/features/neovim/init.lua"
     just --justfile symlink.just script ".config/nvim/plugin" "modules/features/neovim/plugin"
     just --justfile symlink.just script ".config/nvim/after" "modules/features/neovim/after"
+
+# replace zellij config file symlinks
+zellij:
+    just --justfile symlink.just script ".config/zellij/config.kdl" "modules/features/zellij/config.kdl"
+    just --justfile symlink.just script ".config/zellij/layouts/custom.kdl" "modules/features/zellij/layout.kdl"
