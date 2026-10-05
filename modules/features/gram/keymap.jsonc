@@ -5,15 +5,15 @@
       "super-right": [
         "editor::MoveToEndOfLine",
         {
-          "stop_at_soft_wraps": true
-        }
+          "stop_at_soft_wraps": true,
+        },
       ],
       "super-left": [
         "editor::MoveToBeginningOfLine",
         {
           "stop_at_soft_wraps": true,
-          "stop_at_indent": true
-        }
+          "stop_at_indent": true,
+        },
       ],
       "super-up": "editor::MoveToBeginning",
       "super-down": "editor::MoveToEnd",
@@ -22,7 +22,14 @@
       "ctrl-x": "editor::Cut",
       "ctrl-f": "buffer_search::Deploy",
       "ctrl-a": "editor::SelectAll",
-      "ctrl-w": "pane::CloseActiveItem"
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-t": "terminal_panel::Toggle"
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-t": "terminal_panel::Toggle"
     }
   },
   {
@@ -46,7 +53,7 @@
       "super-backspace": "editor::DeleteToBeginningOfLine",
       "super-delete": "vim::DeleteToEndOfLine",
       "alt-backspace": "editor::DeleteToPreviousSubwordStart",
-      "alt-delete": "editor::DeleteToNextSubwordEnd"
+      "alt-delete": "editor::DeleteToNextSubwordEnd",
     },
   },
   {

@@ -17,9 +17,11 @@
         pkgs.tombi
         pkgs.oxfmt
         pkgs.stylua
+        pkgs.lemminx
         pkgs.just-lsp
-        pkgs.alejandra
+        pkgs.prettier
         pkgs.prettierd
+        pkgs.alejandra
         pkgs.xmlstarlet
         pkgs.lua-language-server
         pkgs.yaml-language-server
