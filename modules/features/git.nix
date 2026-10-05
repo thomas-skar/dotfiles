@@ -13,7 +13,7 @@
         user.email = "thomas.skar@intility.no";
         init.defaultBranch = "main";
         url = {
-          "git@github.com:".insteadOf = "https://github.com";
+          "git@github.com:intility".insteadOf = "https://github.com/intility";
         };
       };
     };
