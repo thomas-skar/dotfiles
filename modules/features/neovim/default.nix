@@ -22,6 +22,7 @@
           pkgs.nil
           pkgs.nixd
           pkgs.ruff
+          pkgs.shfmt
           pkgs.gopls
           pkgs.taplo
           pkgs.tombi
@@ -34,6 +35,7 @@
           pkgs.marksman
           pkgs.prettierd
           pkgs.alejandra
+          pkgs.codespell
           pkgs.typescript_7
           pkgs.basedpyright
           pkgs.lua-language-server
