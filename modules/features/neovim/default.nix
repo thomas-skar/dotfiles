@@ -9,7 +9,6 @@
   flake.homeModules.neovim =
     {
       pkgs,
-      config,
       ...
     }:
     {
@@ -68,18 +67,27 @@
         sideloadInitLua = true;
       };
 
-      home.file.".config/nvim/init.lua".source = ./init.lua;
-      home.file.".config/nvim/plugin".source = ./plugin;
-      home.file.".config/nvim/after".source = ./after;
-
-      programs.fish.shellAbbrs = {
-        v = "nvim";
-        "v." = "nvim .";
+      xdg.configFile."nvim/init.lua" = {
+        source = ./init.lua;
+        force = true;
+      };
+      xdg.configFile."nvim/plugin" = {
+        source = ./plugin;
+        force = true;
+      };
+      xdg.configFile."nvim/after" = {
+        source = ./after;
+        force = true;
       };
 
       xdg.desktopEntries."nvim" = {
         name = "Neovim wrapper";
         noDisplay = true;
+      };
+
+      programs.fish.shellAbbrs = {
+        v = "nvim";
+        "v." = "nvim .";
       };
     };
 
