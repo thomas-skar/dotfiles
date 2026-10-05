@@ -1,11 +1,5 @@
 { self, withSystem, ... }:
 {
-  flake-file.inputs.nur = {
-    url = "github:nix-community/nur";
-    inputs.nixpkgs.follows = "nixpkgs";
-    inputs.flake-parts.follows = "flake-parts";
-  };
-
   flake.nixosModules.librewolf = {
     home-manager.sharedModules = [ self.homeModules.librewolf ];
   };

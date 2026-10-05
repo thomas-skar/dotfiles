@@ -1,10 +1,5 @@
 { self, withSystem, ... }:
 {
-  flake-file.inputs.obsidian-extensions = {
-    url = "github:karaolidis/nix-obsidian-extensions";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   flake.nixosModules.obsidian = {
     home-manager.sharedModules = [ self.homeModules.obsidian ];
   };

@@ -36,13 +36,6 @@ update input="":
 
 alias u := update
 
-# regen nix flake w/ flake-file
-write:
-    git add .
-    nix run .#write-flake
-
-alias w := write
-
 # show nix flake outputs
 show:
     nix flake show

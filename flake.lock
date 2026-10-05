@@ -55,29 +55,6 @@
         "type": "github"
       }
     },
-    "bookokrat": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788695731,
-        "narHash": "sha256-LtiRpkYuPEVOvwlUNooj1PRI4JMvVRZLjW0nJV161dk=",
-        "owner": "bugzmanov",
-        "repo": "bookokrat",
-        "rev": "824cc7b175379ed314c12f3b8406edc32e2270cb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bugzmanov",
-        "repo": "bookokrat",
-        "type": "github"
-      }
-    },
     "ci": {
       "inputs": {
         "blueprint": "blueprint",
@@ -113,21 +90,6 @@
       "original": {
         "owner": "nixos",
         "repo": "flake-compat",
-        "type": "github"
-      }
-    },
-    "flake-file": {
-      "locked": {
-        "lastModified": 1790698230,
-        "narHash": "sha256-24oUHm2evb57Dgu46X41rLY9ue/au47nxbaUTo6lJVc=",
-        "owner": "vic",
-        "repo": "flake-file",
-        "rev": "91280a19eede3b3035e3889a3523c27e8fc07886",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vic",
-        "repo": "flake-file",
         "type": "github"
       }
     },
@@ -376,9 +338,7 @@
     "root": {
       "inputs": {
         "apple-fonts": "apple-fonts",
-        "bookokrat": "bookokrat",
         "flake-compat": "flake-compat",
-        "flake-file": "flake-file",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",

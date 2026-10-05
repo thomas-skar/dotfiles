@@ -1,10 +1,5 @@
 { self, withSystem, ... }:
 {
-  flake-file.inputs.apple-fonts = {
-    url = "github:Lyndeno/apple-fonts.nix";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   flake.nixosModules.fonts = {
     home-manager.sharedModules = [ self.homeModules.fonts ];
   };

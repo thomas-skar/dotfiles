@@ -1,9 +1,4 @@
 { withSystem, ... }: {
-  flake-file.inputs.zapp = {
-    url = "github:zsa/zapp";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   flake.nixosModules.zsa = withSystem "x86_64-linux" (
     { pkgs, inputs', ... }:
     {

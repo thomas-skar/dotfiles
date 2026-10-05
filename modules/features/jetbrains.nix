@@ -1,19 +1,5 @@
 { inputs, self, ... }:
 {
-  flake-file.inputs = {
-    systems.url = "github:nix-systems/default";
-    flake-compat = {
-      url = "github:nixos/flake-compat";
-      flake = false;
-    };
-    jetbrains-plugins = {
-      url = "github:nix-community/nix-jetbrains-plugins";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.flake-compat.follows = "flake-compat";
-    };
-  };
-
   flake.nixosModules.goland = {
     imports = [ self.nixosModules.jetbrains ];
     home-manager.sharedModules = [ self.homeModules.goland ];

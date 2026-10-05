@@ -1,4 +1,22 @@
 {
+  "lsp": {
+    "nil": {
+      "settings": {
+        "nil": {
+          "formatting": {
+            "command": ["nixfmt"]
+          }
+        }
+      }
+    },
+    "nixd": {
+      "settings": {
+        "nixd": {
+          "formatting": { "command": ["nixfmt"], }
+        },
+      }
+    }
+  },
   "indent_guides": {
     "enabled": true,
     "line_width": 0,
@@ -8,7 +26,16 @@
   },
   "completion_menu_scrollbar": "auto",
   "languages": {
-    "JSONC": {}
+    "JSONC": {},
+    "Nix": {
+      "language_servers": ["nixd", "nil"],
+      "formatter": {
+        "external": {
+          "command": "nixfmt",
+          "arguments": ["--quiet", "--"]
+        }
+      },
+    }
   },
   "vim_mode": true,
   "git": {

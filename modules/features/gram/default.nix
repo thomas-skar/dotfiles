@@ -28,6 +28,7 @@
         pkgs.gcc
         pkgs.rustc
         pkgs.cargo
+        pkgs.rustup
       ];
     };
 

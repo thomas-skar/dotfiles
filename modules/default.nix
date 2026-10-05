@@ -5,11 +5,9 @@
   systems = [ "x86_64-linux" ];
 
   imports = [
-    inputs.flake-file.flakeModules.dendritic # flake-file + flake+parts + import-tree
     inputs.home-manager.flakeModules.home-manager
   ];
 
-  # TODO: figure out a way to declare overylays in the same module as the flake input
   perSystem =
     { system, ... }:
     {
@@ -28,11 +26,4 @@
         config.allowUnfree = true;
       };
     };
-
-  flake-file.inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:denful/import-tree";
-    flake-file.url = "github:vic/flake-file";
-  };
 }

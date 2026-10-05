@@ -4,73 +4,76 @@
   lib,
   ...
 }:
+let
+  nixosModules = with self.nixosModules; [
+    # dependencies
+    homeManager
+    systemGraphics
+
+    # system settings
+    apparmor
+    systemd
+    gdm
+    gtk
+    keyd
+    displays
+    ssh
+    xdg
+    fonts
+    ly
+
+    # desktop environment
+    noctalia
+    labwc
+
+    # command lint tools
+    delta
+    jujutsu
+    fish
+    atuin
+    bash
+    btop
+    git
+    just
+    k8s
+    podman
+    sql
+    mise
+    starship
+    python
+    neovim
+    yazi
+    vim
+    shell
+    lazygit
+    github
+    fastfetch
+    zellij
+    devenv
+    direnv
+
+    # graphical applications
+    onepassword
+    chromium
+    foot
+    obsidian
+    teams
+    librewolf
+    bruno
+    gram
+    ghostty
+    microsoft-edge
+  ];
+
+  homeModules = with self.homeModules; [
+    television
+    intelliShell
+  ];
+in
 {
-  flake.nixosModules.systemFeatures = {
-    imports = with self.nixosModules; [
-      # dependencies
-      homeManager
-      systemGraphics
-
-      # system settings
-      apparmor
-      systemd
-      gdm
-      gtk
-      keyd
-      displays
-      ssh
-      xdg
-      fonts
-      ly
-
-      # desktop environment
-      noctalia
-      labwc
-
-      # command lint tools
-      delta
-      jujutsu
-      fish
-      atuin
-      bash
-      btop
-      git
-      just
-      k8s
-      podman
-      sql
-      mise
-      starship
-      python
-      neovim
-      yazi
-      vim
-      shell
-      lazygit
-      github
-      fastfetch
-      zellij
-      devenv
-      direnv
-
-      # graphical applications
-      onepassword
-      chromium
-      foot
-      obsidian
-      teams
-      librewolf
-      bruno
-      gram
-      ghostty
-      microsoft-edge
-
-    ];
-  };
-
   # nixos (system-manager) configuration
   flake.nixosModules.systemConfiguration = { pkgs, ... }: {
-    imports = [ self.nixosModules.systemFeatures ];
+    imports = nixosModules;
 
     environment.systemPackages = [
       pkgs.coreutils
@@ -135,6 +138,8 @@
 
   # home(-manager) configuration
   flake.homeModules.homeConfiguration = { pkgs, ... }: {
+    imports = homeModules;
+
     home.packages = [
       # command line tools, etc
       pkgs.dust
@@ -169,34 +174,11 @@
       enableBashIntegration = false;
       enableFishIntegration = false;
     };
-    programs.television.enable = false;
     programs.jq.enable = true;
     programs.parallel.enable = false;
     programs.ranger.enable = false;
     programs.man.generateCaches = false;
 
-  };
-
-  # system-manager flake input
-  flake-file = {
-    inputs = {
-      system-manager = {
-        url = "github:numtide/system-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-compat.follows = "flake-compat";
-        inputs.userborn.inputs.systems.follows = "systems";
-        inputs.userborn.inputs.flake-parts.follows = "flake-parts";
-      };
-      flake-compat = {
-        url = "github:nixos/flake-compat";
-        flake = false;
-      };
-      systems.url = "github:nix-systems/default";
-    };
-    nixConfig = {
-      extra-substituters = [ "https://cache.numtide.com" ];
-      extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
-    };
   };
 
   # system manager config(s)
