@@ -68,6 +68,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    run-or-raise = {
+      url = "git+https://codeberg.org/skarre-r/ror?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     systems.url = "github:nix-systems/default";
 
     flake-utils.url = "github:numtide/flake-utils";

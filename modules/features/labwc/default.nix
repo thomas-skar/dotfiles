@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, inputs, ... }:
 {
   flake.nixosModules.labwc = { pkgs, ... }: {
     environment.systemPackages = [ pkgs.labwc ];
@@ -14,33 +14,16 @@
       ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     };
 
-    systemd.services."wayland-compositor" = {
-      enable = false;
-      after = [
-        "graphical.target"
-        "systemd-user-sessions.service"
-        "modprobe@drm.service"
-      ];
-      conflicts = [ "getty@tty2.service" ];
-      serviceConfig = {
-        User = "thomas";
-        WorkingDirectory = "~";
-        PAMName = "login";
-        TTYPath = "/dev/tty2";
-        UnsetEnvironment = "TERM";
-        StandardOutput = "journal";
-        ExecStart = "${pkgs.labwc}/bin/labwc";
-      };
-      wantedBy = [ "graphical.target" ];
-    };
-
     home-manager.sharedModules = [ self.homeModules.labwc ];
   };
 
   flake.homeModules.labwc = { pkgs, ... }: {
     home.packages = [
-      pkgs.labwc-tweaks
-      pkgs.labwc-menu-generator
+      # pkgs.labwc-tweaks
+      # pkgs.labwc-menu-generator
+      pkgs.wlrctl
+      pkgs.lswt
+      inputs.run-or-raise.packages."x86_64-linux".run-or-raise
     ];
 
     wayland.windowManager.labwc = {
@@ -60,6 +43,7 @@
         "WLR_RENDERER_FORCE_SOFTWARE=0"
         "WLR_NO_HARDWARE_CURSORS=1"
         "ELECTRON_OZONE_PLATFORM_HINT=wayland"
+        "GDK_DEBUG=no-portals"
       ];
       systemd.enable = true;
     };

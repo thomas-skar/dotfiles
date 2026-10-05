@@ -348,10 +348,32 @@
         "noctalia": "noctalia",
         "nur": "nur",
         "obsidian-extensions": "obsidian-extensions",
+        "run-or-raise": "run-or-raise",
         "system-graphics": "system-graphics",
         "system-manager": "system-manager",
         "systems": "systems_2",
         "zapp": "zapp"
+      }
+    },
+    "run-or-raise": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791203435,
+        "narHash": "sha256-Ij4b0endMbpDSlC/EmgrQ//ppL9yYCu3EhaeiOUTnt8=",
+        "ref": "main",
+        "rev": "e4d608b2456cf10248667ec846a49f4368ea2284",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://codeberg.org/skarre-r/ror"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://codeberg.org/skarre-r/ror"
       }
     },
     "sf-arabic": {

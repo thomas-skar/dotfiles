@@ -144,7 +144,6 @@ in
       # command line tools, etc
       pkgs.dust
       pkgs.tokei
-      pkgs.wlrctl
       pkgs.systemctl-tui
       pkgs.thinkfan
       pkgs.nix-tree
