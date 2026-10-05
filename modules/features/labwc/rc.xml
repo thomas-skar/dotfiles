@@ -172,16 +172,7 @@
     </keybind>
     <!-- Run or raise microsoft edge (Copilot+E) -->
     <keybind key="S-C-A-W-e">
-      <action name="ForEach">
-        <query identifier="microsoft-edge"/>
-        <then>
-          <action name="Raise"/>
-          <action name="Focus"/>
-        </then>
-        <none>
-          <action name="Execute" command="microsoft-edge"/>
-        </none>
-      </action>
+        <action name="Execute" command="run-or-raise microsoft-edge microsoft-edge"/>
     </keybind>
     <!-- Run or raise gram (Copilot+G) -->
     <keybind key="S-C-A-W-g">
