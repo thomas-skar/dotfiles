@@ -1,5 +1,5 @@
 {
-  flake.homeModules.intelliShell = { config, ... }: {
+  flake.homeModules.intelli-shell = { config, ... }: {
     programs.intelli-shell = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;

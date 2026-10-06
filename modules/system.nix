@@ -67,7 +67,7 @@ let
 
   homeModules = with self.homeModules; [
     television
-    intelliShell
+    podman-tui
   ];
 in
 {
