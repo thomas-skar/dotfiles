@@ -36,19 +36,19 @@
         end
 
         if test -d /run/system-manager/sw/share
-          set -gxp XDG_DATA_DIRS /run/system-manager/sw/share
+          set -gx XDG_DATA_DIRS "/run/system-manager/sw/share:$XDG_DATA_DIRS"
         end
 
         if test -d /etc/profiles/per-user/$USER/share
-          set -gxp XDG_DATA_DIRS /etc/profiles/per-user/$USER/share
+          set -gx XDG_DATA_DIRS "/etc/profiles/per-user/$USER/share:$XDG_DATA_DIRS"
         end
 
         if test -d /usr/share/glib-2.0/schemas
-          set -gxa XDG_DATA_DIRS /usr/share/glib-2.0/schemas
+          set -gx XDG_DATA_DIRS "$XDG_DATA_DIRS:/usr/share/glib-2.0/schemas"
         end
 
         if test -d /home/$USER/.local/share
-          set -gxa XDG_DATA_DIRS /home/$USER/.local/share
+          set -gx XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/$USER/.local/share"
         end
       '';
     };
