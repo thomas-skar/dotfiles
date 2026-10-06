@@ -279,16 +279,7 @@
     </keybind>
     <!-- Run or raise librewolf (Copilot+L) -->
     <keybind key="S-C-A-W-l">
-      <action name="ForEach">
-        <query identifier="librewolf"/>
-        <then>
-          <action name="Raise"/>
-          <action name="Focus"/>
-        </then>
-        <none>
-          <action name="Execute" command="librewolf"/>
-        </none>
-      </action>
+      <action name="Execute" command="run-or-raise librewolf librewolf"/>
     </keybind>
     <!-- Run or raise neovide (Copilot+V) -->
     <keybind key="S-C-A-W-v">
