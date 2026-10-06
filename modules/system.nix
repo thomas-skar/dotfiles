@@ -68,10 +68,12 @@ let
     # desktop applications, etc
     microsoft-edge
     door-knocker
+    dconf-editor
 
     # command line tools, etc
     television
     podman-tui
+    dconf2nix
   ];
 in
 {
