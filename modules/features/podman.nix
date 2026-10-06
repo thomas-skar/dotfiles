@@ -1,6 +1,15 @@
 { self, ... }:
 {
-  flake.nixosModules.podman = {
+  flake.nixosModules.podman = { pkgs, ... }: {
+    security.wrappers = {
+      podman = {
+        setuid = true;
+        owner = "root";
+        group = "root";
+        source = "${pkgs.podman}/bin/podman";
+      };
+    };
+
     home-manager.sharedModules = [ self.homeModules.podman ];
   };
 
