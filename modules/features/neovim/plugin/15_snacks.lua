@@ -142,6 +142,9 @@ opts.styles = {
     backdrop = {
       transparent = false,
     },
+    keys = {
+      ['<Esc>'] = { '', mode = { 'n' } },
+    },
   },
   scratch = {
     width = 120, -- up from 100
