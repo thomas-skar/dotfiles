@@ -65,8 +65,9 @@ let
   ];
 
   homeModules = with self.homeModules; [
-    # desktop applications
+    # desktop applications, etc
     microsoft-edge
+    door-knocker
 
     # command line tools, etc
     television
