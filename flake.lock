@@ -362,11 +362,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791203435,
-        "narHash": "sha256-Ij4b0endMbpDSlC/EmgrQ//ppL9yYCu3EhaeiOUTnt8=",
+        "lastModified": 1791276658,
+        "narHash": "sha256-xR+gMccjfR6EtwPyvO0QgoRYxk31zVDjnRHpy1uQBkY=",
         "ref": "main",
-        "rev": "e4d608b2456cf10248667ec846a49f4368ea2284",
-        "revCount": 7,
+        "rev": "79dd65f74ad095315232babd4fcb986a5359937a",
+        "revCount": 11,
         "type": "git",
         "url": "https://codeberg.org/skarre-r/ror"
       },
