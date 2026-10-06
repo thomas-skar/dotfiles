@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.systemGraphics = {
+  flake.nixosModules.system-graphics = {
     imports = [ inputs.system-graphics.systemModules.default ];
 
     system-graphics.enable = true;

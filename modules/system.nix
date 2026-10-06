@@ -7,8 +7,8 @@
 let
   nixosModules = with self.nixosModules; [
     # dependencies
-    homeManager
-    systemGraphics
+    home-manager
+    system-graphics
 
     # system settings
     apparmor
@@ -62,17 +62,20 @@ let
     bruno
     gram
     ghostty
-    microsoft-edge
   ];
 
   homeModules = with self.homeModules; [
+    # desktop applications
+    microsoft-edge
+
+    # command line tools, etc
     television
     podman-tui
   ];
 in
 {
   # nixos (system-manager) configuration
-  flake.nixosModules.systemConfiguration = { pkgs, ... }: {
+  flake.nixosModules.system-configuration = { pkgs, ... }: {
     imports = nixosModules;
 
     environment.systemPackages = [
@@ -130,14 +133,14 @@ in
     };
     users.groups."thomas".gid = 1000;
 
-    home-manager.users."thomas" = self.homeModules.homeConfiguration;
+    home-manager.users."thomas" = self.homeModules.home-configuration;
 
   };
 
   # TODO: move packages to separate modules
 
   # home(-manager) configuration
-  flake.homeModules.homeConfiguration = { pkgs, ... }: {
+  flake.homeModules.home-configuration = { pkgs, ... }: {
     imports = homeModules;
 
     home.packages = [
@@ -182,7 +185,7 @@ in
 
   # system manager config(s)
   flake.systemConfigs.default = inputs.system-manager.lib.makeSystemConfig {
-    modules = [ self.nixosModules.systemConfiguration ];
+    modules = [ self.nixosModules.system-configuration ];
   };
 
   flake.systemConfigs.x86_64-linux.systemConfigs.default = self.systemConfigs.default;

@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.microsoft-edge = {
-    home-manager.sharedModules = [ self.homeModules.microsoft-edge ];
-  };
-
   flake.homeModules.microsoft-edge = {
     xdg = {
       mimeApps.defaultApplications = {

@@ -1,6 +1,6 @@
 { self, inputs, ... }:
 {
-  flake.nixosModules.homeManager = {
+  flake.nixosModules.home-manager = {
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
     home-manager = {
@@ -9,11 +9,11 @@
       startAsUserService = false;
       backupFileExtension = "bak";
       overwriteBackup = true;
-      sharedModules = [ self.homeModules.homeManager ];
+      sharedModules = [ self.homeModules.home-manager ];
     };
   };
 
-  flake.homeModules.homeManager = {
+  flake.homeModules.home-manager = {
     programs.home-manager.enable = true;
   };
 }
