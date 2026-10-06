@@ -51,16 +51,16 @@
             }
             {
               name = "command-palette";
-              enable = false;
+              enable = true;
             }
             {
               name = "daily-notes";
               enable = false;
             }
-            # {
-            #   name = "editor-syntax-highlight";
-            #   enable = true;
-            # }
+            {
+              name = "editor-status";
+              enable = true;
+            }
             {
               name = "file-explorer";
               enable = true;
@@ -87,7 +87,7 @@
             }
             {
               name = "note-composer";
-              enable = true;
+              enable = false;
             }
             {
               name = "outgoing-link";
@@ -131,7 +131,7 @@
             }
             {
               name = "tag-pane";
-              enable = true;
+              enable = false;
             }
             {
               name = "templates";
