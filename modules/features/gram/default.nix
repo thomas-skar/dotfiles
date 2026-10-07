@@ -24,6 +24,7 @@
         pkgs.prettierd
         pkgs.alejandra
         pkgs.xmlstarlet
+        pkgs.shellcheck
         pkgs.lua-language-server
         pkgs.yaml-language-server
         pkgs.bash-language-server

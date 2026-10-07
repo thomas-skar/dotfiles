@@ -54,6 +54,7 @@
           pkgs.fzf
           pkgs.ripgrep
           pkgs.gotools
+          pkgs.shellcheck
           pkgs.xmlstarlet
           pkgs.tree-sitter
           pkgs.golangci-lint

@@ -168,7 +168,7 @@ in
         pkgs.signal-desktop
         pkgs.qalculate-gtk
         pkgs.tangram
-        pkgs.nwg-look
+        # pkgs.nwg-look
         pkgs.protonmail-desktop
       ];
     };
