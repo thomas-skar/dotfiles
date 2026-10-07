@@ -14,7 +14,12 @@
   "completion_menu_scrollbar": "auto",
   "languages": {
     "JSONC": {
-      "formatter": "prettier",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--write", "--parser", "jsonc", "--tab-width", "2"],
+        },
+      },
     },
     "Nix": {
       "language_servers": ["nixd", "nil"],
@@ -30,9 +35,23 @@
       "formatter": {
         "external": {
           "command": "xmlstarlet",
-          "arguments": ["format", "--indent-spaces", "2", "-"]
-        }
-      }
+          "arguments": ["format", "--indent-spaces", "2", "-"],
+        },
+      },
+    },
+    "Lua": {
+      "formatter": {
+        "external": {
+          "command": "stylua",
+          "arguments": [
+            "--search-parent-directories",
+            "--respect-ignores",
+            "--stdin-filepath",
+            "$FILENAME",
+            "-",
+          ],
+        },
+      },
     },
   },
   "vim_mode": true,
