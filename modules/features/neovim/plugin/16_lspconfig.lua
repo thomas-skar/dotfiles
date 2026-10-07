@@ -37,6 +37,8 @@ vim.lsp.enable {
   'tailwindcss',
   'jsonnet_ls',
   'marksman',
+  'fish_lsp',
+  'bashls',
 }
 
 vim.lsp.inlay_hint.enable(true)

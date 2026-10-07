@@ -31,6 +31,7 @@
           pkgs.stylua
           pkgs.kdlfmt
           pkgs.just-lsp
+          pkgs.fish-lsp
           pkgs.marksman
           pkgs.prettierd
           pkgs.alejandra
@@ -39,15 +40,13 @@
           pkgs.basedpyright
           pkgs.lua-language-server
           pkgs.yaml-language-server
+          pkgs.bash-language-server
           pkgs.docker-language-server
           pkgs.jsonnet-language-server
           pkgs.golangci-lint-langserver
           pkgs.typescript-language-server
           pkgs.tailwindcss-language-server
           pkgs.graphql-language-service-cli
-          pkgs.vscode-css-languageserver
-          pkgs.vscode-html-languageserver
-          pkgs.vscode-json-languageserver
           pkgs.vscode-langservers-extracted
 
           # command line tools, etc
