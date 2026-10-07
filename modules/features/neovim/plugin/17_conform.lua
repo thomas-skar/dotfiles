@@ -7,7 +7,8 @@ require('conform').setup {
     lua = { 'stylua' },
     go = { 'gofmt', 'goimports', 'golangci-lint' },
     nix = { 'nixfmt', 'alejandra', stop_after_first = true },
-    json = { 'oxfmt', 'jq' },
+    json = { 'oxfmt', 'jq', 'prettier', 'prettierd' },
+    jsonc = { 'oxfmt', 'prettier', 'prettierd' },
     python = { 'ruff_format', 'ruff_organize_imports' },
     xml = { 'xmlstarlet' },
     just = { 'just' },
@@ -19,7 +20,7 @@ require('conform').setup {
     sh = { 'shfmt' },
     kdl = { 'kdlfmt' },
     ['*'] = { 'codespell' },
-    ['_'] = {},
+    -- ['_'] = {},
   },
   default_format_opts = {
     lsp_format = 'fallback',
