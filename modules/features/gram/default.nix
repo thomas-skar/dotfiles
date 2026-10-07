@@ -19,12 +19,14 @@
         pkgs.stylua
         pkgs.lemminx
         pkgs.just-lsp
+        pkgs.fish-lsp
         pkgs.prettier
         pkgs.prettierd
         pkgs.alejandra
         pkgs.xmlstarlet
         pkgs.lua-language-server
         pkgs.yaml-language-server
+        pkgs.bash-language-server
         pkgs.vscode-langservers-extracted
         # dependencies
         pkgs.gcc
