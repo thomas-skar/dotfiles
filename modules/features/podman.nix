@@ -1,31 +1,71 @@
 { self, ... }:
 {
   flake.nixosModules.podman = { pkgs, ... }: {
+    environment.systemPackages = [
+      pkgs.passt
+      pkgs.slirp4netns
+      pkgs.fuse-overlayfs
+      pkgs.crun
+    ];
+
     security.wrappers = {
-      podman = {
-        setuid = true;
+      newuidmap = {
         owner = "root";
         group = "root";
-        source = "${pkgs.podman}/bin/podman";
+        source = "${pkgs.shadow}/bin/newuidmap";
+        capabilities = "cap_setuid,cap_setfcap+eip";
+      };
+      newgidmap = {
+        owner = "root";
+        group = "root";
+        source = "${pkgs.shadow}/bin/newgidmap";
+        capabilities = "cap_setgid,cap_setfcap+eip";
       };
     };
 
     home-manager.sharedModules = [ self.homeModules.podman ];
   };
 
-  flake.homeModules.podman = { pkgs, ... }: {
-    home.packages = [
-      pkgs.shadow
-    ];
+  flake.homeModules.podman = { pkgs, config, ... }: {
+    home.packages = [ pkgs.shadow ];
 
     services.podman = {
       enable = true;
+      autoUpdate.enable = false;
+      settings = {
+        containers = {
+          network = {
+            network_backend = "netavark";
+            default_rootless_network_cmd = "pasta";
+            rootless_port_forwarder = "rootlessport";
+            # firewall_driver = "none";
+          };
+          engine = {
+            runtime = "${pkgs.crun}/bin/crun";
+            database_backend = "sqlite";
+            network_cmd_path = "${pkgs.slirp4netns}/bin/slirp4netns";
+            static_dir = "${config.home.homeDirectory}/.local/share/containers/storage/libpod";
+            volume_path = "${config.home.homeDirectory}/.local/share/containers/storage/volumes";
+          };
+        };
+        storage = {
+          storage = {
+            driver = "overlay";
+            # runroot = "$XDG_RUNTIME_DIR/containers";
+            # graphroot = "$XDG_DATA_HOME/containers/storage";
+            rootless_storage_path = "$HOME/.local/share/containers/storage";
+            # options.overlay.mount_program = "${pkgs.fuse-overlayfs}/bin/fuse-overlayfs";
+          };
+        };
+      };
     };
 
     programs.fish.shellAbbrs = {
       pps = "podman ps -a";
       ppsw = "podman ps -a -w 1";
       pprmaf = "podman pod rm --all --force";
+      pkp = "podman kube play --replace";
+      pkd = "podman kube down";
     };
   };
 }

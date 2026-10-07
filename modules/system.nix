@@ -56,7 +56,6 @@ let
     onepassword
     chromium
     foot
-    obsidian
     teams
     librewolf
     bruno
@@ -68,12 +67,11 @@ let
     # desktop applications, etc
     microsoft-edge
     door-knocker
-    dconf-editor
+    obsidian
 
     # command line tools, etc
     television
     podman-tui
-    dconf2nix
   ];
 in
 {
@@ -146,34 +144,36 @@ in
   flake.homeModules.home-configuration = { pkgs, ... }: {
     imports = homeModules;
 
-    home.packages = [
-      # command line tools, etc
-      pkgs.dust
-      pkgs.tokei
-      pkgs.systemctl-tui
-      pkgs.thinkfan
-      pkgs.nix-tree
-      pkgs.wl-color-picker
-      pkgs.lazyjournal
-      pkgs.doxx
+    home = {
+      username = "thomas";
+      homeDirectory = "/home/thomas";
+      stateVersion = "26.11";
+      sessionPath = [ "$HOME/.local/bin" ];
+      sessionVariables = { };
+      packages = [
+        # command line tools, etc
+        pkgs.dust
+        pkgs.tokei
+        pkgs.systemctl-tui
+        pkgs.thinkfan
+        pkgs.nix-tree
+        pkgs.wl-color-picker
+        pkgs.lazyjournal
+        pkgs.doxx
 
-      # gui applications
-      pkgs.slack
-      pkgs.spotify
-      pkgs.localsend
-      pkgs.signal-desktop
-      pkgs.qalculate-gtk
-      pkgs.tangram
-      pkgs.nwg-look
-      pkgs.protonmail-desktop
-    ];
-
-    home.stateVersion = "26.11"; # TODO ?
-    home.sessionPath = [ "$HOME/.local/bin" ];
-    home.sessionVariables = { };
+        # gui applications
+        pkgs.slack
+        pkgs.spotify
+        pkgs.localsend
+        pkgs.signal-desktop
+        pkgs.qalculate-gtk
+        pkgs.tangram
+        pkgs.nwg-look
+        pkgs.protonmail-desktop
+      ];
+    };
 
     # TODO: move programs to separate modules
-
     programs.fzf = {
       enable = true;
       enableBashIntegration = false;

@@ -1,9 +1,5 @@
-{ self, withSystem, ... }:
+{ withSystem, ... }:
 {
-  flake.nixosModules.obsidian = {
-    home-manager.sharedModules = [ self.homeModules.obsidian ];
-  };
-
   flake.homeModules.obsidian = withSystem "x86_64-linux" (
     { pkgs, ... }: {
       programs.obsidian = {
@@ -17,6 +13,7 @@
           };
         };
 
+        # TODO: enable vim mode + beybinds
         defaultSettings = {
           app = {
             showLineNumber = true;
