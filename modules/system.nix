@@ -68,6 +68,7 @@ let
     lazygit
     ripgrep
     starship
+    vi-mongo
     fastfetch
     television
     github-cli
