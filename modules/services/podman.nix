@@ -1,12 +1,17 @@
 { self, ... }:
 {
   flake.nixosModules.podman = { pkgs, ... }: {
-    environment.systemPackages = [
-      pkgs.passt
-      pkgs.slirp4netns
-      pkgs.fuse-overlayfs
-      pkgs.crun
-    ];
+    environment = {
+      systemPackages = [
+        pkgs.passt
+        pkgs.slirp4netns
+        pkgs.fuse-overlayfs
+        pkgs.crun
+      ];
+      variables = {
+        DOCKER_HOST = "/run/user/1000/podman/podman.sock";
+      };
+    };
 
     security.wrappers = {
       newuidmap = {
