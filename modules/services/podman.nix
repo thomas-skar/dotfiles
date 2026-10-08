@@ -38,7 +38,6 @@
             network_backend = "netavark";
             default_rootless_network_cmd = "pasta";
             rootless_port_forwarder = "rootlessport";
-            # firewall_driver = "none";
           };
           engine = {
             runtime = "${pkgs.crun}/bin/crun";
@@ -51,10 +50,7 @@
         storage = {
           storage = {
             driver = "overlay";
-            # runroot = "$XDG_RUNTIME_DIR/containers";
-            # graphroot = "$XDG_DATA_HOME/containers/storage";
             rootless_storage_path = "$HOME/.local/share/containers/storage";
-            # options.overlay.mount_program = "${pkgs.fuse-overlayfs}/bin/fuse-overlayfs";
           };
         };
       };
