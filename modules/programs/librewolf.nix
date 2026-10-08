@@ -1,9 +1,5 @@
-{ self, withSystem, ... }:
+{ withSystem, ... }:
 {
-  flake.nixosModules.librewolf = {
-    home-manager.sharedModules = [ self.homeModules.librewolf ];
-  };
-
   # withSystem is required to use the nur overlay
   flake.homeModules.librewolf = withSystem "x86_64-linux" (
     { pkgs, ... }: {

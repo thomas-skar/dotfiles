@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.rofi = {
-    home-manager.sharedModules = [ self.homeModules.rofi ];
-  };
-
   flake.homeModules.rofi = {
     programs.rofi = {
       enable = true;

@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.devenv = {
-    home-manager.sharedModules = [ self.homeModules.devenv ];
-  };
-
   flake.homeModules.devenv = { config, ... }: {
     programs.devenv = {
       enable = true;

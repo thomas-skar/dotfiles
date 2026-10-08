@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.delta = {
-    home-manager.sharedModules = [ self.homeModules.delta ];
-  };
-
   flake.homeModules.delta = { config, ... }: {
     programs.delta = {
       enable = true;

@@ -1,13 +1,6 @@
-{ self, ... }:
 {
-  flake.nixosModules.jujutsu = {
-    home-manager.sharedModules = [ self.homeModules.jujutsu ];
-  };
-
   flake.homeModules.jujutsu = { pkgs, ... }: {
-    home.packages = [
-      pkgs.lazyjj
-    ];
+    home.packages = [ pkgs.lazyjj ];
 
     programs.jujutsu = {
       enable = true;

@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.zellij = {
-    home-manager.sharedModules = [ self.homeModules.zellij ];
-  };
-
   flake.homeModules.zellij = { pkgs, ... }: {
     programs.zellij = {
       enable = true;

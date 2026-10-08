@@ -1,4 +1,5 @@
-{ withSystem, ... }: {
+{ withSystem, ... }:
+{
   flake.nixosModules.zsa = withSystem "x86_64-linux" (
     { pkgs, inputs', ... }:
     {

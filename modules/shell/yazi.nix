@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.yazi = {
-    home-manager.sharedModules = [ self.homeModules.yazi ];
-  };
-
   flake.homeModules.yazi = { config, ... }: {
     programs.yazi = {
       enable = true;

@@ -1,9 +1,5 @@
-{ self, withSystem, ... }:
+{ withSystem, ... }:
 {
-  flake.nixosModules.fonts = {
-    home-manager.sharedModules = [ self.homeModules.fonts ];
-  };
-
   # withSystem is required to get the "sf-pro" package from the apple-fonts overlay
   flake.homeModules.fonts = withSystem "x86_64-linux" (
     { pkgs, ... }: {

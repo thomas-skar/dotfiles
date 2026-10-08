@@ -1,10 +1,5 @@
 # DOCS: https://gram-editor.com/docs/configuring-gram/
-{ self, ... }:
 {
-  flake.nixosModules.gram = {
-    home-manager.sharedModules = [ self.homeModules.gram ];
-  };
-
   flake.homeModules.gram = { pkgs, ... }: {
     programs.gram = {
       enable = true;

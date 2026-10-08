@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.ghostty = {
-    home-manager.sharedModules = [ self.homeModules.ghostty ];
-  };
-
   flake.homeModules.ghostty = { config, ... }: {
     programs.ghostty = {
       enable = true;

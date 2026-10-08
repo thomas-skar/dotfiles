@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.zed = {
-    home-manager.sharedModules = [ self.homeModules.zed ];
-  };
-
   flake.homeModules.zed = { pkgs, ... }: {
     programs.zed-editor = {
       enable = true;

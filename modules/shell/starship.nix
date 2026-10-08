@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.starship = {
-    home-manager.sharedModules = [ self.homeModules.starship ];
-  };
-
   flake.homeModules.starship = { config, ... }: {
     programs.starship = {
       enable = true;

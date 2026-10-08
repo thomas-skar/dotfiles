@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.fish = {
-    home-manager.sharedModules = [ self.homeModules.fish ];
-  };
-
   flake.homeModules.fish = {
     programs.fish = {
       enable = true;

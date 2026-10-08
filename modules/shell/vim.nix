@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.vim = {
-    home-manager.sharedModules = [ self.homeModules.vim ];
-  };
-
   flake.homeModules.vim = {
     programs.vim.enable = true;
 

@@ -1,10 +1,5 @@
-{ self, ... }:
 {
-  flake.nixosModules.teams = {
-    home-manager.sharedModules = [ self.homeModules.teams ];
-  };
-
-  flake.homeModules.teams = { pkgs, ... }: {
+  flake.homeModules.microsoft-teams = { pkgs, ... }: {
     home.packages = [
       pkgs.teams-for-linux
     ];

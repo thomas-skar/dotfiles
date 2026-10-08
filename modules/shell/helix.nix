@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.helix = {
-    home-manager.sharedModules = [ self.homeModules.helix ];
-  };
-
   flake.homeModules.helix = {
     programs.helix = {
       enable = true;

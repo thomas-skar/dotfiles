@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.k8s = {
-    home-manager.sharedModules = [ self.homeModules.k8s ];
-  };
-
   flake.homeModules.k8s = { pkgs, ... }: {
     home.packages = [
       pkgs.kubectl

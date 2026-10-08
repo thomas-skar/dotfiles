@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.foot = {
-    home-manager.sharedModules = [ self.homeModules.foot ];
-  };
-
   flake.homeModules.foot = {
     programs.foot = {
       enable = true;

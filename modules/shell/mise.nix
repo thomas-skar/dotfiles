@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.mise = {
-    home-manager.sharedModules = [ self.homeModules.mise ];
-  };
-
   flake.homeModules.mise = { pkgs, config, ... }: {
     home.packages = [ pkgs.usage ];
 

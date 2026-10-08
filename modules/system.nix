@@ -9,69 +9,68 @@ let
     # dependencies
     home-manager
     system-graphics
-
-    # system settings
-    apparmor
-    systemd
-    gdm
-    gtk
-    keyd
-    displays
-    ssh
-    xdg
-    fonts
-    ly
-
     # desktop environment
-    noctalia
     labwc
-
-    # command lint tools
-    delta
-    jujutsu
-    fish
-    atuin
-    bash
-    btop
-    git
-    just
-    k8s
-    podman
+    noctalia
+    # settings
     sql
-    mise
-    starship
-    python
-    neovim
-    yazi
-    vim
-    shell
-    lazygit
-    github
-    fastfetch
-    zellij
-    devenv
-    direnv
-
-    # graphical applications
+    xdg
+    apparmor
+    # services
+    gdm
+    keyd
+    podman
+    systemd
+    # desktop applications
     onepassword
-    chromium
-    foot
-    teams
-    librewolf
-    bruno
-    gram
-    ghostty
   ];
 
   homeModules = with self.homeModules; [
+    # settings
+    git
+    ssh
+    gtk
+    fonts
+    displays
     # desktop applications, etc
-    microsoft-edge
-    door-knocker
+    foot
+    gram
+    bruno
+    neovide
+    ghostty
     obsidian
-
+    chromium
+    librewolf
+    door-knocker
+    microsoft-edge
+    microsoft-teams
     # command line tools, etc
+    uv
+    fd
+    bat
+    eza
+    vim
+    k8s
+    fish
+    bash
+    just
+    mise
+    yazi
+    btop
+    atuin
+    sqlit
+    delta
+    zoxide
+    neovim
+    zellij
+    direnv
+    devenv
+    lazygit
+    ripgrep
+    starship
+    fastfetch
     television
-    podman-tui
+    github-cli
   ];
 in
 {

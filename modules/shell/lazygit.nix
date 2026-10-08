@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.lazygit = {
-    home-manager.sharedModules = [ self.homeModules.lazygit ];
-  };
-
   flake.homeModules.lazygit = { config, ... }: {
     programs.lazygit = {
       enable = config.programs.git.enable;

@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.gtk = {
-    home-manager.sharedModules = [ self.homeModules.gtk ];
-  };
-
   flake.homeModules.gtk = {
     gtk = {
       enable = true;

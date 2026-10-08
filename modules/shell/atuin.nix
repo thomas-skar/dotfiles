@@ -1,9 +1,4 @@
-{ self, ... }:
 {
-  flake.nixosModules.atuin = {
-    home-manager.sharedModules = [ self.homeModules.atuin ];
-  };
-
   flake.homeModules.atuin = { config, ... }: {
     programs.atuin = {
       enable = true;

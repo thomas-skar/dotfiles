@@ -1,11 +1,4 @@
-{ self, ... }: {
-  flake.nixosModules.neovim = {
-    home-manager.sharedModules = [
-      self.homeModules.neovim
-      self.homeModules.neovide
-    ];
-  };
-
+{
   flake.homeModules.neovim =
     {
       pkgs,
