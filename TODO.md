@@ -1,0 +1,13 @@
+- act (local github actions)
+- dive (docker image layers)
+- lazydocker
+- hyperfine (benchmark tool)
+- glow (markdown viewer)?
+- superfile
+- nnn
+- fx (json viewer)?
+- navi (cheatsheet)
+- wtf (dashboard)
+- duf (disk usage)
+- sd
+- octosql?
