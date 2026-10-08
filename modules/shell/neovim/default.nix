@@ -67,6 +67,7 @@
         sideloadInitLua = true;
       };
 
+      # TODO: is this broken?
       xdg.configFile."nvim/init.lua" = {
         source = ./init.lua;
         force = true;
