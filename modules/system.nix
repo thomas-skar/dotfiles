@@ -45,6 +45,7 @@ let
     microsoft-edge
     microsoft-teams
     # command line tools, etc
+    gh
     uv
     fd
     bat
@@ -67,11 +68,12 @@ let
     devenv
     lazygit
     ripgrep
-    starship
+    gh-dash
     vi-mongo
+    starship
     fastfetch
     television
-    github-cli
+    spotify-player
   ];
 in
 {
@@ -153,7 +155,6 @@ in
       packages = [
         # command line tools, etc
         pkgs.dust
-        pkgs.tokei
         pkgs.systemctl-tui
         pkgs.thinkfan
         pkgs.nix-tree

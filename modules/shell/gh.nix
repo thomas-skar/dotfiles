@@ -1,5 +1,5 @@
 {
-  flake.homeModules.github-cli = { pkgs, ... }: {
+  flake.homeModules.gh = { pkgs, ... }: {
     home.packages = [ pkgs.gh ];
 
     programs.fish.shellAbbrs = {
