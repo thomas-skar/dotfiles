@@ -362,18 +362,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1791457416,
-        "narHash": "sha256-VnKrZkjb41koxelaC6LZiNcMKwxwGwXNH5CXyq5EJI4=",
+        "lastModified": 1791457595,
+        "narHash": "sha256-NGYSvID+fB6m3CQ0RvP9dmHZUXuqA3wKxIjGc5BVQUs=",
         "ref": "main",
-        "rev": "cc3ad848b1218781e860d8e14a8271378eeb734d",
-        "revCount": 22,
+        "rev": "78eb8410cfa4754e9bcc02bc9fefd2628ac70a57",
+        "revCount": 23,
         "type": "git",
-        "url": "https://codeberg.org/skarre-r/ror"
+        "url": "https://codeberg.org/skarre-r/run-or-raise"
       },
       "original": {
         "ref": "main",
         "type": "git",
-        "url": "https://codeberg.org/skarre-r/ror"
+        "url": "https://codeberg.org/skarre-r/run-or-raise"
       }
     },
     "sf-arabic": {

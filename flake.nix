@@ -69,7 +69,7 @@
     };
 
     run-or-raise = {
-      url = "git+https://codeberg.org/skarre-r/ror?ref=main";
+      url = "git+https://codeberg.org/skarre-r/run-or-raise?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
