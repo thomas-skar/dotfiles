@@ -9,18 +9,22 @@ let
     # dependencies
     home-manager
     system-graphics
+
     # desktop environment
     labwc
     noctalia
+
     # settings
     sql
     xdg
     apparmor
+
     # services
     gdm
     keyd
     podman
     systemd
+
     # desktop applications
     onepassword
   ];
@@ -32,6 +36,7 @@ let
     gtk
     fonts
     displays
+
     # desktop applications, etc
     foot
     gram
@@ -44,20 +49,26 @@ let
     door-knocker
     microsoft-edge
     microsoft-teams
+
     # command line tools, etc
     gh
     uv
     fd
+    sd
     bat
     eza
     vim
     k8s
+    act
     fish
     bash
     just
     mise
     yazi
     btop
+    tldr
+    navi
+    dive
     atuin
     sqlit
     delta
