@@ -19,8 +19,6 @@
 
   flake.homeModules.labwc = { pkgs, ... }: {
     home.packages = [
-      # pkgs.labwc-tweaks
-      # pkgs.labwc-menu-generator
       pkgs.wlrctl
       pkgs.lswt
       inputs.run-or-raise.packages."x86_64-linux".run-or-raise
@@ -29,7 +27,7 @@
     wayland.windowManager.labwc = {
       enable = true;
       package = pkgs.labwc;
-      autostart = [ ];
+      autostart = [ "noctalia" ];
       environment = [
         "XKB_DEFAULT_LAYOUT=no"
         "XDG_CURRENT_DESKTOP=labwc:wlroots"
@@ -47,6 +45,8 @@
       ];
       systemd.enable = true;
     };
+
+    wayland.systemd.target = "labwc-session.target";
 
     home.file.".config/labwc/menu.xml".source = ./menu.xml;
     home.file.".config/labwc/rc.xml".source = ./rc.xml;
