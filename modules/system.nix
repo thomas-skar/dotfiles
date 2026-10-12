@@ -67,7 +67,6 @@ let
     yazi
     btop
     tldr
-    navi
     dive
     atuin
     sqlit
@@ -79,7 +78,6 @@ let
     devenv
     lazygit
     ripgrep
-    gh-dash
     vi-mongo
     starship
     fastfetch
