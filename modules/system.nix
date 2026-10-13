@@ -40,7 +40,10 @@ let
     # desktop applications, etc
     foot
     gram
+    gimp
     bruno
+    krita
+    mypaint
     neovide
     ghostty
     obsidian
