@@ -30,6 +30,9 @@ let
   ];
 
   homeModules = with self.homeModules; [
+    # services
+    pipewire
+
     # settings
     git
     ssh
@@ -71,9 +74,12 @@ let
     btop
     tldr
     dive
+    doxx
     atuin
     sqlit
     delta
+    xleak
+    ncspot
     zoxide
     neovim
     zellij
@@ -172,7 +178,6 @@ in
         pkgs.nix-tree
         pkgs.wl-color-picker
         pkgs.lazyjournal
-        pkgs.doxx
 
         # gui applications
         pkgs.slack
