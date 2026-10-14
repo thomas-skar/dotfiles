@@ -37,7 +37,7 @@
           pkgs.docker-language-server
           pkgs.jsonnet-language-server
           pkgs.golangci-lint-langserver
-          pkgs.typescript-language-server
+          # pkgs.typescript-language-server
           pkgs.tailwindcss-language-server
           pkgs.graphql-language-service-cli
           pkgs.vscode-langservers-extracted
