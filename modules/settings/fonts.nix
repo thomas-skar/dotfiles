@@ -8,6 +8,11 @@
         pkgs.nerd-fonts.jetbrains-mono
         pkgs.inter
         pkgs.sf-pro # from apple-fonts overlay
+        pkgs.iosevka
+        pkgs.nerd-fonts.iosevka
+        pkgs.nerd-fonts.iosevka-term
+        pkgs.nerd-fonts.iosevka-term-slab
+        pkgs.aporetic
       ];
 
       fonts.fontconfig = {
