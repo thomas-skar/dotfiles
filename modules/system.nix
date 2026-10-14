@@ -24,15 +24,13 @@ let
     keyd
     podman
     systemd
+    thinkfan
 
     # desktop applications
     onepassword
   ];
 
   homeModules = with self.homeModules; [
-    # services
-    pipewire
-
     # settings
     git
     ssh
@@ -46,12 +44,17 @@ let
     gimp
     bruno
     krita
+    slack
+    signal
+    spotify
     mypaint
     neovide
     ghostty
     obsidian
     chromium
+    qalculate
     librewolf
+    protonmail
     door-knocker
     microsoft-edge
     microsoft-teams
@@ -61,11 +64,13 @@ let
     uv
     fd
     sd
+    jq
     bat
     eza
     vim
     k8s
     act
+    fzf
     fish
     bash
     just
@@ -75,11 +80,11 @@ let
     tldr
     dive
     doxx
+    dust
     atuin
     sqlit
     delta
     xleak
-    ncspot
     zoxide
     neovim
     zellij
@@ -91,6 +96,8 @@ let
     starship
     fastfetch
     television
+    lazyjournal
+    systemctl-tui
     spotify-player
   ];
 in
@@ -155,13 +162,10 @@ in
     users.groups."thomas".gid = 1000;
 
     home-manager.users."thomas" = self.homeModules.home-configuration;
-
   };
 
-  # TODO: move packages to separate modules
-
   # home(-manager) configuration
-  flake.homeModules.home-configuration = { pkgs, ... }: {
+  flake.homeModules.home-configuration = {
     imports = homeModules;
 
     home = {
@@ -170,38 +174,9 @@ in
       stateVersion = "26.11";
       sessionPath = [ "$HOME/.local/bin" ];
       sessionVariables = { };
-      packages = [
-        # command line tools, etc
-        pkgs.dust
-        pkgs.systemctl-tui
-        pkgs.thinkfan
-        pkgs.nix-tree
-        pkgs.wl-color-picker
-        pkgs.lazyjournal
-
-        # gui applications
-        pkgs.slack
-        pkgs.spotify
-        pkgs.localsend
-        pkgs.signal-desktop
-        pkgs.qalculate-gtk
-        pkgs.tangram
-        # pkgs.nwg-look
-        pkgs.protonmail-desktop
-      ];
     };
 
-    # TODO: move programs to separate modules
-    programs.fzf = {
-      enable = true;
-      enableBashIntegration = false;
-      enableFishIntegration = false;
-    };
-    programs.jq.enable = true;
-    programs.parallel.enable = false;
-    programs.ranger.enable = false;
     programs.man.generateCaches = false;
-
   };
 
   # system manager config(s)
