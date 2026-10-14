@@ -19,7 +19,7 @@ require('conform').setup {
     fish = { 'fish_indent' },
     sh = { 'shfmt' },
     kdl = { 'kdlfmt' },
-    ['*'] = { 'codespell' },
+    -- ['*'] = { 'codespell' },
     -- ['_'] = {},
   },
   default_format_opts = {
