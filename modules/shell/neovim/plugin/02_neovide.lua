@@ -1,7 +1,8 @@
 -- neovide settings
 if vim.g.neovide then
   -- font
-  vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
+  -- vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
+  vim.o.guifont = 'Iosevka Custom:h12'
 
   -- window animations
   vim.g.neovide_position_animation_length = 0

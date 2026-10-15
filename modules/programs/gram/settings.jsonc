@@ -124,13 +124,12 @@
     "show": true,
   },
   "text_rendering_mode": "platform_default",
-  // "buffer_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_family": "Iosevka Custom",
-  "buffer_font_weight": 400,
+  "buffer_font_family": "Iosevka Custom", // "JetBrainsMono Nerd Font"
+  "buffer_font_fallbacks": ["JetBrains Mono"],
   "restore_on_startup": "last_session",
   "use_system_path_prompts": false,
   "use_system_prompts": false,
   "ui_font_size": 14,
-  "buffer_font_size": 16,
+  "buffer_font_size": 14,
   "theme": "Zedokai Darker",
 }

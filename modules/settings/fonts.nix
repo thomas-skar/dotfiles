@@ -69,16 +69,23 @@
     in
     {
       home.packages = [
-        pkgs.jetbrains-mono
-        pkgs.nerd-fonts.jetbrains-mono
         pkgs.inter
         pkgs.sf-pro # from apple-fonts overlay
 
+        pkgs.jetbrains-mono
+        pkgs.nerd-fonts.jetbrains-mono
+
+        pkgs.commit-mono
+        pkgs.nerd-fonts.commit-mono
+
+        pkgs.fira-code
+        pkgs.nerd-fonts.fira-code
+
+        # pkgs.aporetic
         # pkgs.iosevka
         # pkgs.nerd-fonts.iosevka
         # pkgs.nerd-fonts.iosevka-term
         # pkgs.nerd-fonts.iosevka-term-slab
-        # pkgs.aporetic
         iosevka-custom
       ];
 

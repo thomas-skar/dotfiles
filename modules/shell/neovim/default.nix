@@ -99,7 +99,8 @@
         wayland-app-id = "neovide";
 
         font = {
-          normal = [ "JetBrainsMono Nerd Font" ];
+          # normal = [ "JetBrainsMono Nerd Font" ];
+          normal = [ "Iosevka Custom" ];
           size = 12.0;
           hinting = "full";
           edging = "antialias";
