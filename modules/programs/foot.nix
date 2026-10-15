@@ -18,7 +18,8 @@
         settings = {
           main = {
             shell = shell;
-            font = "JetBrainsMono Nerd Font:size=12";
+            # font = "JetBrainsMono Nerd Font:size=12";
+            font = "Iosevka Custom:size=14";
             dpi-aware = "no";
             initial-color-theme = "dark";
             initial-window-size-pixels = "1280x720";
