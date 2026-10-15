@@ -90,11 +90,14 @@ let
     zellij
     direnv
     devenv
+    diffnav
     lazygit
     ripgrep
+    gh-dash
     vi-mongo
     starship
     fastfetch
+    gh-enhance
     television
     lazyjournal
     systemctl-tui
