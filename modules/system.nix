@@ -59,6 +59,9 @@ let
     microsoft-edge
     microsoft-teams
 
+    # custom packages
+    electron-im
+
     # command line tools, etc
     gh
     uv

@@ -102,5 +102,24 @@
       }
     '';
 
+    environment.etc."apparmor.d/nix-electronim".text = ''
+      abi <abi/4.0>,
+      include <tunables/global>
+
+      profile nix-electronim /nix/store/**/bin/electronim flags=(unconfined) {
+        userns,
+        include if exists <local/bwrap>
+      }
+    '';
+
+    environment.etc."apparmor.d/nix-electronim-chrome-sandbox".text = ''
+      abi <abi/4.0>,
+      include <tunables/global>
+
+      profile nix-electronim-chrome-sandbox /nix/store/**/lib/chrome-sandbox flags=(unconfined) {
+        userns,
+        include if exists <local/bwrap>
+      }
+    '';
   };
 }
