@@ -100,7 +100,6 @@ let
     vi-mongo
     starship
     fastfetch
-    gh-enhance
     television
     lazyjournal
     systemctl-tui
