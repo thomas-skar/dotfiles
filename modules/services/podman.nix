@@ -1,4 +1,9 @@
 { self, ... }:
+let
+  environmentVariables = {
+    DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
+  };
+in
 {
   flake.nixosModules.podman = { pkgs, ... }: {
     environment = {
@@ -8,9 +13,8 @@
         pkgs.fuse-overlayfs
         pkgs.crun
       ];
-      variables = {
-        DOCKER_HOST = "/run/user/1000/podman/podman.sock";
-      };
+      variables = environmentVariables;
+      sessionVariables = environmentVariables;
     };
 
     security.wrappers = {
@@ -32,11 +36,20 @@
   };
 
   flake.homeModules.podman = { pkgs, config, ... }: {
-    home.packages = [ pkgs.shadow ];
+    home = {
+      packages = [
+        pkgs.shadow
+        pkgs.docker-client
+        pkgs.docker-buildx
+        pkgs.docker-compose
+      ];
+      sessionVariables = environmentVariables;
+    };
 
     services.podman = {
       enable = true;
       autoUpdate.enable = false;
+      # useDefaultMachine = true;
       settings = {
         containers = {
           network = {
@@ -68,6 +81,51 @@
       pprmaf = "podman pod rm --all --force";
       pkp = "podman kube play --replace";
       pkd = "podman kube down";
+
+      dps = "docker ps -a";
+    };
+
+    systemd.user = {
+      enable = true;
+      sockets = {
+        "podman" = {
+          Unit = {
+            Description = "Podman API Socket";
+            Documentation = "man:podman-system-service(1)";
+          };
+          Socket = {
+            ListenStream = "%t/podman/podman.sock";
+            SocketMode = "0660";
+          };
+          Install = {
+            WantedBy = [ "sockets.target" ];
+          };
+        };
+      };
+      services = {
+        "podman" = {
+          Unit = {
+            Description = "Podman API Service";
+            Requires = [ "podman.socket" ];
+            After = [ "podman.socket" ];
+            Documentation = "man:podman-system-service(1)";
+          };
+          Service = {
+            Delegate = true;
+            Type = "exec";
+            KillMode = "process";
+            ExecStart = "${pkgs.podman}/bin/podman --log-level=info system service";
+          };
+          Install = {
+            WantedBy = [ "default.target" ];
+          };
+        };
+      };
+    };
+
+    programs.docker-cli = {
+      enable = true;
+      contexts.default.Endpoints.docker.Host = "unix:///run/user/1000/podman/podman.sock";
     };
   };
 }
