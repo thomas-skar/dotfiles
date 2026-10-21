@@ -32,7 +32,7 @@
             }
             {
               name = "backlink";
-              enable = true;
+              enable = false;
             }
             {
               name = "bases";
@@ -88,7 +88,7 @@
             }
             {
               name = "outgoing-link";
-              enable = true;
+              enable = false;
             }
             {
               name = "outline";
@@ -250,6 +250,19 @@
             }
           ];
           hotkeys = {
+            "app:reload" = [
+              {
+                key = "R";
+                modifiers = [ "Mod" ];
+              }
+            ];
+            "app:toggle-left-sidebar" = [
+              {
+                key = "E";
+                modifiers = [ "Mod" ];
+              }
+            ];
+
             "command-palette:open" = [
               {
                 key = "P";
@@ -259,7 +272,10 @@
                 ];
               }
             ];
+
+            "editor:insert-link" = [ ];
             "editor:delete-paragraph" = [ ];
+            "editor:toggle-checklist-status" = [ ];
             "editor:swap-line-down" = [
               {
                 key = "ArrowDown";
@@ -276,8 +292,27 @@
                 ];
               }
             ];
-            "editor:toggle-checklist-status" = [ ];
+            "editor:fold-all" = [
+              {
+                key = "J";
+                modifiers = [
+                  "Mod"
+                ];
+              }
+            ];
+            "editor:unfold-all" = [
+              {
+                key = "K";
+                modifiers = [
+                  "Mod"
+                ];
+              }
+            ];
+
             "file-explorer:new-file-in-new-pane" = [ ];
+
+            "markdown:toggle-preview" = [ ];
+
             "switcher:open" = [
               {
                 key = "P";
@@ -286,6 +321,7 @@
                 ];
               }
             ];
+
             "workspace:new-window" = [
               {
                 key = "N";
@@ -313,11 +349,75 @@
                 ];
               }
             ];
-            "obsidian-editor-shortcuts:addCursorsToSelectionEnds" = [ ];
-            "obsidian-editor-shortcuts:copyLineDown" = [ ];
+            "workspace:goto-tab-1" = [
+              {
+                key = "1";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-2" = [
+              {
+                key = "2";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-3" = [
+              {
+                key = "3";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-4" = [
+              {
+                key = "4";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-5" = [
+              {
+                key = "5";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-6" = [
+              {
+                key = "6";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-7" = [
+              {
+                key = "7";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-8" = [
+              {
+                key = "8";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-tab-9" = [
+              {
+                key = "9";
+                modifiers = [ "Alt" ];
+              }
+            ];
+            "workspace:goto-last-tab" = [
+              {
+                key = "0";
+                modifiers = [ "Alt" ];
+              }
+            ];
+
             "obsidian-editor-shortcuts:copyLineUp" = [ ];
+            "obsidian-editor-shortcuts:copyLineDown" = [ ];
+            "obsidian-editor-shortcuts:joinLines" = [ ];
             "obsidian-editor-shortcuts:deleteLine" = [ ];
             "obsidian-editor-shortcuts:duplicateLine" = [ ];
+            "obsidian-editor-shortcuts:insertLineBelow" = [ ];
+            "obsidian-editor-shortcuts:selectAllOccurrences" = [ ];
+            "obsidian-editor-shortcuts:addCursorsToSelectionEnds" = [ ];
             "obsidian-editor-shortcuts:goToLineEnd" = [
               {
                 key = "ArrowRight";
@@ -334,8 +434,22 @@
                 ];
               }
             ];
-            "obsidian-editor-shortcuts:insertLineBelow" = [ ];
-            "obsidian-editor-shortcuts:selectAllOccurrences" = [ ];
+            "obsidian-editor-shortcuts:goToFirstLine" = [
+              {
+                key = "ArrowUp";
+                modifiers = [
+                  "Meta"
+                ];
+              }
+            ];
+            "obsidian-editor-shortcuts:goToLastLine" = [
+              {
+                key = "ArrowDown";
+                modifiers = [
+                  "Meta"
+                ];
+              }
+            ];
           };
         };
       };
