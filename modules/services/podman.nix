@@ -49,7 +49,6 @@ in
     services.podman = {
       enable = true;
       autoUpdate.enable = false;
-      # useDefaultMachine = true;
       settings = {
         containers = {
           network = {
@@ -114,6 +113,7 @@ in
             Delegate = true;
             Type = "exec";
             KillMode = "process";
+            Environment = "PATH=/run/wrappers/bin:$PATH";
             ExecStart = "${pkgs.podman}/bin/podman --log-level=info system service";
           };
           Install = {
