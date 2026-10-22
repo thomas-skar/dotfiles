@@ -242,6 +242,14 @@
     <keybind key="S-C-A-W-1">
       <action name="Execute" command="run-or-raise 1password 1password"/>
     </keybind>
+    <!-- Toggle bookmark (CapsLock+M) -->
+    <keybind key="S-C-A-W-M-m">
+      <action name="Execute" command="bookmarks toggle"/>
+    </keybind>
+    <!-- Switch bookmark (CapsLock+S) -->
+    <keybind key="S-C-A-W-M-s">
+      <action name="Execute" command="bookmarks switch"/>
+    </keybind>
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">
       <action name="Execute" command="noctalia msg panel-toggle launcher"/>
@@ -254,8 +262,8 @@
     <keybind key="S-C-A-W-M-p">
       <action name="Execute" command="noctalia msg panel-toggle session"/>
     </keybind>
-    <!-- Noctalia: show clipboard manager (CapsLock+M) -->
-    <keybind key="S-C-A-W-M-m">
+    <!-- Noctalia: show clipboard manager (CapsLock+Q) -->
+    <keybind key="S-C-A-W-M-q">
       <action name="Execute" command="noctalia msg panel-toggle clipboard"/>
     </keybind>
     <!-- Noctalia: screenshot (PrtSc) -->

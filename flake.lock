@@ -362,11 +362,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792385260,
-        "narHash": "sha256-3NowhlhU/4QBcMhyqRpFwY/rJFU7Y8U8eW7ybL915jM=",
+        "lastModified": 1792659459,
+        "narHash": "sha256-4rckvWVfiYygT+nM2AhlsaN8BKFrN4Ch4OfdXOwPt4s=",
         "ref": "main",
-        "rev": "3fcceaaf6eed9c420a6e543228875c66fb60273e",
-        "revCount": 25,
+        "rev": "d1f89d597c166ad1aeb3cd17f81751c584c724ad",
+        "revCount": 35,
         "type": "git",
         "url": "https://codeberg.org/skarre-r/run-or-raise"
       },

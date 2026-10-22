@@ -22,6 +22,7 @@
       pkgs.wlrctl
       pkgs.lswt
       inputs.run-or-raise.packages."x86_64-linux".run-or-raise
+      inputs.run-or-raise.packages."x86_64-linux".bookmarks
     ];
 
     wayland.windowManager.labwc = {
