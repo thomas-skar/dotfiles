@@ -21,8 +21,11 @@
     home.packages = [
       pkgs.wlrctl
       pkgs.lswt
-      inputs.run-or-raise.packages."x86_64-linux".run-or-raise
-      inputs.run-or-raise.packages."x86_64-linux".bookmarks
+      pkgs.coreutils
+      pkgs.util-linux
+      inputs.run-or-raise.packages."x86_64-linux".ror
+      inputs.run-or-raise.packages."x86_64-linux".bm
+      inputs.run-or-raise.packages."x86_64-linux".wtw # TODO: service
     ];
 
     wayland.windowManager.labwc = {

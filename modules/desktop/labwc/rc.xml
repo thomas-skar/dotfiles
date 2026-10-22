@@ -159,20 +159,21 @@
     </keybind>
     <!-- Run or raise foot (Copilot+F) -->
     <keybind key="S-C-A-W-f">
-      <action name="Execute" command="run-or-raise foot foot"/>
+      <action name="Execute" command="ror foot foot"/>
     </keybind>
     <!-- Run or raise microsoft edge (Copilot+E) -->
     <keybind key="S-C-A-W-e">
-      <action name="Execute" command="run-or-raise microsoft-edge microsoft-edge"/>
+      <action name="Execute" command="ror microsoft-edge microsoft-edge"/>
     </keybind>
     <!-- Run or raise gram (Copilot+G) -->
     <keybind key="S-C-A-W-g">
-      <action name="Execute" command="run-or-raise app.liten.Gram gram"/>
+      <action name="Execute" command="ror app.liten.Gram gram"/>
     </keybind>
     <!-- Run or raise nautilus (Copilot+N) -->
     <keybind key="S-C-A-W-n">
-      <action name="Execute" command="run-or-raise org.gnome.Nautilus nautilus"/>
+      <action name="Execute" command="ror org.gnome.Nautilus nautilus"/>
     </keybind>
+    <!-- TODO: ror script -->
     <!-- Run or raise slack/ spotify (Copilot+S) -->
     <keybind key="S-C-A-W-s">
       <action name="ForEach">
@@ -202,12 +203,13 @@
     </keybind>
     <!-- Run or raise protonmail (Copilot+P) -->
     <keybind key="S-C-A-W-p">
-      <action name="Execute" command="run-or-raise proton-mail proton-mail"/>
+      <action name="Execute" command="ror proton-mail proton-mail"/>
     </keybind>
     <!-- Run or raise teams-for-linux (Copilot+T) -->
     <keybind key="S-C-A-W-t">
-      <action name="Execute" command="run-or-raise teams-for-linux teams-for-linux"/>
+      <action name="Execute" command="ror teams-for-linux teams-for-linux"/>
     </keybind>
+    <!-- TODO: ror script  -->
     <!-- Run or raise (cursed) outlook PWA/ obsidian (Copilot+O) -->
     <keybind key="S-C-A-W-o">
       <action name="ForEach">
@@ -232,23 +234,23 @@
     </keybind>
     <!-- Run or raise librewolf (Copilot+L) -->
     <keybind key="S-C-A-W-l">
-      <action name="Execute" command="run-or-raise librewolf librewolf"/>
+      <action name="Execute" command="ror librewolf librewolf"/>
     </keybind>
     <!-- Run or raise neovide (Copilot+V) -->
     <keybind key="S-C-A-W-v">
-      <action name="Execute" command="run-or-raise neovide neovide"/>
+      <action name="Execute" command="ror neovide neovide"/>
     </keybind>
     <!-- Run or raise 1password (Copilot+1) -->
     <keybind key="S-C-A-W-1">
-      <action name="Execute" command="run-or-raise 1password 1password"/>
+      <action name="Execute" command="ror 1password 1password"/>
     </keybind>
     <!-- Toggle bookmark (CapsLock+M) -->
     <keybind key="S-C-A-W-M-m">
-      <action name="Execute" command="bookmarks toggle"/>
+      <action name="Execute" command="bm toggle"/>
     </keybind>
     <!-- Switch bookmark (CapsLock+S) -->
     <keybind key="S-C-A-W-M-s">
-      <action name="Execute" command="bookmarks switch"/>
+      <action name="Execute" command="bm switch"/>
     </keybind>
     <!-- Noctalia: open launcher (Super+Space) -->
     <keybind key="W-Space">

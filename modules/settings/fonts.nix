@@ -4,7 +4,7 @@
   flake.homeModules.fonts = withSystem "x86_64-linux" (
     { pkgs, ... }:
     let
-      # TODO: nerd font?
+      # TODO: terminal/ nerd font!
       iosevka-custom = pkgs.iosevka.override {
         set = "Custom";
         privateBuildPlan = ''
@@ -93,10 +93,6 @@
         enable = true;
         hinting = "slight";
         antialiasing = true;
-        defaultFonts = {
-          # sansSerif = [ "Noto Sans" ];
-          # monospace = [ "JetBrains Mono" ];
-        };
       };
     }
   );
