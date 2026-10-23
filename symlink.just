@@ -16,7 +16,11 @@ script target source:
     end
 
 # replace all config file symlinks
-all: gram labwc neovim zellij
+all: fish gram labwc neovim zellij
+
+# replace fish functions directory symlink(s)
+fish:
+    # TODO: !
 
 # replace gram config file symlinks
 gram:
