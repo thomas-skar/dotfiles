@@ -249,6 +249,8 @@
               enable = true;
             }
           ];
+
+          # TODO: new window with ctrl-n, new file with shift-ctrl-n
           hotkeys = {
             "app:reload" = [
               {
