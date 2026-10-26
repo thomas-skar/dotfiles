@@ -33,6 +33,7 @@
       co = "git switch";
       gco = "git switch";
       discard = "git restore";
+      pfp = "git pull; git fetch --prune";
     };
   };
 }
