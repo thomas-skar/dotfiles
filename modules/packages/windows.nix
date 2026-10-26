@@ -19,6 +19,7 @@
 
         buildInputs = [
           pkgs.cairo
+          pkgs.wayland
           pkgs.wayland-protocols
           pkgs.libxkbcommon
         ];
