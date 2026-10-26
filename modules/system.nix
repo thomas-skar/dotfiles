@@ -105,6 +105,7 @@ let
     # custom packages
     electron-im
     windows
+    woverview
   ];
 in
 {
