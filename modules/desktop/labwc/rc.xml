@@ -333,8 +333,12 @@
     <windowRule identifier="dev.zed.Zed">
       <action name="SetDecorations" decorations="border"/>
     </windowRule>
-    <windowRule identifier="neovide">
+    <windowRule identifier="app.liten.Gram">
       <action name="SetDecorations" decorations="border"/>
+    </windowRule>
+    <!-- enable window decorations -->
+    <windowRule identifier="neovide">
+      <action name="SetDecorations" decorations="full" forceSSD="no"/>
     </windowRule>
   </windowRules>
 </labwc_config>
