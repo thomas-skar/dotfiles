@@ -13,3 +13,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
     if vim.bo[ev.buf].buftype ~= '' then vim.bo[ev.buf].autocomplete = false end
   end,
 })
+
+-- tiltfile filetype > starlark
+-- vim.api.nvim_create_augroup('BufRead', {
+--   filetype = 'Tiltfile',
+--   callback = function() vim.bo.filetype = 'tiltfile' end,
+-- })

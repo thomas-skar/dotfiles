@@ -31,6 +31,7 @@ require('nvim-treesitter').install {
   'xml',
   'yaml',
   'regex',
+  'starlark',
 }
 
 ---@param buf integer

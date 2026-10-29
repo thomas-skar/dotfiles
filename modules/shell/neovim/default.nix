@@ -23,6 +23,8 @@
           pkgs.nixfmt
           pkgs.stylua
           pkgs.kdlfmt
+          pkgs.yamlfmt
+          pkgs.yamllint
           pkgs.just-lsp
           pkgs.fish-lsp
           pkgs.marksman
@@ -31,20 +33,22 @@
           pkgs.codespell
           pkgs.typescript_7
           pkgs.basedpyright
+          pkgs.yaml-schema-router
           pkgs.lua-language-server
           pkgs.yaml-language-server
           pkgs.bash-language-server
           pkgs.docker-language-server
           pkgs.jsonnet-language-server
           pkgs.golangci-lint-langserver
-          # pkgs.typescript-language-server
           pkgs.tailwindcss-language-server
           pkgs.graphql-language-service-cli
           pkgs.vscode-langservers-extracted
+          # pkgs.typescript-language-server
 
           # command line tools, etc
           pkgs.jq
           pkgs.fzf
+          pkgs.tilt
           pkgs.ripgrep
           pkgs.gotools
           pkgs.shellcheck
@@ -90,7 +94,7 @@
       enable = true;
       settings = {
         fork = true;
-        frame = "none";
+        frame = "full"; # none
         maximized = false;
         idle = true;
         mouse-cursor-icon = "i-beam"; # arrow
