@@ -14,8 +14,8 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
--- tiltfile filetype > starlark
--- vim.api.nvim_create_augroup('BufRead', {
---   filetype = 'Tiltfile',
---   callback = function() vim.bo.filetype = 'tiltfile' end,
--- })
+vim.api.nvim_create_autocmd('BufRead', {
+  group = group,
+  pattern = 'Tiltfile',
+  callback = function() vim.bo.filetype = 'starlark' end,
+})
