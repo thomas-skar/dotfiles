@@ -47,7 +47,6 @@ let
     slack
     signal
     spotify
-    mypaint
     neovide
     ghostty
     obsidian
@@ -71,6 +70,7 @@ let
     k8s
     act
     fzf
+    zmx
     fish
     bash
     just
