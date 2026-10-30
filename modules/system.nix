@@ -103,9 +103,9 @@ let
     spotify-player
 
     # custom packages
-    electron-im
+    # electron-im
     windows
-    woverview
+    # woverview
   ];
 in
 {
