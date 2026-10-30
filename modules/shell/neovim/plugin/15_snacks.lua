@@ -270,6 +270,16 @@ opts.picker = {
       dev = { '~/code' },
       patterns = { '.git', 'package.json', 'Makefile', 'justfile', 'mise.toml', 'pyproject.toml', 'flake.nix' },
       recent = true,
+      confirm = function(picker, item)
+        -- picker:action 'load_session'
+        -- DOCS: https://github.com/folke/snacks.nvim/blob/882c996cf28183f4d63640de0b4c02ec886d01f2/lua/snacks/picker/actions.lua#L662
+        picker:close()
+        if not item then return end
+        local dir = item.file
+        if dir then vim.fn.chdir(dir) end
+        local session = require('snacks').dashboard.sections.session()
+        if session then vim.cmd(session.action:sub(2)) end
+      end,
     },
   },
 }

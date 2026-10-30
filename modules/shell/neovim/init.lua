@@ -9,3 +9,5 @@ if vim.loader then vim.loader.enable() end
 
 -- enable experimental ui2
 require('vim._core.ui2').enable { enable = true }
+
+-- TODO: custom command to update plugins
