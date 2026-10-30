@@ -97,6 +97,7 @@ let
     gh-dash
     vi-mongo
     starship
+    astroterm
     fastfetch
     television
     lazyjournal
