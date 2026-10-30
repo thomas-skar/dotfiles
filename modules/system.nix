@@ -18,6 +18,7 @@ let
     sql
     xdg
     apparmor
+    etc-shells
 
     # services
     gdm
