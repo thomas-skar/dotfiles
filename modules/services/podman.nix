@@ -74,10 +74,13 @@ in
     };
 
     programs.fish.shellAbbrs = {
-      pps = "podman ps -a";
+      pps = "podman ps";
       ppsa = "podman ps -a";
       ppsw = "podman ps -a -w 1";
+      pmsa = "podman stop --all";
+      pmrmaf = "podman rm --all --force";
       pprmaf = "podman pod rm --all --force";
+
       pkp = "podman kube play --replace";
       pkd = "podman kube down";
 
