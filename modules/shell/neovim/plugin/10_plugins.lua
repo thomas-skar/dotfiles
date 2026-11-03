@@ -2,10 +2,6 @@
 -- TODO: lazy load plugins
 -- TODO: Config... methods ? (mini)
 
--- TODO:
---  - schema-companion: https://github.com/cenk1cenk2/schema-companion.nvim
---  - yaml-compansion: https://github.com/mosheavni/yaml-companion.nvim
-
 ---@type "lualine"|"mini"|nil
 Config.statusline = 'mini'
 
@@ -17,3 +13,6 @@ Config.surround = 'visual'
 
 ---@type boolean
 Config.copilot = true
+
+-- custom commands
+vim.api.nvim_create_user_command('UpdatePlugins', function() vim.pack.update() end, {})

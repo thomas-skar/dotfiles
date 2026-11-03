@@ -1,6 +1,6 @@
 -- TODO: move config parts to separate files?
 -- TODO: explorer preview: disable for current "main" file?
--- TODO: open dashboard when closing all other/ last buffer
+-- TODO: open dashboard when closing all other/ last buffer?
 -- TODO: if explorer is the last buffer, close it and open the dashboard?
 -- TODO: <Ctrl-Backspace> in picker insert mode
 -- TODO: jump between explorer and terminal if they're both open
@@ -11,6 +11,8 @@ vim.pack.add {
 
 ---@type snacks.Config
 local opts = {}
+
+-- TODO: close explorer if last buffer
 
 ---@type snacks.explorer.Config
 opts.explorer = {
