@@ -238,6 +238,11 @@
               };
             }
             {
+              pkg = pkgs.obsidianPlugins.obsidian-excalidraw-plugin;
+              enable = true;
+              settings = { };
+            }
+            {
               pkg = pkgs.obsidianPlugins.nixsync;
               enable = false;
               settings = { };
