@@ -28,7 +28,13 @@ let
     thinkfan
 
     # desktop applications
+    slack
+    signal
+    obsidian
+    chromium
+    protonmail
     onepassword
+    microsoft-teams
   ];
 
   homeModules = with self.homeModules; [
@@ -41,23 +47,17 @@ let
 
     # desktop applications, etc
     foot
+    yaak
     gram
     gimp
-    bruno
-    krita
-    slack
-    signal
+    kitty
     spotify
     neovide
     ghostty
-    obsidian
-    chromium
     qalculate
     librewolf
-    protonmail
     door-knocker
     microsoft-edge
-    microsoft-teams
 
     # command line tools, etc
     gh
@@ -105,9 +105,7 @@ let
     spotify-player
 
     # custom packages
-    # electron-im
     windows
-    # woverview
   ];
 in
 {
