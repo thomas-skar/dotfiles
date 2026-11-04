@@ -47,10 +47,10 @@ let
 
     # desktop applications, etc
     foot
-    yaak
     gram
     gimp
     kitty
+    cartero
     spotify
     neovide
     ghostty
