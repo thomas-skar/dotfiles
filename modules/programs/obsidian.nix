@@ -1,5 +1,20 @@
-{ withSystem, ... }:
+{ self, withSystem, ... }:
 {
+  flake.nixosModules.obsidian = {
+    environment.etc."apparmor.d/nix-obsidian".text = ''
+      abi <abi/4.0>,
+      include <tunables/global>
+
+      profile nix-obsidian /nix/store/**/bin/obsidian flags=(unconfined) {
+        userns,
+      }
+    '';
+
+    home-manager.sharedModules = [
+      self.homeModules.obsidian
+    ];
+  };
+
   flake.homeModules.obsidian = withSystem "x86_64-linux" (
     { pkgs, ... }: {
       programs.obsidian = {
