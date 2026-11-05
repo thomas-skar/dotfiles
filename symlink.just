@@ -16,7 +16,7 @@ script target source:
     end
 
 # replace all config file symlinks
-all: fish gram labwc neovim zellij
+all: fish gram kitty labwc neovim zellij
 
 # replace fish functions directory symlink(s)
 fish:
@@ -26,6 +26,11 @@ fish:
 gram:
     just --justfile symlink.just script ".config/gram/settings.jsonc" "modules/programs/gram/settings.jsonc"
     just --justfile symlink.just script ".config/gram/keymap.jsonc" "modules/programs/gram/keymap.jsonc"
+
+# replace kitty config file symlinks
+kitty:
+    just --justfile symlink.just script ".config/kitty/kitty.conf" "modules/programs/kitty/kitty.conf"
+    just --justfile symlink.just script ".config/kitty/quick-access-terminal.conf" "modules/programs/kitty/quick-access-terminal.conf"
 
 # replace labwc config file symlinks
 labwc:
