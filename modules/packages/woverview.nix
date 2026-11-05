@@ -1,5 +1,11 @@
 { withSystem, ... }:
 {
+  flake.homeModules.woverview-package = withSystem "x86_64-linux" (
+    { config, ... }: {
+      home.packages = [ config.packages.woverview ];
+    }
+  );
+
   perSystem =
     { pkgs, ... }:
     let
@@ -38,10 +44,4 @@
         '';
       };
     };
-
-  flake.homeModules.woverview = withSystem "x86_64-linux" (
-    { config, ... }: {
-      home.packages = [ config.packages.woverview ];
-    }
-  );
 }

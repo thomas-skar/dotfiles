@@ -50,7 +50,6 @@ let
     gram
     gimp
     kitty
-    cartero
     spotify
     neovide
     ghostty
@@ -105,7 +104,8 @@ let
     spotify-player
 
     # custom packages
-    windows
+    yaak-package
+    windows-package
   ];
 in
 {

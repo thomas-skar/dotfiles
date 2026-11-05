@@ -1,5 +1,11 @@
 { withSystem, ... }:
 {
+  flake.homeModules.windows-package = withSystem "x86_64-linux" (
+    { config, ... }: {
+      home.packages = [ config.packages.windows ];
+    }
+  );
+
   perSystem =
     { pkgs, ... }:
     let
@@ -39,9 +45,4 @@
       };
     };
 
-  flake.homeModules.windows = withSystem "x86_64-linux" (
-    { config, ... }: {
-      home.packages = [ config.packages.windows ];
-    }
-  );
 }
