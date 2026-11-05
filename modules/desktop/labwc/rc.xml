@@ -244,6 +244,10 @@
     <keybind key="S-C-A-W-1">
       <action name="Execute" command="ror 1password 1password"/>
     </keybind>
+    <!-- Run or raise yaak (Copilot+Y) -->
+    <keybind key="S-C-A-W-y">
+      <action name="Execute" command="ror .yaak-app-client-wrapped .yaak-app-client-wrapped"/>
+    </keybind>
     <!-- Toggle kitty quick terminal (CapsLock+.) -->
     <keybind key="S-C-A-W-M-.">
       <action name="Execute" command="kitten quick-access-terminal"/>
