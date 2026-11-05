@@ -48,6 +48,7 @@
           # command line tools, etc
           pkgs.jq
           pkgs.fzf
+          pkgs.fff
           pkgs.tilt
           pkgs.ripgrep
           pkgs.gotools
