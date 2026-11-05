@@ -244,6 +244,10 @@
     <keybind key="S-C-A-W-1">
       <action name="Execute" command="ror 1password 1password"/>
     </keybind>
+    <!-- Toggle kitty quick terminal (CapsLock+.) -->
+    <keybind key="S-C-A-W-M-.">
+      <action name="Execute" command="kitten quick-access-terminal"/>
+    </keybind>
     <!-- Toggle bookmark (CapsLock+M) -->
     <keybind key="S-C-A-W-M-m">
       <action name="Execute" command="bm toggle"/>
@@ -328,6 +332,9 @@
       <action name="SetDecorations" decorations="border"/>
     </windowRule>
     <windowRule identifier="foot">
+      <action name="SetDecorations" decorations="border"/>
+    </windowRule>
+    <windowRule identifier="kitty">
       <action name="SetDecorations" decorations="border"/>
     </windowRule>
     <windowRule identifier="dev.zed.Zed">
