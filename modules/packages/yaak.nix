@@ -34,8 +34,6 @@
         cargoRoot = ".";
         buildAndTestSubdir = "crates-tauri/yaak-app-client";
 
-        patches = [ ];
-
         nativeBuildInputs = [
           pkgs.cargo-tauri.hook
           pkgs.npmHooks.npmConfigHook
@@ -79,11 +77,6 @@
           substituteInPlace crates-tauri/yaak-app-client/tauri.conf.json \
             --replace-fail '"0.0.0"' '"${finalAttrs.version}"'
 
-          substituteInPlace crates-tauri/yaak-app-client/tauri.release.conf.json \
-            --replace-fail '"createUpdaterArtifacts": true' '"createUpdaterArtifacts": false' \
-            --replace-fail '"https://update.yaak.app/check/{{target}}/{{arch}}/{{current_version}}"' '"https://non.existent.domain"'
-          # --replace-fail '"features": ["updater", "license", "wry"]' '"features": ["updater", "wry"]' \
-
           substituteInPlace package.json \
             --replace-fail '"vendor:vendor-node": "node scripts/vendor-node.cjs",' "" \
             --replace-fail '"vendor:vendor-protoc": "node scripts/vendor-protoc.cjs",' ""
@@ -104,7 +97,6 @@
         tauriBuildFlags = [
           "--config"
           "./tauri.linux.conf.json"
-          # "./tauri.release.conf.json"
         ];
 
         doCheck = false;
