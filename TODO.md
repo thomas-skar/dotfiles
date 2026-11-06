@@ -1,8 +1,6 @@
 - lazydocker
 - hyperfine (benchmark tool)
 - glow (markdown viewer)?
-- superfile
-- nnn
 - fx (json viewer)?
 - wtf (dashboard)
 - duf (disk usage)
