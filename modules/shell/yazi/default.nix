@@ -2,10 +2,10 @@
   flake.homeModules.yazi = { config, ... }: {
     programs.yazi = {
       enable = true;
+      enableZshIntegration = config.programs.zsh.enable;
       enableBashIntegration = config.programs.bash.enable;
       enableFishIntegration = config.programs.fish.enable;
       enableNushellIntegration = config.programs.nushell.enable;
-      enableZshIntegration = config.programs.zsh.enable;
 
       initLua = ./init.lua;
       shellWrapperName = "yazi";

@@ -1,0 +1,19 @@
+{
+  "icon_theme": "nerdfont"
+  "imports": ["verbs.hjson", "skins/native-16.hjson"]
+  "modal": true
+  "initial_mode": "command"
+  "default_flags": "-gh"
+  "show_selection_mark": true
+  "graphics_display": "auto"
+  "kitty_graphics_display": "auto"
+  "preview_transformers": [
+    {
+      "input_extensions": [ "json" ]
+      "output_extension": "json"
+      "mode": "text",
+      "command": [ "jq" ]
+    }
+  ]
+  "enable_kitty_keyboard": true
+}
