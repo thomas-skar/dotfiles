@@ -70,17 +70,16 @@ let
     k8s
     act
     fzf
-    zmx
     fish
     bash
     just
     mise
-    yazi
     btop
     tldr
     dive
     doxx
     dust
+    yazi
     atuin
     sqlit
     delta
@@ -96,7 +95,6 @@ let
     gh-dash
     vi-mongo
     starship
-    astroterm
     fastfetch
     television
     lazyjournal
