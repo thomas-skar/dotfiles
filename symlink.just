@@ -16,7 +16,11 @@ script target source:
     end
 
 # replace all config file symlinks
-all: fish gram kitty labwc neovim yazi zellij
+all: broot fish gram kitty labwc neovim yazi zellij
+
+broot:
+    just --justfile symlink.just script ".config/broot/conf.hjson" "modules/shell/broot/conf.hjson"
+    just --justfile symlink.just script ".config/broot/verbs.hjson" "modules/shell/broot/verbs.hjson"
 
 # replace fish functions directory symlink(s)
 fish:
