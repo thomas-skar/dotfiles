@@ -16,7 +16,7 @@ script target source:
     end
 
 # replace all config file symlinks
-all: fish gram kitty labwc neovim zellij
+all: fish gram kitty labwc neovim yazi zellij
 
 # replace fish functions directory symlink(s)
 fish:
@@ -43,6 +43,11 @@ neovim:
     just --justfile symlink.just script ".config/nvim/init.lua" "modules/shell/neovim/init.lua"
     just --justfile symlink.just script ".config/nvim/plugin" "modules/shell/neovim/plugin"
     just --justfile symlink.just script ".config/nvim/after" "modules/shell/neovim/after"
+
+yazi:
+    just --justfile symlink.just script ".config/yazi/yazi.toml" "modules/shell/yazi/yazi.toml"
+    just --justfile symlink.just script ".config/yazi/theme.toml" "modules/shell/yazi/theme.toml"
+    just --justfile symlink.just script ".config/yazi/keymap.toml" "modules/shell/yazi/keymap.toml"
 
 # replace zellij config file symlinks
 zellij:
