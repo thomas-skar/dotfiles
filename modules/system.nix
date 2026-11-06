@@ -79,7 +79,7 @@ let
     dive
     doxx
     dust
-    yazi
+    broot
     atuin
     sqlit
     delta
