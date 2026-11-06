@@ -105,7 +105,6 @@ let
 
     # custom packages
     yaak-package
-    windows-package
   ];
 in
 {
