@@ -14,5 +14,8 @@ Config.surround = 'visual'
 ---@type boolean
 Config.copilot = true
 
+---@type "snacks"|"fff"|nil
+Config.file_picker = 'fff'
+
 -- custom commands
 vim.api.nvim_create_user_command('UpdatePlugins', function() vim.pack.update() end, {})

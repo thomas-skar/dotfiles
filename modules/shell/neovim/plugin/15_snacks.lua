@@ -297,12 +297,14 @@ require('snacks').setup(opts)
 
 -- TODO: open pickers in other modes (insert, visual, command?)
 
--- open file picker with <Ctrl-P> and <Shift-Ctrl-P>
-vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', '<CMD>lua Snacks.picker.files()<CR>')
-vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-p>', '<CMD>lua Snacks.picker.files()<CR>')
+if Config.file_picker == 'snacks' then
+  -- open file picker with <Ctrl-P> and <Shift-Ctrl-P>
+  vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', '<CMD>lua Snacks.picker.files()<CR>')
+  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-p>', '<CMD>lua Snacks.picker.files()<CR>')
 
--- open grep picker with <Shift-Ctrl-F>
-vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
+  -- open grep picker with <Shift-Ctrl-F>
+  vim.keymap.set('n', '<S-C-f>', '<CMD>lua Snacks.picker.grep()<CR>')
+end
 
 -- open buffer picker with <Ctrl-B> or <Space> --> bu
 vim.keymap.set('n', '<C-b>', '<CMD>lua Snacks.picker.buffers()<CR>')

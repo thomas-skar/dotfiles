@@ -34,9 +34,15 @@ require('oil').setup {
     ['<S-p>'] = { 'actions.preview', mode = 'n' },
     ['<CR>'] = 'actions.select',
     ['<leader>cd'] = { 'actions.cd', mode = 'n' },
+    ['<S-C-o>'] = {},
   },
 }
 
--- open oil with <Shift-Ctrl-O> or <Space> --> oi
-vim.keymap.set('n', '<S-C-o>', '<CMD>Oil<CR>')
-vim.keymap.set('n', '<leader>oi', '<CMD>Oil<CR>')
+-- toggle oil with <Shift-Ctrl-O>
+vim.keymap.set('n', '<S-C-o>', function()
+  if vim.bo.filetype == 'oil' then
+    require('oil').close()
+  else
+    require('oil').open()
+  end
+end)

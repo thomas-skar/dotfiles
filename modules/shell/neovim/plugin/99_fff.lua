@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/dmtrKovalenko/fff' }
+---@diagnostic disable: missing-fields
 
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
@@ -10,9 +10,28 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end,
 })
 
-vim.g.fff = {
+vim.pack.add {
+  { src = 'https://github.com/dmtrKovalenko/fff' },
+}
+
+---@type FffConfig
+local config = {
+  prompt = '> ',
+  title = 'fff',
   lazy_sync = true,
+  layout = {
+    border = 'rounded',
+  },
+  preview = {
+    enabled = true,
+  },
   debug = { enabled = true, show_scores = true },
 }
 
-vim.keymap.set('n', '<leader>ff', function() require('fff').find_files() end)
+require('fff').setup(config)
+
+if Config.file_picker == 'fff' then
+  vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', function() require('fff').find_files() end)
+  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-p>', function() require('fff').find_files() end)
+  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-f>', function() require('fff').live_grep() end)
+end
