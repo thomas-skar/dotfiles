@@ -49,22 +49,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    jetbrains-plugins = {
-      url = "github:nix-community/nix-jetbrains-plugins";
-      inputs = {
-        flake-compat.follows = "flake-compat";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
-
     obsidian-extensions = {
       url = "github:karaolidis/nix-obsidian-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    zapp = {
-      url = "github:zsa/zapp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -75,7 +61,10 @@
 
     systems.url = "github:nix-systems/default";
 
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
 
     flake-compat = {
       url = "github:nixos/flake-compat";

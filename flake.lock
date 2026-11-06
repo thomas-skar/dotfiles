@@ -115,7 +115,9 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems"
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1791914995,
@@ -186,32 +188,6 @@
       "original": {
         "owner": "denful",
         "repo": "import-tree",
-        "type": "github"
-      }
-    },
-    "jetbrains-plugins": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1792245211,
-        "narHash": "sha256-7AWX6PgKEXweoU4XF/hVnCsXIXCnP+bgqIf8Tdos1f0=",
-        "owner": "nix-community",
-        "repo": "nix-jetbrains-plugins",
-        "rev": "674203c8f06914ea853fb5d618dc9a3df8919c2d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-jetbrains-plugins",
         "type": "github"
       }
     },
@@ -343,7 +319,6 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
-        "jetbrains-plugins": "jetbrains-plugins",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "nur": "nur",
@@ -351,8 +326,7 @@
         "run-or-raise": "run-or-raise",
         "system-graphics": "system-graphics",
         "system-manager": "system-manager",
-        "systems": "systems_2",
-        "zapp": "zapp"
+        "systems": "systems"
       }
     },
     "run-or-raise": {
@@ -506,21 +480,6 @@
     },
     "systems": {
       "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
-      "locked": {
         "lastModified": 1791244623,
         "narHash": "sha256-uuanbkFk8a313Zfrxdcz8Us/yQtaxNnKJtX8v0ZPpd8=",
         "owner": "nix-systems",
@@ -585,26 +544,6 @@
         "owner": "jfroche",
         "ref": "system-manager",
         "repo": "userborn",
-        "type": "github"
-      }
-    },
-    "zapp": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783587726,
-        "narHash": "sha256-K+L8Hyw8BFyYoHGofRJrZqwTwth3Q2ypAq3uj8rO57I=",
-        "owner": "zsa",
-        "repo": "zapp",
-        "rev": "a1be75837323001ad1ae8e5787d88cd33f2ccc46",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zsa",
-        "repo": "zapp",
         "type": "github"
       }
     }
