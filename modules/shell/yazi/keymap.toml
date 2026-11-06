@@ -1,0 +1,4 @@
+[mgr]
+prepend_keymap = [
+  { on = "<C-h>", run = "help", desc = "Show help with <Ctrl-H>" },
+]
