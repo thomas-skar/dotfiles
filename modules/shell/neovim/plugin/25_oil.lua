@@ -1,7 +1,6 @@
 -- TODO: accept changes with <CR>
 
 vim.pack.add {
-  -- { src = 'https://github.com/stevearc/oil.nvim', name = 'oil' },
   { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' },
 }
 
@@ -38,11 +37,14 @@ require('oil').setup {
   },
 }
 
--- toggle oil with <Shift-Ctrl-O>
-vim.keymap.set('n', '<S-C-o>', function()
+local function toggle_oil()
   if vim.bo.filetype == 'oil' then
     require('oil').close()
   else
     require('oil').open()
   end
-end)
+end
+
+-- toggle oil with <Shift-Ctrl-O>
+vim.keymap.set('n', '<S-C-o>', toggle_oil, { desc = 'Toggle Oil' })
+vim.keymap.set('n', '<leader>fe', toggle_oil, { desc = 'Toggle Oil' })

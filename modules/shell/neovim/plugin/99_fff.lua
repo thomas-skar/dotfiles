@@ -30,8 +30,6 @@ local config = {
 
 require('fff').setup(config)
 
-if Config.file_picker == 'fff' then
-  vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', function() require('fff').find_files() end)
-  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-p>', function() require('fff').find_files() end)
-  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-f>', function() require('fff').live_grep() end)
-end
+vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', function() require('fff').find_files() end)
+vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-p>', function() require('fff').find_files() end)
+vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-f>', function() require('fff').live_grep() end)

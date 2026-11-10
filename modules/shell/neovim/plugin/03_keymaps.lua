@@ -153,10 +153,6 @@ vim.keymap.set('i', '<S-Tab>', '<C-D>') -- or <<
 -- select everything with <Ctrl-A>
 vim.keymap.set({ 'n', 'x' }, '<C-a>', 'ggVG')
 
--- toggle line comments with <Space> -> kc
-vim.keymap.set('n', '<leader>kc', 'gcc')
-vim.keymap.set('x', '<leader>kc', 'gc')
-
 -- source neovim config with <Space> -> so
 vim.keymap.set('n', '<leader>so', '<CMD>source $MYVIMRC<CR>')
 

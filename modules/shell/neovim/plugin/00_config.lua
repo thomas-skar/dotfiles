@@ -1,0 +1,14 @@
+---@type "bufferline"|"mini"|nil
+Config.tabline = 'bufferline'
+
+---@type "visual"|"mini"|nil
+Config.surround = 'visual'
+
+---@type "neo-tree"|"nvim-tree"|nil
+Config.tree = 'nvim-tree'
+
+---@type boolean
+Config.copilot = true
+
+-- custom commands
+vim.api.nvim_create_user_command('UpdatePlugins', function() vim.pack.update() end, {})

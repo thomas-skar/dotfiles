@@ -1,28 +1,35 @@
--- TODO: https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-keymap.md
+-- TODO: mini.basics (source code)
 
 vim.pack.add {
   { src = 'https://github.com/nvim-mini/mini.nvim' },
 }
 
--- icons
 if vim.g.have_nerd_font then
   require('mini.icons').setup { style = 'glyph' }
   vim.cmd ':lua MiniIcons.mock_nvim_web_devicons()'
 end
 
--- cursorword
-require('mini.cursorword').setup {}
+require('mini.statusline').setup {
+  use_icons = vim.g.have_nerd_font,
+}
 
--- pairs
+require('mini.extra').setup()
+
 require('mini.pairs').setup {}
 
--- comment
-require('mini.comment').setup {}
+require('mini.cursorword').setup {}
 
--- trailspace
+require('mini.comment').setup {
+  options = {
+    ignore_blank_line = false,
+    pad_comment_pars = true,
+  },
+}
+
 require('mini.trailspace').setup {}
 
--- move
+require('mini.statuscolumn').setup {}
+
 require('mini.move').setup {
   mappings = {
     -- visual mode
@@ -38,38 +45,66 @@ require('mini.move').setup {
   },
 }
 
--- statusline
-if Config.statusline == 'mini' then require('mini.statusline').setup {
-  use_icons = vim.g.have_nerd_font,
-} end
+require('mini.clue').setup {
+  clues = {},
+  triggers = {
+    { mode = { 'n', 'x' }, keys = '<Leader>' },
+    { mode = { 'n', 'x' }, keys = 'g' },
+    { mode = 'n', keys = '<C-k>' },
+  },
+  window = {
+    config = {},
+    delay = 500,
+    scroll_up = '<C-u>',
+    scroll_down = '<C-d>',
+  },
+}
 
--- surround
-if Config.surround == 'mini' then
-  require('mini.surround').setup {
-    mappings = {
-      add = 'sa',
-      delete = '', -- sd
-      find = '', -- sf
-      find_left = '', -- sF
-      highlight = '', -- sh
-      replace = '', -- sr
-      suffix_last = '', -- l
-      suffix_next = '', -- n
-    },
-  }
+require('mini.map').setup {
+  window = {
+    focusable = false,
+    side = 'right',
+  },
+}
 
-  -- WARN: keybinds doesn't work :(
-  vim.keymap.set('x', '"', 'sa"')
-  vim.keymap.set('x', '<', 'sa<')
-  vim.keymap.set('x', "'", "sa'")
-  vim.keymap.set('x', '[[', 'sa[')
-  vim.keymap.set('x', '{', 'sa{')
-  vim.keymap.set('x', '(', 'sa(')
-  vim.keymap.set('x', '`', 'sa`')
+require('mini.notify').setup { lsp_progress = { enable = true } }
+
+require('mini.indentscope').setup {
+  draw = {
+    animation = require('mini.indentscope').gen_animation.none(),
+  },
+  options = {
+    indent_at_cursor = true,
+    try_as_border = true,
+  },
+}
+
+require('mini.bufremove').setup { silent = false }
+
+vim.keymap.set('n', '<C-w>', '<CMD>lua MiniBufremove.delete()<CR>', { desc = 'Close buffer' })
+vim.keymap.set('n', '<C-k><C-w>', '<CMD>lua MiniBufremove.delete()<CR>', { desc = 'Close all buffers' }) -- TODO: close all buffers
+
+require('mini.starter').setup {
+  autoopen = true,
+  evaluate_single = true,
+  items = {
+    require('mini.starter').sections.recent_files(10, true),
+    { name = 'N: New file', action = 'enew', section = 'Shortcuts' },
+    { name = 'P: Find files', action = 'lua require("fff").find_files()', section = 'Shortcuts' },
+    { name = 'F: Live grep', action = 'lua require("fff").live_grep()', section = 'Shortcuts' },
+    { name = 'O: Open oil', action = 'Oil', section = 'Shortcuts' },
+    { name = 'Q: Quit', action = 'qa', section = 'Shortcuts' },
+  },
+  header = nil,
+  footer = nil,
+}
+
+if Config.tabline == 'mini' then
+  -- TODO:
+  require('mini.tabline').setup {}
 end
 
--- misc
-local misc = require 'mini.misc'
-
-Config.now = function(f) misc.safely('now', f) end
-Config.later = function(f) misc.safely('later', f) end
+if Config.surround == 'mini' then
+  -- TODO: keybinds
+  require('mini.surround').setup {}
+end

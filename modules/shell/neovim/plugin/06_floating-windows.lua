@@ -73,10 +73,6 @@ vim.keymap.set('n', '<Esc>', function()
   -- close popup windows
   local wins = vim.api.nvim_list_wins()
   for _, win in ipairs(wins) do
-    -- don't close snacks windows (explorer)
-    local buf = vim.api.nvim_win_get_buf(win)
-    if vim.bo[buf].filetype:find 'snacks' then goto continue end
-
     -- close floating windows
     local cfg = vim.api.nvim_win_get_config(win)
     if cfg.relative ~= '' then
