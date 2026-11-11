@@ -2,23 +2,16 @@ vim.pack.add {
   { src = 'https://github.com/khoido2003/monokai-v2.nvim' },
 }
 
-require('monokai-v2').setup {
-  transparent_background = false,
-  terminal_colors = true,
-  devicons = true,
-  treesitter = { italic = true },
-  filter = 'pro',
-  day_night = { enable = false },
-  inc_search = 'background',
-  plugins = {
-    bufferline = {
-      underline_selected = true,
-    },
-  },
-}
+Config.now(function()
+  require('monokai-v2').setup {
+    transparent_background = false,
+    terminal_colors = true,
+    devicons = true,
+    treesitter = { italic = true },
+    filter = 'pro',
+    day_night = { enable = false },
+    inc_search = 'background',
+  }
 
-vim.cmd.colorscheme 'monokai-v2'
-
--- vim.pack.add { 'https://github.com/loctvl842/monokai-pro.nvim' }
--- require('monokai-pro').setup {}
--- vim.cmd.colorscheme 'monokai-pro'
+  vim.cmd.colorscheme 'monokai-v2'
+end)

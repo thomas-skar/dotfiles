@@ -1,9 +1,11 @@
-if Config.tree == 'snacks' then
-  vim.pack.add {
-    { src = 'https://github.com/folke/snacks.nvim' },
-  }
+vim.pack.add {
+  { src = 'https://github.com/folke/snacks.nvim' },
+}
 
-  ---@typo snacks.Config
+Config.later(function()
+  if Config.tree ~= 'snacks' then return end
+
+  ---@type snacks.Config
   local opts = {
     bigfile = { enabled = false },
     dashboard = { enabled = false },
@@ -17,13 +19,13 @@ if Config.tree == 'snacks' then
     words = { enabled = false },
   }
 
-  ---@typo snacks.explorer.Config
+  ---@type snacks.explorer.Config
   opts.explorer = {
     replace_netrw = false,
     trash = true,
   }
 
-  ---@typo snacks.picker.Config
+  ---@type snacks.picker.Config
   opts.picker = {
     ui_select = false,
     actions = {
@@ -46,7 +48,7 @@ if Config.tree == 'snacks' then
           layout = {
             backdrop = true,
             width = 40,
-            min_width = 40,
+            min_width = 30,
             height = 0,
             position = 'left',
             border = 'none',
@@ -58,11 +60,10 @@ if Config.tree == 'snacks' then
     },
   }
 
-  require('snacks').setup(opts)
+  local snacks = require 'snacks'
+  snacks.setup(opts)
 
   local function focus_explorer()
-    local snacks = require 'snacks'
-
     ---@type snacks.Picker[]
     local explorer_pickers = snacks.picker.get { source = 'explorer' }
     if #explorer_pickers == 0 then
@@ -82,4 +83,4 @@ if Config.tree == 'snacks' then
 
   vim.keymap.set({ 'n', 'x', 't' }, '<C-e>', focus_explorer, { desc = 'Focus snacks explorer' })
   vim.keymap.set({ 'n', 'x', 't' }, '<S-C-e>', focus_explorer, { desc = 'Focus snacks explorer' })
-end
+end)

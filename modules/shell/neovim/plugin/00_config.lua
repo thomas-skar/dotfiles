@@ -8,6 +8,9 @@ Config.surround = 'visual'
 Config.tree = 'snacks'
 
 ---@type boolean
+Config.basics = true
+
+---@type boolean
 Config.copilot = true
 
 -- custom commands

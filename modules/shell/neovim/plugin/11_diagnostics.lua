@@ -1,4 +1,4 @@
-vim.diagnostic.config {
+local diagnostic_opts = {
   severity_sort = true,
   update_in_insert = false,
   float = {
@@ -10,3 +10,5 @@ vim.diagnostic.config {
   signs = true,
   virtual_lines = false,
 }
+
+Config.later(function() vim.diagnostic.config(diagnostic_opts) end)

@@ -28,15 +28,9 @@ if Config.tabline == 'bufferline' then
   }
 
   if vim.g.neovide then
-    vim.keymap.set('n', '<A-1>', '<CMD>BufferLineGoToBuffer 1<CR>')
-    vim.keymap.set('n', '<A-2>', '<CMD>BufferLineGoToBuffer 2<CR>')
-    vim.keymap.set('n', '<A-3>', '<CMD>BufferLineGoToBuffer 3<CR>')
-    vim.keymap.set('n', '<A-4>', '<CMD>BufferLineGoToBuffer 4<CR>')
-    vim.keymap.set('n', '<A-5>', '<CMD>BufferLineGoToBuffer 5<CR>')
-    vim.keymap.set('n', '<A-6>', '<CMD>BufferLineGoToBuffer 6<CR>')
-    vim.keymap.set('n', '<A-7>', '<CMD>BufferLineGoToBuffer 7<CR>')
-    vim.keymap.set('n', '<A-8>', '<CMD>BufferLineGoToBuffer 8<CR>')
-    vim.keymap.set('n', '<A-9>', '<CMD>BufferLineGoToBuffer 9<CR>')
-    vim.keymap.set('n', '<A-0>', '<CMD>BufferLineGoToBuffer -1<CR>')
+    for i = 0, 9 do
+      local buffer = i == 0 and -1 or i
+      vim.keymap.set('n', '<A-' .. i .. '>', '<CMD>BufferLineGoToBuffer ' .. buffer .. '<CR>')
+    end
   end
 end
