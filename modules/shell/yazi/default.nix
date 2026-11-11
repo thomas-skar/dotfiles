@@ -1,5 +1,5 @@
 {
-  flake.homeModules.yazi = { config, ... }: {
+  flake.homeModules.yazi = { pkgs, config, ... }: {
     programs.yazi = {
       enable = true;
       enableZshIntegration = config.programs.zsh.enable;
@@ -11,6 +11,10 @@
       shellWrapperName = "yazi";
 
       extraPackages = [ ];
+      plugins = {
+        no-status = pkgs.yaziPlugins.no-status;
+        full-border = pkgs.yaziPlugins.full-border;
+      };
     };
 
     xdg.configFile."yazi/keymap.toml" = {
