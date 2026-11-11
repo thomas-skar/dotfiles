@@ -50,6 +50,8 @@ let
     gram
     gimp
     kitty
+    ghidra
+    cutter
     spotify
     neovide
     ghostty
@@ -79,6 +81,7 @@ let
     dive
     doxx
     dust
+    ilspy
     broot
     atuin
     sqlit
