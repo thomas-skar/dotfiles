@@ -8,6 +8,7 @@ for _, word in ipairs {
   'hack',
   'fixme',
   { 'warn', 'hack' },
+  { 'fix', 'fixme' },
   { 'bug', 'fixme' },
   { 'docs', 'note' },
   { 'test', 'todo' },

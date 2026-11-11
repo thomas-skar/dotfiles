@@ -92,6 +92,7 @@ require('mini.starter').setup {
     { name = 'N: New file', action = 'enew', section = 'Shortcuts' },
     { name = 'P: Find files', action = 'lua require("fff").find_files()', section = 'Shortcuts' },
     { name = 'F: Live grep', action = 'lua require("fff").live_grep()', section = 'Shortcuts' },
+    { name = 'E: Open file explorer', action = 'NvimTreeOpen', section = 'Shortcuts' },
     { name = 'O: Open oil', action = 'Oil', section = 'Shortcuts' },
     { name = 'Q: Quit', action = 'qa', section = 'Shortcuts' },
   },

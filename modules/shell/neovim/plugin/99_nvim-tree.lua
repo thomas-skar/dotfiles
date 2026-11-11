@@ -3,19 +3,19 @@ if Config.tree == 'nvim-tree' then
     { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
   }
 
-  local function on_attach(bufnr)
-    local api = require 'nvim-tree.api'
-
-    api.map.on_attach.default(bufnr)
-
-    -- TODO: move "up" with arrow left
-    -- TODO: expand folder with arrow right
-    vim.keymap.set('n', '?', api.tree.toggle_help)
-  end
+  -- local function on_attach(bufnr)
+  --   local api = require 'nvim-tree.api'
+  --
+  --   api.map.on_attach.default(bufnr)
+  --
+  --   -- TODO: move "up" with arrow left
+  --   -- TODO: expand folder with arrow right
+  --   vim.keymap.set('n', '?', api.tree.toggle_help)
+  -- end
 
   ---@type nvim_tree.config
   local config = {
-    on_attach = on_attach,
+    on_attach = 'default',
     hijack_cursor = true,
     auto_reload_on_write = true,
     disable_netrw = true,
@@ -40,19 +40,12 @@ if Config.tree == 'nvim-tree' then
     renderer = {
       add_trailing = true,
       group_empty = true,
-      indent_width = 2,
+      indent_width = 1,
       highlight_git = 'name',
       highlight_hidden = 'name',
       highlight_opened_files = 'name',
       indent_markers = {
-        enable = true,
-        icons = {
-          corner = '|',
-          edge = '│',
-          item = '│',
-          bottom = '',
-          none = '',
-        },
+        enable = false,
       },
       icons = {
         hidden_placement = 'right_align',
@@ -88,7 +81,13 @@ if Config.tree == 'nvim-tree' then
       enable = true,
       update_root = { enable = false },
     },
+    filters = {
+      custom = { '^.git$' },
+    },
   }
 
   require('nvim-tree').setup(config)
+
+  -- FIXME:
+  vim.keymap.set('n', '<C-e>', '<CMD>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
 end

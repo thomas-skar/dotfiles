@@ -5,5 +5,8 @@ if Config.tree == 'neo-tree' then
     { src = 'https://github.com/MunifTanjim/nui.nvim' },
   }
 
-  require('neo-tree').setup {}
+  ---@type neotree.Config
+  local config = {}
+
+  require('neo-tree').setup(config)
 end
