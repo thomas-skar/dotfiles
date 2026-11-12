@@ -7,9 +7,14 @@ return {
       diagnostics = {
         globals = { 'vim' },
       },
+      runtime = {
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';'),
+      },
       workspace = {
         checkThirdParty = false,
-        -- library = vim.tbl_extend('keep', { { path = 'snacks.nvim', words = { 'Snacks' } } }, vim.api.nvim_get_runtime_file('', true)),
+        ignoreSubmodules = true,
+        library = { vim.env.RUNTIME },
       },
       telemetry = {
         enable = false,

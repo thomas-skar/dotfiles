@@ -1,3 +1,4 @@
+---@type vim.diagnostic.Opts
 local diagnostic_opts = {
   severity_sort = true,
   update_in_insert = false,

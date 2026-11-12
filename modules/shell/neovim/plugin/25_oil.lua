@@ -1,10 +1,8 @@
-vim.pack.add {
-  { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' },
-}
-
 -- TODO: accept changes with <CR>
 
 Config.later(function()
+  Config.add { { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' } }
+
   ---@type oil.setupOpts
   local opts = {
     default_file_explorer = true,

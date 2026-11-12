@@ -1,13 +1,8 @@
-vim.pack.add {
-  { src = 'https://github.com/nvim-mini/mini.nvim' },
-}
+-- TODO: check if mini is installed or not
 
--- mini.misc
-do
-  local misc = require 'mini.misc'
-  Config.now = function(f) misc.safely('now', f) end
-  Config.later = function(f) misc.safely('later', f) end
-end
+-- vim.pack.add {
+--   { src = 'https://github.com/nvim-mini/mini.nvim' },
+-- }
 
 -- mini.basics
 Config.now(function()
@@ -105,7 +100,7 @@ Config.later(function() require('mini.diff').setup {} end)
 -- mini.hlpatterns
 Config.later(function()
   local hipatterns = require 'mini.hipatterns'
-  -- TODO: improve this
+
   local highlighters = {}
   for _, word in ipairs {
     'todo',
@@ -176,6 +171,7 @@ Config.later(function()
       side = 'right',
       show_integration_count = false,
       width = 10,
+      winblend = 99,
     },
   }
 end)
@@ -234,15 +230,3 @@ end)
 
 -- mini.trailspace
 Config.later(function() require('mini.trailspace').setup {} end)
-
---
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'MiniStarterOpened',
-  callback = function()
-    vim.keymap.set('n', '<CR>', function()
-      require('mini.starter').eval_current_item()
-      require('mini.map').open()
-    end, { buffer = true })
-  end,
-})

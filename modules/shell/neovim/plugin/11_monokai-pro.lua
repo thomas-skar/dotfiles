@@ -1,8 +1,6 @@
-vim.pack.add {
-  { src = 'https://github.com/khoido2003/monokai-v2.nvim' },
-}
-
 Config.now(function()
+  Config.add { { src = 'https://github.com/khoido2003/monokai-v2.nvim' } }
+
   require('monokai-v2').setup {
     transparent_background = false,
     terminal_colors = true,

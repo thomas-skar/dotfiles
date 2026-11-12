@@ -1,11 +1,18 @@
-if Config.tabline == 'bufferline' then
-  vim.pack.add {
-    { src = 'https://github.com/akinsho/bufferline.nvim' },
-  }
+Config.now(function()
+  if Config.tabline ~= 'bufferline' then return end
+
+  Config.add { { src = 'https://github.com/akinsho/bufferline.nvim' } }
 
   require('bufferline').setup {
     options = {
       mode = 'buffers',
+      offsets = {
+        {
+          filetype = 'snacks_layout_box',
+          text = '',
+          separator = true,
+        },
+      },
       show_buffer_icons = true,
       show_buffer_close_icons = true,
       separator_style = 'thin',
@@ -33,4 +40,4 @@ if Config.tabline == 'bufferline' then
       vim.keymap.set('n', '<A-' .. i .. '>', '<CMD>BufferLineGoToBuffer ' .. buffer .. '<CR>')
     end
   end
-end
+end)

@@ -1,21 +1,12 @@
-local group = vim.api.nvim_create_augroup('custom', {})
+Config.new_autocmd('TextYankPost', '*', vim.highlight.on_yank, 'Highlight yanked text')
 
--- highlight text when copying
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = group,
-  callback = function() vim.highlight.on_yank() end,
-})
+Config.new_autocmd('BufRead', 'Tiltfile', function() vim.bo.filetype = 'starlark' end, 'File tiltile filetype')
 
--- stop the autocomplete popup menu from appearing inside "telescope"
-vim.api.nvim_create_autocmd('BufEnter', {
-  group = group,
-  callback = function(ev)
-    if vim.bo[ev.buf].buftype ~= '' then vim.bo[ev.buf].autocomplete = false end
-  end,
-})
-
-vim.api.nvim_create_autocmd('BufRead', {
-  group = group,
-  pattern = 'Tiltfile',
-  callback = function() vim.bo.filetype = 'starlark' end,
-})
+Config.new_autocmd('User', 'MiniStarterOpened', function()
+  vim.keymap.set('n', '<CR>', function()
+    Config.now(function()
+      require('mini.map').open()
+      require('mini.starter').eval_current_item()
+    end)
+  end, { buffer = true })
+end, 'Auto start mini.map')

@@ -1,5 +1,7 @@
-if Config.copilot then
-  vim.pack.add {
+Config.later(function()
+  if not Config.copilot then return end
+
+  Config.add {
     { src = 'https://github.com/zbirenbaum/copilot.lua' },
     { src = 'https://github.com/copilotlsp-nvim/copilot-lsp' },
   }
@@ -32,4 +34,4 @@ if Config.copilot then
       },
     },
   }
-end
+end)

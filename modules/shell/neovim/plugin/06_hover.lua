@@ -9,44 +9,36 @@ Config.get_hover_preview_winid = function(bufnr)
   return nil
 end
 
--- show popup window (lsp, diagnostics) @ hover
-vim.api.nvim_create_autocmd('CursorHold', {
-  pattern = '*',
-  callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    if Config.get_hover_preview_winid(bufnr) then return end
+Config.new_autocmd('CursorHold', '*', function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  if Config.get_hover_preview_winid(bufnr) then return end
 
-    local errors = vim.diagnostic.get(bufnr, { scope = 'cursor' })
-    if #errors > 0 then
-      vim.diagnostic.open_float { focusable = false, scope = 'cursor' }
+  local errors = vim.diagnostic.get(bufnr, { scope = 'cursor' })
+  if #errors > 0 then
+    vim.diagnostic.open_float { focusable = false, scope = 'cursor' }
+    return
+  end
+
+  local lsp_clients = vim.lsp.get_clients { bufnr = bufnr, method = 'textDocument/hover' }
+  if #lsp_clients == 0 then return end
+  vim.lsp.buf.hover { focusable = false, silent = true }
+  Config.floating_window_type = 'lsp'
+end, 'Show popup window (lsp, diagnostics) @ hover')
+
+Config.new_autocmd('CursorMoved', '*', function()
+  if type(vim.o.eventignore) == 'string' then
+    if vim.o.eventignore == '' then return end
+    if string.find(vim.o.eventignore, 'CursorHold') ~= nil then
+      vim.o.eventignore = vim.o.eventignore:gsub('CursorHold,', ''):gsub('CursorHold', '')
       return
     end
-
-    local lsp_clients = vim.lsp.get_clients { bufnr = bufnr, method = 'textDocument/hover' }
-    if #lsp_clients == 0 then return end
-    vim.lsp.buf.hover { focusable = false, silent = true }
-    Config.floating_window_type = 'lsp'
-  end,
-})
-
--- clear "CursorHold" eventignore @ CursorMoved
-vim.api.nvim_create_autocmd('CursorMoved', {
-  pattern = '*',
-  callback = function()
-    if type(vim.o.eventignore) == 'string' then
-      if vim.o.eventignore == '' then return end
-      if string.find(vim.o.eventignore, 'CursorHold') ~= nil then
-        vim.o.eventignore = vim.o.eventignore:gsub('CursorHold,', ''):gsub('CursorHold', '')
-        return
-      end
-    elseif type(vim.o.eventignore) == 'table' then
-      ---@diagnostic disable-next-line: param-type-mismatch
-      for i, v in ipairs(vim.o.eventignore) do
-        if v == 'CursorHold' then vim.o.eventignore:remove(i) end
-      end
+  elseif type(vim.o.eventignore) == 'table' then
+    ---@diagnostic disable-next-line: param-type-mismatch
+    for i, v in ipairs(vim.o.eventignore) do
+      if v == 'CursorHold' then vim.o.eventignore:remove(i) end
     end
-  end,
-})
+  end
+end, 'Clear CursorHold eventignore @ CursorMoved')
 
 -- show/ switch between lsp and diagnostics floating windows with <Shift-K>
 vim.keymap.set('n', 'K', function()

@@ -1,9 +1,7 @@
-vim.pack.add {
-  { src = 'https://github.com/folke/snacks.nvim' },
-}
-
 Config.later(function()
   if Config.tree ~= 'snacks' then return end
+
+  Config.add { { src = 'https://github.com/folke/snacks.nvim' } }
 
   ---@type snacks.Config
   local opts = {
@@ -46,7 +44,11 @@ Config.later(function()
         layout = {
           preview = 'main', -- FIXME:
           layout = {
-            backdrop = true,
+            backdrop = {
+              transparent = true,
+              blend = 100,
+              bg = 'Normal',
+            },
             width = 40,
             min_width = 30,
             height = 0,

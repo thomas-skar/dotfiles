@@ -12,6 +12,3 @@ Config.basics = true
 
 ---@type boolean
 Config.copilot = true
-
--- custom commands
-vim.api.nvim_create_user_command('UpdatePlugins', function() vim.pack.update() end, {})

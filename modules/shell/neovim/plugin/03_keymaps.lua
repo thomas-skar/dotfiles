@@ -1,169 +1,73 @@
--- TODO: move with ctrl + arrow keys
--- TODO: duplicate lines with Shift-Alt-Up and Shift-Alt-Down ???
--- TODO: keymap :w in insert mode ?!?!?!?
--- TODO: select word --> next occurence with <Ctrl-D>
--- TODO: go to definition with "gdf"?
--- TODO: toggle floating windows (lsp, diag, etc) with <Shift-K>?
--- TODO: save all with <Ctrl-S>
--- TODO: toggle hover with <Shift-Esc> ? (show status in "lualine"?)
--- TODO: toggle block comments with <Space> -> kb AND Ctrl-K --> Ctrl-B
--- TODO: toggle line comments with Ctrl-K --> Ctrl-C
--- TODO: escape insert mode with <Esc> !!!
+-- unbind keys
+vim.keymap.set('n', '.', '<nop>', { desc = 'Unbind .' })
+vim.keymap.set({ 'n', 'x' }, 's', '<Nop>', { desc = 'Unbind s (delete character under cursor)' })
+vim.keymap.set('n', '<C-c>', '<nop>', { desc = 'Unbind <Ctrl-C>' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-">', '<Nop>', { desc = 'Unbind <Copilot+2' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-#>', '<Nop>', { desc = 'Unbind <Copilot+3' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-¤>', '<Nop>', { desc = 'Unbind <Copilot+4' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-%>', '<Nop>', { desc = 'Unbind <Copilot+5' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-&>', '<Nop>', { desc = 'Unbind <Copilot+6' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-/>', '<Nop>', { desc = 'Unbind <Copilot+7' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-(>', '<Nop>', { desc = 'Unbind <Copilot+8' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-)>', '<Nop>', { desc = 'Unbind <Copilot+9' })
+vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-=>', '<Nop>', { desc = 'Unbind <Copilot+0' })
 
--- unbind <Ctrl-C> (???)
-vim.keymap.set('n', '<C-c>', '<nop>')
+-- override keys
+vim.keymap.set({ 'n', 'x' }, 'd', '"_d', { desc = 'Delete without yanking text' })
+vim.keymap.set('n', 'dd', '"_dd', { desc = 'Delete without yanking text' })
 
--- unbind "." (???)
-vim.keymap.set('n', '.', '<nop>')
+-- <leader> mappings
+vim.keymap.set('n', '<leader><space>', 'i', { desc = 'Enter insert mode' })
+vim.keymap.set('n', '<leader>re', '<CMD>restart!<CR>', { desc = 'Restart neovim' })
+vim.keymap.set('n', '<leader>lo', '<CMD>messages<CR>', { desc = 'Show logs' })
+vim.keymap.set('n', '<leader>sr', '<CMD>vsplit<CR>', { desc = 'Split right' })
+vim.keymap.set('n', '<leader>sd', '<CMD>split<CR>', { desc = 'Split down' })
 
--- unbind "s" (delete character under cursor)
-vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
+-- general
+vim.keymap.set('n', '<C-f>', '/', { desc = 'Search' })
+vim.keymap.set({ 'n', 'i', 'x' }, '<C-s>', '<CMD>update | redraw<CR>', { desc = 'Save buffer' })
+vim.keymap.set({ 'n', 'x' }, '<C-a>', 'ggVG', { desc = 'Select everything' })
+vim.keymap.set({ 'n', 'i' }, '<C-.>', '<CMD>lua vim.lsp.buf.code_action()<CR>', { desc = 'Show LSP code actions' })
 
--- unbind all "copilot key" + nunber combinations
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-">', '<Nop>') -- 2
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-#>', '<Nop>')
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-¤>', '<Nop>')
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-%>', '<Nop>')
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-&>', '<Nop>')
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-/>', '<Nop>')
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-(>', '<Nop>')
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-)>', '<Nop>')
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-D-=>', '<Nop>') -- 9
-
--- unbind "copilot key" + Z
-vim.keymap.set({ 'n', 'v', 'i', 't', 'c' }, '<M-C-S-D-Z>', '<Nop>')
-
--- override "delete line(s)" to not yank text TODO: expand this to fix quirks
-vim.keymap.set({ 'n', 'x' }, 'd', '"_d')
-vim.keymap.set('n', 'dd', '"_dd')
-
--- enter insert mode with <Space><Space>
-vim.keymap.set('n', '<leader><space>', 'i')
-
--- exit insert mode with <Space> --> jk
-vim.keymap.set('i', '<leader>jk', '<Esc><Esc>')
-
--- search with <Ctrl-F>
-vim.keymap.set('n', '<C-f>', '/')
-
--- save buffer with <Ctrl-S>
-vim.keymap.set({ 'n', 'i', 'x' }, '<C-s>', '<CMD>update | redraw<CR>')
-
--- select line with <Ctrl-L>
-vim.keymap.set('n', '<C-l>', 'V')
-
--- select line with <Ctrl-L> in insert mode
-vim.keymap.set('i', '<C-l>', '<Esc>V')
-
--- copy with <Ctrl-C>
-vim.keymap.set('n', '<C-c>', 'Vy')
-vim.keymap.set('x', '<C-c>', 'y')
-
--- cut with <Ctrl-X>
-vim.keymap.set('n', '<C-x>', 'Vx')
-vim.keymap.set('x', '<C-x>', 'x')
-
--- paste with <Ctrl-v>
-vim.keymap.set('n', '<C-v>', 'p')
-
--- paste with <Ctrl-v> in insert mode
-vim.keymap.set('i', '<C-v>', '<C-O>p')
-
--- undo with <Ctrl-Z>
-vim.keymap.set({ 'n', 'i', 'x' }, '<C-z>', '<CMD>undo<CR>')
-
--- redo with <Shift-Ctrl-Z>
-vim.keymap.set({ 'n', 'i', 'x' }, '<S-C-z>', '<CMD>redo<CR>')
-
--- enter visual mode with <Shift-Up>, <Shift-Down>, <Shift-Left>, <Shift-Right>
-vim.keymap.set('n', '<S-Up>', 'v<Up>')
-vim.keymap.set('n', '<S-Down>', 'v<Down>')
-vim.keymap.set('n', '<S-Left>', 'v<Left>')
-vim.keymap.set('n', '<S-Right>', 'v<Right>')
-
--- enter visual mode with <Shift-Up>, <Shift-Down>, <Shift-Left>, <Shift-Right> in insert mode
-vim.keymap.set('i', '<S-Up>', '<C-O>v<Up>')
-vim.keymap.set('i', '<S-Down>', '<C-O>v<Down>')
-vim.keymap.set('i', '<S-Left>', '<C-O>v<Left>')
-vim.keymap.set('i', '<S-Right>', '<C-O>v<Right>')
-
--- override <Shift-Up> and <Shift-Down> in visual mode (default: start/end of file)
-vim.keymap.set('x', '<S-Up>', '<Up>')
-vim.keymap.set('x', '<S-Down>', '<Down>')
-
--- delete words with <Ctrl-Backspace>
-vim.keymap.set('i', '<C-BS>', '<C-W>')
-
--- delete lines with <Super-Backspace>
-vim.keymap.set('i', '<D-BS>', '<C-O>d0')
-
--- move cursor left/right with <Alt-Left> and <Alt-Right>
-vim.keymap.set({ 'n', 'x' }, '<A-Left>', 'b')
-vim.keymap.set({ 'n', 'x' }, '<A-Right>', 'w')
-
--- move cursor left/right with <Alt-Left> and <Alt-Right> in insert mode
-vim.keymap.set('i', '<A-Left>', '<C-O>b')
-vim.keymap.set('i', '<A-Right>', '<C-O>w')
-
--- move cursor left/right with <Shift-Alt-Left> and <Shift-Alt-Right> in visual mode
-vim.keymap.set('x', '<S-A-Left>', 'b')
-vim.keymap.set('x', '<S-A-Right>', 'w')
-
--- jump to start/end of line with <Super-Left> and <Super-Right>
-vim.keymap.set({ 'n', 'x' }, '<D-Left>', '_')
-vim.keymap.set({ 'n', 'x' }, '<D-Right>', '$')
-
--- jump to start/end of line with <Super-Left> and <Super-Right> in insert mode
-vim.keymap.set('i', '<D-Left>', '<C-O>_')
-vim.keymap.set('i', '<D-Right>', '<C-O>$')
-
--- jump to start/end of line with <Shift-Super-Left> and <Shift-Super-Right> in visual mode
-vim.keymap.set('x', '<S-D-Left>', '_')
-vim.keymap.set('x', '<S-D-Right>', '$')
-
--- jump to start/end of file with <Super-Up> and <Super-Down>
-vim.keymap.set('n', '<D-Up>', '<CMD>goto<CR>') -- gg
-vim.keymap.set('n', '<D-Down>', 'G$')
-
--- split right with <Space> --> sr
-vim.keymap.set('n', '<leader>sr', '<CMD>vsplit<CR>')
-
--- enter "visual line mode" in visual mode with L
-vim.keymap.set('x', 'l', '<S-v>')
-vim.keymap.set('x', '<A-Up>', ":m '<-2<cr>gv=gv")
-
--- enter insert mode from visual mode with i
-vim.keymap.set('x', 'i', '<Esc>i')
-
--- split window with <Ctrl-Super-Right> and <Ctrl-Super-Down>
-vim.keymap.set('n', '<C-D-Right>', '<CMD>vsplit<CR>')
-vim.keymap.set('n', '<C-D-Down>', '<CMD>split<CR>')
-
--- TODO: normal mode, search for word under cursor with / (but allow normal search)
-
--- search for word under cursor with / in visual mode (TODO: not wanted behaviour)
-vim.keymap.set('x', '/', '*N')
-
--- show lsp code actions with <Ctrl-.>
-vim.keymap.set({ 'n', 'i' }, '<C-.>', '<CMD>lua vim.lsp.buf.code_action()<CR>')
-
--- unindent (outdent?) with <Shift-Tab> in insert mode
-vim.keymap.set('i', '<S-Tab>', '<C-D>') -- or <<
-
--- select everything with <Ctrl-A>
-vim.keymap.set({ 'n', 'x' }, '<C-a>', 'ggVG')
-
--- source neovim config with <Space> -> so
-vim.keymap.set('n', '<leader>so', '<CMD>source $MYVIMRC<CR>')
-
--- restart neovim with <Space> -> re
-vim.keymap.set('n', '<leader>re', '<CMD>restart!<CR>')
-
--- enable lsp inlay hints with <Space> -> ih
-vim.keymap.set('n', '<leader>ih', '<CMD>lua vim.lsp.inlay_hint.enable(true)<CR>')
-
--- show messages (logs) with <Space> -> lo
-vim.keymap.set('n', '<leader>lo', '<CMD>messages<CR>')
-
--- yank text with "c" in visual mode
-vim.keymap.set('x', 'c', 'y')
+-- ???
+vim.keymap.set('x', '<C-c>', 'y', { desc = 'Copy in visual mode' })
+vim.keymap.set('n', '<C-l>', 'V', { desc = 'Select line in normal mode' })
+vim.keymap.set('i', '<C-l>', '<Esc>V', { desc = 'Select line in insert mode' })
+vim.keymap.set('n', '<C-c>', 'Vy', { desc = 'Copy in normal mode' })
+vim.keymap.set('n', '<C-x>', 'Vx', { desc = 'Cut in normal mode' })
+vim.keymap.set('x', '<C-x>', 'x', { desc = 'Cut in visual mode' })
+vim.keymap.set('n', '<C-v>', 'p', { desc = 'Paste in normal mode' })
+vim.keymap.set('i', '<C-v>', '<C-O>p', { desc = 'Paste in insert mode' })
+vim.keymap.set({ 'n', 'i', 'x' }, '<C-z>', '<CMD>undo<CR>', { desc = 'Undo' })
+vim.keymap.set({ 'n', 'i', 'x' }, '<S-C-z>', '<CMD>redo<CR>', { desc = 'Redo' })
+vim.keymap.set('n', '<S-Up>', 'v<Up>', { desc = 'Enter visual mode (up)' })
+vim.keymap.set('n', '<S-Down>', 'v<Down>', { desc = 'Enter visual mode (down)' })
+vim.keymap.set('n', '<S-Left>', 'v<Left>', { desc = 'Enter visual mode (left)' })
+vim.keymap.set('n', '<S-Right>', 'v<Right>', { desc = 'Enter visual mode (right)' })
+vim.keymap.set('i', '<S-Up>', '<C-O>v<Up>', { desc = 'Enter visual mode (up)' })
+vim.keymap.set('i', '<S-Down>', '<C-O>v<Down>', { desc = 'Enter visual mode (down)' })
+vim.keymap.set('i', '<S-Left>', '<C-O>v<Left>', { desc = 'Enter visual mode (left)' })
+vim.keymap.set('i', '<S-Right>', '<C-O>v<Right>', { desc = 'Enter visual mode (right)' })
+vim.keymap.set('x', '<S-Up>', '<Up>', { desc = 'Move selection up' })
+vim.keymap.set('x', '<S-Down>', '<Down>', { desc = 'Move selection down' })
+vim.keymap.set('i', '<C-BS>', '<C-W>', { desc = 'Delete word' })
+vim.keymap.set('i', '<D-BS>', '<C-O>d0', { desc = 'Delete line' })
+vim.keymap.set({ 'n', 'x' }, '<A-Left>', 'b', { desc = 'Move cursor left' })
+vim.keymap.set({ 'n', 'x' }, '<A-Right>', 'w', { desc = 'Move cursor right' })
+vim.keymap.set('i', '<A-Left>', '<C-O>b', { desc = 'Move cursor left' })
+vim.keymap.set('i', '<A-Right>', '<C-O>w', { desc = 'Move cursor right' })
+vim.keymap.set('x', '<S-A-Left>', 'b', { desc = 'Move cursor left' })
+vim.keymap.set('x', '<S-A-Right>', 'w', { desc = 'Move cursor right' })
+vim.keymap.set({ 'n', 'x' }, '<D-Left>', '_', { desc = 'Jump to start of line' })
+vim.keymap.set({ 'n', 'x' }, '<D-Right>', '$', { desc = 'Jump to end of line' })
+vim.keymap.set('i', '<D-Left>', '<C-O>_', { desc = 'Jump to start of line' })
+vim.keymap.set('i', '<D-Right>', '<C-O>$', { desc = 'Jump to end of line' })
+vim.keymap.set('x', '<S-D-Left>', '_', { desc = 'Jump to start of line' })
+vim.keymap.set('x', '<S-D-Right>', '$', { desc = 'Jump to end of line' })
+vim.keymap.set('n', '<D-Up>', '<CMD>goto<CR>', { desc = 'Jump to start of file' }) -- gg
+vim.keymap.set('n', '<D-Down>', 'G$', { desc = 'Jump to end of file' })
+vim.keymap.set('x', 'l', '<S-v>', { desc = 'Enter visual line mode' })
+vim.keymap.set('x', '<A-Up>', ":m '<-2<cr>gv=gv", { desc = 'Move selection up' })
+vim.keymap.set('x', 'i', '<Esc>i', { desc = 'Enter insert mode' })
+vim.keymap.set('i', '<S-Tab>', '<C-D>', { desc = 'Outdent' }) -- or <<
+vim.keymap.set('x', 'c', 'y', { desc = 'Yank with C in visual mode' })

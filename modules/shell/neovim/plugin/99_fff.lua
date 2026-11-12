@@ -1,20 +1,15 @@
 ---@diagnostic disable: missing-fields
 
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if name == 'fff' and (kind == 'install' or kind == 'update') then
-      if not ev.data.active then vim.cmd.packadd 'fff' end
-      require('fff.download').download_or_build_binary()
-    end
-  end,
-})
-
-vim.pack.add {
-  { src = 'https://github.com/dmtrKovalenko/fff' },
-}
-
 Config.later(function()
+  Config.on_packchanged(
+    'fff',
+    { 'install', 'update' },
+    function() require('fff.download').download_or_build_binary() end,
+    'Download or build fff binary when fff is installed or updated'
+  )
+
+  Config.add { { src = 'https://github.com/dmtrKovalenko/fff' } }
+
   ---@type FffConfig
   local config = {
     prompt = '> ',

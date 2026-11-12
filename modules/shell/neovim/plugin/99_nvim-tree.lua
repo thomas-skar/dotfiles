@@ -1,17 +1,7 @@
-if Config.tree == 'nvim-tree' then
-  vim.pack.add {
-    { src = 'https://github.com/nvim-tree/nvim-tree.lua' },
-  }
+Config.later(function()
+  if Config.tree ~= 'nvim-tree' then return end
 
-  -- local function on_attach(bufnr)
-  --   local api = require 'nvim-tree.api'
-  --
-  --   api.map.on_attach.default(bufnr)
-  --
-  --   -- TODO: move "up" with arrow left
-  --   -- TODO: expand folder with arrow right
-  --   vim.keymap.set('n', '?', api.tree.toggle_help)
-  -- end
+  Config.add { { src = 'https://github.com/nvim-tree/nvim-tree.lua' } }
 
   ---@type nvim_tree.config
   local config = {
@@ -90,4 +80,4 @@ if Config.tree == 'nvim-tree' then
 
   -- FIXME:
   vim.keymap.set('n', '<C-e>', '<CMD>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
-end
+end)
