@@ -38,7 +38,7 @@ Config.now(function()
       { name = 'O: Open oil', action = 'Oil', section = 'Shortcuts' },
       { name = 'Q: Quit', action = 'qa', section = 'Shortcuts' },
     },
-    header = nil,
+    header = '',
     footer = nil,
   }
 end)
