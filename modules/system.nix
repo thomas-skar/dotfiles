@@ -49,9 +49,9 @@ let
     foot
     gram
     gimp
+    yaak
     kitty
     ghidra
-    cutter
     spotify
     neovide
     ghostty
@@ -70,29 +70,24 @@ let
     eza
     vim
     k8s
-    act
     fzf
     fish
     bash
     just
     mise
     btop
-    tldr
     dive
     doxx
     dust
     ilspy
-    broot
     atuin
     sqlit
-    delta
     xleak
     zoxide
     neovim
     zellij
     direnv
     devenv
-    diffnav
     lazygit
     ripgrep
     gh-dash
@@ -102,10 +97,6 @@ let
     television
     lazyjournal
     systemctl-tui
-    spotify-player
-
-    # custom packages
-    yaak-package
   ];
 in
 {
