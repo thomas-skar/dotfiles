@@ -69,8 +69,15 @@ Config.later(function() require('mini.bracketed').setup() end)
 
 -- mini.bufremove
 Config.later(function()
-  require('mini.bufremove').setup()
-  vim.keymap.set('n', '<C-w>', '<CMD>lua MiniBufremove.delete()<CR>', { desc = 'Close buffer' })
+  local bufremove = require 'mini.bufremove'
+  bufremove.setup()
+
+  vim.keymap.set('n', '<C-w>', function() bufremove.delete(nil, false) end, { desc = 'Close buffer' })
+  vim.keymap.set('n', '<C-k><C-w>', function()
+    for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.bo[buf_id].buflisted then bufremove.delete(buf_id, false) end
+    end
+  end, { desc = 'Close all buffers' })
 end)
 
 -- mini.clue
