@@ -17,7 +17,7 @@ vim.keymap.set({ 'n', 'x' }, 'd', '"_d', { desc = 'Delete without yanking text' 
 vim.keymap.set('n', 'dd', '"_dd', { desc = 'Delete without yanking text' })
 
 -- <leader> mappings
-vim.keymap.set('n', '<leader><space>', 'i', { desc = 'Enter insert mode' })
+Config.map('n', '<leader><space>', 'i', 'Enter insert mode')
 vim.keymap.set('n', '<leader>re', '<CMD>restart!<CR>', { desc = 'Restart neovim' })
 vim.keymap.set('n', '<leader>lo', '<CMD>messages<CR>', { desc = 'Show logs' })
 vim.keymap.set('n', '<leader>sr', '<CMD>vsplit<CR>', { desc = 'Split right' })
