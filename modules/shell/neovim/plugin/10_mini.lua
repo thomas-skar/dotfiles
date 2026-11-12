@@ -74,8 +74,8 @@ Config.later(function()
 
   vim.keymap.set('n', '<C-w>', function() bufremove.delete(nil, false) end, { desc = 'Close buffer' })
   vim.keymap.set('n', '<C-k><C-w>', function()
-    for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
-      if vim.bo[buf_id].buflisted then bufremove.delete(buf_id, false) end
+    for _, buf_id in ipairs(Config.listed_buffer_ids()) do
+      bufremove.delete(buf_id, false)
     end
   end, { desc = 'Close all buffers' })
 end)
