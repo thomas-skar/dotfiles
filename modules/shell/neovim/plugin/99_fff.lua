@@ -1,14 +1,16 @@
+local later, onchange, add, map = Config.later, Config.on_packchanged, Config.add, Config.map
+
 ---@diagnostic disable: missing-fields
 
-Config.later(function()
-  Config.on_packchanged(
+later(function()
+  onchange(
     'fff',
     { 'install', 'update' },
     function() require('fff.download').download_or_build_binary() end,
     'Download or build fff binary when fff is installed or updated'
   )
 
-  Config.add { { src = 'https://github.com/dmtrKovalenko/fff' } }
+  add { { src = 'https://github.com/dmtrKovalenko/fff' } }
 
   ---@type FffConfig
   local config = {
@@ -26,7 +28,7 @@ Config.later(function()
 
   require('fff').setup(config)
 
-  vim.keymap.set({ 'n', 'v', 'i' }, '<C-p>', function() require('fff').find_files() end)
-  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-p>', function() require('fff').find_files() end)
-  vim.keymap.set({ 'n', 'v', 'i' }, '<S-C-f>', function() require('fff').live_grep() end)
+  map({ 'n', 'v', 'i' }, '<C-p>', function() require('fff').find_files() end, 'Open file picker')
+  map({ 'n', 'v', 'i' }, '<S-C-p>', function() require('fff').find_files() end, 'Open file picker')
+  map({ 'n', 'v', 'i' }, '<S-C-f>', function() require('fff').live_grep() end, 'Open live grep picker')
 end)

@@ -1,5 +1,7 @@
-Config.later(function()
-  Config.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }
+local later, add, autocmd = Config.later, Config.add, Config.new_autocmd
+
+later(function()
+  add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }
 
   local treesitter = require 'nvim-treesitter'
 
@@ -46,7 +48,7 @@ Config.later(function()
 
   local available_parsers = treesitter.get_available()
 
-  Config.new_autocmd('FileType', '*', function(args)
+  autocmd('FileType', '*', function(args)
     local buf, filetype = args.buf, args.match
     local language = vim.treesitter.language.get_lang(filetype)
     if not language then return end

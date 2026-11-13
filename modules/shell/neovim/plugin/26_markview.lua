@@ -1,10 +1,12 @@
+local later, add, autocmd = Config.later, Config.add, Config.new_autocmd
+
 -- TODO: mermaid
 -- TODO: move setup to after/ftplugin?
 
-Config.later(function()
-  Config.add { { src = 'https://github.com/OXY2DEV/markview.nvim' } }
+later(function()
+  add { { src = 'https://github.com/OXY2DEV/markview.nvim' } }
 
-  Config.new_autocmd(
+  autocmd(
     'FileType',
     { 'markdown', 'html', 'yaml' },
     function()

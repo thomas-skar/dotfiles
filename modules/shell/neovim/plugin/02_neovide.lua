@@ -1,7 +1,6 @@
 -- neovide settings
 if vim.g.neovide then
   -- font
-  -- vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
   vim.o.guifont = 'Iosevka Custom:h12'
 
   -- window animations
@@ -26,15 +25,15 @@ if vim.g.neovide then
   vim.g.neovide_progress_bar_hide_delay = 0.2
 
   -- padding
-  vim.g.neovide_padding_top = 0 -- # 12
+  vim.g.neovide_padding_top = 0
   vim.g.neovide_padding_bottom = 0
-  vim.g.neovide_padding_right = 0 -- 4
-  vim.g.neovide_padding_left = 0 -- 4
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
 
   -- profiler
   vim.g.neovide_profiler = false
 
-  -- TODO: misc
+  -- misc
   vim.g.neovide_theme = 'auto'
   vim.g.neovide_scale_factor = 1.0
   vim.g.neovide_hide_mouse_when_typing = true

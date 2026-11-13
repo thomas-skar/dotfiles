@@ -1,4 +1,7 @@
-Config.later(function()
+local later, add, autocmd = Config.later, Config.add, Config.new_autocmd
+local copilot = Config.copilot
+
+later(function()
   local plugins = {
     { src = 'https://github.com/saghen/blink.lib' },
     { src = 'https://github.com/saghen/blink.cmp' },
@@ -6,7 +9,7 @@ Config.later(function()
   }
   if Config.copilot then table.insert(plugins, { src = 'https://github.com/fang2hou/blink-copilot' }) end
 
-  Config.add(plugins)
+  add(plugins)
 
   ---@type blink.cmp.Config
   local opts = {
@@ -107,7 +110,7 @@ Config.later(function()
     },
   }
 
-  if Config.copilot then
+  if copilot then
     opts.sources.default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' }
     opts.sources.providers.copilot = {
       name = 'copilot',
@@ -125,18 +128,8 @@ Config.later(function()
   cmp.build():pwait()
   cmp.setup(opts)
 
-  if Config.copilot then
-    Config.new_autocmd(
-      'User',
-      'BlinkCmpMenuOpen',
-      function() vim.b.copilot_suggestion_hidden = true end,
-      'Hide copilot suggestions when blink.cmp menu is open'
-    )
-    Config.new_autocmd(
-      'User',
-      'BlinkCmpMenuClose',
-      function() vim.b.copilot_suggestion_hidden = false end,
-      'Show copilot suggestions again when blink.cmp menu is closed'
-    )
+  if copilot then
+    autocmd('User', 'BlinkCmpMenuOpen', function() vim.b.copilot_suggestion_hidden = true end, 'Hide copilot suggestions when blink.cmp menu is open')
+    autocmd('User', 'BlinkCmpMenuClose', function() vim.b.copilot_suggestion_hidden = false end, 'Show copilot suggestions again when blink.cmp menu is closed')
   end
 end)

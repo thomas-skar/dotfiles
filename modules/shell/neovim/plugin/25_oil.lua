@@ -1,7 +1,9 @@
+local later, add, map = Config.later, Config.add, Config.map
+
 -- TODO: accept changes with <CR>
 
-Config.later(function()
-  Config.add { { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' } }
+later(function()
+  add { { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' } }
 
   ---@type oil.setupOpts
   local opts = {
@@ -50,6 +52,6 @@ Config.later(function()
     end
   end
 
-  vim.keymap.set('n', '<S-C-o>', toggle_oil, { desc = 'Toggle Oil' })
-  vim.keymap.set('n', '<leader>fe', toggle_oil, { desc = 'Toggle Oil' })
+  map('n', '<S-C-o>', toggle_oil, 'Toggle Oil')
+  map('n', '<leader>fe', toggle_oil, 'Toggle Oil')
 end)

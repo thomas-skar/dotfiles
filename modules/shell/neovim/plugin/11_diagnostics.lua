@@ -1,3 +1,5 @@
+local later = Config.later
+
 ---@type vim.diagnostic.Opts
 local diagnostic_opts = {
   severity_sort = true,
@@ -12,4 +14,4 @@ local diagnostic_opts = {
   virtual_lines = false,
 }
 
-Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
+later(function() vim.diagnostic.config(diagnostic_opts) end)

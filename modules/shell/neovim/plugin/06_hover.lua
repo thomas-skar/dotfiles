@@ -1,3 +1,5 @@
+local autocmd, map = Config.new_autocmd, Config.map
+
 -- TODO: fine tune behaviour
 
 ---@param bufnr number|nil
@@ -9,7 +11,7 @@ Config.get_hover_preview_winid = function(bufnr)
   return nil
 end
 
-Config.new_autocmd('CursorHold', '*', function()
+autocmd('CursorHold', '*', function()
   local bufnr = vim.api.nvim_get_current_buf()
   if Config.get_hover_preview_winid(bufnr) then return end
 
@@ -25,7 +27,7 @@ Config.new_autocmd('CursorHold', '*', function()
   Config.floating_window_type = 'lsp'
 end, 'Show popup window (lsp, diagnostics) @ hover')
 
-Config.new_autocmd('CursorMoved', '*', function()
+autocmd('CursorMoved', '*', function()
   if type(vim.o.eventignore) == 'string' then
     if vim.o.eventignore == '' then return end
     if string.find(vim.o.eventignore, 'CursorHold') ~= nil then
@@ -40,8 +42,7 @@ Config.new_autocmd('CursorMoved', '*', function()
   end
 end, 'Clear CursorHold eventignore @ CursorMoved')
 
--- show/ switch between lsp and diagnostics floating windows with <Shift-K>
-vim.keymap.set('n', 'K', function()
+map('n', 'K', function()
   local bufnr = vim.api.nvim_get_current_buf()
   local winid = Config.get_hover_preview_winid(bufnr)
 
@@ -56,10 +57,9 @@ vim.keymap.set('n', 'K', function()
   if #lsp_clients == 0 then return end
   if winid then vim.api.nvim_win_close(winid, true) end
   vim.lsp.buf.hover { focusable = false, silent = true }
-end)
+end, 'Show/ switch between lsp and diagnostics floating windows')
 
--- close floating windows, clear search highlights, etc with <Esc>
-vim.keymap.set('n', '<Esc>', function()
+map('n', '<Esc>', function()
   local done = false
 
   -- close popup windows
@@ -95,4 +95,4 @@ vim.keymap.set('n', '<Esc>', function()
   -- clear search highlights
   -- TODO: check if highlight are active
   vim.cmd 'nohlsearch'
-end)
+end, 'Close floating windows, clear search highlights, etc')

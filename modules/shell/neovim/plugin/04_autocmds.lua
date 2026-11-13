@@ -1,12 +1,14 @@
-Config.new_autocmd('TextYankPost', '*', vim.highlight.on_yank, 'Highlight yanked text')
+local autocmd, map, now = Config.new_autocmd, Config.map, Config.now
 
-Config.new_autocmd('BufRead', 'Tiltfile', function() vim.bo.filetype = 'starlark' end, 'File tiltile filetype')
+autocmd('TextYankPost', '*', vim.highlight.on_yank, 'Highlight yanked text')
 
-Config.new_autocmd('User', 'MiniStarterOpened', function()
-  vim.keymap.set('n', '<CR>', function()
-    Config.now(function()
-      require('mini.map').open()
+autocmd('BufRead', 'Tiltfile', function() vim.bo.filetype = 'starlark' end, 'File tiltile filetype')
+
+autocmd('User', 'MiniStarterOpened', function()
+  map('n', '<CR>', function()
+    now(function()
       require('mini.starter').eval_current_item()
+      require('mini.map').open()
     end)
-  end, { buffer = true })
+  end, 'Override <CR> to also open mini.map', { buffer = true })
 end, 'Auto start mini.map')

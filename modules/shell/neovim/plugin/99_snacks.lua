@@ -1,7 +1,10 @@
-Config.later(function()
-  if Config.tree ~= 'snacks' then return end
+local later, add, map = Config.later, Config.add, Config.map
+local tree = Config.tree
 
-  Config.add { { src = 'https://github.com/folke/snacks.nvim' } }
+later(function()
+  if tree ~= 'snacks' then return end
+
+  add { { src = 'https://github.com/folke/snacks.nvim' } }
 
   ---@type snacks.Config
   local opts = {
@@ -83,6 +86,6 @@ Config.later(function()
     end
   end
 
-  vim.keymap.set({ 'n', 'x', 't' }, '<C-e>', focus_explorer, { desc = 'Focus snacks explorer' })
-  vim.keymap.set({ 'n', 'x', 't' }, '<S-C-e>', focus_explorer, { desc = 'Focus snacks explorer' })
+  map({ 'n', 'x', 't' }, '<C-e>', focus_explorer, 'Focus snacks explorer')
+  map({ 'n', 'x', 't' }, '<S-C-e>', focus_explorer, 'Focus snacks explorer')
 end)

@@ -1,5 +1,7 @@
-Config.now(function()
-  Config.add { { src = 'https://github.com/khoido2003/monokai-v2.nvim' } }
+local now, add = Config.now, Config.add
+
+now(function()
+  add { { src = 'https://github.com/khoido2003/monokai-v2.nvim' } }
 
   require('monokai-v2').setup {
     transparent_background = false,

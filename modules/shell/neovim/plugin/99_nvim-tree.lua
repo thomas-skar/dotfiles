@@ -1,7 +1,10 @@
-Config.later(function()
-  if Config.tree ~= 'nvim-tree' then return end
+local later, add, map = Config.later, Config.add, Config.map
+local tree = Config.tree
 
-  Config.add { { src = 'https://github.com/nvim-tree/nvim-tree.lua' } }
+later(function()
+  if tree ~= 'nvim-tree' then return end
+
+  add { { src = 'https://github.com/nvim-tree/nvim-tree.lua' } }
 
   ---@type nvim_tree.config
   local config = {
@@ -79,5 +82,5 @@ Config.later(function()
   require('nvim-tree').setup(config)
 
   -- FIXME:
-  vim.keymap.set('n', '<C-e>', '<CMD>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
+  map('n', '<C-e>', '<CMD>NvimTreeToggle<CR>', 'Toggle file tree')
 end)

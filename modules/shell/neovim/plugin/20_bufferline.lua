@@ -1,7 +1,10 @@
-Config.now(function()
-  if Config.tabline ~= 'bufferline' then return end
+local now, add, map = Config.now, Config.add, Config.map
+local tabline = Config.tabline
 
-  Config.add { { src = 'https://github.com/akinsho/bufferline.nvim' } }
+now(function()
+  if tabline ~= 'bufferline' then return end
+
+  add { { src = 'https://github.com/akinsho/bufferline.nvim' } }
 
   require('bufferline').setup {
     options = {
@@ -37,7 +40,7 @@ Config.now(function()
   if vim.g.neovide then
     for i = 0, 9 do
       local buffer = i == 0 and -1 or i
-      vim.keymap.set('n', '<A-' .. i .. '>', '<CMD>BufferLineGoToBuffer ' .. buffer .. '<CR>')
+      map('n', '<A-' .. i .. '>', '<CMD>BufferLineGoToBuffer ' .. buffer .. '<CR>', 'Focus buffer ' .. i)
     end
   end
 end)

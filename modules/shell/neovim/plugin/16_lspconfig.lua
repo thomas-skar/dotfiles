@@ -1,8 +1,10 @@
+local later, add = Config.later, Config.add
+
 -- TODO: kdl lsp
 -- TODO: fix yamlls setup
 
-Config.later(function()
-  Config.add {
+later(function()
+  add {
     { src = 'https://github.com/neovim/nvim-lspconfig' },
     { src = 'https://github.com/folke/lazydev.nvim' },
     { src = 'https://github.com/mosheavni/yaml-companion.nvim' },

@@ -1,30 +1,32 @@
--- TODO: check if mini is installed or not
+local now, later, map = Config.now, Config.later, Config.map
+local basics, surround = Config.basics, Config.surround
 
+-- TODO: check if mini is installed or not
 -- vim.pack.add {
 --   { src = 'https://github.com/nvim-mini/mini.nvim' },
 -- }
 
 -- mini.basics
-Config.now(function()
-  if not Config.basics then return end
+now(function()
+  if not basics then return end
   require('mini.basics').setup {
     options = { basic = false },
   }
 end)
 
 -- mini.icons
-Config.now(function()
+now(function()
   require('mini.icons').setup { style = 'glyph' }
 
-  Config.later(MiniIcons.mock_nvim_web_devicons)
-  Config.later(MiniIcons.tweak_lsp_kind)
+  later(MiniIcons.mock_nvim_web_devicons)
+  later(MiniIcons.tweak_lsp_kind)
 end)
 
 -- mini.notify
-Config.now(function() require('mini.notify').setup() end)
+now(function() require('mini.notify').setup() end)
 
 -- mini.starter
-Config.now(function()
+now(function()
   local starter = require 'mini.starter'
   starter.setup {
     autoopen = true,
@@ -44,44 +46,44 @@ Config.now(function()
 end)
 
 -- mini.statuscolumn
-Config.now(function() require('mini.statuscolumn').setup { dim_inactive = false } end)
+now(function() require('mini.statuscolumn').setup { dim_inactive = false } end)
 
 -- mini.statusline
-Config.now(function() require('mini.statusline').setup() end)
+now(function() require('mini.statusline').setup() end)
 
 -- mini.tabline
-Config.now(function()
+now(function()
   if Config.tabline ~= 'mini' then return end
   require('mini.tabline').setup()
 end)
 
 -- mini.extra
-Config.later(function() require('mini.extra').setup() end)
+later(function() require('mini.extra').setup() end)
 
 -- mini.ai
-Config.later(function() require('mini.ai').setup() end)
+later(function() require('mini.ai').setup() end)
 
 -- mini.align
-Config.later(function() require('mini.align').setup() end)
+later(function() require('mini.align').setup() end)
 
 -- mini.bracketed
-Config.later(function() require('mini.bracketed').setup() end)
+later(function() require('mini.bracketed').setup() end)
 
 -- mini.bufremove
-Config.later(function()
+later(function()
   local bufremove = require 'mini.bufremove'
   bufremove.setup()
 
-  vim.keymap.set('n', '<C-w>', function() bufremove.delete(nil, false) end, { desc = 'Close buffer' })
-  vim.keymap.set('n', '<C-k><C-w>', function()
+  map('n', '<C-w>', function() bufremove.delete(nil, false) end, 'Close buffer')
+  map('n', '<C-k><C-w>', function()
     for _, buf_id in ipairs(Config.listed_buffer_ids()) do
       bufremove.delete(buf_id, false)
     end
-  end, { desc = 'Close all buffers' })
+  end, 'Close all buffers')
 end)
 
 -- mini.clue
-Config.later(function()
+later(function()
   local clue = require 'mini.clue'
   clue.setup {
     clues = {
@@ -96,16 +98,16 @@ Config.later(function()
 end)
 
 -- mini.comment
-Config.later(function() require('mini.comment').setup {} end)
+later(function() require('mini.comment').setup {} end)
 
 -- mini.cursorword
-Config.later(function() require('mini.cursorword').setup {} end)
+later(function() require('mini.cursorword').setup {} end)
 
 -- mini.diff
-Config.later(function() require('mini.diff').setup {} end)
+later(function() require('mini.diff').setup {} end)
 
 -- mini.hlpatterns
-Config.later(function()
+later(function()
   local hipatterns = require 'mini.hipatterns'
 
   local highlighters = {}
@@ -142,7 +144,7 @@ Config.later(function()
 end)
 
 -- mini.indentscope
-Config.later(function()
+later(function()
   local indentscope = require 'mini.indentscope'
   indentscope.setup {
     draw = { animation = indentscope.gen_animation.none() },
@@ -150,26 +152,26 @@ Config.later(function()
 end)
 
 -- mini.input
-Config.later(function() require('mini.input').setup {} end)
+later(function() require('mini.input').setup {} end)
 
 -- mini.jump
-Config.later(function() require('mini.jump').setup {} end)
+later(function() require('mini.jump').setup {} end)
 
 -- mini.jump2d
-Config.later(function() require('mini.jump2d').setup {} end)
+later(function() require('mini.jump2d').setup {} end)
 
 -- mini.map
-Config.later(function()
-  local map = require 'mini.map'
-  map.setup {
+later(function()
+  local minimap = require 'mini.map'
+  minimap.setup {
     integrations = {
-      map.gen_integration.builtin_search(),
-      map.gen_integration.diff(),
-      map.gen_integration.diagnostic(),
-      map.gen_integration.gitsigns(),
+      minimap.gen_integration.builtin_search(),
+      minimap.gen_integration.diff(),
+      minimap.gen_integration.diagnostic(),
+      minimap.gen_integration.gitsigns(),
     },
     symbols = {
-      encode = map.gen_encode_symbols.dot '4x2',
+      encode = minimap.gen_encode_symbols.dot '4x2',
       scroll_line = '▶',
       scroll_view = '╎',
     },
@@ -184,7 +186,7 @@ Config.later(function()
 end)
 
 -- mini.move
-Config.later(function()
+later(function()
   require('mini.move').setup {
     mappings = {
       -- visual mode
@@ -202,10 +204,10 @@ Config.later(function()
 end)
 
 -- mini.pairs
-Config.later(function() require('mini.pairs').setup { modes = { command = true } } end)
+later(function() require('mini.pairs').setup { modes = { command = true } } end)
 
 -- mini.pick
-Config.later(function()
+later(function()
   require('mini.pick').setup {
     window = {
       config = function()
@@ -223,17 +225,17 @@ Config.later(function()
     },
   }
 
-  vim.keymap.set('n', '<S-C-h>', '<CMD>lua MiniPick.builtin.help()<CR>', { desc = 'Show help picker' })
-  vim.keymap.set('n', '<C-b>', '<CMD>lua MiniPick.builtin.buffers()<CR>', { desc = 'Show buffer picker' })
-  vim.keymap.set('n', '<leader>er', '<CMD>lua MiniExtra.pickers.diagnostic()<CR>', { desc = 'Show diagnostics picker' })
-  vim.keymap.set('n', '<leader>di', '<CMD>lua MiniExtra.pickers.diagnostic()<CR>', { desc = 'Show diagnostics picker' })
+  map('n', '<S-C-h>', '<CMD>lua MiniPick.builtin.help()<CR>', 'Show help picker')
+  map('n', '<C-b>', '<CMD>lua MiniPick.builtin.buffers()<CR>', 'Show buffer picker')
+  map('n', '<leader>er', '<CMD>lua MiniExtra.pickers.diagnostic()<CR>', 'Show diagnostics picker')
+  map('n', '<leader>di', '<CMD>lua MiniExtra.pickers.diagnostic()<CR>', 'Show diagnostics picker')
 end)
 
 -- mini.surround
-Config.later(function()
-  if Config.surround ~= 'mini' then return end
+later(function()
+  if surround ~= 'mini' then return end
   require('mini.surround').setup {}
 end)
 
 -- mini.trailspace
-Config.later(function() require('mini.trailspace').setup {} end)
+later(function() require('mini.trailspace').setup {} end)

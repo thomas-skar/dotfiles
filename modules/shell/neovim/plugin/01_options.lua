@@ -5,10 +5,6 @@ vim.g.maplocalleader = ' '
 -- enable nerd fonts
 vim.g.have_nerd_font = true
 
--- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- disable providers?
 vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0

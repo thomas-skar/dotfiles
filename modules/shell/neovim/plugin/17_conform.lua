@@ -1,5 +1,7 @@
-Config.later(function()
-  Config.add { { src = 'https://github.com/stevearc/conform.nvim' } }
+local later, add = Config.later, Config.add
+
+later(function()
+  add { { src = 'https://github.com/stevearc/conform.nvim' } }
 
   require('conform').setup {
     formatters_by_ft = {
