@@ -8,9 +8,9 @@ Config.statusline = 'mini'
 Config.surround = 'visual'
 
 ---@type "neo-tree"|"nvim-tree"|"snacks"|"netrw"|"custom"|nil
-Config.tree = 'snacks'
+Config.tree = 'neo-tree'
 
----@type "oil"|"mini"|nil
+---@type "oil"|"mini"|"yazi"|nil
 Config.files = 'oil'
 
 ---@type boolean

@@ -82,5 +82,5 @@ later(function()
   require('nvim-tree').setup(config)
 
   -- FIXME:
-  map('n', '<C-e>', '<CMD>NvimTreeToggle<CR>', 'Toggle file tree')
+  map('n', '<C-e>', '<CMD>NvimTreeToggle<CR>', 'Toggle nvim-tree')
 end)

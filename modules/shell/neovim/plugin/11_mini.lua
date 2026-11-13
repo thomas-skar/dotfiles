@@ -57,7 +57,28 @@ now(function() require('mini.statusline').setup() end)
 now(function()
   if tabline ~= 'mini' then return end
 
-  require('mini.tabline').setup { show_icons = true, tabpage_section = 'none' }
+  local tl = require 'mini.tabline'
+
+  ---@param buf_id integer
+  ---@param label string
+  ---@return string
+  local function formatter(buf_id, label)
+    local bufs = Config.listed_buffer_ids()
+    local index = ''
+    for i, b in ipairs(bufs) do
+      if b == buf_id then
+        index = i .. ' '
+        break
+      end
+    end
+    return ' ' .. index .. tl.default_format(buf_id, label):gsub('^%s+', '')
+  end
+
+  tl.setup {
+    show_icons = true,
+    format = formatter,
+    tabpage_section = 'none',
+  }
 
   local get_buffers = Config.listed_buffer_ids
 

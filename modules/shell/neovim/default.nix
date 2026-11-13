@@ -49,6 +49,7 @@
           pkgs.jq
           pkgs.fzf
           pkgs.tilt
+          pkgs.yazi
           pkgs.ripgrep
           pkgs.gotools
           pkgs.ast-grep

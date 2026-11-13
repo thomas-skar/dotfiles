@@ -83,10 +83,5 @@ Config.on_filetype = function(ft, f) misc.safely('filetype:' .. ft, f) end
 ---@return integer[]
 ---@see vim.api.nvim_list_bufs
 Config.listed_buffer_ids = function()
-  ---@type integer[]
-  local buf_ids = {}
-  for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.bo[buf_id].buflisted then table.insert(buf_ids, buf_id) end
-  end
-  return buf_ids
+  return vim.tbl_filter(function(buf_id) return vim.bo[buf_id].buflisted end, vim.api.nvim_list_bufs())
 end

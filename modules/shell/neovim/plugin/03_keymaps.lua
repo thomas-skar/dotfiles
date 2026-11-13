@@ -1,5 +1,7 @@
 local map = Config.map
 
+-- TODO: terminal map(s)
+
 -- unbind keys
 map('n', '.', '<nop>', 'Unbind .')
 map({ 'n', 'x' }, 's', '<Nop>', 'Unbind s (delete character under cursor)')
