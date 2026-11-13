@@ -51,6 +51,7 @@
           pkgs.tilt
           pkgs.ripgrep
           pkgs.gotools
+          pkgs.ast-grep
           pkgs.shellcheck
           pkgs.xmlstarlet
           pkgs.tree-sitter
