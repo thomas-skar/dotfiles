@@ -1,6 +1,9 @@
 local later, add, map = Config.later, Config.add, Config.map
 local tree = Config.tree
 
+-- TODO: enable lazygit?
+-- TODO: enable lsp picker, etc?
+
 later(function()
   if tree ~= 'snacks' then return end
 
