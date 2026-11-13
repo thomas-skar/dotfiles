@@ -1,6 +1,7 @@
 local map = Config.map
 
 -- TODO: terminal map(s)
+-- TODO: maps to fold/unfold sections
 
 -- unbind keys
 map('n', '.', '<nop>', 'Unbind .')

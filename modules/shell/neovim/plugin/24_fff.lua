@@ -28,7 +28,11 @@ later(function()
 
   require('fff').setup(config)
 
-  map({ 'n', 'v', 'i' }, '<C-p>', function() require('fff').find_files() end, 'Open file picker')
-  map({ 'n', 'v', 'i' }, '<S-C-p>', function() require('fff').find_files() end, 'Open file picker')
-  map({ 'n', 'v', 'i' }, '<S-C-f>', function() require('fff').live_grep() end, 'Open live grep picker')
+  map({ 'n', 'x' }, '<leader>ff', function() require('fff').find_files() end, 'Open file picker')
+  map({ 'n', 'x', 'i' }, '<C-p>', function() require('fff').find_files() end, 'Open file picker')
+  map({ 'n', 'x', 'i' }, '<S-C-p>', function() require('fff').find_files() end, 'Open file picker')
+
+  -- WARN: conflict with possible lazygit map
+  map({ 'n', 'x' }, '<leader>lg', function() require('fff').live_grep() end, 'Open live grep picker')
+  map({ 'n', 'x', 'i' }, '<S-C-f>', function() require('fff').live_grep() end, 'Open live grep picker')
 end)
