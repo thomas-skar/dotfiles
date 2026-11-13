@@ -1,5 +1,7 @@
-local now, later, map = Config.now, Config.later, Config.map
-local basics, surround = Config.basics, Config.surround
+-- DOCS: https://nvim-mini.org/MiniMax/configs/nvim-0.12/
+
+local now, later, maybe, map = Config.now, Config.later, Config.maybe, Config.map
+local basics, tabline, surround, files = Config.basics, Config.tabline, Config.surround, Config.files
 
 -- TODO: check if mini is installed or not
 -- vim.pack.add {
@@ -53,8 +55,52 @@ now(function() require('mini.statusline').setup() end)
 
 -- mini.tabline
 now(function()
-  if Config.tabline ~= 'mini' then return end
-  require('mini.tabline').setup()
+  if tabline ~= 'mini' then return end
+
+  require('mini.tabline').setup { show_icons = true, tabpage_section = 'none' }
+
+  local get_buffers = Config.listed_buffer_ids
+
+  ---@param index number
+  local function focus_tab(index)
+    ---@type integer[]
+    local buffers = get_buffers()
+    ---@type integer|nil
+    local buf = nil
+    if index == 0 then
+      buf = buffers[#buffers]
+    else
+      buf = buffers[index]
+    end
+    if buf then vim.api.nvim_set_current_buf(buf) end
+  end
+
+  for i = 0, 9 do
+    map('n', '<A-' .. i .. '>', function() focus_tab(i) end, 'Focus tab ' .. i)
+  end
+end)
+
+-- mini.files
+maybe(function()
+  if files ~= 'mini' then return end
+
+  local mf = require 'mini.files'
+  mf.setup {
+    mapping = {
+      -- FIX: doesn't work
+      go_in = '<Right>',
+      go_out = '<Left>',
+    },
+    options = { use_as_default_explorer = true },
+    windows = { preview = true },
+  }
+
+  local function toggle()
+    if mf.close() == nil then mf.open() end
+  end
+
+  map('n', '<S-C-o>', toggle, 'Toggle mini.files')
+  map('n', '<leader>fe', toggle, 'Toggle mini.files')
 end)
 
 -- mini.extra

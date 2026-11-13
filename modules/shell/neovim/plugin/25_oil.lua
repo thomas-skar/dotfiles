@@ -1,13 +1,16 @@
 local later, add, map = Config.later, Config.add, Config.map
+local files = Config.files
 
 -- TODO: accept changes with <CR>
 
 later(function()
+  if files ~= 'oil' then return end
+
   add { { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' } }
 
   ---@type oil.setupOpts
   local opts = {
-    default_file_explorer = true,
+    default_file_explorer = true, -- TODO
     default_to_float = true,
     columns = {
       'icon',
