@@ -23,5 +23,5 @@ later(function()
     },
   }
 
-  map('n', '<leader>gf', function() gf.open() end, 'Search and replace')
+  map('n', '<leader>gf', function() gf.toggle_instance { instanceName = 'grug-far' } end, 'Search and replace')
 end)

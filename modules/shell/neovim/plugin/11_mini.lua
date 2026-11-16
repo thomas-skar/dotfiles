@@ -38,8 +38,7 @@ now(function()
       { name = 'N: New file', action = 'enew', section = 'Shortcuts' },
       { name = 'P: Find files', action = 'lua require("fff").find_files()', section = 'Shortcuts' },
       { name = 'F: Live grep', action = 'lua require("fff").live_grep()', section = 'Shortcuts' },
-      { name = 'E: Open file explorer', action = 'NvimTreeOpen', section = 'Shortcuts' },
-      { name = 'O: Open oil', action = 'Oil', section = 'Shortcuts' },
+      -- TODO: open file explorer (oil vs tree + new buffer)
       { name = 'Q: Quit', action = 'qa', section = 'Shortcuts' },
     },
     header = '',
@@ -274,7 +273,10 @@ later(function() require('mini.pairs').setup { modes = { command = true } } end)
 
 -- mini.pick
 later(function()
-  require('mini.pick').setup {
+  local ui_select = vim.ui.select -- preserve original vim.ui.select
+
+  local mp, me = require 'mini.pick', require 'mini.extra'
+  mp.setup {
     window = {
       config = function()
         local height = math.floor(0.618 * vim.o.lines)
@@ -291,10 +293,12 @@ later(function()
     },
   }
 
-  map('n', '<S-C-h>', '<CMD>lua MiniPick.builtin.help()<CR>', 'Show help picker')
-  map('n', '<C-b>', '<CMD>lua MiniPick.builtin.buffers()<CR>', 'Show buffer picker')
-  map('n', '<leader>er', '<CMD>lua MiniExtra.pickers.diagnostic()<CR>', 'Show diagnostics picker')
-  map('n', '<leader>di', '<CMD>lua MiniExtra.pickers.diagnostic()<CR>', 'Show diagnostics picker')
+  vim.ui.select = ui_select -- reset vim.ui.select
+
+  map('n', '<S-C-h>', mp.builtin.help, 'Show help picker')
+  map('n', '<C-b>', mp.builtin.buffers, 'Show buffer picker')
+  map('n', '<leader>er', me.pickers.diagnostic, 'Show diagnostics picker')
+  map('n', '<leader>di', me.pickers.diagnostic, 'Show diagnostics picker')
 end)
 
 -- mini.surround
