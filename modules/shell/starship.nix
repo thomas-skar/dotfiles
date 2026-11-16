@@ -78,6 +78,12 @@
           style = "blue bold";
         };
 
+        dotnet = {
+          disabled = false;
+          symbol = ".net ";
+          format = "via [$symbol($version)(\\($tfm\\) )]($style)";
+        };
+
         fill = {
           disabled = false;
           symbol = ".";
