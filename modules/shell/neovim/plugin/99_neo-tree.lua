@@ -30,7 +30,7 @@ later(function()
       },
       name = {
         trailing_slash = true,
-        highlight_opened_files = true,
+        highlight_opened_files = false,
       },
     },
     window = {
