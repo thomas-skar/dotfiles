@@ -10,7 +10,7 @@ later(function()
     'Download or build fff binary when fff is installed or updated'
   )
 
-  add { { src = 'https://github.com/dmtrKovalenko/fff' } }
+  add { 'https://github.com/dmtrKovalenko/fff' }
 
   ---@type FffConfig
   local config = {

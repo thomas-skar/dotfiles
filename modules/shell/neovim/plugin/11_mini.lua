@@ -63,7 +63,7 @@ now(function()
   ---@param label string
   ---@return string
   local function formatter(buf_id, label)
-    local bufs = Config.listed_buffer_ids()
+    local bufs = Config.helpers.listed_buffer_ids()
     local index = ''
     for i, b in ipairs(bufs) do
       if b == buf_id then
@@ -80,12 +80,10 @@ now(function()
     tabpage_section = 'none',
   }
 
-  local get_buffers = Config.listed_buffer_ids
-
   ---@param index number
   local function focus_tab(index)
     ---@type integer[]
-    local buffers = get_buffers()
+    local buffers = Config.helpers.listed_buffer_ids()
     ---@type integer|nil
     local buf = nil
     if index == 0 then
@@ -143,7 +141,7 @@ later(function()
 
   map('n', '<C-w>', function() bufremove.delete(nil, false) end, 'Close buffer')
   map('n', '<C-k><C-w>', function()
-    for _, buf_id in ipairs(Config.listed_buffer_ids()) do
+    for _, buf_id in ipairs(Config.helpers.listed_buffer_ids()) do
       bufremove.delete(buf_id, false)
     end
   end, 'Close all buffers')

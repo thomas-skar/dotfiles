@@ -1,9 +1,8 @@
+if not Config.copilot then return end
+
 local later, add = Config.later, Config.add
-local copilot = Config.copilot
 
 later(function()
-  if not copilot then return end
-
   add {
     { src = 'https://github.com/zbirenbaum/copilot.lua' },
     { src = 'https://github.com/copilotlsp-nvim/copilot-lsp' },

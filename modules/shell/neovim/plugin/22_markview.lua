@@ -4,7 +4,7 @@ local later, add, autocmd = Config.later, Config.add, Config.new_autocmd
 -- TODO: move setup to after/ftplugin?
 
 later(function()
-  add { { src = 'https://github.com/OXY2DEV/markview.nvim' } }
+  add { 'https://github.com/OXY2DEV/markview.nvim' }
 
   autocmd(
     'FileType',

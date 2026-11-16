@@ -1,12 +1,11 @@
+if Config.files ~= 'oil' then return end
+
 local later, add, map = Config.later, Config.add, Config.map
-local files = Config.files
 
 -- TODO: accept changes with <CR>
 
 later(function()
-  if files ~= 'oil' then return end
-
-  add { { src = 'https://forge.barrettruth.com/barrettruth/canola.nvim' } }
+  add { 'https://forge.barrettruth.com/barrettruth/canola.nvim' }
 
   ---@type oil.setupOpts
   local opts = {

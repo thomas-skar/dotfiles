@@ -1,7 +1,7 @@
+if Config.tree ~= 'custom' then return end
+
 local later = Config.now
-local sidebar = Config.tree
 
 later(function()
-  if sidebar ~= 'custom' then return end
   -- TODO
 end)

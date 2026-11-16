@@ -1,10 +1,9 @@
+if Config.tabline ~= 'bufferline' then return end
+
 local now, add, map = Config.now, Config.add, Config.map
-local tabline = Config.tabline
 
 now(function()
-  if tabline ~= 'bufferline' then return end
-
-  add { { src = 'https://github.com/akinsho/bufferline.nvim' } }
+  add { 'https://github.com/akinsho/bufferline.nvim' }
 
   require('bufferline').setup {
     options = {

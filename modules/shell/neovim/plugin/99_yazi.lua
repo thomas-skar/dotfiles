@@ -1,9 +1,8 @@
+if Config.files ~= 'yazi' then return end
+
 local later, add, map = Config.later, Config.add, Config.map
-local files = Config.files
 
 later(function()
-  if files ~= 'yazi' then return end
-
   add {
     { src = 'https://github.com/mikavilpas/yazi.nvim' },
     { src = 'https://github.com/nvim-lua/plenary.nvim' },

@@ -1,9 +1,8 @@
+if Config.tree ~= 'neo-tree' then return end
+
 local later, add, map = Config.later, Config.add, Config.map
-local tree = Config.tree
 
 later(function()
-  if tree ~= 'neo-tree' then return end
-
   add {
     { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = vim.version.range '3' },
     { src = 'https://github.com/nvim-lua/plenary.nvim' },
@@ -45,4 +44,7 @@ later(function()
   -- TODO: escape focus with <Esc> or <C-e>
 
   map('n', '<C-e>', '<CMD>Neotree<CR>', 'Open neo-tree')
+
+  ---@diagnostic disable-next-line: duplicate-set-field
+  Config.helpers.open_tree = function() vim.cmd 'Neotree show' end
 end)

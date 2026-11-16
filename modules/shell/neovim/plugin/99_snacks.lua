@@ -1,13 +1,12 @@
+if Config.tree ~= 'snacks' then return end
+
 local later, add, map = Config.later, Config.add, Config.map
-local tree = Config.tree
 
 -- TODO: enable lazygit?
 -- TODO: enable lsp picker, etc?
 
 later(function()
-  if tree ~= 'snacks' then return end
-
-  add { { src = 'https://github.com/folke/snacks.nvim' } }
+  add { 'https://github.com/folke/snacks.nvim' }
 
   ---@type snacks.Config
   local opts = {
