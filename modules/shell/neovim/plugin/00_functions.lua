@@ -79,6 +79,7 @@ Config.on_event = function(ev, f) misc.safely('event:' .. ev, f) end
 ---@param f function
 Config.on_filetype = function(ft, f) misc.safely('filetype:' .. ft, f) end
 
+-- Helper functions
 local H = {}
 
 ---Get all buffer ids for buffers where "buflisted" is true
@@ -88,6 +89,12 @@ H.listed_buffer_ids = function()
   return vim.tbl_filter(function(buf_id) return vim.bo[buf_id].buflisted end, vim.api.nvim_list_bufs())
 end
 
-H.open_tree = function() end
-
 Config.helpers = H
+
+-- Plugin functions
+local P = {}
+
+P.open_tree = function() end
+P.open_file_explorer = function() end
+
+Config.plugins = P

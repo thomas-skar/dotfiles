@@ -38,7 +38,19 @@ now(function()
       { name = 'N: New file', action = 'enew', section = 'Shortcuts' },
       { name = 'P: Find files', action = 'lua require("fff").find_files()', section = 'Shortcuts' },
       { name = 'F: Live grep', action = 'lua require("fff").live_grep()', section = 'Shortcuts' },
-      -- TODO: open file explorer (oil vs tree + new buffer)
+      {
+        name = 'E: Open file tree',
+        action = function()
+          Config.plugins.open_tree()
+          vim.cmd 'enew'
+        end,
+        section = 'Shortcuts',
+      },
+      {
+        name = 'O: Open file explorer',
+        action = function() Config.plugins.open_file_explorer() end,
+        section = 'Shortcuts',
+      },
       { name = 'Q: Quit', action = 'qa', section = 'Shortcuts' },
     },
     header = '',
@@ -275,6 +287,9 @@ later(function() require('mini.pairs').setup { modes = { command = true } } end)
 later(function()
   local ui_select = vim.ui.select -- preserve original vim.ui.select
 
+  -- TODO: side-by-side preview
+  -- TODO: move window to bottom left corner (with padding)?
+
   local mp, me = require 'mini.pick', require 'mini.extra'
   mp.setup {
     window = {
@@ -299,6 +314,7 @@ later(function()
   map('n', '<C-b>', mp.builtin.buffers, 'Show buffer picker')
   map('n', '<leader>er', me.pickers.diagnostic, 'Show diagnostics picker')
   map('n', '<leader>di', me.pickers.diagnostic, 'Show diagnostics picker')
+  map('n', '<leader>of', function() me.pickers.oldfiles { current_dir = true } end, 'Show old files picker')
 end)
 
 -- mini.surround

@@ -10,7 +10,7 @@ later(function()
   ---@type oil.setupOpts
   local opts = {
     default_file_explorer = true, -- TODO
-    default_to_float = true,
+    default_to_float = false,
     columns = {
       'icon',
     },
@@ -56,4 +56,7 @@ later(function()
 
   map('n', '<S-C-o>', toggle_oil, 'Toggle Oil')
   map('n', '<leader>fe', toggle_oil, 'Toggle Oil')
+
+  ---@diagnostic disable-next-line: duplicate-set-field
+  Config.plugins.open_file_explorer = function() oil.open() end
 end)

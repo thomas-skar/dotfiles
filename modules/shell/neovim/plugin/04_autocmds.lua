@@ -10,7 +10,7 @@ autocmd('User', 'MiniStarterOpened', function()
     now(function() require('mini.map').open() end)
     now(function()
       -- NOTE: overriden by plugins
-      Config.helpers.open_tree()
+      Config.plugins.open_tree()
     end)
   end, 'Override <CR> to also open mini.map', { buffer = true })
 end, 'Auto start mini.map')

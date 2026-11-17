@@ -78,5 +78,5 @@ later(function()
   map('n', '<C-e>', '<CMD>Neotree<CR>', 'Open neo-tree')
 
   ---@diagnostic disable-next-line: duplicate-set-field
-  Config.helpers.open_tree = function() vim.cmd 'Neotree show' end
+  Config.plugins.open_tree = function() vim.cmd 'Neotree show' end
 end)
