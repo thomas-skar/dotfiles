@@ -13,11 +13,11 @@
         # functions
         ghrip = "ghr intility procurement";
       };
-      interactiveShellInit = ''
-        # Disable welcome message
+      shellInit = ''
+        # disable welcome message
         set -g fish_greeting
-      '';
-      loginShellInit = ''
+
+        # fix paths
         if test -d /run/system-manager/sw/bin
           fish_add_path /run/system-manager/sw/bin
         end
@@ -45,7 +45,15 @@
         if test -d /home/$USER/.local/share
           set -gx XDG_DATA_DIRS "$XDG_DATA_DIRS:/home/$USER/.local/share"
         end
+
+        # override command-not-found
+        function fish_command_not_found
+            __fish_default_command_not_found_handler $argv
+        end
       '';
+      shellInitLast = "";
+      loginShellInit = "";
+      interactiveShellInit = "";
     };
 
     home.file.".config/fish/functions" = {
