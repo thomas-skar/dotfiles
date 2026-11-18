@@ -27,6 +27,7 @@ let
     podman
     systemd
     thinkfan
+    jottacloud
 
     # programs
     slack
