@@ -1,4 +1,7 @@
 {
+  /**
+    Systemd service to kill GDM immediately after it starts.
+  */
   flake.nixosModules.gdm = {
     systemd.services."rip-gdm" = {
       enable = true;
