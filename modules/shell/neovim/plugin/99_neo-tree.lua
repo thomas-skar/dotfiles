@@ -9,6 +9,9 @@ later(function()
     { src = 'https://github.com/MunifTanjim/nui.nvim' },
   }
 
+  ---@type boolean
+  Config.flags.neo_tree_preview = false
+
   -- TODO: close directory with <Left>
   -- TODO: expand directory with <Right>
 
@@ -53,11 +56,21 @@ later(function()
       },
       hijack_netrw_behavior = 'open_default',
       use_libuv_file_watcher = true,
+      window = {
+        mappings = {
+          ['<S-p>'] = function(state)
+            state.config = { use_float = true }
+            state.commands.toggle_preview(state)
+            Config.flags.neo_tree_preview = not Config.flags.neo_tree_preview
+          end,
+        },
+      },
     },
     event_handlers = {
       {
         event = 'neo_tree_buffer_enter',
         handler = function()
+          if not Config.flags.neo_tree_preview then return end
           if not require('neo-tree.sources.common.preview').is_active() then
             ---@type neotree.State|neotree.StateWithTree
             local state = require('neo-tree.sources.manager').get_state 'filesystem'

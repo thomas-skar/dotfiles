@@ -18,3 +18,12 @@ Config.basics = true
 
 ---@type boolean
 Config.copilot = true
+
+---@type boolean
+Config.mason = false
+
+-- -- --
+
+local F = {}
+
+Config.flags = F

@@ -1,6 +1,8 @@
+-- TODO: copy https://github.com/soulis-1256/eagle.nvim
+
 local autocmd, map = Config.new_autocmd, Config.map
 
--- TODO: fine tune behaviour
+-- FIX: fine tune behaviour
 
 ---@param bufnr number|nil
 ---@return number|nil

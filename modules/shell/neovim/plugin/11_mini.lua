@@ -3,6 +3,9 @@
 local now, later, maybe, map = Config.now, Config.later, Config.maybe, Config.map
 local basics, tabline, surround, files = Config.basics, Config.tabline, Config.surround, Config.files
 
+-- TODO: mini.cmdline?
+-- TODO: mini.sessions?
+
 -- TODO: check if mini is installed or not
 -- vim.pack.add {
 --   { src = 'https://github.com/nvim-mini/mini.nvim' },
@@ -25,7 +28,12 @@ now(function()
 end)
 
 -- mini.notify
-now(function() require('mini.notify').setup() end)
+now(function()
+  local notify = require 'mini.notify'
+  notify.setup()
+
+  map('n', '<leader>nh', notify.show_history, 'Show notification history')
+end)
 
 -- mini.starter
 now(function()
@@ -314,7 +322,8 @@ later(function()
   map('n', '<C-b>', mp.builtin.buffers, 'Show buffer picker')
   map('n', '<leader>er', me.pickers.diagnostic, 'Show diagnostics picker')
   map('n', '<leader>di', me.pickers.diagnostic, 'Show diagnostics picker')
-  map('n', '<leader>of', function() me.pickers.oldfiles { current_dir = true } end, 'Show old files picker')
+  map('n', '<leader>mp', me.pickers.manpages, 'Show manpage picker')
+  map('n', '<leader>hi', me.pickers.hipatterns, 'Show hipatterns picker')
 end)
 
 -- mini.surround

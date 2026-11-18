@@ -1,3 +1,5 @@
+-- TODO: source extra plugins, etc from working directory?
+
 -- enable experimental lua module loader
 if vim.loader then vim.loader.enable(true) end
 
