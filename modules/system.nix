@@ -23,11 +23,12 @@ let
     # services
     gdm
     keyd
+    aide
     podman
     systemd
     thinkfan
 
-    # desktop applications
+    # programs
     slack
     signal
     obsidian
@@ -45,7 +46,7 @@ let
     fonts
     displays
 
-    # desktop applications, etc
+    # programs
     foot
     gram
     gimp
@@ -55,12 +56,13 @@ let
     spotify
     neovide
     ghostty
+    epiphany
     qalculate
     librewolf
     door-knocker
     microsoft-edge
 
-    # command line tools, etc
+    # shell tools, etc
     gh
     uv
     fd
@@ -71,6 +73,7 @@ let
     vim
     k8s
     fzf
+    witr
     fish
     bash
     just
