@@ -12,9 +12,38 @@
         pkgs.ripgrep
         pkgs.eza
       ];
-      channels = { };
-      themes = { };
-      settings = { };
+      settings = {
+        default_channel = "files";
+        ui = {
+          status_bar.hidden = false;
+          preview_panel.hidden = false;
+          help_panel.hidden = false;
+        };
+      };
+      channels = {
+        # TODO: only if tealdeer is installed
+        tldr = {
+          metadata = {
+            name = "tldr";
+            requirements = [ "tldr" ];
+          };
+          source.command = "tldr --list";
+          preview.command = "tldr '{}'";
+        };
+      };
+      # themes = { };
+    };
+
+    programs.nix-search-tv = {
+      enable = true;
+      enableTelevisionIntegration = true;
+      settings = {
+        indexes = [
+          "nixpkgs"
+          "home-manager"
+          "nixos"
+        ];
+      };
     };
   };
 }
