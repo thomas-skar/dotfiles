@@ -1,6 +1,6 @@
 if Config.tree ~= 'nvim-tree' then return end
 
-local later, add, map = Config.later, Config.add, Config.map
+local later, add, map = Config.later, Config.plugins.add, Config.map
 
 later(function()
   add { 'https://github.com/nvim-tree/nvim-tree.lua' }

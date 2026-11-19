@@ -1,6 +1,6 @@
 if Config.tree ~= 'snacks' then return end
 
-local later, add, map = Config.later, Config.add, Config.map
+local later, add, map = Config.later, Config.plugins.add, Config.map
 
 -- TODO: enable lazygit?
 -- TODO: enable lsp picker, etc?

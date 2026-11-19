@@ -1,4 +1,4 @@
-local later, add, autocmd = Config.later, Config.add, Config.new_autocmd
+local later, add, autocmd = Config.later, Config.plugins.add, Config.new_autocmd
 local copilot = Config.copilot
 
 later(function()

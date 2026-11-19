@@ -1,6 +1,6 @@
 if not Config.copilot then return end
 
-local later, add = Config.later, Config.add
+local later, add = Config.later, Config.plugins.add
 
 later(function()
   add {

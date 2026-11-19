@@ -1,6 +1,6 @@
 if not Config.mason then return end
 
-local later, add = Config.later, Config.add
+local later, add = Config.later, Config.plugins.add
 
 later(function()
   -- TODO: mason vs nix

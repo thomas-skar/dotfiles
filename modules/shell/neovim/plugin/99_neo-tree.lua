@@ -1,6 +1,6 @@
 if Config.tree ~= 'neo-tree' then return end
 
-local later, add, map = Config.later, Config.add, Config.map
+local later, add, map = Config.later, Config.plugins.add, Config.map
 
 later(function()
   add {

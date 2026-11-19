@@ -6,11 +6,6 @@ local basics, tabline, surround, files = Config.basics, Config.tabline, Config.s
 -- TODO: mini.cmdline?
 -- TODO: mini.sessions?
 
--- TODO: check if mini is installed or not
--- vim.pack.add {
---   { src = 'https://github.com/nvim-mini/mini.nvim' },
--- }
-
 -- mini.basics
 now(function()
   if not basics then return end
@@ -40,20 +35,12 @@ now(function()
   local starter = require 'mini.starter'
   starter.setup {
     autoopen = true,
-    evaluate_single = true,
+    evaluate_single = false,
     items = {
       starter.sections.recent_files(10, true),
       { name = 'N: New file', action = 'enew', section = 'Shortcuts' },
       { name = 'P: Find files', action = 'lua require("fff").find_files()', section = 'Shortcuts' },
       { name = 'F: Live grep', action = 'lua require("fff").live_grep()', section = 'Shortcuts' },
-      {
-        name = 'E: Open file tree',
-        action = function()
-          Config.plugins.open_tree()
-          vim.cmd 'enew'
-        end,
-        section = 'Shortcuts',
-      },
       {
         name = 'O: Open file explorer',
         action = function() Config.plugins.open_file_explorer() end,

@@ -1,4 +1,4 @@
-local later, onchange, add, map = Config.later, Config.on_packchanged, Config.add, Config.map
+local later, onchange, add, map = Config.later, Config.plugins.onchange, Config.plugins.add, Config.map
 
 ---@diagnostic disable: missing-fields
 

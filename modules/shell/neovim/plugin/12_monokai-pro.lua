@@ -1,4 +1,4 @@
-local now, add = Config.now, Config.add
+local now, add = Config.now, Config.plugins.add
 
 now(function()
   add { 'https://github.com/khoido2003/monokai-v2.nvim' }

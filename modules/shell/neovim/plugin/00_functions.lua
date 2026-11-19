@@ -9,24 +9,6 @@ Config.map = function(modes, keys, action, desc, opts)
   vim.keymap.set(modes, keys, action, vim.tbl_extend('keep', o, opts or {}))
 end
 
----@param specs (string|vim.pack.Spec)[]
----@param opts? vim.pack.keyset.add
----@see vim.pack.add
-Config.add = function(specs, opts) vim.pack.add(specs, opts) end
-
----@param plugin_name string
----@param kinds string[]
----@param callback fun(data?: any)
----@param desc string
-Config.on_packchanged = function(plugin_name, kinds, callback, desc)
-  Config.new_autocmd('PackChanged', '*', function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if not (name == plugin_name and vim.tbl_contains(kinds, kind)) then return end
-    if not ev.data.active then vim.cmd.packadd(plugin_name) end
-    callback(ev.data)
-  end, desc)
-end
-
 ---@type integer
 ---@see vim.api.nvim_create_augroup
 Config.augroup = vim.api.nvim_create_augroup('custom', { clear = true })
@@ -55,7 +37,34 @@ Config.new_command = function(name, callback, desc, opts)
   vim.api.nvim_create_user_command(name, callback, vim.tbl_extend('keep', o, opts or {}))
 end
 
-Config.add { 'https://github.com/nvim-mini/mini.nvim' }
+-- Plugin functions
+local P = {}
+
+---@param specs (string|vim.pack.Spec)[]
+---@param opts? vim.pack.keyset.add
+---@see vim.pack.add
+P.add = function(specs, opts) vim.pack.add(specs, opts) end
+
+---@param plugin_name string
+---@param kinds string[]
+---@param callback fun(data?: any)
+---@param desc string
+P.onchange = function(plugin_name, kinds, callback, desc)
+  Config.new_autocmd('PackChanged', '*', function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if not (name == plugin_name and vim.tbl_contains(kinds, kind)) then return end
+    if not ev.data.active then vim.cmd.packadd(plugin_name) end
+    callback(ev.data)
+  end, desc)
+end
+
+P.open_tree = function() end
+P.open_file_explorer = function() end
+
+Config.plugins = P
+
+-- mini
+Config.plugins.add { 'https://github.com/nvim-mini/mini.nvim' }
 local misc = require 'mini.misc'
 
 ---Execute function _now_
@@ -90,11 +99,3 @@ H.listed_buffer_ids = function()
 end
 
 Config.helpers = H
-
--- Plugin functions
-local P = {}
-
-P.open_tree = function() end
-P.open_file_explorer = function() end
-
-Config.plugins = P

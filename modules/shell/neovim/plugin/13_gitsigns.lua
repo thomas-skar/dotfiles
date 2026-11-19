@@ -1,4 +1,4 @@
-local later, add = Config.later, Config.add
+local later, add = Config.later, Config.plugins.add
 
 later(function()
   add { 'https://github.com/lewis6991/gitsigns.nvim' }

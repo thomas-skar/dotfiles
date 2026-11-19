@@ -1,4 +1,4 @@
-local later, add, autocmd = Config.later, Config.add, Config.new_autocmd
+local later, add, autocmd = Config.later, Config.plugins.add, Config.new_autocmd
 
 later(function()
   add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }

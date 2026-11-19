@@ -1,4 +1,4 @@
-local later, add = Config.later, Config.add
+local later, add = Config.later, Config.plugins.add
 
 -- TODO: kdl lsp
 -- TODO: fix yamlls setup

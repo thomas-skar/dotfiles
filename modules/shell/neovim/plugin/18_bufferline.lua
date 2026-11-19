@@ -1,6 +1,6 @@
 if Config.tabline ~= 'bufferline' then return end
 
-local now, add, map = Config.now, Config.add, Config.map
+local now, add, map = Config.now, Config.plugins.add, Config.map
 
 now(function()
   add { 'https://github.com/akinsho/bufferline.nvim' }
