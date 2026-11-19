@@ -18,6 +18,8 @@ script target source:
       ln -s "$(pwd)/{{ source }}" "$HOME/{{ target }}"
     end
 
+# TODO: directory script? for each in directory, do ...
+
 all: broot fish gram kitty labwc noctalia neovim yazi zellij
 
 broot:
