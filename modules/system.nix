@@ -83,6 +83,7 @@ let
     dive
     doxx
     dust
+    tldr
     ilspy
     atuin
     sqlit
