@@ -56,6 +56,7 @@
       interactiveShellInit = "";
     };
 
+    # TODO: symlink directory instead of files?
     home.file.".config/fish/functions" = {
       source = ./functions;
       recursive = true;
