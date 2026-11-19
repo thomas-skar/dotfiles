@@ -20,10 +20,35 @@ later(function()
     layout = {
       border = 'rounded',
     },
+    file_picker = {
+      fuzzy_query_highlighting = true,
+    },
     preview = {
       enabled = true,
+      line_numbers = true,
     },
-    debug = { enabled = true, show_scores = true },
+    frecency = {
+      enabled = true,
+    },
+    history = {
+      enabled = true,
+    },
+    git = {
+      status_text_color = true,
+      recency = {
+        enabled = true,
+      },
+    },
+    debug = {
+      enabled = true,
+      show_scores = true, -- FIX: replace emojis >:(
+      show_file_info = {
+        file_info = true,
+        score_breakdown = false,
+        timings = false,
+        full_path = true,
+      },
+    },
   }
 
   require('fff').setup(config)
