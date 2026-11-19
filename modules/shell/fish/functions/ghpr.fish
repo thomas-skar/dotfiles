@@ -1,5 +1,5 @@
 # github pull request(s)
-function ghpr -a action
+function ghpr -a action -a admin
     if ! command -v gh >/dev/null
         echo "gh is not installed"
         return 1
@@ -37,11 +37,19 @@ function ghpr -a action
             end
         case merge
             for pr in $prs
-                gh pr merge "$pr" --merge
+                if contains -- "$admin" true 1 yes -admin --admin
+                    gh pr merge "$pr" --merge --admin
+                else
+                    gh pr merge "$pr" --merge
+                end
             end
         case squash
             for pr in $prs
-                gh pr merge "$pr" --squash
+                if contains -- "$admin" true 1 yes -admin --admin
+                    gh pr merge "$pr" --squash --admin
+                else
+                    gh pr merge "$pr" --squash
+                end
             end
     end
 
