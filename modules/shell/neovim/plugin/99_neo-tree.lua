@@ -14,6 +14,7 @@ later(function()
 
   -- TODO: close directory with <Left>
   -- TODO: expand directory with <Right>
+  -- TODO: disable scroll animations (neovide?)
 
   ---@type neotree.Config
   local config = {

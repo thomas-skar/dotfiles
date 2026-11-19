@@ -7,7 +7,7 @@ vim.o.guifont = 'Iosevka Custom:h12'
 vim.g.neovide_position_animation_length = 0
 
 -- scroll animations, etc
-vim.g.neovide_scroll_animation_length = 0.15
+vim.g.neovide_scroll_animation_length = 0
 vim.g.neovide_scroll_animation_far_lines = 2
 
 -- cursor animcations, etc
